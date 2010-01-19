@@ -801,7 +801,6 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 					// there was an error with a sub-plugin saving the post details
 					// make sure the error is saved somehow and displayed
 					update_post_meta( $postId, Eventbrite_for_The_Events_Calendar::EVENTBRITEERROPT, trim( $e->getMessage() ) );
-					return false;
 				}
 				//update meta fields		
 				foreach ( $this->metaTags as $tag ) {
@@ -810,6 +809,7 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 						update_post_meta( $postId, $tag, $_POST[$htmlElement] );
 					}
 				}
+				do_action( 'sp_events_update_meta', $postId );
 				// merge event category into this post
 				update_post_meta( $postId, '_EventCost', the_event_cost( $postId ) ); // XXX eventbrite cost field
 				$cats = wp_get_object_terms($postId, 'category', array('fields' => 'ids'));
@@ -1360,11 +1360,14 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'get_event_style'
 			global $post;
 			$postId = $post->ID;
 		}
-		$cost = false;
-		apply_filters('the_event_cost',$cost);
-		if ($cost) {
-			return $cost;
-		} elseif ( $cost = get_post_meta( $postId, '_EventCost', true ) ) {
+		if( class_exists( 'Eventbrite_for_The_Events_Calendar' ) ) {
+			global $spEventBrite;
+			$returned = $spEventBrite->the_event_cost($postId);
+			if($returned) {
+				return $returned;
+			}
+		}
+		if ( $cost = get_post_meta( $postId, '_EventCost', true ) ) {
 			return $cost;
 		} else {
 			return __('Free');
