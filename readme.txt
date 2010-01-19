@@ -168,7 +168,7 @@ On the day of the event (at midnight) the plugin runs a cron which updates the p
 
 Please visit the forum for questions or comments: http://wordpress.org/tags/the-events-calendar/
 
-== Release Notes ==
+== Changelog ==
 
 = 1.5 =
 
