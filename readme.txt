@@ -170,6 +170,10 @@ Please visit the forum for questions or comments: http://wordpress.org/tags/the-
 
 == Changelog ==
 
+= 1.5.2 =
+
+* updated ticket display to hide after event end date
+
 = 1.5.1 =
 
 * updated single.php to improve dependency on eventbrite
