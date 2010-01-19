@@ -173,6 +173,7 @@ Please visit the forum for questions or comments: http://wordpress.org/tags/the-
 = 1.5.2 =
 
 * updated ticket display to hide after event end date
+* fix exception handling bugs
 
 = 1.5.1 =
 
