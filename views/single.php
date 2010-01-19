@@ -41,16 +41,8 @@ include (TEMPLATEPATH.'/header.php'); ?>
 				</dl>
 			</div>
 			<div class="entry-content">
-			<?php the_content() ?>
-	
-
-				<?php if ( get_post_meta($post->ID, '_EventBriteId', true) && get_post_meta($post->ID, '_EventBriteStatus', true) == 'Live'  && the_event_ticket_count() > 0 ) : // is this registered with eventbrite and live? ?>
-					
-					<div id="eventbrite-embed"><iframe src="http://www.eventbrite.com/tickets-external?eid=<?php echo get_post_meta($post->ID, '_EventBriteId', true) ?>&amp;ref=etckt" frameborder="0" marginwidth="5" marginheight="5" vspace="0" hspace="0" width="100%" height="207" allowtransparency="true" scrolling="auto"></iframe></div>
-
-				<?php endif; // end eventbrite?>
-				
-				
+			<?php the_content() ?>	
+			<?php if (function_exists('the_event_ticket_form')) { the_event_ticket_form(); } ?>		
 			</div>
 			<?php edit_post_link('Edit', '<span class="edit-link">', '</span>'); ?>
 		</div><!-- .post -->
