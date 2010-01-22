@@ -1061,7 +1061,7 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 			$minutes = $this->minutes();
 			$options = '';
 			if ( empty ( $date ) ) {
-				$minute = date( 'i' );
+				$minute = '00';
 			} else {
 				$minute = date( 'i', strtotime( $date ) ); 
 			}
@@ -1093,7 +1093,7 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 	     */
 	    public static function minutes( ) {
 	      $minutes = array();
-	      foreach(range(0,59) as $minute) {
+	      for($minute=0; $minute < 60; $minute+=5) {
 					if ($minute < 10) {
 						$minute = "0" . $minute;
 					}
