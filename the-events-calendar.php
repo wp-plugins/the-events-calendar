@@ -19,7 +19,7 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 		const DATETIMEFORMAT24		= 'F j, Y H:i';
 		const EVENTTIMEFORMATOPT	= 'events_timeformat';
 		
-		public $debug = false;
+		public $debug = true;
 		private $defaultOptions = '';
 		public $latestOptions;
 		        
@@ -309,7 +309,6 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 		 * @return void
 		 */
 		function __construct( ) {
-			if( $this->debug ) error_log( "construct events calendar" );
 			$this->currentDay		= '';
 			$this->pluginDir		= basename(dirname(__FILE__));
 			$this->pluginUrl = WP_CONTENT_URL.'/plugins/'.plugin_basename(dirname(__FILE__));
@@ -403,7 +402,6 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
         }
 
 		public function templateChooser() {
-			if( $this->debug ) error_log( "template chooser" );
 			// list view
 			if ( $this->in_event_category() && ( events_displaying_upcoming() || events_displaying_past() ) ) {
 				if (file_exists(TEMPLATEPATH.'/events/list.php') ) {
