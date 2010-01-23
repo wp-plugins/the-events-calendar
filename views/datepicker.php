@@ -1,3 +1,10 @@
+<?php
+if( '' == get_option('permalink_structure') ) {
+    $link =  trailingslashit( get_bloginfo('url') ) . '?cat=' . $spEvents->eventCategory() . '&eventDisplay=month&eventDate=';
+} else {
+	$link = get_bloginfo( 'url' ) . '/' . $spEvents->getCategoryBase() . '/' . strtolower( The_Events_Calendar::CATEGORYNAME ) . '/'; 
+}
+?>
 <script type="text/javascript" charset="utf-8">
 	jQuery(document).ready(function(){
 		jQuery('.<?php echo $prefix; ?>events-dropdown').change(function( ){
@@ -5,7 +12,7 @@
 			yearSelect = jQuery('#<?php echo $prefix; ?>events-year');
 			jumpMonth = monthSelect.attr("options")[monthSelect.attr("selectedIndex")].value;
 			jumpYear = yearSelect.attr("options")[yearSelect.attr("selectedIndex")].value;
-			location.href = '<?php echo trailingslashit( events_get_events_link() ); ?>' + jumpYear + '-' + jumpMonth + '/';	
+			location.href = '<?php echo $link; ?>' + jumpYear + '-' + jumpMonth;	
 		});
 	});
 </script>
