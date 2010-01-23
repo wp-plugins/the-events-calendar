@@ -174,6 +174,8 @@ Please visit the forum for questions or comments: http://wordpress.org/tags/the-
 
 * updated ticket display to hide after event end date
 * fix exception handling bugs
+* update minuted to increment by 5 and default to 00
+* added a class per category to each event in the grid view: "cat_classname" to allow users more styling controls in the grid.
 
 = 1.5.1 =
 
