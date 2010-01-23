@@ -1,9 +1,15 @@
 <?php global $post; $post = $event; ?>
-<div id='event_<?php echo $eventId; ?>' class="event">
+<div id='event_<?php echo $eventId; ?>' class="event 
+<?php
+foreach((get_the_category()) as $category) { 
+    echo 'cat_' . $category->cat_name . ' '; 
+} 
+?>
+">
 	<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 
 	<div id='tooltip_<?php echo $eventId; ?>' class="tooltip" style="display:none;">
-		<h5 class="event-title"><?php _e($event->post_title); ?></h5>
+		<h5 class="event-title"><?php _e($event->post_title);?></h5>
 		<div class="event-body">
 			<?php if ( !the_event_all_day($event->ID) ) : ?>
 			<div class="event-date">
