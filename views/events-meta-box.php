@@ -87,6 +87,7 @@
 	<input tabindex="2002" type='radio' name='isEvent' value='no' <?php echo $isNotEventChecked; ?> />&nbsp;<b>No</b>
 </div>
 <div id='eventDetails' class="eventForm">
+	<h4>Event Time &amp; Date</h4>
 	<?php do_action('sp_events_detail_top', $postId ); ?>
 	<table cellspacing="0" cellpadding="0" id="EventInfo">
 		<tr>
@@ -103,7 +104,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td style="width:100px;"><?php _e('Start Date / Time:',$this->pluginDomain); ?></td>
+			<td style="width:125px;"><?php _e('Start Date / Time:',$this->pluginDomain); ?></td>
 			<td>
 				<select tabindex="2010" name='EventStartMonth'>
 					<?php echo $startMonthOptions; ?>
@@ -153,6 +154,9 @@
 					</select>
 				</span>
 			</td>
+		</tr>
+		<tr>
+			<td colspan="2" class="snp_sectionheader"><h4>Event Location Details</h4></td>
 		</tr>
 		<tr>
 			<td><?php _e('Venue:',$this->pluginDomain); ?></td>
@@ -263,10 +267,6 @@
 			<td><input tabindex="2028" type='text' name='EventZip' size='6' value='<?php echo $_EventZip; ?>' /></td>
 		</tr>
 		<tr>
-			<td><?php _e('Cost:',$this->pluginDomain); ?></td>
-			<td><input tabindex="2029" type='text' name='EventCost' size='6' value='<?php echo $_EventCost; ?>' /></td>
-		</tr>
-		<tr>
 			<td><?php _e('Phone:',$this->pluginDomain); ?></td>
 			<td><input tabindex="2030" type='text' name='EventPhone' size='14' value='<?php echo $_EventPhone; ?>' /></td>
 		</tr>
@@ -274,22 +274,78 @@
 			<td><?php _e('Sub-category:',$this->pluginDomain); ?></td>
 			<td><?php _e('<em>To assign this event to a custom sub-category, use the Wordpress categories chooser in the sidebar.</em>',$this->pluginDomain); ?></td>
 		</tr>
-		<tr id="mainDonateRow">
-	    	<td><?php _e('Donate:',$this->pluginDomain); ?></td>
-	        <td>
-	            <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-	                <input type="hidden" name="cmd" value="_s-xclick">
-	                <input type="hidden" name="hosted_button_id" value="10750983">
-	                <input type="hidden" name="item_name" value="Events Post Editor">
-	                <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-	                <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
-	                <label id="submitLabel" for="submit">
-	                	<?php _e('If you find this plugin useful, please consider donating to the producer of it, Shane &#38; Peter, Inc. Thank you!',$this->pluginDomain); ?>
+		<tr>
+			<td colspan="2" class="snp_sectionheader"><h4>Event Cost</h4></td>
+		</tr>
+		<tr>
+			<td><?php _e('Cost:',$this->pluginDomain); ?></td>
+			<td><input tabindex="2029" type='text' name='EventCost' size='6' value='<?php echo $_EventCost; ?>' /><small>Leave blank to hide the field. Enter a 0 for events that are free.</small></td>
+		</tr>
+		
+		<tr>
+			<td colspan="2"><h4>If You Like This Plugin - Help Support It</h4>
+				<p>We spend a lot of time and effort building robust plugins and we love to share them with the community. If you use this plugin consider making a donation to 				help support its' continued development. You may remove this message on the settings page.</p>
+				<div id="snp_thanks">
+					Thanks<br/>
+					<h5 class="snp_brand">Shane & Peter</h5>
+					<a href="http://www.shaneandpeter.com" target="_blank">www.shaneandpeter.com</a>		
+				</div>
+				<div id="snp_donate">
+				 	<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+	                	<input type="hidden" name="cmd" value="_s-xclick">
+		                <input type="hidden" name="hosted_button_id" value="10750983">
+		                <input type="hidden" name="item_name" value="Events Post Editor">
+	    	            <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">	
+	        	        <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+	            	    <label id="submitLabel" for="submit">
 	                </label>
-		       </form>
-	        </td>
-	    </tr>
+			       </form>
+				</div>
+				
+			</td>
+		</tr>
 		
 	</table>
+	<style>
+	#eventDetails h4,
+	#EventBriteDetailDiv h4{
+		text-transform: uppercase;
+		border-bottom: 1px solid #e5e5e5;
+		padding-bottom: 6px;
+	}
+	
+	.eventForm td{
+		padding-bottom: 10px !important;
+		padding-top:0 !important;
+	}
+	
+	.eventForm .snp_sectionheader{
+		padding-bottom:5px !important;
+	}
+	
+	#snp_thanks{
+		float:left;
+		width:200px;
+		margin:5px 0 0 0;
+	}
+	
+	#eventDetails .snp_brand{
+		font-weight: normal;
+		margin:5px 0;
+		font-family: Georgia !important;
+		font-size:17px !important;
+	}
+	
+	#eventDetails p{
+		margin:0 0 10px 0!important;
+	}
+	
+	#eventDetails small,
+	#EventBriteDetailDiv small{
+		margin-left:20px;
+		color:#a3a3a3;
+		font-size: 10px;
+	}
+	</style>
 </div>
 <?php do_action( 'sp_events_details_bottom', $postId ); ?>
