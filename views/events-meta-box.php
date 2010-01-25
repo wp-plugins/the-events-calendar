@@ -86,7 +86,6 @@
 	<input tabindex="2001" type='radio' name='isEvent' value='yes' <?php echo $isEventChecked; ?> />&nbsp;<b>Yes</b>
 	<input tabindex="2002" type='radio' name='isEvent' value='no' <?php echo $isNotEventChecked; ?> />&nbsp;<b>No</b>
 </div>
-<br />
 <div id='eventDetails' class="eventForm">
 	<?php do_action('sp_events_detail_top', $postId ); ?>
 	<table cellspacing="0" cellpadding="0" id="EventInfo">

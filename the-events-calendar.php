@@ -1549,7 +1549,8 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'get_event_style'
 	 * @uses $wp_query
 	 * @return array results
 	 */
-	function get_events( $numResults = 10 ) {
+	function get_events( $numResults ) {
+		if( !$numResults ) $numResults = get_option( 'posts_per_page', 10 );
 		global $wpdb, $wp_query, $spEvents;
 		$spEvents->setOptions();
 		$categoryId = get_cat_id( The_Events_Calendar::CATEGORYNAME );
@@ -1566,6 +1567,7 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'get_event_style'
 			$whereClause .= " OR (d2.meta_value  >= '".$spEvents->date."' AND d2.meta_value < '".$spEvents->nextMonth( $spEvents->date )."' ) ";
 			// Or does the event start sometime in the past and end sometime in the distant future?
 			$whereClause .= " OR (d1.meta_value  <= '".$spEvents->date."' AND d2.meta_value > '".$spEvents->nextMonth( $spEvents->date )."' ) ) ";
+			$numResults = 999999999;
 		}
 		if ( events_displaying_upcoming() ) {
 			$extraSelectClause	= ", d2.meta_value as EventEndDate ";
