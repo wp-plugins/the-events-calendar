@@ -35,11 +35,17 @@ include (TEMPLATEPATH.'/header.php'); ?>
 						$address = str_replace(' ,', ',', $address);
 						echo $address;
 						
+						$googleaddress = str_replace(' ', '+', $address);
 						 ?>
 						</dd>
 					<?php endif; ?>
 				</dl>
 			</div>
+			<?php if($googleaddress) : ?>
+				<div id="googlemaps">
+					<iframe width="100%" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=<?php echo $googleaddress; ?>&amp;output=embed"></iframe><br /><small><a href="http://www.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=<?php echo $googleaddress;?>" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+				</div>
+			<?php endif; ?>
 			<div class="entry-content">
 			<?php the_content() ?>	
 			<?php if (function_exists('the_event_ticket_form')) { the_event_ticket_form(); } ?>		
