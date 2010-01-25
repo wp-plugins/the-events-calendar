@@ -336,7 +336,7 @@
 		font-size:17px !important;
 	}
 	
-	#eventDetails p{
+	.eventForm p{
 		margin:0 0 10px 0!important;
 	}
 	
@@ -346,6 +346,23 @@
 		color:#a3a3a3;
 		font-size: 10px;
 	}
+	
+	
+	#eventBriteTicketing{
+		background: url('/testing/wp-content/plugins/the-events-calendar/resources/images/bg_fade.png') repeat-x top left;
+		padding-top:5px;
+		border-top:1px solid #e2e2e2;
+		margin-top:20px;
+	}
+	
+	#eventBriteTicketing h2{
+		background: url('/testing/wp-content/plugins/the-events-calendar/resources/images/logo_eventbrite.png') no-repeat top right;
+		height:57px;
+		padding-top:5px;
+		margin-top:-5px;
+		margin-bottom:-10px;
+	}
+	
 	</style>
 </div>
 <?php do_action( 'sp_events_details_bottom', $postId ); ?>
