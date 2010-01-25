@@ -1283,6 +1283,55 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'get_event_style'
 		echo get_event_google_map_link( $postId );
 	}
 	/**
+	 * Returns an embeded google maps for the given event
+	 *
+	 * @param string $postId 
+	 * @param int $width 
+	 * @param int $height
+	 * @return string - an iframe pulling http://maps.google.com/ for this event
+	 */
+	function get_event_google_map_embed( $postId = null, $width, $height ) {
+		if ( $postId === null || !is_numeric( $postId ) ) {
+			global $post;
+			$postId = $post->ID;
+		}
+		if ( !is_event( $postId ) ) {
+			return false;
+		}
+		$address = get_post_meta( $postId, '_EventAddress', true );
+		$city = get_post_meta( $postId, '_EventCity', true );
+		$state = get_post_meta( $postId, '_EventState', true );
+		$province = get_post_meta($postId, '_EventProvince', true );
+		$zip = get_post_meta( $postId, '_EventZip', true );
+		$country = get_post_meta($postId, '_EventCountry', true );
+		
+			if ( $country == "United States" && !empty( $address ) && !empty( $city ) && !empty( $state) && !empty( $zip ) ) {
+				$googleaddress = urlencode( $address . " " . $city . " " . $state . " " . $zip . " " . $country);
+			} elseif ( !empty( $country ) && !empty( $address ) && !empty( $city ) && !empty( $province ) && !empty( $zip ) ) {
+				$googleaddress = urlencode( $address . " " . $city . " " . $province . " " . $zip . " " . $country);
+			};
+		
+		if ($googleaddress) {
+			$google_iframe = '<div id="googlemaps"><iframe width="'.$width.'" height="'.$height.'" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q='.$googleaddress.'?>&amp;output=embed"></iframe><br /><small><a href="http://www.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q='.$googleaddress.'" style="color:#0000FF;text-align:left">View Larger Map</a></small></div>';
+			return $google_iframe;
+		}
+		else {
+			return '';
+		};
+		
+	}
+	/**
+	 * Displays an embeded google map for the given event
+	 *
+	 * @param string $postId 
+	 * @param int $width 
+	 * @param int $height
+	 * @return void
+	 */
+	function event_google_map_embed( $postId = null, $width, $height ) {
+		echo get_event_google_map_embed( $postId, $width, $height );
+	}
+	/**
 	 * Prints out the javascript required to control the datepicker (onChange of the id='datepicker')
 	 *
 	 * @param string a prefix to add to the ID of the calendar elements.  This allows you to reuse the calendar on the same page.
