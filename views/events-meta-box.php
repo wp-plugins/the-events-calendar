@@ -71,12 +71,14 @@
 	<?php if( eventsGetOptionValue('donateHidden', false) ) : ?>
 		#mainDonateRow {display: none;}
 	<?php endif; ?>
-	#mainDonateRow label {line-height: 30px;}
 	#submitLabel {display: block;}
 	#submitLabel input {
 		display: block;
 		padding: 0;
 	}
+	<?php if( class_exists( 'Eventbrite_for_The_Events_Calendar' ) ) : ?>
+		.eventBritePluginPlug {display:none;}
+	<?php endif; ?>
 </style>
 <div id="eventIntro">
 <h2><?php _e('Event Details:',$this->pluginDomain); ?></h2>
@@ -276,13 +278,12 @@
 			<td><?php _e('Cost:',$this->pluginDomain); ?></td>
 			<td><input tabindex="2029" type='text' name='EventCost' size='6' value='<?php echo $_EventCost; ?>' /><small>Leave blank to hide the field. Enter a 0 for events that are free.</small></td>
 		</tr>
-		
-		<tr>
+		<tr class="eventBritePluginPlug">
 			<td colspan="2" class="snp_sectionheader">
 				<h4>Sell Tickets &amp; Track Registration</h4>	
 			</td>
 		</tr>
-		<tr>
+		<tr class="eventBritePluginPlug">
 			<td colspan="2">
 				<p>Check out our Eventbrite integration plugin to track registrations and accept payment for your events. You can use Eventbrite to easily contact all your 
 				registrants. "Wow, you're selling Eventbrite pretty hard. You must get a kickback."  Well, now that you mention it... we do. We get a little something
@@ -290,7 +291,7 @@
 			</td>
 		</tr>
 		
-		<tr>
+		<tr id="mainDonateRow">
 			<td colspan="2"><h4>If You Like This Plugin - Help Support It</h4>
 				<p>We spend a lot of time and effort building robust plugins and we love to share them with the community. If you use this plugin consider making a donation to 				help support its' continued development. You may remove this message on the settings page.</p>
 				<div id="snp_thanks">
