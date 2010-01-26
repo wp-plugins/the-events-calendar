@@ -1608,7 +1608,7 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'get_event_style'
 	 * @uses $wp_query
 	 * @return array results
 	 */
-	function get_events( $numResults ) {
+	function get_events( $numResults = null ) {
 		if( !$numResults ) $numResults = get_option( 'posts_per_page', 10 );
 		global $wpdb, $wp_query, $spEvents;
 		$spEvents->setOptions();
