@@ -38,9 +38,16 @@ jQuery(document).ready(function() {
 	margin: 0;
 	padding: 0;
 }
+
+div.snp_settings{
+	width:90%;
+}
 </style>
+<div class="snp_settings">
 <h2><?php _e('The Events Calendar Settings',$this->pluginDomain); ?></h2>
 
+<h3>Need a hand?</h3>
+<p>If you're stuck on these options, please <a href="#">check out the documentation</a>. If you're still wondering what's going on, be sure to stop by the support <a href="#">forum</a> and ask for help. The open source community is full of kind folks who are happy to help.</p>
 <table class="form-table">
     <tr id="mainDonateRow">
     	<th scope="row"><?php _e('Donate',$this->pluginDomain); ?></th>
@@ -193,3 +200,5 @@ hidestuff('googleEmbedSize');
 <?php }; ?>
 
 </script>
+
+</div>

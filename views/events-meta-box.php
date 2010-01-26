@@ -88,9 +88,11 @@
 	<input tabindex="2002" type='radio' name='isEvent' value='no' <?php echo $isNotEventChecked; ?> />&nbsp;<b>No</b>
 </div>
 <div id='eventDetails' class="eventForm">
-	<h4>Event Time &amp; Date</h4>
 	<?php do_action('sp_events_detail_top', $postId ); ?>
 	<table cellspacing="0" cellpadding="0" id="EventInfo">
+		<tr>
+			<td colspan="2" class="snp_sectionheader"><h4>Event Time &amp; Date</h4></td>
+		</tr>
 		<tr>
 			<td><?php _e('All day event?'); ?></td>
 			<td><input tabindex="2007" type='checkbox' id='allDayCheckbox' name='EventAllDay' value='yes' <?php echo $isEventAllDay; ?> /></td>
@@ -276,7 +278,11 @@
 		</tr>
 		<tr>
 			<td><?php _e('Cost:',$this->pluginDomain); ?></td>
-			<td><input tabindex="2029" type='text' name='EventCost' size='6' value='<?php echo $_EventCost; ?>' /><small>Leave blank to hide the field. Enter a 0 for events that are free.</small></td>
+			<td><input tabindex="2029" type='text' name='EventCost' size='6' value='<?php echo $_EventCost; ?>' /></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><small>Leave blank to hide the field. Enter a 0 for events that are free.</small></td>
 		</tr>
 		<tr class="eventBritePluginPlug">
 			<td colspan="2" class="snp_sectionheader">
@@ -290,9 +296,15 @@
 				for everyone that registers an event using our promo code. It's how we're able to keep supporting and building plugins for the open source. Check it out at <a href="#">Link goes here</a></p>
 			</td>
 		</tr>
-		<?php do_action( 'sp_events_above_donate', $postId ); ?>
-		<tr id="mainDonateRow">
-			<td colspan="2"><h4>If You Like This Plugin - Help Support It</h4>
+		
+		
+	</table>
+	</div>
+	
+	<?php do_action( 'sp_events_above_donate', $postId ); ?>
+	
+	<div id="mainDonateRow" class="eventForm">
+			<h4>If You Like This Plugin - Help Support It</h4>
 				<p>We spend a lot of time and effort building robust plugins and we love to share them with the community. If you use this plugin consider making a donation to 				help support its' continued development. You may remove this message on the settings page.</p>
 				<div id="snp_thanks">
 					Thanks<br/>
@@ -310,10 +322,9 @@
 		            </label>
 			       </form>
 				</div>
-
-			</td>
-		</tr>
-	</table>
+		<div style="clear:both;"></div>	
+	</div><!-- end maindonaterow -->
+	
 	<style>
 	#eventDetails h4,
 	#EventBriteDetailDiv h4{
@@ -337,7 +348,7 @@
 		margin:5px 0 0 0;
 	}
 	
-	.eventForm .snp_brand {
+	.snp_brand {
 		font-weight: normal;
 		margin:8px 0;
 		font-family: Georgia !important;
@@ -350,13 +361,13 @@
 	
 	#eventDetails small,
 	#EventBriteDetailDiv small{
-		margin-left:20px;
 		color:#a3a3a3;
 		font-size: 10px;
 	}
 	
 	
-	#eventBriteTicketing{
+	#eventBriteTicketing,
+	#mainDonateRow{
 		background: url('/testing/wp-content/plugins/the-events-calendar/resources/images/bg_fade.png') repeat-x top left;
 		padding:10px 15px;
 		border-top:1px solid #e2e2e2;
@@ -385,6 +396,15 @@
 		border: 1px solid #dfdfdf;
 		width:95%;
 		height:45px;
+	}
+	
+	#EventInfo,
+	table.eventForm{
+		width:100%;
+	}
+	
+	td.snp_message{
+		padding-bottom:10px !Important;
 	}
 	
 	</style>
