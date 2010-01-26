@@ -174,10 +174,15 @@ Please visit the forum for questions or comments: http://wordpress.org/tags/the-
 
 = 1.5.3 =
 
-* fixed permalink issue on calendar view
+* fixed permalink issue on calendar
 * curl support for (soon to be deprecated) safe_mode
-* update minuted to increment by 5 and default to 00
+* update minuted to increment by 5 rather than 1 and default to 00
 * added a class per category to each event in the grid view: "cat_classname" to allow users more styling controls in the grid.
+* added embedded google maps integration
+* fixed conflicting namespace error with xml2array function
+* changed "Grid view" to "Calendar", "List view" to "Event List"
+* made significant headway on support translation - probably more to go
+* clean up admin a bit to make it easier to navigate the events form
 
 = 1.5.2 =
 
