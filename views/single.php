@@ -41,7 +41,7 @@ include (TEMPLATEPATH.'/header.php'); ?>
 					<?php endif; ?>
 				</dl>
 			</div>
-			<?php if(the_event_address()) { event_google_map_embed( '' , '100%' , '350'); } ?>
+			<?php if(the_event_address()) { event_google_map_embed(); } ?>
 			<div class="entry-content">
 			<?php the_content() ?>	
 			<?php if (function_exists('the_event_ticket_form')) { the_event_ticket_form(); } ?>		

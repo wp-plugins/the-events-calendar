@@ -356,7 +356,13 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 				if($_POST['defaultCountry']) {
 					$this->constructCountries();
 					$defaultCountryKey = array_search($_POST['defaultCountry'],$this->countries);
-					$options['defaultCountry'] = array($defaultCountryKey,$_POST['defaultCountry']);
+					$options['defaultCountry'] = array($defaultCountryKey,$_POST['defaultCountry']);					
+				}
+				
+				$options['embedGoogleMaps'] = $_POST['embedGoogleMaps'];
+				if($_POST['embedGoogleMapsHeight']) {
+					$options['embedGoogleMapsHeight'] = $_POST['embedGoogleMapsHeight'];
+					$options['embedGoogleMapsWidth'] = $_POST['embedGoogleMapsWidth'];
 				}
 				
 				do_action( 'sp-events-save-more-options' );
@@ -1290,7 +1296,7 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'get_event_style'
 	 * @param int $height
 	 * @return string - an iframe pulling http://maps.google.com/ for this event
 	 */
-	function get_event_google_map_embed( $postId = null, $width, $height ) {
+	function get_event_google_map_embed( $postId = null, $width = '100%', $height = '350' ) {
 		if ( $postId === null || !is_numeric( $postId ) ) {
 			global $post;
 			$postId = $post->ID;
@@ -1304,6 +1310,10 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'get_event_style'
 		$province = get_post_meta($postId, '_EventProvince', true );
 		$zip = get_post_meta( $postId, '_EventZip', true );
 		$country = get_post_meta($postId, '_EventCountry', true );
+		if (!$height){
+		$height = eventsGetOptionValue('embedGoogleMapsHeight','350');}
+		if (!$width){
+		$width = eventsGetOptionValue('embedGoogleMapsWidth','100%');}
 		
 			if ( $country == "United States" && !empty( $address ) && !empty( $city ) && !empty( $state) && !empty( $zip ) ) {
 				$googleaddress = urlencode( $address . " " . $city . " " . $state . " " . $zip . " " . $country);
@@ -1328,8 +1338,8 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'get_event_style'
 	 * @param int $height
 	 * @return void
 	 */
-	function event_google_map_embed( $postId = null, $width, $height ) {
-		echo get_event_google_map_embed( $postId, $width, $height );
+	function event_google_map_embed( $postId = null, $width = null, $height = null ) {
+		if (eventsGetOptionValue('embedGoogleMaps') == 'on'){ echo get_event_google_map_embed( $postId, $width, $height );};
 	}
 	/**
 	 * Prints out the javascript required to control the datepicker (onChange of the id='datepicker')

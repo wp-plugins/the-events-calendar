@@ -126,6 +126,48 @@ if ( function_exists('wp_nonce_field') ) {
             </select>
         </td>
     </tr>
+
+
+		<?php 
+		$embedGoogleMapsValue = eventsGetOptionValue('embedGoogleMaps','off');                 
+        ?>
+
+
+	<tr>
+		<th scope="row"><?php _e('Embed Google Maps',$this->pluginDomain); ?></th>
+        <td>
+            <fieldset>
+                <legend class="screen-reader-text">
+                    <span><?php _e('Embed Google Maps',$this->pluginDomain); ?></span>
+                </legend>
+                <label title='Yes'>
+                    <?php 
+                    $embedGoogleMapsValue = eventsGetOptionValue('embedGoogleMaps','off'); 
+ 					$embedGoogleMapsHeightValue = eventsGetOptionValue('embedGoogleMapsHeight','350'); 
+ 					$embedGoogleMapsWidthValue = eventsGetOptionValue('embedGoogleMapsWidth','100%'); 
+                    if( $embedGoogleMapsValue == 'on' ) {
+                        $embedGoogleMapsOnStatus = 'checked="checked"';
+                    } else {
+                        $embedGoogleMapsOffStatus = 'checked="checked"';
+                    }
+                    ?>
+                    <input type="radio" name="embedGoogleMaps" value="off" <?php echo $embedGoogleMapsOffStatus; ?> onClick="hidestuff('googleEmbedSize');" /> 
+                    <?php _e('Off',$this->pluginDomain); ?>
+                </label> 
+                <label title='List View'>
+                    <input type="radio" name="embedGoogleMaps" value="on" <?php echo $embedGoogleMapsOnStatus; ?> onClick="showstuff('googleEmbedSize');" /> 
+                    <?php _e('On',$this->pluginDomain); ?>
+                </label>
+				<span id="googleEmbedSize" name="googleEmbedSize" style="margin-left:20px;" >
+					<?php _e('Height',$this->pluginDomain); ?> <input type="text" name="embedGoogleMapsHeight" value="<?php echo $embedGoogleMapsHeightValue ?>" size=4>
+					&nbsp;<?php _e('Width',$this->pluginDomain); ?> <input type="text" name="embedGoogleMapsWidth" value="<?php echo $embedGoogleMapsWidthValue ?>" size=4> (number or %)
+				</span>
+<br />
+            </fieldset>
+        </td>
+	</tr>
+
+
     <?php do_action( 'sp_events_options_bottom' ); ?>
 	<tr>
     	<td>
@@ -136,3 +178,18 @@ if ( function_exists('wp_nonce_field') ) {
 </table>
 
 </form>
+
+<script>
+function showstuff(boxid){
+   document.getElementById(boxid).style.visibility="visible";
+}
+
+function hidestuff(boxid){
+   document.getElementById(boxid).style.visibility="hidden";
+}
+
+<?php if( $embedGoogleMapsValue == 'off' ) { ?>
+hidestuff('googleEmbedSize');
+<?php }; ?>
+
+</script>
