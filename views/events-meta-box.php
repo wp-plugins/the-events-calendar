@@ -278,6 +278,19 @@
 		</tr>
 		
 		<tr>
+			<td colspan="2" class="snp_sectionheader">
+				<h4>Sell Tickets &amp; Track Registration</h4>	
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<p>Check out our Eventbrite integration plugin to track registrations and accept payment for your events. You can use Eventbrite to easily contact all your 
+				registrants. "Wow, you're selling Eventbrite pretty hard. You must get a kickback."  Well, now that you mention it... we do. We get a little something
+				for everyone that registers an event using our promo code. It's how we're able to keep supporting and building plugins for the open source. Check it out at <a href="#">Link goes here</a></p>
+			</td>
+		</tr>
+		
+		<tr>
 			<td colspan="2"><h4>If You Like This Plugin - Help Support It</h4>
 				<p>We spend a lot of time and effort building robust plugins and we love to share them with the community. If you use this plugin consider making a donation to 				help support its' continued development. You may remove this message on the settings page.</p>
 				<div id="snp_thanks">
@@ -345,11 +358,11 @@
 	
 	#eventBriteTicketing{
 		background: url('/testing/wp-content/plugins/the-events-calendar/resources/images/bg_fade.png') repeat-x top left;
-		padding:10px 6px;
+		padding:10px 15px;
 		border-top:1px solid #e2e2e2;
 		margin-top:20px;
-		margin-left:-6px;
-		margin-right:-6px;
+		margin-left:-21px;
+		margin-right:-21px;
 	}
 	
 	#eventBriteTicketing h2{
@@ -362,6 +375,16 @@
 	
 	#eventIntro h2{
 		margin-bottom: 0px !important;
+	}
+	
+	#Events .inside{
+		padding:0 15px !important;
+	}
+	
+	.eventForm .description_input{
+		border: 1px solid #dfdfdf;
+		width:95%;
+		height:45px;
 	}
 	
 	</style>
