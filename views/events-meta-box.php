@@ -290,7 +290,7 @@
 				for everyone that registers an event using our promo code. It's how we're able to keep supporting and building plugins for the open source. Check it out at <a href="#">Link goes here</a></p>
 			</td>
 		</tr>
-		
+		<?php do_action( 'sp_events_above_donate', $postId ); ?>
 		<tr id="mainDonateRow">
 			<td colspan="2"><h4>If You Like This Plugin - Help Support It</h4>
 				<p>We spend a lot of time and effort building robust plugins and we love to share them with the community. If you use this plugin consider making a donation to 				help support its' continued development. You may remove this message on the settings page.</p>
@@ -301,19 +301,18 @@
 				</div>
 				<div id="snp_donate">
 				 	<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-	                	<input type="hidden" name="cmd" value="_s-xclick">
+		            	<input type="hidden" name="cmd" value="_s-xclick">
 		                <input type="hidden" name="hosted_button_id" value="10750983">
 		                <input type="hidden" name="item_name" value="Events Post Editor">
-	    	            <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">	
-	        	        <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
-	            	    <label id="submitLabel" for="submit">
-	                </label>
+			            <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">	
+		    	        <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+		        	    <label id="submitLabel" for="submit">
+		            </label>
 			       </form>
 				</div>
-				
+
 			</td>
 		</tr>
-		
 	</table>
 	<style>
 	#eventDetails h4,
@@ -338,7 +337,7 @@
 		margin:5px 0 0 0;
 	}
 	
-	#eventDetails .snp_brand{
+	.eventForm .snp_brand {
 		font-weight: normal;
 		margin:8px 0;
 		font-family: Georgia !important;
@@ -389,5 +388,5 @@
 	}
 	
 	</style>
-</div>
+</div><!--//eventDetails-->
 <?php do_action( 'sp_events_details_bottom', $postId ); ?>
