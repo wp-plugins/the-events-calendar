@@ -5,11 +5,10 @@ include (TEMPLATEPATH.'/header.php'); ?>
 <div id="content" class="upcoming">
 	<div id='eventsCalendarHeader' class="clearfix">
 		<h2 class="cal-title"><?php _e('Calendar of Events', $spEvents->pluginDomain) ?></h2>
-
-		<span class='calendarButtons'> 
-			<a class='listview' href='<?php echo events_get_listview_link(); ?>'>List View</a>
-			<a class='gridview' href='<?php echo events_get_gridview_link(); ?>'>Grid View</a>
-		</span>
+			<span class='calendarButtons'> 
+				<a class='listview' href='<?php echo events_get_listview_link(); ?>'><?php _e('Event List', $spEvents->pluginDomain)?></a>
+				<a class='gridview' href='<?php echo events_get_gridview_link(); ?>'><?php _e('Calendar', $spEvents->pluginDomain)?></a>
+			</span>
 
 	</div><!--#eventsCalendarHeader-->
 

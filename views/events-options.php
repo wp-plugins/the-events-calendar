@@ -89,7 +89,7 @@ if ( function_exists('wp_nonce_field') ) {
                 <legend class="screen-reader-text">
                     <span><?php _e('Default View for the Events',$this->pluginDomain); ?></span>
                 </legend>
-                <label title='Grid View'>
+                <label title='Calendar'>
                     <?php 
                     $viewOptionValue = eventsGetOptionValue('viewOption','month'); 
                     if( $viewOptionValue == 'upcoming' ) {
@@ -99,11 +99,11 @@ if ( function_exists('wp_nonce_field') ) {
                     }
                     ?>
                     <input type="radio" name="viewOption" value="month" <?php echo $gridViewStatus; ?> /> 
-                    <?php _e('Grid View',$this->pluginDomain); ?>
+                    <?php _e('Calendar',$this->pluginDomain); ?>
                 </label><br />
                 <label title='List View'>
                     <input type="radio" name="viewOption" value="upcoming" <?php echo $listViewStatus; ?> /> 
-                    <?php _e('List View',$this->pluginDomain); ?>
+                    <?php _e('Event List',$this->pluginDomain); ?>
                 </label><br />
             </fieldset>
         </td>

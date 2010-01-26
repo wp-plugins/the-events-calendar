@@ -9,8 +9,8 @@ include (TEMPLATEPATH.'/header.php'); ?>
 		<?php get_jump_to_date_calendar(); ?>
 
 		<span class='calendarButtons'> 
-			<a class='listview' href='<?php echo events_get_listview_link(); ?>'>List View</a>
-			<a class='gridview' href='<?php echo events_get_gridview_link(); ?>'>Grid View</a>
+			<a class='listview' href='<?php echo events_get_listview_link(); ?>'><?php _e('Event List', $spEvents->pluginDomain)?></a>
+			<a class='gridview' href='<?php echo events_get_gridview_link(); ?>'><?php _e('Calendar', $spEvents->pluginDomain)?></a>
 		</span>
 
 	</div><!--#eventsCalendarHeader-->
