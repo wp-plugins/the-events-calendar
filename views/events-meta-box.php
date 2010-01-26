@@ -59,7 +59,7 @@
 		display:none;
 	}
 	.eventForm h4 {
-		font-size:1.1em;
+		font-size:1.2em;
 		margin:2em 0 1em;
 	}
 	.notice {
@@ -78,10 +78,9 @@
 		padding: 0;
 	}
 </style>
-
+<div id="eventIntro">
 <h2><?php _e('Event Details:',$this->pluginDomain); ?></h2>
 <?php do_action('sp_events_errors', $postId ); ?>
-<div>
 	<?php _e('Is this post an event?',$this->pluginDomain); ?>&nbsp;
 	<input tabindex="2001" type='radio' name='isEvent' value='yes' <?php echo $isEventChecked; ?> />&nbsp;<b>Yes</b>
 	<input tabindex="2002" type='radio' name='isEvent' value='no' <?php echo $isNotEventChecked; ?> />&nbsp;<b>No</b>
@@ -271,10 +270,6 @@
 			<td><input tabindex="2030" type='text' name='EventPhone' size='14' value='<?php echo $_EventPhone; ?>' /></td>
 		</tr>
         <tr>
-			<td><?php _e('Sub-category:',$this->pluginDomain); ?></td>
-			<td><?php _e('<em>To assign this event to a custom sub-category, use the Wordpress categories chooser in the sidebar.</em>',$this->pluginDomain); ?></td>
-		</tr>
-		<tr>
 			<td colspan="2" class="snp_sectionheader"><h4>Event Cost</h4></td>
 		</tr>
 		<tr>
@@ -331,7 +326,7 @@
 	
 	#eventDetails .snp_brand{
 		font-weight: normal;
-		margin:5px 0;
+		margin:8px 0;
 		font-family: Georgia !important;
 		font-size:17px !important;
 	}
@@ -350,17 +345,23 @@
 	
 	#eventBriteTicketing{
 		background: url('/testing/wp-content/plugins/the-events-calendar/resources/images/bg_fade.png') repeat-x top left;
-		padding-top:5px;
+		padding:10px 6px;
 		border-top:1px solid #e2e2e2;
 		margin-top:20px;
+		margin-left:-6px;
+		margin-right:-6px;
 	}
 	
 	#eventBriteTicketing h2{
 		background: url('/testing/wp-content/plugins/the-events-calendar/resources/images/logo_eventbrite.png') no-repeat top right;
 		height:57px;
 		padding-top:5px;
-		margin-top:-5px;
-		margin-bottom:-10px;
+		margin-top:10px;
+		margin-bottom:-20px;
+	}
+	
+	#eventIntro h2{
+		margin-bottom: 0px !important;
 	}
 	
 	</style>
