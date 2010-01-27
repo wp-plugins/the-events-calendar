@@ -282,7 +282,7 @@
 		</tr>
 		<tr>
 			<td></td>
-			<td><small>Leave blank to hide the field. Enter a 0 for events that are free.</small></td>
+			<td><small><?php _e('Leave blank to hide the field. Enter a 0 for events that are free.', $this->pluginDomain); ?></small></td>
 		</tr>
 		<tr class="eventBritePluginPlug">
 			<td colspan="2" class="snp_sectionheader">
@@ -291,9 +291,7 @@
 		</tr>
 		<tr class="eventBritePluginPlug">
 			<td colspan="2">
-				<p>Check out our Eventbrite integration plugin to track registrations and accept payment for your events. You can use Eventbrite to easily contact all your 
-				registrants. "Wow, you're selling Eventbrite pretty hard. You must get a kickback."  Well, now that you mention it... we do. We get a little something
-				for everyone that registers an event using our promo code. It's how we're able to keep supporting and building plugins for the open source. Check it out at <a href="#">Link goes here</a></p>
+				<p><?php _e('Interested in selling tickets and tracking registrations? Now you can do it for free using our <a href="http://wordpress.org/extend/plugins/eventbrite-for-the-events-calendar/">Eventbrite Integration Plugin</a>. Eventbrite is a feature rich easy-to-use event management tool. "Wow, you\'re selling Eventbrite pretty hard. You must get a kickback."  Well, now that you mention it... we do. We get a little something for everyone that registers an event using our referral link. It\'s how we\'re able to keep supporting and building plugins for the open source community. ', $this->pluginDomain); ?> <a href="http://www.eventbrite.com/r/simpleevents"><?php _e('Check it out here.', $this->pluginDomain); ?></a></p>
 			</td>
 		</tr>
 		
@@ -304,10 +302,10 @@
 	<?php do_action( 'sp_events_above_donate', $postId ); ?>
 	
 	<div id="mainDonateRow" class="eventForm">
-			<h4>If You Like This Plugin - Help Support It</h4>
-				<p>We spend a lot of time and effort building robust plugins and we love to share them with the community. If you use this plugin consider making a donation to 				help support its' continued development. You may remove this message on the settings page.</p>
+			<?php _e('<h4>If You Like This Plugin - Help Support It</h4>
+				<p>We spend a lot of time and effort building robust plugins and we love to share them with the community. If you use this plugin consider making a donation to help support its\' continued development. You may remove this message on the <a href="/wp-admin/options-general.php?page=the-events-calendar.php">settings page</a>.</p>', $this->pluginDomain); ?>
 				<div id="snp_thanks">
-					Thanks<br/>
+					<?php _e('Thanks', $this->pluginDomain); ?><br/>
 					<h5 class="snp_brand">Shane & Peter</h5>
 					<a href="http://www.shaneandpeter.com" target="_blank">www.shaneandpeter.com</a>		
 				</div>
