@@ -46,8 +46,8 @@ div.snp_settings{
 <div class="snp_settings">
 <h2><?php _e('The Events Calendar Settings',$this->pluginDomain); ?></h2>
 
-<h3>Need a hand?</h3>
-<p>If you're stuck on these options, please <a href="#">check out the documentation</a>. If you're still wondering what's going on, be sure to stop by the support <a href="#">forum</a> and ask for help. The open source community is full of kind folks who are happy to help.</p>
+<h3><?php _e('Need a hand?',$this->pluginDomain); ?></h3>
+<p><?php _e('If you\'re stuck on these options, please <a href="http://wordpress.org/extend/plugins/the-events-calendar/">check out the documentation</a>. If you\'re still wondering what\'s going on, be sure to stop by the support <a href="http://wordpress.org/tags/the-events-calendar?forum_id=10">forum</a> and ask for help. The open source community is full of kind folks who are happy to help.',$this->pluginDomain); ?></p>
 <table class="form-table">
     <tr id="mainDonateRow">
     	<th scope="row"><?php _e('Donate',$this->pluginDomain); ?></th>

@@ -59,7 +59,7 @@ No setup required. Just plug and play!
 
 PHP 5.1 OR ABOVE
 
-= Advanced =
+== Documentation ==
 
 The built in template can be overridden by files within your template.
 
