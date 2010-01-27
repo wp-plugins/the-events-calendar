@@ -2,14 +2,14 @@
 
 Contributors: Kelsey Damas, Matt Wiebe, Justin Endler, Reid Peifer produced by Shane & Peter, Inc.
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=10750983
-Tags: widget, events, simple, tooltips, grid, month, list, calendar, event, venue, eventbrite, registration, tickets, ticketing, eventbright, api, dates, date, plugin, posts, sidebar, template, theme, time, google maps, google, maps, conference, workshop, concert, meeting, seminar, summit, forum
+Tags: widget, events, simple, tooltips, grid, month, list, calendar, event, venue, eventbrite, registration, tickets, ticketing, eventbright, api, dates, date, plugin, posts, sidebar, template, theme, time, google maps, conference, workshop, concert, meeting, seminar, summit, forum, shortcode
 Requires at least: 2.8
 Tested up to: 2.9.1
-Stable tag: 1.5.2
+Stable tag: 1.5.3
 
 == Description ==
 
-The Events Calendar plugin enables you to rapidly create and manage events using the post editor.  Features include optional Eventbrite integration, Google Maps integration as well as default templates such as a calendar grid and event list for streamlined one click installation.
+The Events Calendar plugin enables you to rapidly create and manage events using the post editor.  Features include Google Maps integration as well as default templates such as a calendar grid and event list for streamlined one click installation.
 
 Looking to track attendees, sell tickets and more? Go download the Eventbrite for The Events Calendar plugin (http://wordpress.org/extend/plugins/eventbrite-for-the-events-calendar/). Eventbrite is a free service that provides the full power of a conference ticketing system. This plugin upgrades The Events Calendar with all the basic Eventbrite controls without ever leaving the wordpress post editor. Don't have an Eventbrite account? No problem, use the following link to set one up: http://www.eventbrite.com/r/simpleevents.
 
@@ -22,19 +22,22 @@ Looking to track attendees, sell tickets and more? Go download the Eventbrite fo
 * MU Compatible
 * Google Maps Integration
 * Posts are automatically moved to the top of the loop on the day of the event
-* Month view with tooltips
+* Calendar Month view with tooltips
 * Includes support for venue, cost, address, start and end time, google maps link
 * Support for international addresses and time
 * Optional Ticketing With Eventbrite Integration - http://www.eventbrite.com/ - though the Eventbrite for The Events Calendar plugin (http://wordpress.org/extend/plugins/eventbrite-for-the-events-calendar/).
 
 = Upcoming Features =
 
+* Localization / Language files (almost there) - Post in the forum if you want to help.
+* Improved international features (24 hour + calendar start day)
+* More bug hunting and support (huff puff)
 * Option to disable re-posting of event
+* Ical Feed
+* Improved error checking and reporting
 * Repeated events
-* Language files
 * Dynamic categories (rather than requiring the use of event)
 * Event subcategories
-* A bunch of UI cleanup
 
 Please visit the forum for feature suggestions: http://wordpress.org/tags/the-events-calendar/
 
@@ -54,6 +57,15 @@ This plugin is actively supported and we will do our best to help you. In return
 = Activate =
 
 No setup required. Just plug and play!
+
+= Settings = 
+
+There are a growing number of options you can set to make your calendar behave in a specific manner. Simple click The Event Calendar in the settings panel:
+
+* Donation: Remove our plea for your support
+* Default View for Events: Select Calendar or Event list as the default view for the events loop
+* Default Country: Select the default country for the admin
+* Embed Google Maps: Turn on Google Maps and define the height and width of the map.
 
 = Requirements =
 
@@ -142,13 +154,17 @@ http://codex.wordpress.org/Displaying_Posts_Using_a_Custom_Select_Query#Query_ba
 
 **events_displaying_past()**
 
-returns true if the query is set for past events
+Returns true if the query is set for past events
 
 For those of you who have the Eventbrite plugin turned on:
 
+**event_google_map_embed( $id, $width, $height)**
+
+Returns an embedded google map. Width and height are set through the admin panel unless overridden directly through the function call.
+
 **the_event_tickets( $id, $width, $height)**
 
-This returns an EventBrite.com embedded ticket sales inline (not wordpress) widget 
+Returns an EventBrite.com embedded ticket sales inline (not wordpress) widget 
 
 = Top of the Loop Cron =
 
@@ -174,15 +190,22 @@ Please visit the forum for questions or comments: http://wordpress.org/tags/the-
 
 = 1.5.3 =
 
+Settings
+* updated minimum php requirement to 5.1
+
+Bug Fixes
 * fixed permalink issue on calendar
-* curl support for (soon to be deprecated) safe_mode
+* removed limit of events shown on calendar view
+* fixed conflicting namespace error with xml2array function
+* curl support for (soon to be deprecated) safe_mod
+
+Features
 * update minuted to increment by 5 rather than 1 and default to 00
 * added a class per category to each event in the grid view: "cat_classname" to allow users more styling controls in the grid.
-* added embedded google maps integration
-* fixed conflicting namespace error with xml2array function
+* added embedded google maps integration & admin panel controls
 * changed "Grid view" to "Calendar", "List view" to "Event List"
-* made significant headway on support translation - probably more to go
-* clean up admin a bit to make it easier to navigate the events form
+* made significant headway on preparing translation - more to go
+* clean up admin quite a bit to make it easier to navigate the events form
 
 = 1.5.2 =
 
@@ -233,7 +256,7 @@ Please visit the forum for questions or comments: http://wordpress.org/tags/the-
 
 = 1.2 =
 
-* Added Internationalization (translation) support
+* Started internationalization (translation) support
 * Added international addresses
 * Extracted from S&P core plugin to stand alone. 
 
