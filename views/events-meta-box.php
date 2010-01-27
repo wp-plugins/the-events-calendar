@@ -368,7 +368,7 @@
 	
 	#eventBriteTicketing,
 	#mainDonateRow{
-		background: url('/testing/wp-content/plugins/the-events-calendar/resources/images/bg_fade.png') repeat-x top left;
+		background: url('/wp-content/plugins/the-events-calendar/resources/images/bg_fade.png') repeat-x top left;
 		padding:10px 15px;
 		border-top:1px solid #e2e2e2;
 		margin-top:20px;
@@ -377,7 +377,7 @@
 	}
 	
 	#eventBriteTicketing h2{
-		background: url('/testing/wp-content/plugins/the-events-calendar/resources/images/logo_eventbrite.png') no-repeat top right;
+		background: url('/wp-content/plugins/the-events-calendar/resources/images/logo_eventbrite.png') no-repeat top right;
 		height:57px;
 		padding-top:5px;
 		margin-top:10px;
