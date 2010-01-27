@@ -115,6 +115,32 @@ if ( function_exists('wp_nonce_field') ) {
             </fieldset>
         </td>
 	</tr>
+	<tr>
+		<th scope="row"><?php _e('Show Comments',$this->pluginDomain); ?></th>
+        <td>
+            <fieldset>
+                <legend class="screen-reader-text">
+                    <span><?php _e('Show Comments',$this->pluginDomain); ?></span>
+                </legend>
+                <label title='Yes'>
+                    <?php 
+                    $showCommentValue = eventsGetOptionValue('showComments','no'); 
+                    if( $showCommentValue == 'no' ) {
+                        $noCommentStatus = 'checked="checked"';
+                    } else {
+                        $yesCommentStatus = 'checked="checked"';
+                    }
+                    ?>
+                    <input type="radio" name="showComments" value="yes" <?php echo $yesCommentStatus; ?> /> 
+                    <?php _e('Yes',$this->pluginDomain); ?>
+                </label><br />
+                <label title='Yes'>
+                    <input type="radio" name="showComments" value="no" <?php echo $noCommentStatus; ?> /> 
+                    <?php _e('No',$this->pluginDomain); ?>
+                </label><br />
+            </fieldset>
+        </td>
+	</tr>
     <tr>
     <th scope="row"><?php _e('Default Country for Events',$this->pluginDomain); ?></th>
     	<td>

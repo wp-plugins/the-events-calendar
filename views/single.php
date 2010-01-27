@@ -49,8 +49,12 @@ include (TEMPLATEPATH.'/header.php'); ?>
 			</div>
 			<?php edit_post_link('Edit', '<span class="edit-link">', '</span>'); ?>
 		</div><!-- .post -->
-
+	
+	<?php if(eventsGetOptionValue('showComments','no') == 'yes'){ comments_template();} ?>
+	
 	</div><!-- #content -->
+	
+
 
 <?php
 include (TEMPLATEPATH.'/footer.php');

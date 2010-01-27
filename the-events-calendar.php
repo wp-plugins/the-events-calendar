@@ -365,6 +365,8 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 					$options['embedGoogleMapsWidth'] = $_POST['embedGoogleMapsWidth'];
 				}
 				
+				$options['showComments'] = $_POST['showComments'];
+				
 				do_action( 'sp-events-save-more-options' );
 				
 				$this->saveOptions($options);
