@@ -57,7 +57,7 @@ No setup required. Just plug and play!
 
 = Requirements =
 
-PHP 5 ONLY!!!
+PHP 5.1 OR ABOVE
 
 = Advanced =
 
