@@ -192,6 +192,7 @@ Please visit the forum for questions or comments: http://wordpress.org/tags/the-
 
 * smarter date chooser provides only those dates which the month contains as choices, accounts for leap years
 ** fixes multi-month event bug pointed out by coold78 on the forum
+* removed donate button from User Profile view
 
 = 1.5.3 =
 
