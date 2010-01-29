@@ -505,9 +505,9 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 		/**
 		 * Helper method to return an array of 1-31 for days
 		 */
-		public function days( ) {
+		public function days( $totalDays ) {
 			$days = array();
-			foreach( range( 1, 31 ) as $day ) {
+			foreach( range( 1, $totalDays ) as $day ) {
 				$days[ $day ] = $day;
 			}
 			return $days;
@@ -869,8 +869,18 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 			$isEventChecked			= ( $_isEvent == 'yes' ) ? 'checked' : '';
 			$isNotEventChecked		= ( $_isEvent == 'no' || $_isEvent == '' ) ? 'checked' : '';
 			$isEventAllDay			= ( $_EventAllDay == 'yes' ) ? 'checked' : '';
-			$startDayOptions 		= $this->getDayOptions( $_EventStartDate );
-			$endDayOptions			= $this->getDayOptions( $_EventEndDate );
+			$startDayOptions       	= array(
+										31 => $this->getDayOptions( $_EventStartDate, 31 ),
+										30 => $this->getDayOptions( $_EventStartDate, 30 ),
+										29 => $this->getDayOptions( $_EventStartDate, 29 ),
+										28 => $this->getDayOptions( $_EventStartDate, 28 )
+									  );
+			$endDayOptions			= array(
+										31 => $this->getDayOptions( $_EventEndDate, 31 ),
+										30 => $this->getDayOptions( $_EventEndDate, 30 ),
+										29 => $this->getDayOptions( $_EventEndDate, 29 ),
+										28 => $this->getDayOptions( $_EventEndDate, 28 )
+									  );
 			$startMonthOptions 		= $this->getMonthOptions( $_EventStartDate );
 			$endMonthOptions 		= $this->getMonthOptions( $_EventEndDate );
 			$startYearOptions 		= $this->getYearOptions( $_EventStartDate );
@@ -989,11 +999,12 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 		}
 		/**
 		 * Builds a set of options for displaying a day chooser
+		 * @param int number of days in the month
 		 * @param string the current date (optional)
 		 * @return string a set of HTML options with all days (current day selected)
 		 */
-		public function getDayOptions( $date = "" ) {
-			$days = $this->days();
+		public function getDayOptions( $date = "", $totalDays ) {
+			$days = $this->days( $totalDays );
 			$options = '';
 			if ( empty ( $date ) ) {
 				$day = date( 'd' );

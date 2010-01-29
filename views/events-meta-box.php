@@ -43,6 +43,60 @@
 		jQuery("#EventCountry").change(function(){
 			spShowHideCorrectStateProvinceInput(jQuery(this).attr("value"));
 		});
+		
+		var spDaysPerMonth = [29,31,28,31,30,31,30,31,31,30,31,30,31];
+		
+		// start and end date select sections
+		var spStartDays = [ jQuery('#28StartDays'), jQuery('#29StartDays'), jQuery('#30StartDays'), jQuery('#31StartDays') ];
+		var spEndDays = [ jQuery('#28EndDays'), jQuery('#29EndDays'), jQuery('#30EndDays'), jQuery('#31EndDays') ];
+				
+		jQuery("select[name='EventStartMonth'], select[name='EventEndMonth']").change(function() {
+			var startEnd = jQuery(this).attr("name");
+			// get changed select field
+			if( startEnd == 'EventStartMonth' ) startEnd = 'Start';
+			else startEnd = 'End';
+			// show/hide date lists according to month
+			var chosenMonth = jQuery(this).attr("value");
+			if( chosenMonth.charAt(0) == '0' ) chosenMonth = chosenMonth.replace('0', '');
+			else chosenMonth = chosenMonth;
+			// leap year
+			var remainder = jQuery("select[name='Event" + startEnd + "Year']").attr("value") % 4;
+			if( chosenMonth == 2 && remainder == 0 ) chosenMonth = 0;
+			// preserve selected option
+			var currentDateField = jQuery("select[name='Event" + startEnd + "Day']");
+
+			jQuery('.event' + startEnd + 'DateField').remove();
+			//console.log( spStartDays[ spDaysPerMonth[ chosenMonth - 28 ] ] );
+			if( startEnd == "Start") {
+				var selectObject = spStartDays[ spDaysPerMonth[ chosenMonth ] - 28 ];
+				jQuery("select[name='EventStartMonth']").after( selectObject );
+				//selectObject.children("[value='" + currentDateField.val() + "']").attr('selected','selected');
+				//selectObject.val( currentDateField.val() );
+			} else {
+				var selectObject = spEndDays[ spDaysPerMonth[ chosenMonth ] - 28 ];
+				jQuery('select[name="EventEndMonth"]').after( selectObject );
+				//selectObject.children("[value='" + currentDateField.val() + "']").attr('selected','selected');
+			}
+			selectObject.val( currentDateField.val() );
+		});
+		
+		jQuery(".eventEndDateField").remove();
+		
+		jQuery("select[name='EventStartMonth'], select[name='EventEndMonth']").change();
+		
+		jQuery("select[name='EventStartYear']").change(function() {
+			jQuery("select[name='EventStartMonth']").change();
+		});
+		
+		jQuery("select[name='EventEndYear']").change(function() {
+			jQuery("select[name='EventEndMonth']").change();
+		});
+		
+		// preserve selected option
+		//jQuery("select[name='EventStartDay']").change(function() {
+			//var t = jQuery(this);
+			//spStartDays[t.va] = t.val()
+		//});
 				
 	});
 </script>
@@ -112,9 +166,11 @@
 				<select tabindex="2010" name='EventStartMonth'>
 					<?php echo $startMonthOptions; ?>
 				</select>
-				<select tabindex="2011" name='EventStartDay'>
-					<?php echo $startDayOptions; ?>
-				</select>
+				<?php foreach( $startDayOptions as $key => $val ) : ?>
+					<select id="<?php echo $key; ?>StartDays" class="eventStartDateField" tabindex="2011" name='EventStartDay'>
+						<?php echo $val; ?>
+					</select>
+				<?php endforeach; ?>
 				<select tabindex="2012" name='EventStartYear'>
 					<?php echo $startYearOptions; ?>
 				</select>
@@ -138,9 +194,11 @@
 				<select tabindex="2016" name='EventEndMonth'>
 					<?php echo $endMonthOptions; ?>
 				</select>
-				<select tabindex="2017" name='EventEndDay'>
-					<?php echo $endDayOptions; ?>
-				</select>
+				<?php foreach( $endDayOptions as $key => $val ) : ?>
+					<select id="<?php echo $key; ?>EndDays" class="eventEndDateField" tabindex="2017" name='EventEndDay'>
+						<?php echo $val; ?>
+					</select>
+				<?php endforeach; ?>
 				<select tabindex="2018" name='EventEndYear'>
 					<?php echo $endYearOptions; ?>
 				</select>
