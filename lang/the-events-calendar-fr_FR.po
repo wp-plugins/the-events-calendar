@@ -4,13 +4,16 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-01-27 01:29-0800\n"
 "PO-Revision-Date: \n"
-"Last-Translator: Shane Pearlman <inbox@shaneandpeter.com>\n"
-"Language-Team: \n"
+"Last-Translator: Enseignons.be <enseignement@gmail.com>\n"
+"Language-Team: Enseignons.be <benjamin.nizet@enseignons.be>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-Basepath: .\n"
+"X-Poedit-Language: French\n"
+"X-Poedit-Country: FRANCE\n"
+"X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: the-events-calendar.php:53
@@ -972,145 +975,145 @@ msgstr ""
 
 #: the-events-calendar.php:937
 msgid "Events"
-msgstr ""
+msgstr "Evénements"
 
 #: the-events-calendar.php:1432
 msgid "Free"
-msgstr ""
+msgstr "Gratuit"
 
 #: the-events-calendar.php:1897
 msgid "A widget that displays the next upcoming x events."
-msgstr ""
+msgstr "Un widget pour afficher les X évènements suivants."
 
 #: the-events-calendar.php:2016
 msgid "A calendar of your events"
-msgstr ""
+msgstr "Un calendrier de vos évènements"
 
 #: the-events-calendar.php:2017
 msgid "Events Calendar"
-msgstr ""
+msgstr "Calendrier des évènements"
 
 #: the-events-calendar.php:2043
 #: views/events-list-load-widget-admin.php:2
 msgid "Title:"
-msgstr ""
+msgstr "Titre"
 
 #: views/events-list-load-widget-admin.php:7
 msgid "Show:"
-msgstr ""
+msgstr "Afficher"
 
 #: views/events-list-load-widget-admin.php:19
 msgid "Start Date & Time"
-msgstr ""
+msgstr "Date & Heure de début"
 
 #: views/events-list-load-widget-admin.php:20
 msgid "End Date & Time"
-msgstr ""
+msgstr "Date & Heure de fin"
 
 #: views/events-list-load-widget-admin.php:21
 msgid "Venue"
-msgstr ""
+msgstr "Lieu"
 
 #: views/events-list-load-widget-admin.php:22
 msgid "Address"
-msgstr ""
+msgstr "Adresse"
 
 #: views/events-list-load-widget-admin.php:23
 msgid "City"
-msgstr ""
+msgstr "Ville"
 
 #: views/events-list-load-widget-admin.php:24
 msgid "State (US)"
-msgstr ""
+msgstr "Etat (US)"
 
 #: views/events-list-load-widget-admin.php:25
 msgid "Province (Int)"
-msgstr ""
+msgstr "Province"
 
 #: views/events-list-load-widget-admin.php:26
 msgid "Postal Code"
-msgstr ""
+msgstr "Code postal"
 
 #: views/events-list-load-widget-admin.php:27
 msgid "Country"
-msgstr ""
+msgstr "Belgique"
 
 #: views/events-list-load-widget-admin.php:28
 msgid "Phone"
-msgstr ""
+msgstr "Téléphone"
 
 #: views/events-list-load-widget-admin.php:29
 msgid "Price"
-msgstr ""
+msgstr "Prix"
 
 #: views/events-meta-box.php:84
 msgid "Event Details:"
-msgstr ""
+msgstr "Détails de l'évènement"
 
 #: views/events-meta-box.php:86
 msgid "Is this post an event?"
-msgstr ""
+msgstr "Cet article est-il un évènement ?"
 
 #: views/events-meta-box.php:97
 msgid "All day event?"
-msgstr ""
+msgstr "Evènement d'une journée"
 
 #: views/events-meta-box.php:101
 msgid "Time Format (site wide option):"
-msgstr ""
+msgstr "Format de l'heure (option générale)"
 
 #: views/events-meta-box.php:104
 msgid "12 Hour"
-msgstr ""
+msgstr "12 heures"
 
 #: views/events-meta-box.php:106
 msgid "24 Hour"
-msgstr ""
+msgstr "24 heures"
 
 #: views/events-meta-box.php:110
 msgid "Start Date / Time:"
-msgstr ""
+msgstr "Date de début / Heure :"
 
 #: views/events-meta-box.php:122
 #: views/events-meta-box.php:148
 msgid "@"
-msgstr ""
+msgstr "@"
 
 #: views/events-meta-box.php:136
 msgid "End Date / Time:"
-msgstr ""
+msgstr "Date de fin / Heure :"
 
 #: views/events-meta-box.php:165
 #: views/list.php:43
 #: views/single.php:24
 msgid "Venue:"
-msgstr ""
+msgstr "Lieu :"
 
 #: views/events-meta-box.php:171
 msgid "Country:"
-msgstr ""
+msgstr "Pays :"
 
 #: views/events-meta-box.php:188
 #: views/list.php:61
 #: views/single.php:28
 msgid "Address:"
-msgstr ""
+msgstr "Adresse :"
 
 #: views/events-meta-box.php:192
 msgid "City:"
-msgstr ""
+msgstr "Ville :"
 
 #: views/events-meta-box.php:196
 msgid "Province:"
-msgstr ""
+msgstr "Province :"
 
 #: views/events-meta-box.php:200
 msgid "State:"
-msgstr ""
+msgstr "Etat :"
 
 #: views/events-meta-box.php:203
 msgid "Select a State:"
-msgstr ""
+msgstr "Sélectionnez un Etat :"
 
 #: views/events-meta-box.php:205
 msgid "Alabama"
@@ -1314,198 +1317,200 @@ msgstr ""
 
 #: views/events-meta-box.php:269
 msgid "Postal Code:"
-msgstr ""
+msgstr "Code postal :"
 
 #: views/events-meta-box.php:273
 #: views/list.php:52
 msgid "Phone:"
-msgstr ""
+msgstr "Téléphone :"
 
 #: views/events-meta-box.php:280
 #: views/list.php:70
 #: views/single.php:18
 msgid "Cost:"
-msgstr ""
+msgstr "Coût :"
 
 #: views/events-meta-box.php:285
 msgid "Leave blank to hide the field. Enter a 0 for events that are free."
-msgstr ""
+msgstr "Laisser vide pour cacher ce champ. Entrer un 0 pour les évènements qui sont gratuits."
 
 #: views/events-meta-box.php:294
 msgid "Interested in selling tickets and tracking registrations? Now you can do it for free using our <a href=\"http://wordpress.org/extend/plugins/eventbrite-for-the-events-calendar/\">Eventbrite Integration Plugin</a>. Eventbrite is a feature rich easy-to-use event management tool. \"Wow, you're selling Eventbrite pretty hard. You must get a kickback.\"  Well, now that you mention it... we do. We get a little something for everyone that registers an event using our referral link. It's how we're able to keep supporting and building plugins for the open source community. "
-msgstr ""
+msgstr "Intéressé dans la vente des tickets et un suivi des inscritions ? Maintenant vous pouvez le faire gratuitement en utilisant notre plugin <a href=\"http://wordpress.org/extend/plugins/eventbrite-for-the-events-calendar/\">Eventbrite Integration</a>. Eventbrite outil facile à utiliser de gestion des évènements. \"Wow, vous vendez Eventbrite, vous devriez avoir un coup.\"  Well, now that you mention it... we do. We get a little something for everyone that registers an event using our referral link. It's how we're able to keep supporting and building plugins for the open source community. "
 
 #: views/events-meta-box.php:294
 msgid "Check it out here."
-msgstr ""
+msgstr "Vérifiez cela ici."
 
 #: views/events-meta-box.php:305
 msgid ""
 "<h4>If You Like This Plugin - Help Support It</h4>\r\n"
 "\t\t\t\t<p>We spend a lot of time and effort building robust plugins and we love to share them with the community. If you use this plugin consider making a donation to help support its' continued development. You may remove this message on the <a href=\"/wp-admin/options-general.php?page=the-events-calendar.php\">settings page</a>.</p>"
 msgstr ""
+"<h4>Si vous aimez ce plugin - Aidez à le soutenir </h4>\r\n"
+"\t\t\t\t<p>Nous passons pas mal de temps et de nombreux efforts à construire des plugins robustes et nous adorons les partager avec la communauté. Si vous utilisez ce plugin, envisagez de réaliser une donation pour aider le dévelopement continu du plugin. Vous pouvez supprimer ce message en allant sur la <a href=\"/wp-admin/options-general.php?page=the-events-calendar.php\">page de configuration</a>. Traduction par <a href=\"http://www.enseignons.be\">Enseignons.be</a>.</p>"
 
 #: views/events-meta-box.php:308
 msgid "Thanks"
-msgstr ""
+msgstr "Merci"
 
 #: views/events-options.php:47
 msgid "The Events Calendar Settings"
-msgstr ""
+msgstr "Les paramètres du Calendrier"
 
 #: views/events-options.php:49
 msgid "Need a hand?"
-msgstr ""
+msgstr "Besoin d'une aide ?"
 
 #: views/events-options.php:50
 msgid "If you're stuck on these options, please <a href=\"http://wordpress.org/extend/plugins/the-events-calendar/\">check out the documentation</a>. If you're still wondering what's going on, be sure to stop by the support <a href=\"http://wordpress.org/tags/the-events-calendar?forum_id=10\">forum</a> and ask for help. The open source community is full of kind folks who are happy to help."
-msgstr ""
+msgstr "Si vous rencontrez une difficulté, allez voir la <a href=\"http://wordpress.org/extend/plugins/the-events-calendar/\">documentation</a>. En cas de problèmes, soyez certains de vous passer par le <a href=\"http://wordpress.org/tags/the-events-calendar?forum_id=10\">forum</a> et demander de l'aide."
 
 #: views/events-options.php:53
 #: views/user-profile.php:19
 msgid "Donate"
-msgstr ""
+msgstr "Faites une donation"
 
 #: views/events-options.php:62
 #: views/user-profile.php:28
 msgid "If you find this plugin useful, please consider donating to the producer of it, Shane &#38; Peter, Inc. Thank you!"
-msgstr ""
+msgstr "Si vous trouvez ce plugin utile, merci de faire une donation au créateur : Shane &#38; Peter, Inc. Merci !"
 
 #: views/events-options.php:66
 msgid "I have already donated, so please hide this button!"
-msgstr ""
+msgstr "J'ai déjà donné, merci de cacher ce bouton"
 
 #: views/events-options.php:93
 #: views/events-options.php:97
 msgid "Default View for the Events"
-msgstr ""
+msgstr "Vue par défaut pour les évènements"
 
 #: views/events-options.php:109
 #: views/gridview.php:13
 #: views/list.php:10
 msgid "Calendar"
-msgstr ""
+msgstr "Calendrier"
 
 #: views/events-options.php:113
 #: views/gridview.php:12
 #: views/list.php:9
 msgid "Event List"
-msgstr ""
+msgstr "Liste des évènements"
 
 #: views/events-options.php:119
 #: views/events-options.php:123
 msgid "Show Comments"
-msgstr ""
+msgstr "Afficher les commentaires"
 
 #: views/events-options.php:135
 msgid "Yes"
-msgstr ""
+msgstr "Oui"
 
 #: views/events-options.php:139
 msgid "No"
-msgstr ""
+msgstr "Non"
 
 #: views/events-options.php:145
 msgid "Default Country for Events"
-msgstr ""
+msgstr "Pays par défaut pour les évènements"
 
 #: views/events-options.php:170
 #: views/events-options.php:174
 msgid "Embed Google Maps"
-msgstr ""
+msgstr "Afficher une carte Google "
 
 #: views/events-options.php:188
 msgid "Off"
-msgstr ""
+msgstr "Désactivé"
 
 #: views/events-options.php:192
 msgid "On"
-msgstr ""
+msgstr "Activé"
 
 #: views/events-options.php:195
 msgid "Height"
-msgstr ""
+msgstr "Hauteur"
 
 #: views/events-options.php:196
 msgid "Width"
-msgstr ""
+msgstr "Largeur"
 
 #: views/gridview.php:7
 #: views/list.php:7
 msgid "Calendar of Events"
-msgstr ""
+msgstr "Calendrier des évènements"
 
 #: views/list.php:31
 #: views/single.php:11
 msgid "Start:"
-msgstr ""
+msgstr "Début :"
 
 #: views/list.php:35
 #: views/single.php:14
 msgid "End:"
-msgstr ""
+msgstr "Fin :"
 
 #: views/single.php:8
 msgid "This event has passed."
-msgstr ""
+msgstr "Cet évènement est terminé."
 
 #: views/table.php:12
 msgid "Sunday"
-msgstr ""
+msgstr "Dimanche"
 
 #: views/table.php:12
 msgid "Sun"
-msgstr ""
+msgstr "Dim"
 
 #: views/table.php:13
 msgid "Monday"
-msgstr ""
+msgstr "Lundi"
 
 #: views/table.php:13
 msgid "Mon"
-msgstr ""
+msgstr "Lun"
 
 #: views/table.php:14
 msgid "Tuesday"
-msgstr ""
+msgstr "Mardi"
 
 #: views/table.php:14
 msgid "Tue"
-msgstr ""
+msgstr "Mar"
 
 #: views/table.php:15
 msgid "Wednesday"
-msgstr ""
+msgstr "Mercredi"
 
 #: views/table.php:15
 msgid "Wed"
-msgstr ""
+msgstr "Mer"
 
 #: views/table.php:16
 msgid "Thursday"
-msgstr ""
+msgstr "Jeudi"
 
 #: views/table.php:16
 msgid "Thu"
-msgstr ""
+msgstr "Jeu"
 
 #: views/table.php:17
 msgid "Friday"
-msgstr ""
+msgstr "Vendredi"
 
 #: views/table.php:17
 msgid "Fri"
-msgstr ""
+msgstr "Ven"
 
 #: views/table.php:18
 msgid "Saturday"
-msgstr ""
+msgstr "Samedi"
 
 #: views/table.php:18
 msgid "Sat"
-msgstr ""
+msgstr "Sam"
 
 #: views/user-profile.php:15
 msgid "The Events Calendar"
-msgstr ""
+msgstr "Le Calendrier des Evènements"
 

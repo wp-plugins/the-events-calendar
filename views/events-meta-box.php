@@ -84,14 +84,14 @@
 <h2><?php _e('Event Details:',$this->pluginDomain); ?></h2>
 <?php do_action('sp_events_errors', $postId ); ?>
 	<?php _e('Is this post an event?',$this->pluginDomain); ?>&nbsp;
-	<input tabindex="2001" type='radio' name='isEvent' value='yes' <?php echo $isEventChecked; ?> />&nbsp;<b>Yes</b>
-	<input tabindex="2002" type='radio' name='isEvent' value='no' <?php echo $isNotEventChecked; ?> />&nbsp;<b>No</b>
+	<input tabindex="2001" type='radio' name='isEvent' value='yes' <?php echo $isEventChecked; ?> />&nbsp;<b><?php _e('Yes', $this->pluginDomain); ?></b>
+	<input tabindex="2002" type='radio' name='isEvent' value='no' <?php echo $isNotEventChecked; ?> />&nbsp;<b><?php _e('No', $this->pluginDomain); ?></b>
 </div>
 <div id='eventDetails' class="eventForm">
 	<?php do_action('sp_events_detail_top', $postId ); ?>
 	<table cellspacing="0" cellpadding="0" id="EventInfo">
 		<tr>
-			<td colspan="2" class="snp_sectionheader"><h4>Event Time &amp; Date</h4></td>
+			<td colspan="2" class="snp_sectionheader"><h4><?php _e('Event Time &amp; Date', $this->pluginDomain); ?></h4></td>
 		</tr>
 		<tr>
 			<td><?php _e('All day event?'); ?></td>
@@ -159,7 +159,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td colspan="2" class="snp_sectionheader"><h4>Event Location Details</h4></td>
+			<td colspan="2" class="snp_sectionheader"><h4><?php _e('Event Location Details', $this->pluginDomain); ?></h4></td>
 		</tr>
 		<tr>
 			<td><?php _e('Venue:',$this->pluginDomain); ?></td>
@@ -274,7 +274,7 @@
 			<td><input tabindex="2030" type='text' name='EventPhone' size='14' value='<?php echo $_EventPhone; ?>' /></td>
 		</tr>
         <tr>
-			<td colspan="2" class="snp_sectionheader"><h4>Event Cost</h4></td>
+			<td colspan="2" class="snp_sectionheader"><h4><?php _e('Event Cost', $this->pluginDomain); ?></h4></td>
 		</tr>
 		<tr>
 			<td><?php _e('Cost:',$this->pluginDomain); ?></td>
@@ -286,7 +286,7 @@
 		</tr>
 		<tr class="eventBritePluginPlug">
 			<td colspan="2" class="snp_sectionheader">
-				<h4>Sell Tickets &amp; Track Registration</h4>	
+				<h4><?php _e('Sell Tickets &amp; Track Registration', $this->pluginDomain); ?></h4>	
 			</td>
 		</tr>
 		<tr class="eventBritePluginPlug">
@@ -306,8 +306,8 @@
 				<p>We spend a lot of time and effort building robust plugins and we love to share them with the community. If you use this plugin consider making a donation to help support its\' continued development. You may remove this message on the <a href="/wp-admin/options-general.php?page=the-events-calendar.php">settings page</a>.</p>', $this->pluginDomain); ?>
 				<div id="snp_thanks">
 					<?php _e('Thanks', $this->pluginDomain); ?><br/>
-					<h5 class="snp_brand">Shane & Peter</h5>
-					<a href="http://www.shaneandpeter.com" target="_blank">www.shaneandpeter.com</a>		
+					<h5 class="snp_brand"><?php _e('Shane &amp; Peter', $this->pluginDomain); ?></h5>
+					<a href="http://www.shaneandpeter.com?source=events-plugin" target="_blank"><?php _e('www.shaneandpeter.com', $this->pluginDomain); ?></a>		
 				</div>
 				<div id="snp_donate">
 				 	<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
@@ -402,7 +402,7 @@
 	}
 	
 	td.snp_message{
-		padding-bottom:10px !Important;
+		padding-bottom:10px !important;
 	}
 	
 	</style>

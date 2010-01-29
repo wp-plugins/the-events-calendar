@@ -193,7 +193,7 @@ if ( function_exists('wp_nonce_field') ) {
                 </label>
 				<span id="googleEmbedSize" name="googleEmbedSize" style="margin-left:20px;" >
 					<?php _e('Height',$this->pluginDomain); ?> <input type="text" name="embedGoogleMapsHeight" value="<?php echo $embedGoogleMapsHeightValue ?>" size=4>
-					&nbsp;<?php _e('Width',$this->pluginDomain); ?> <input type="text" name="embedGoogleMapsWidth" value="<?php echo $embedGoogleMapsWidthValue ?>" size=4> (number or %)
+					&nbsp;<?php _e('Width',$this->pluginDomain); ?> <input type="text" name="embedGoogleMapsWidth" value="<?php echo $embedGoogleMapsWidthValue ?>" size=4> <?php _e('(number or %)', $this->pluginDomain); ?>
 				</span>
 <br />
             </fieldset>

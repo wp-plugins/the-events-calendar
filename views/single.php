@@ -3,7 +3,7 @@ include (TEMPLATEPATH.'/header.php'); ?>
 	<div id="content" class="event widecolumn">
 <?php the_post(); global $post, $spEvents; ?>
 		<div id="post-<?php the_ID() ?>" <?php post_class() ?>>
-			<span class="back"><a href="<?php echo events_get_gridview_link(); ?>">&laquo; Back to Events</a></span>
+			<span class="back"><a href="<?php echo events_get_gridview_link(); ?>"><?php _e('&laquo; Back to Events', $this->pluginDomain); ?></a></span>
 			<h2 class="entry-title"><?php the_title() ?></h2>
 			<?php if (the_event_end_date() > time()  ) { ?><small><?php  _e('This event has passed.', $spEvents->pluginDomain) ?></small> <?php } ?>
 			<div id="event-meta">
@@ -25,7 +25,7 @@ include (TEMPLATEPATH.'/header.php'); ?>
 						<dd><?php echo the_event_venue(); ?></dd>
 					<?php if(the_event_address()) : ?>
 					
-					<dt><?php _e('Address:', $spEvents->pluginDomain) ?><br /><a class="gmap" href="<?php event_google_map_link() ?>" title="Click to view a Google Map" target="_blank">Google Map</a></dt>
+					<dt><?php _e('Address:', $spEvents->pluginDomain) ?><br /><a class="gmap" href="<?php event_google_map_link() ?>" title="Click to view a Google Map" target="_blank"><?php _e('Google Map', $this->pluginDomain ); ?></a></dt>
 						<dd>
 						<?php $address = the_event_address();
 						$address .= (the_event_city())?  ', ' . the_event_city() : '';

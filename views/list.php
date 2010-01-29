@@ -58,7 +58,7 @@ include (TEMPLATEPATH.'/header.php'); ?>
 	                    if (!empty( $address ) && !empty( $city ) && !empty( $state ) && !empty( $zip ) ) :
 	                  ?>
 	                  <tr>
-	                    <td class="event-meta-desc"><?php _e('Address:', $spEvents->pluginDomain) ?><br /><a class="gmap" href="<?php event_google_map_link() ?>" title="Click to view a Google Map" target="_blank"f>Google Map</a></td>
+	                    <td class="event-meta-desc"><?php _e('Address:', $spEvents->pluginDomain) ?><br /><a class="gmap" href="<?php event_google_map_link() ?>" title="Click to view a Google Map" target="_blank"f><?php _e('Google Map', $this->pluginDomain ); ?></a></td>
 	                    <td class="event-meta-value"><?php echo the_event_address(); ?> <br /> <?php echo the_event_city(); ?>, <?php echo the_event_state(); ?> <?php echo the_event_zip(); ?></td>
 	                  </tr>
 	                  <?php endif; ?>
@@ -89,7 +89,7 @@ include (TEMPLATEPATH.'/header.php'); ?>
 		if( events_displaying_upcoming() && get_previous_posts_link( ) ) : ?>
 			<?php previous_posts_link( '<span>&laquo; Previous Events</span>' ); ?>
 		<?php elseif( events_displaying_upcoming() && !get_previous_posts_link( ) ) : ?>
-			<a href='<?php echo events_get_past_link(); ?>'><span>&laquo; Previous Events</span></a>
+			<a href='<?php echo events_get_past_link(); ?>'><span><?php _e('&laquo; Previous Events', $spEvents->pluginDomain ); ?></span></a>
 		<?php elseif( events_displaying_past() && get_next_posts_link( ) ) : ?>
 			<?php next_posts_link( '<span>&laquo; Previous Events</span>' ); ?>
 		<?php endif; ?>
@@ -102,7 +102,7 @@ include (TEMPLATEPATH.'/header.php'); ?>
 		<?php elseif( events_displaying_past() && get_previous_posts_link( ) ) : ?>
 			<?php previous_posts_link( '<span>Next Events &raquo;</span>' ); // a little confusing but in 'past view' to see newer events you want the previous page ?>
 		<?php elseif( events_displaying_past() && !get_previous_posts_link( ) ) : ?>
-			<a href='<?php echo events_get_upcoming_link(); ?>'><span>Next Events &raquo;</span></a>
+			<a href='<?php echo events_get_upcoming_link(); ?>'><span><?php _e('Next Events &raquo;', $spEvents->pluginDomain); ?></span></a>
 		<?php endif; ?>
 		</div>
 
