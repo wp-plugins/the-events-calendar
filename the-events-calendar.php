@@ -326,8 +326,6 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 			add_action( 'admin_menu', 		array( $this, 'addEventBox' ) );
 			add_action( 'save_post',		array( $this, 'addEventMeta' ), 15 );
 			add_action( 'publish_post',		array( $this, 'addEventMeta' ), 15 );
-			add_action( 'show_user_profile',array( $this, 'userProfilePage' ) );
-			add_action( 'edit_user_profile',array( $this, 'userProfilePage' ) );
 			add_filter( 'generate_rewrite_rules', array( $this, 'filterRewriteRules' ) );
 			add_filter( 'query_vars',		array( $this, 'eventQueryVars' ) );			
 			add_filter( 'posts_join',		array( $this, 'events_search_join' ) );
@@ -344,10 +342,6 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 		
 		public function optionsPageView() {
 			include( dirname( __FILE__ ) . '/views/events-options.php' );
-		}
-		
-		public function userProfilePage() {
-			include( dirname( __FILE__ ) . '/views/user-profile.php');
 		}
 		
 		public function checkForOptionsChanges() {
