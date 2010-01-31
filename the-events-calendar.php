@@ -27,7 +27,7 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 		public $displaying;
 		public $pluginDir;
 		public $pluginUrl;
-		public $pluginDomain = 'sp-Events';
+		public $pluginDomain = 'the-events-calendar';
 
 		public $metaTags = array(
 					'_isEvent',
