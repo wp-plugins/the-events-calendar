@@ -12,12 +12,12 @@ include (TEMPLATEPATH.'/header.php'); ?>
 						<dd><?php echo the_event_start_date(); ?></dd>
 					<?php if (the_event_start_date() !== the_event_end_date() ) { ?>
 						<dt><?php _e('End:', $spEvents->pluginDomain) ?></dt>
-							<dd><?php echo the_event_end_date();  ?></dd>						
+						<dd><?php echo the_event_end_date();  ?></dd>						
 					<?php } ?>
-
-					<dt><?php _e('Cost:', $spEvents->pluginDomain) ?></dt>
+					<?php if ( the_event_cost() ) : ?>
+						<dt><?php _e('Cost:', $spEvents->pluginDomain) ?></dt>
 						<dd><?php if ( the_event_cost() ) { echo the_event_cost(); } else { echo "&ndash;"; } ?></dd>
-
+					<?php endif; ?>
 				</dl>
 				<dl class="column">
 					
@@ -54,8 +54,6 @@ include (TEMPLATEPATH.'/header.php'); ?>
 	
 	</div><!-- #content -->
 	
-
-
 <?php
 include (TEMPLATEPATH.'/footer.php');
 ?>

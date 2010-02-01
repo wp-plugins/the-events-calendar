@@ -997,7 +997,7 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 		 * @param string the current date (optional)
 		 * @return string a set of HTML options with all days (current day selected)
 		 */
-		public function getDayOptions( $date = "", $totalDays ) {
+		public function getDayOptions( $date = "", $totalDays = 31 ) {
 			$days = $this->days( $totalDays );
 			$options = '';
 			if ( empty ( $date ) ) {
@@ -1414,7 +1414,7 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'get_event_style'
 	* 	If the event is registered in eventbrite, and has one ticket.  Return the cost of that ticket.
 	* 	If the event is registered in eventbrite, and there are many tickets, return "Varies"
 	* If the event is not registered in eventbrite, and there is meta, return that.
-	* If the event is not registered in eventbrite, and there is no meta, return "Free"
+	* If the event is not registered in eventbrite, and there is no meta, return ""
 	*
 	* @param mixed post id or null if used in the loop
 	* @return string
@@ -1435,7 +1435,7 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'get_event_style'
 		if ( $cost = get_post_meta( $postId, '_EventCost', true ) ) {
 			return $cost;
 		} else {
-			return __('Free');
+			return "";
 		}
 	}
 	/**
