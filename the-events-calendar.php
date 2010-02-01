@@ -939,7 +939,7 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 		 * @return void
 		 */
 		public function addEventBox( ) {
-			add_meta_box( 'Events', __( 'Events', 'Events_textdomain' ), 
+			add_meta_box( 'Event Details', __( 'Event Details', 'Events_textdomain' ), 
 		                array( $this, 'EventsChooserBox' ), 'post', 'normal', 'high' );
 		}
 		/** 

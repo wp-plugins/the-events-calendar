@@ -1,23 +1,23 @@
-.category-events #content {
+.category-events #tec-content {
 	background:#fff;
 	width:670px;
 	padding:1px 35px;
 	margin-left:10px;
 }
-#eventsCalendarHeader {
+#tec-events-calendar-header {
 	position:relative;
 	margin-bottom:18px;
 }
-.calendarButtons {
+.tec-calendar-buttons {
 	position:absolute;
 	right:0;
 	top:6px;
 }
-h2.cal-title {
+h2.tec-cal-title {
 	float:left;
 	padding-right:15px;
 }
-.calendarButtons a {
+.tec-calendar-buttons a {
 	background:#999;
 	display:block;
 	height:27px;
@@ -35,17 +35,17 @@ h2.cal-title {
 	-webkit-border-radius:3px;
 	border-radius:3px;
 }
-.upcoming a.listview, .grid a.gridview {
+.upcoming a.tec-listview, .grid a.tec-listview {
 	background:#0F81BB;
 }
-#nav-above {
+#tec-nav-above {
 	margin:5px 0 0;
 }
 
-.category-events #nav-below {
+.category-events #tec-nav-below {
 	margin:21px 0;
 }
-select.events-dropdown {
+select.tec-events-dropdown {
 	width:auto;
 	font-size:11px;
 	margin:33px 9px 0 0;
@@ -59,27 +59,27 @@ select.events-dropdown {
 	font-size:15px;
 	margin:15px 0 6px;
 }
-.category-events .entry-title a, .event-meta-desc, .event-day {
+.category-events .entry-title a, .tec-event-meta-desc, .tec-event-day {
 	color:#555;
 }
 .category-events .post.alt {
 	background:#f9f9f9;
 	border-width:0;
 }
-table.calendar {
+table.tec-calendar {
 	margin:18px 0 12px;
 	clear:both;
 	font-size:12px;
 	border-collapse:collapse;
 	border:1px solid #aaa;
 }
-.calendar .daynum {
+.tec-calendar .daynum {
 	background-color: #eee;
 	color:#333;
 	font-size:10px;
 	padding:3px 9px;
 }
-.calendar th {
+.tec-calendar th {
 	width: 250px;
 	height: 10px;
 	background: #999 url(images/grid-th-bg.png) repeat-x;
@@ -88,7 +88,7 @@ table.calendar {
 	text-shadow:1px 1px 0 rgba(0,0,0,.5);
 	text-align:center;
 }
-.calendar td {
+.tec-calendar td {
 	height: 100px;
 	width:14.28%;
 	color: #114B7D;
@@ -96,24 +96,24 @@ table.calendar {
 	border:1px solid #aaa;
 	padding:0;
 }
-.calendar td .event {
+.tec-calendar td .tec-event {
 	padding:6px 9px;
 	line-height:1.2;
 }
-.calendar td a {
+.tec-calendar td a {
 	font-size:91.7%;
 }
-.calendar hr {
+.tec-calendar hr {
 	border:0 none !important;
 	display:block;
 	height:1px;
 	background-color:#D4DBCC;
 	margin:0 9px;
 }
-.calendar .event {
+.tec-calendar .tec-event {
 	position:relative;
 }
-.calendar .tooltip {
+.tec-calendar .tec-tooltip {
 	border:1px solid #666;
 	position:absolute;
 	z-index:1001;
@@ -124,7 +124,7 @@ table.calendar {
 	color:#333;
 	line-height:1.4;
 }
-.tooltip .arrow {
+.tec-tooltip .tec-arrow {
 	width:19px;
 	height:11px;
 	display:block;
@@ -133,15 +133,15 @@ table.calendar {
 	bottom:-11px;
 	left:20px;
 }
-.calendar .right .tooltip {
+.tec-calendar .right .tec-tooltip {
 	left:auto;
 	right:3px;
 }
-.right .tooltip .arrow {
+.right .tec-tooltip .tec-arrow {
 	left:auto;
 	right:30px;
 }
-.tooltip .event-title {
+.tec-tooltip .tec-event-title {
 	margin:0;
 	color:#fff;
 	background:#418ccf url(images/tooltip-title.png) repeat-x;
@@ -150,19 +150,19 @@ table.calendar {
 	height:24px;
 	line-height:24px;
 }
-.tooltip .event-body {
+.tec-tooltip .tec-event-body {
 	font-size:11px;
 	padding:3px 6px 6px;
 }
-.tooltip .event-date {
+.tec-tooltip .tec-event-date {
 	font-style:italic;
 	margin:3px 0;
 }
 
-.event .post {
+.tec-event .post {
 	position:relative;
 }
-#event-meta {
+#tec-event-meta {
 	border-width:1px 0;
 	border-style:solid;
 	border-color:#aaa;
@@ -171,24 +171,24 @@ table.calendar {
 	overflow:hidden;
 	clear:both;
 }
-#event-meta .column {
+#tec-event-meta .column {
 	float:left;
 	width:45%;
 	padding:0 4% 0 0;
 	text-align:left;
 	margin:0;
 }
-#event-meta dt {
+#tec-event-meta dt {
 	float:left;
 	clear:left;
 	font-weight:bold;
 	width:70px;
 }
-#event-meta dd {
+#tec-event-meta dd {
 	padding:0;
 	margin-left:70px;
 }
-#event-meta .gmap, .event-meta-desc .gmap {
+#tec-event-meta .gmap, .tec-event-meta-desc .gmap {
 	color:#fff;
 	font-size:9px;
 	background:#3D6294;
@@ -200,16 +200,16 @@ table.calendar {
 span.back {
 	margin:12px 0 0;
 }
-#events-loop {
+#tec-events-loop {
 	font-size:13px;
 	clear:both;
 }
-.events .event-entry {
+.tec-events .tec-event-entry {
 	width:60%;
 	float:left;
 	padding:0 5% 0 0;
 }
-.events .event-list-meta {
+.tec-events .tec-event-list-meta {
 	float:right;
 	border-left:1px solid #ccc;
 	padding:0 0 0 4%;
@@ -217,26 +217,26 @@ span.back {
 	font-size:12px;
 	margin-bottom:20px;
 }
-.event-list-meta table {
+.tec-event-list-meta table {
 	border-collapse:collapse;
 }
-.event-list-meta td {
+.tec-event-list-meta td {
 	vertical-align:top;
 	padding-bottom:4px;
 	text-align:left;
 }
-.event-meta-desc {
+.tec-event-meta-desc {
 	font-weight:bold;
 	padding-right:12px;
 	width:64px;
 }
-h4.event-day {
+h4.tec-event-day {
 	font-weight:bold;
 	font-size:18px;
 	margin:12px 0 -3px;
 	clear:both;
 }
-h4.event-day + .post .entry-title {
+h4.tec-event-day + .post .entry-title {
 	margin-top:6px;
 }
 

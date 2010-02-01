@@ -65,7 +65,7 @@
 			// preserve selected option
 			var currentDateField = jQuery("select[name='Event" + startEnd + "Day']");
 
-			jQuery('.event' + startEnd + 'DateField').remove();
+			jQuery('.tec-event' + startEnd + 'DateField').remove();
 			//console.log( spStartDays[ spDaysPerMonth[ chosenMonth - 28 ] ] );
 			if( startEnd == "Start") {
 				var selectObject = spStartDays[ spDaysPerMonth[ chosenMonth ] - 28 ];
@@ -80,7 +80,7 @@
 			selectObject.val( currentDateField.val() );
 		});
 		
-		jQuery(".eventEndDateField").remove();
+		jQuery(".tec-eventEndDateField").remove();
 		
 		jQuery("select[name='EventStartMonth'], select[name='EventEndMonth']").change();
 		
@@ -101,18 +101,18 @@
 	});
 </script>
 <style type="text/css">
-	.eventForm td {
+	.tec-eventForm td {
 		padding:6px 6px 0 0;
 		font-size:11px;
 		vertical-align:middle;
 	}
-	.eventForm select, .eventForm input {
+	.tec-eventForm select, .tec-eventForm input {
 		font-size:11px;
 	}
-	.eventForm .hide {
+	.tec-eventForm .hide {
 		display:none;
 	}
-	.eventForm h4 {
+	.tec-eventForm h4 {
 		font-size:1.2em;
 		margin:2em 0 1em;
 	}
@@ -131,15 +131,17 @@
 		padding: 0;
 	}
 	<?php if( class_exists( 'Eventbrite_for_The_Events_Calendar' ) ) : ?>
-		.eventBritePluginPlug {display:none;}
+		.tec-eventBritePluginPlug {display:none;}
 	<?php endif; ?>
 </style>
 <div id="eventIntro">
-<h2><?php _e('Event Details:',$this->pluginDomain); ?></h2>
+<!--<h2><?php _e('Event Details:',$this->pluginDomain); ?></h2>-->
 <?php do_action('sp_events_errors', $postId ); ?>
-	<?php _e('Is this post an event?',$this->pluginDomain); ?>&nbsp;
-	<input tabindex="2001" type='radio' name='isEvent' value='yes' <?php echo $isEventChecked; ?> />&nbsp;<b><?php _e('Yes', $this->pluginDomain); ?></b>
-	<input tabindex="2002" type='radio' name='isEvent' value='no' <?php echo $isNotEventChecked; ?> />&nbsp;<b><?php _e('No', $this->pluginDomain); ?></b>
+	<p>
+		<?php _e('Is this post an event?',$this->pluginDomain); ?>&nbsp;
+		<input tabindex="2001" type='radio' name='isEvent' value='yes' <?php echo $isEventChecked; ?> />&nbsp;<b><?php _e('Yes', $this->pluginDomain); ?></b>
+		<input tabindex="2002" type='radio' name='isEvent' value='no' <?php echo $isNotEventChecked; ?> />&nbsp;<b><?php _e('No', $this->pluginDomain); ?></b>
+	</p>
 </div>
 <div id='eventDetails' class="eventForm">
 	<?php do_action('sp_events_detail_top', $postId ); ?>
@@ -349,7 +351,7 @@
 		</tr>
 		<tr class="eventBritePluginPlug">
 			<td colspan="2">
-				<p><?php _e('Interested in selling tickets and tracking registrations? Now you can do it for free using our <a href="http://wordpress.org/extend/plugins/eventbrite-for-the-events-calendar/">Eventbrite Integration Plugin</a>. Eventbrite is a feature rich easy-to-use event management tool. "Wow, you\'re selling Eventbrite pretty hard. You must get a kickback."  Well, now that you mention it... we do. We get a little something for everyone that registers an event using our referral link. It\'s how we\'re able to keep supporting and building plugins for the open source community. ', $this->pluginDomain); ?> <a href="http://www.eventbrite.com/r/simpleevents"><?php _e('Check it out here.', $this->pluginDomain); ?></a></p>
+				<p><?php _e('Interested in selling tickets and tracking registrations? Now you can do it for free using our <a href="http://wordpress.org/extend/plugins/eventbrite-for-the-events-calendar/">Eventbrite Integration Plugin</a>. Eventbrite is a feature rich easy-to-use event management tool. "Wow, you\'re selling Eventbrite pretty hard. You must get a kickback."  Well, now that you mention it... we do. We get a little something for everyone that registers an event using our referral link. It\'s how we\'re able to keep supporting and building plugins for the open source community. ', $this->pluginDomain); ?> <a href="http://www.tec-eventbrite.com/r/simpleevents"><?php _e('Check it out here.', $this->pluginDomain); ?></a></p>
 			</td>
 		</tr>
 		
@@ -389,12 +391,12 @@
 		padding-bottom: 6px;
 	}
 	
-	.eventForm td{
+	.tec-eventForm td{
 		padding-bottom: 10px !important;
 		padding-top:0 !important;
 	}
 	
-	.eventForm .snp_sectionheader{
+	.tec-eventForm .snp_sectionheader{
 		padding-bottom:5px !important;
 	}
 	
@@ -411,7 +413,7 @@
 		font-size:17px !important;
 	}
 	
-	.eventForm p{
+	.tec-eventForm p{
 		margin:0 0 10px 0!important;
 	}
 	
@@ -448,14 +450,14 @@
 		padding:0 15px !important;
 	}
 	
-	.eventForm .description_input{
+	.tec-eventForm .description_input{
 		border: 1px solid #dfdfdf;
 		width:95%;
 		height:45px;
 	}
 	
 	#EventInfo,
-	table.eventForm{
+	table.tec-eventForm{
 		width:100%;
 	}
 	
@@ -465,4 +467,4 @@
 	
 	</style>
 </div><!--//eventDetails-->
-<?php do_action( 'sp_events_details_bottom', $postId ); ?>
+<?php do_action( 'sp_events_details_bottom', $postId );

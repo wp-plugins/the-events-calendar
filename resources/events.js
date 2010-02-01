@@ -1,13 +1,13 @@
 jQuery(document).ready(function($) {
 	// prepare calendar for popups
-	$("table.calendar tbody tr").each(function(index) {
+	$("table.tec-calendar tbody tr").each(function(index) {
 		// add a class of "right" to Friday & Saturday so tooltips stay onscreen
 		$(this).find("td:gt(3)").addClass("right");
 	});
 
 	
 	// popups
-	$("table.calendar .event a").hover(function() {
+	$("table.tec-calendar .tec-event a").hover(function() {
 		
 		// one for IE6, one for everybody else
 		if ($.browser.msie && $.browser.version == 6.0) {
@@ -17,8 +17,8 @@ jQuery(document).ready(function($) {
 			var bottomPad = $(this).outerHeight() + 18;
 		}
 		
-		$(this).next(".tooltip").css('bottom', bottomPad).fadeIn(300);
+		$(this).next(".tec-tooltip").css('bottom', bottomPad).fadeIn(300);
 	}, function() {
-		$(this).next(".tooltip").fadeOut(100);
+		$(this).next(".tec-tooltip").fadeOut(100);
 	});
 });

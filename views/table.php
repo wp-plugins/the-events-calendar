@@ -5,17 +5,17 @@ $daysInMonth = date("t", $date);
 $offset = date("w", $date);
 $rows = 1;
 ?>
-<table class="calendar" id="big">
+<table class="tec-calendar" id="big">
 
 	<thead>
 			<tr>
-				<th id="Sunday"		abbr="<?php _e( 'Sunday' ); ?>"><?php _e( 'Sun' ); ?></th>
-				<th id="Monday"		abbr="<?php _e( 'Monday' ); ?>"><?php _e( 'Mon' ); ?></th>
-				<th id="Tuesday"	abbr="<?php _e( 'Tuesday' ); ?>"><?php _e( 'Tue' ); ?></th>
-				<th id="Wednesday"	abbr="<?php _e( 'Wednesday' ); ?>"><?php _e( 'Wed' ); ?></th>
-				<th id="Thursday"	abbr="<?php _e( 'Thursday' ); ?>"><?php _e( 'Thu' ); ?></th>
-				<th id="Friday"		abbr="<?php _e( 'Friday' ); ?>"><?php _e( 'Fri' ); ?></th>
-				<th id="Saturday"	abbr="<?php _e( 'Saturday' ); ?>"><?php _e( 'Sat' ); ?></th>
+				<th id="tec-sunday"		abbr="<?php _e( 'Sunday' ); ?>"><?php _e( 'Sun' ); ?></th>
+				<th id="tec-monday"		abbr="<?php _e( 'Monday' ); ?>"><?php _e( 'Mon' ); ?></th>
+				<th id="tec-tuesday"	abbr="<?php _e( 'Tuesday' ); ?>"><?php _e( 'Tue' ); ?></th>
+				<th id="tec-wednesday"	abbr="<?php _e( 'Wednesday' ); ?>"><?php _e( 'Wed' ); ?></th>
+				<th id="tec-thursday"	abbr="<?php _e( 'Thursday' ); ?>"><?php _e( 'Thu' ); ?></th>
+				<th id="tec-friday"		abbr="<?php _e( 'Friday' ); ?>"><?php _e( 'Fri' ); ?></th>
+				<th id="tec-saturday"	abbr="<?php _e( 'Saturday' ); ?>"><?php _e( 'Sat' ); ?></th>
 			</tr>
 	</thead>
 
@@ -24,7 +24,7 @@ $rows = 1;
 		<?php
 			// skip last month
 			for( $i = 1; $i <= $offset; $i++ ){ 
-				echo "<td class='othermonth'></td>";
+				echo "<td class='tec-othermonth'></td>";
 			}
 			// output this month
 			for( $day = 1; $day <= $daysInMonth; $day++ ) {
@@ -32,14 +32,14 @@ $rows = 1;
 			        echo "</tr>\n\t<tr>";
 			        $rows++;
 			    }
-			    echo "<td class='thismonth'><div class='daynum'>" . $day . "</div>\n";
+			    echo "<td class='tec-thismonth'><div class='daynum'>" . $day . "</div>\n";
 				echo display_day( $day, $monthView );
 				echo "</td>";
 			}
 			// skip next month
 			while( ($day + $offset) <= $rows * 7)
 			{
-			    echo "<td class='othermonth'></td>";
+			    echo "<td class='tec-othermonth'></td>";
 			    $day++;
 			}
 		?>

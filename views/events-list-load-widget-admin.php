@@ -34,4 +34,4 @@ foreach ($displayoptions as $option => $label) {
 		<input class="checkbox" type="checkbox" <?php checked( $instance[$option], 'on' ); ?> id="<?php echo $this->get_field_id( $option ); ?>" name="<?php echo $this->get_field_name( $option ); ?>" />
 		<label for="<?php echo $this->get_field_id( $option ); ?>"><?php echo $label ?></label>
 	</p>
-<?php } ?>
+<?php }
