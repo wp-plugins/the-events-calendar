@@ -195,6 +195,7 @@ Please visit the forum for questions or comments: http://wordpress.org/tags/the-
 * removed donate button from User Profile view
 * cost now defaults to NULL
 ** on front end, cost field disappears if its value is NULL
+* more robust path for the ajax that hides the donation button
 
 = 1.5.3 =
 

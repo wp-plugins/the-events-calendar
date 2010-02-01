@@ -4,10 +4,9 @@ jQuery(document).ready(function() {
 	function theEventsCalendarHideDonateButton() {
 		jQuery('#mainDonateRow').hide();
 		jQuery('#secondDonateRow').show();
-	}
-	
+	} 
 	jQuery('#hideDonateButton').click(function() {
-		jQuery.post('/wp-admin/admin-ajax.php', { donateHidden: true, action: 'hideDonate' }, theEventsCalendarHideDonateButton, 'json' );
+		jQuery.post( '<?php bloginfo('url'); ?>/wp-admin/admin-ajax.php', { donateHidden: true, action: 'hideDonate' }, theEventsCalendarHideDonateButton, 'json' );
 	});
 
 });
