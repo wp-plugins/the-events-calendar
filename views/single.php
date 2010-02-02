@@ -18,15 +18,15 @@
 						<?php } ?>
 						<?php if ( the_event_cost() ) : ?>
 							<dt><?php _e('Cost:', $spEvents->pluginDomain) ?></dt>
-							<dd><?php if ( the_event_cost() ) { echo the_event_cost(); } else { echo "&ndash;"; } ?></dd>
+							<dd><?php echo the_event_cost(); ?></dd>
 						<?php endif; ?>
 					</dl>
 					<dl class="column">
-
+						<?php if(the_event_venue()) : ?>
 						<dt><?php _e('Venue:', $spEvents->pluginDomain) ?></dt> 
 							<dd><?php echo the_event_venue(); ?></dd>
+						<?php endif; ?>
 						<?php if(the_event_address()) : ?>
-
 						<dt><?php _e('Address:', $spEvents->pluginDomain) ?><br /><a class="gmap" href="<?php event_google_map_link() ?>" title="Click to view a Google Map" target="_blank"><?php _e('Google Map', $this->pluginDomain ); ?></a></dt>
 							<dd>
 							<?php $address = the_event_address();
