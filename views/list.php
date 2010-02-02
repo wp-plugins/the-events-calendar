@@ -7,10 +7,10 @@
 	<div id="tec-content" class="upcoming">
 		<div id='tec-events-calendar-header' class="clearfix">
 			<h2 class="tec-cal-title"><?php _e('Calendar of Events', $spEvents->pluginDomain) ?></h2>
-				<span class='tec-calendar-buttons'> 
-					<a class='tec-listview' href='<?php echo events_get_listview_link(); ?>'><?php _e('Event List', $spEvents->pluginDomain)?></a>
-					<a class='tec-listview' href='<?php echo events_get_gridview_link(); ?>'><?php _e('Calendar', $spEvents->pluginDomain)?></a>
-				</span>
+		<span class='tec-calendar-buttons'> 
+			<a class='tec-button-on' href='<?php echo events_get_listview_link(); ?>'><?php _e('Event List', $spEvents->pluginDomain)?></a>
+			<a class='tec-button-off' href='<?php echo events_get_gridview_link(); ?>'><?php _e('Calendar', $spEvents->pluginDomain)?></a>
+		</span>
 
 		</div><!--#tec-events-calendar-header-->
 

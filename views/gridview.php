@@ -11,8 +11,8 @@
 			<?php get_jump_to_date_calendar(); ?>
 
 			<span class='tec-calendar-buttons'> 
-				<a class='tec-listview' href='<?php echo events_get_listview_link(); ?>'><?php _e('Event List', $spEvents->pluginDomain)?></a>
-				<a class='tec-listview' href='<?php echo events_get_gridview_link(); ?>'><?php _e('Calendar', $spEvents->pluginDomain)?></a>
+				<a class='tec-button-off' href='<?php echo events_get_listview_link(); ?>'><?php _e('Event List', $spEvents->pluginDomain)?></a>
+				<a class='tec-button-on' href='<?php echo events_get_gridview_link(); ?>'><?php _e('Calendar', $spEvents->pluginDomain)?></a>
 			</span>
 
 		</div><!--#tec-events-calendar-header-->

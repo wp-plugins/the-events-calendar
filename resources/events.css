@@ -35,8 +35,11 @@ h2.tec-cal-title {
 	-webkit-border-radius:3px;
 	border-radius:3px;
 }
-.upcoming a.tec-listview, .grid a.tec-listview {
+.upcoming a.tec-button-on, .grid a.tec-button-on {
 	background:#0F81BB;
+}
+.upcoming a.tec-button-off, .grid a.tec-button-off {
+	background:#999999;
 }
 #tec-nav-above {
 	margin:5px 0 0;
