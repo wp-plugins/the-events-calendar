@@ -8,7 +8,7 @@
 		<div id='tec-events-calendar-header' class="clearfix">
 			<h2 class="tec-cal-title"><?php _e('Calendar of Events', $spEvents->pluginDomain) ?></h2>
 
-			<?php get_jump_to_date_calendar(); ?>
+			<?php get_jump_to_date_calendar( "tec-" ); ?>
 
 			<span class='tec-calendar-buttons'> 
 				<a class='tec-button-off' href='<?php echo events_get_listview_link(); ?>'><?php _e('Event List', $spEvents->pluginDomain)?></a>
