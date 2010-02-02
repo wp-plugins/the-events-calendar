@@ -4,8 +4,10 @@
 		jQuery("input[name='isEvent']").click(function(){ 
 			if ( jQuery(this).val() == 'yes' ) {
 				jQuery("#eventDetails").slideDown(200);
+				jQuery("#eventBriteTicketing").slideDown(200);
 			} else {
 				jQuery("#eventDetails").slideUp(200);
+				jQuery("#eventBriteTicketing").slideUp(200);
 			}
 		});
 		// toggle time input
