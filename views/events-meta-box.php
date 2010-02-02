@@ -65,7 +65,7 @@
 			// preserve selected option
 			var currentDateField = jQuery("select[name='Event" + startEnd + "Day']");
 
-			jQuery('.tec-event' + startEnd + 'DateField').remove();
+			jQuery('.event' + startEnd + 'DateField').remove();
 			//console.log( spStartDays[ spDaysPerMonth[ chosenMonth - 28 ] ] );
 			if( startEnd == "Start") {
 				var selectObject = spStartDays[ spDaysPerMonth[ chosenMonth ] - 28 ];
@@ -80,7 +80,7 @@
 			selectObject.val( currentDateField.val() );
 		});
 		
-		jQuery(".tec-eventEndDateField").remove();
+		jQuery(".eventEndDateField").remove();
 		
 		jQuery("select[name='EventStartMonth'], select[name='EventEndMonth']").change();
 		
@@ -101,26 +101,46 @@
 	});
 </script>
 <style type="text/css">
-	.tec-eventForm td {
+	.eventForm td {
 		padding:6px 6px 0 0;
 		font-size:11px;
 		vertical-align:middle;
 	}
-	.tec-eventForm select, .tec-eventForm input {
+	.eventForm select, .eventForm input {
 		font-size:11px;
 	}
-	.tec-eventForm .hide {
+	.eventForm .hide {
 		display:none;
 	}
-	.tec-eventForm h4 {
+	.eventForm h4 {
 		font-size:1.2em;
 		margin:2em 0 1em;
+	}
+	.eventForm h4.event-time {
+		margin-top: 0;
 	}
 	.notice {
 		background-color: rgb(255, 255, 224);
 		border: 1px solid rgb(230, 219, 85);
 		margin: 5px 0 15px;
 	}
+	#EventInfo {
+		border-color:#dfdfdf;
+		background-color:#F9F9F9;
+		border-width:1px;
+		border-style:solid;
+		-moz-border-radius:3px;
+		-khtml-border-radius:3px;
+		-webkit-border-radius:3px;
+		border-radius:3px;
+		margin: 0;
+		width:100%;
+		border-width:1px;
+		border-style:solid;
+		border-spacing:0;
+		padding: 10px;
+	}
+	
 	.form-table form input {border:none;}
 	<?php if( eventsGetOptionValue('donateHidden', false) ) : ?>
 		#mainDonateRow {display: none;}
@@ -131,11 +151,10 @@
 		padding: 0;
 	}
 	<?php if( class_exists( 'Eventbrite_for_The_Events_Calendar' ) ) : ?>
-		.tec-eventBritePluginPlug {display:none;}
+		.eventBritePluginPlug {display:none;}
 	<?php endif; ?>
 </style>
 <div id="eventIntro">
-<!--<h2><?php _e('Event Details:',$this->pluginDomain); ?></h2>-->
 <?php do_action('sp_events_errors', $postId ); ?>
 	<p>
 		<?php _e('Is this post an event?',$this->pluginDomain); ?>&nbsp;
@@ -143,11 +162,11 @@
 		<input tabindex="2002" type='radio' name='isEvent' value='no' <?php echo $isNotEventChecked; ?> />&nbsp;<b><?php _e('No', $this->pluginDomain); ?></b>
 	</p>
 </div>
-<div id='eventDetails' class="eventForm">
+<div id='eventDetails' class="inside eventForm">
 	<?php do_action('sp_events_detail_top', $postId ); ?>
 	<table cellspacing="0" cellpadding="0" id="EventInfo">
 		<tr>
-			<td colspan="2" class="snp_sectionheader"><h4><?php _e('Event Time &amp; Date', $this->pluginDomain); ?></h4></td>
+			<td colspan="2" class="snp_sectionheader"><h4 class="event-time"><?php _e('Event Time &amp; Date', $this->pluginDomain); ?></h4></td>
 		</tr>
 		<tr>
 			<td><?php _e('All day event?'); ?></td>
@@ -351,7 +370,7 @@
 		</tr>
 		<tr class="eventBritePluginPlug">
 			<td colspan="2">
-				<p><?php _e('Interested in selling tickets and tracking registrations? Now you can do it for free using our <a href="http://wordpress.org/extend/plugins/eventbrite-for-the-events-calendar/">Eventbrite Integration Plugin</a>. Eventbrite is a feature rich easy-to-use event management tool. "Wow, you\'re selling Eventbrite pretty hard. You must get a kickback."  Well, now that you mention it... we do. We get a little something for everyone that registers an event using our referral link. It\'s how we\'re able to keep supporting and building plugins for the open source community. ', $this->pluginDomain); ?> <a href="http://www.tec-eventbrite.com/r/simpleevents"><?php _e('Check it out here.', $this->pluginDomain); ?></a></p>
+				<p><?php _e('Interested in selling tickets and tracking registrations? Now you can do it for free using our <a href="http://wordpress.org/extend/plugins/eventbrite-for-the-events-calendar/">Eventbrite Integration Plugin</a>. Eventbrite is a feature rich easy-to-use event management tool. "Wow, you\'re selling Eventbrite pretty hard. You must get a kickback."  Well, now that you mention it... we do. We get a little something for everyone that registers an event using our referral link. It\'s how we\'re able to keep supporting and building plugins for the open source community. ', $this->pluginDomain); ?> <a href="http://www.eventbrite.com/r/simpleevents"><?php _e('Check it out here.', $this->pluginDomain); ?></a></p>
 			</td>
 		</tr>
 		
@@ -385,86 +404,92 @@
 	
 	<style>
 	#eventDetails h4,
-	#EventBriteDetailDiv h4{
+		#EventBriteDetailDiv h4 {
 		text-transform: uppercase;
 		border-bottom: 1px solid #e5e5e5;
 		padding-bottom: 6px;
 	}
-	
-	.tec-eventForm td{
+
+	.eventForm td {
 		padding-bottom: 10px !important;
-		padding-top:0 !important;
+		padding-top: 0 !important;
 	}
-	
-	.tec-eventForm .snp_sectionheader{
-		padding-bottom:5px !important;
+
+	.eventForm .snp_sectionheader {
+		padding-bottom: 5px !important;
 	}
-	
-	#snp_thanks{
-		float:left;
-		width:200px;
-		margin:5px 0 0 0;
+
+	#snp_thanks {
+		float: left;
+		width: 200px;
+		margin: 5px 0 0 0;
 	}
-	
+
 	.snp_brand {
 		font-weight: normal;
-		margin:8px 0;
+		margin: 8px 0;
 		font-family: Georgia !important;
-		font-size:17px !important;
+		font-size: 17px !important;
 	}
-	
-	.tec-eventForm p{
-		margin:0 0 10px 0!important;
+
+	.eventForm p {
+		margin: 0 0 10px 0!important;
 	}
-	
+
 	#eventDetails small,
-	#EventBriteDetailDiv small{
-		color:#a3a3a3;
+		#EventBriteDetailDiv small {
+		color: #a3a3a3;
 		font-size: 10px;
 	}
-	
-	
+
 	#eventBriteTicketing,
-	#mainDonateRow{
-		background: url('/wp-content/plugins/the-events-calendar/resources/images/bg_fade.png') repeat-x top left;
-		padding:10px 15px;
-		border-top:1px solid #e2e2e2;
-		margin-top:20px;
-		margin-left:-21px;
-		margin-right:-21px;
+		#mainDonateRow {
+		background: url(<?php echo WP_PLUGIN_URL . '/the-events-calendar/resources/images/bg_fade.png';
+		?>) repeat-x top left;
+		background-color: #fff;
+		padding: 10px 15px;
+		border: 1px solid #e2e2e2;
+		-moz-border-radius: 3px;
+		-khtml-border-radius: 3px;
+		-webkit-border-radius: 3px;
+		-moz-border-radius-topleft: 0;
+		-moz-border-radius-topright: 0;
+		-webkit-border-top-left-radius: 0;
+		-webkit-border-top-right-radius: 0;
+		border-radius: 3px;
+		margin: -11px 6px 0;
 	}
-	
-	#eventBriteTicketing h2{
-		background: url('/wp-content/plugins/the-events-calendar/resources/images/logo_eventbrite.png') no-repeat top right;
-		height:57px;
-		padding-top:5px;
-		margin-top:10px;
-		margin-bottom:-20px;
+
+	#eventBriteTicketing h2 {
+		background: url(<?php echo WP_PLUGIN_URL . '/the-events-calendar/resources/images/logo_eventbrite.png';
+		?>) no-repeat top right;
+		height: 57px;
+		margin: 0;
 	}
-	
-	#eventIntro h2{
-		margin-bottom: 0px !important;
+
+	.eventForm {
+		margin-top: -20px;
 	}
-	
-	#Events .inside{
-		padding:0 15px !important;
-	}
-	
-	.tec-eventForm .description_input{
+
+	.eventForm .description_input {
 		border: 1px solid #dfdfdf;
-		width:95%;
-		height:45px;
+		width: 95%;
+		height: 45px;
 	}
-	
+
 	#EventInfo,
-	table.tec-eventForm{
-		width:100%;
+		table.eventForm {
+		width: 100%;
 	}
+
+	td.snp_message {
+		padding-bottom: 10px !important;
+	}
+
 	
-	td.snp_message{
-		padding-bottom:10px !important;
-	}
+	
+
 	
 	</style>
 </div><!--//eventDetails-->
-<?php do_action( 'sp_events_details_bottom', $postId );
+<?php do_action( 'sp_events_details_bottom', $postId ); ?>
