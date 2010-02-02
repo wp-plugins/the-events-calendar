@@ -169,10 +169,11 @@ table.tec-calendar {
 	border-width:1px 0;
 	border-style:solid;
 	border-color:#aaa;
-	margin:18px 0 12px;
-	padding:12px 0;
+	margin: 18px 0 12px;
+	padding: 12px 0 2px;
 	overflow:hidden;
 	clear:both;
+	font-size: 12px;
 }
 #tec-event-meta .column {
 	float:left;
@@ -190,6 +191,7 @@ table.tec-calendar {
 #tec-event-meta dd {
 	padding:0;
 	margin-left:70px;
+	margin-bottom: 10px;
 }
 #tec-event-meta .gmap, .tec-event-meta-desc .gmap {
 	color:#fff;
