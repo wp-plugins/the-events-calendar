@@ -68,21 +68,16 @@
 			var currentDateField = jQuery("select[name='Event" + startEnd + "Day']");
 
 			jQuery('.event' + startEnd + 'DateField').remove();
-			//console.log( spStartDays[ spDaysPerMonth[ chosenMonth - 28 ] ] );
 			if( startEnd == "Start") {
 				var selectObject = spStartDays[ spDaysPerMonth[ chosenMonth ] - 28 ];
+				selectObject.val( currentDateField.val() );
 				jQuery("select[name='EventStartMonth']").after( selectObject );
-				//selectObject.children("[value='" + currentDateField.val() + "']").attr('selected','selected');
-				//selectObject.val( currentDateField.val() );
 			} else {
 				var selectObject = spEndDays[ spDaysPerMonth[ chosenMonth ] - 28 ];
+				selectObject.val( currentDateField.val() );
 				jQuery('select[name="EventEndMonth"]').after( selectObject );
-				//selectObject.children("[value='" + currentDateField.val() + "']").attr('selected','selected');
 			}
-			selectObject.val( currentDateField.val() );
 		});
-		
-		jQuery(".eventEndDateField").remove();
 		
 		jQuery("select[name='EventStartMonth'], select[name='EventEndMonth']").change();
 		
@@ -93,12 +88,6 @@
 		jQuery("select[name='EventEndYear']").change(function() {
 			jQuery("select[name='EventEndMonth']").change();
 		});
-		
-		// preserve selected option
-		//jQuery("select[name='EventStartDay']").change(function() {
-			//var t = jQuery(this);
-			//spStartDays[t.va] = t.val()
-		//});
 				
 	});
 </script>
