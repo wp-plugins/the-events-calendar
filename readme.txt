@@ -1,6 +1,6 @@
 === The Events Calendar ===
 
-Contributors: Kelsey Damas, Matt Wiebe, Justin Endler, Reid Peifer, dancameron produced by Shane & Peter, Inc.
+Contributors: Kelsey Damas, Matt Wiebe, Justin Endler, Reid Peifer, Dan Cameron produced by Shane & Peter, Inc.
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=10750983
 Tags: widget, events, simple, tooltips, grid, month, list, calendar, event, venue, eventbrite, registration, tickets, ticketing, eventbright, api, dates, date, plugin, posts, sidebar, template, theme, time, google maps, conference, workshop, concert, meeting, seminar, summit, forum, shortcode
 Requires at least: 2.8
@@ -190,12 +190,22 @@ Please visit the forum for questions or comments: http://wordpress.org/tags/the-
 
 = 1.5.4 =
 
-* smarter date chooser provides only those dates which the month contains as choices, accounts for leap years
-** fixes multi-month event bug pointed out by coold78 on the forum
-* removed donate button from User Profile view
-* cost now defaults to NULL
-** on front end, cost field disappears if its value is NULL
-* more robust path for the ajax that hides the donation button
+A huge thanks to our first round of translators who helped us figure it all out and become a multilingual application! If you have any interest in translating, grab the .pot file in the /lang/ folder and then send us a completed copy. I'd like to suggest you start a thread in the forum so people know you are working on it and can collaborate.
+
+* Fixed localization functions so that translation files work
+* Translation files for:
+** Swedish: provided by Kaj Johansson
+** French: provided by Benjamin Nizet (Enseignons)
+* Smarter date chooser provides only those dates which the month contains as choices, accounts for leap years - fixes multi-month event bug pointed out by coold78 on the forum
+* Removed donate button from User Profile view
+* Cost now defaults to NULL
+** On front end, cost field disappears if its value is NULL
+* More robust path for the ajax that hides the donation button to fix non standard wordpress install locations
+* Added comments to default event template + global on/off toggle in settings for comments on events posts
+* Set venue label to only display if there is a venue
+* Standardized ids and classes in bundled templates
+** Removed camelCase IDs and classes
+** Add "tec-" to the beginning of all ids and classes with the templates
 
 = 1.5.3 =
 
@@ -203,28 +213,28 @@ Settings
 * updated minimum php requirement to 5.1
 
 Bug Fixes
-* fixed permalink issue on calendar
-* removed limit of events shown on calendar view
-* fixed conflicting namespace error with xml2array function
-* curl support for (soon to be deprecated) safe_mod
+* Fixed permalink issue on calendar
+* Removed limit of events shown on calendar view
+* Fixed conflicting namespace error with xml2array function
+* Curl support for (soon to be deprecated) safe_mod
 
 Features
-* update minuted to increment by 5 rather than 1 and default to 00
-* added a class per category to each event in the grid view: "cat_classname" to allow users more styling controls in the grid.
-* added embedded google maps integration & admin panel controls
-* changed "Grid view" to "Calendar", "List view" to "Event List"
-* made significant headway on preparing translation - more to go
-* clean up admin quite a bit to make it easier to navigate the events form
+* Update minuted to increment by 5 rather than 1 and default to 00
+* Added a class per category to each event in the grid view: "cat_classname" to allow users more styling controls in the grid.
+* Added embedded google maps integration & admin panel controls
+* Changed "Grid view" to "Calendar", "List view" to "Event List"
+* Made significant headway on preparing translation - more to go
+* Clean up admin quite a bit to make it easier to navigate the events form
 
 = 1.5.2 =
 
-* updated ticket display to hide after event end date
-* fix exception handling bugs
+* Updated ticket display to hide after event end date
+* Fix exception handling bugs
 
 = 1.5.1 =
 
-* updated single.php to improve dependency on eventbrite
-* updated cost function to use filter
+* Updated single.php to improve dependency on eventbrite
+* Updated cost function to use filter
 
 = 1.5 =
 
