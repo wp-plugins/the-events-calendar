@@ -19,6 +19,6 @@ if( '' == get_option('permalink_structure') ) {
 <select id='<?php echo $prefix; ?>events-month' name='EventJumpToMonth' class='<?php echo $prefix; ?>events-dropdown'>
 	<?php echo $monthOptions; ?>
 </select>
-<select id='<?php echo $prefix; ?>events-year' name='EventJumpToYear' class='events-dropdown'>
+<select id='<?php echo $prefix; ?>events-year' name='EventJumpToYear' class='<?php echo $prefix; ?>events-dropdown'>
 	<?php echo $yearOptions; ?>
 </select>
