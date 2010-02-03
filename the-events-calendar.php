@@ -1330,7 +1330,7 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'get_event_style'
 		
 		if ($googleaddress) {
 		
-			$google_iframe = 'test <div id="googlemaps"><iframe width="'.$width.'" height="'.$height.'" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q='.$googleaddress.'?>&amp;output=embed"></iframe><br /><small><a href="http://www.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q='.$googleaddress.'" style="color:#0000FF;text-align:left">View Larger Map</a></small></div>';
+			$google_iframe = '<div id="googlemaps"><iframe width="'.$width.'" height="'.$height.'" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q='.$googleaddress.'?>&amp;output=embed"></iframe><br /><small><a href="http://www.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q='.$googleaddress.'" style="color:#0000FF;text-align:left">View Larger Map</a></small></div>';
 			return $google_iframe;
 		}
 		else {
