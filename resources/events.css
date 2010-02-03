@@ -1,3 +1,7 @@
+/* @override 
+	http://wp.local/content/plugins/the-events-calendar/resources/events.css?ver=2.9.1
+*/
+
 .category-events #tec-content {
 	background:#fff;
 	width:670px;
@@ -161,7 +165,9 @@ table.tec-calendar {
 	font-style:italic;
 	margin:3px 0;
 }
-
+#tec-content {
+	font-size: 1.2em;
+}
 .tec-event .post {
 	position:relative;
 }
