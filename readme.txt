@@ -196,6 +196,7 @@ A huge thanks to our first round of translators who helped us figure it all out 
 * Translation files for:
 ** Swedish: provided by Kaj Johansson
 ** French: provided by Benjamin Nizet (Enseignons)
+** Italian: provided by Maurizio Lattanzio
 * Smarter date chooser provides only those dates which the month contains as choices, accounts for leap years - fixes multi-month event bug pointed out by coold78 on the forum
 * Removed donate button from User Profile view
 * Cost now defaults to NULL
