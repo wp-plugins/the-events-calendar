@@ -69,7 +69,7 @@ select.tec-events-dropdown {
 .category-events .entry-title a, .tec-event-meta-desc, .tec-event-day {
 	color:#555;
 }
-.category-events .post.alt {
+.category-events .post .alt {
 	background:#f9f9f9;
 	border-width:0;
 }

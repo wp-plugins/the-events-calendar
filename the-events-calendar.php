@@ -14,12 +14,12 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 	class The_Events_Calendar {
 		const CATEGORYNAME	 		= 'Events';
 		const OPTIONNAME 			= 'sp_events_calendar_options';
+		// default formats, they are overridden by WP options or by arguments to date methods
 		const DATEONLYFORMAT 		= 'F j, Y';
+		const TIMEFORMAT		= 'g:i A';
+		
 		const DBDATEFORMAT	 		= 'Y-m-d';
-		const DBDATETIMEFORMAT 		= 'Y-m-d H:i:s';
-		const DATETIMEFORMAT12		= 'F j, Y g:i A';
-		const DATETIMEFORMAT24		= 'F j, Y H:i';
-		const EVENTTIMEFORMATOPT	= 'events_timeformat';
+		const DBDATETIMEFORMAT 		= 'Y-m-d g:i A';
 	
 		private $defaultOptions = '';
 		public $latestOptions;
@@ -739,7 +739,7 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 		}
 
 		/**
-		 * This plugin does not have any deactivation functionality.   Any events, categories, options and metadata are
+		 * This plugin does not have any deactivation functionality. Any events, categories, options and metadata are
 		 * left behind.
 		 * 
 		 * @return void
@@ -759,16 +759,8 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 			}
 			return "$year-$month-$day $hour:$minute:00";
 		}
-		public function setTimeFormat( $format = self::DATETIMEFORMAT12 ) {
-			update_option( self::EVENTTIMEFORMATOPT, $format );
-		}
-		public function getTimeFormat( ) {
-			if( $format = get_option( self::EVENTTIMEFORMATOPT ) ) {
-				return $format;
-			} else {
-				$this->setTimeFormat( self::DATETIMEFORMAT12 );
-				return self::DATETIMEFORMAT12;
-			}
+		public function getTimeFormat( $dateFormat = self::DATEONLYFORMAT ) {
+			return $dateFormat . ' ' . get_option( 'time_format', self::TIMEFORMAT );
 		}
 		/**
 		 * Adds / removes the event details as meta tags to the post.
@@ -778,9 +770,8 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 		 */
 		public function addEventMeta( $postId ) {
 			if ($_POST['isEvent'] == 'yes') {
-				$this->setTimeFormat( $_POST['EventTimeFormat'] );
 				$category_id = $this->create_category_if_not_exists();
-				// add a function blow to remove all existing categories - wp_set_post_categories(int ,  array )
+				// add a function below to remove all existing categories - wp_set_post_categories(int ,  array )
 				if( $_POST['EventAllDay'] == 'yes' ) {
 					$_POST['EventStartDate'] = $this->dateToTimeStamp( $_POST['EventStartYear'], $_POST['EventStartMonth'], $_POST['EventStartDay'], "12", "00", "AM" );
 					$_POST['EventEndDate'] = $this->dateToTimeStamp( $_POST['EventEndYear'], $_POST['EventEndMonth'], $_POST['EventEndDay'], "11", "59", "PM" );
@@ -857,9 +848,6 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 					$$tag = '';
 				}
 			}
-			$timeFormat				= $this->getTimeFormat();
-			$is12HourChecked 		= ( $timeFormat == self::DATETIMEFORMAT12 ) ? 'checked' : '';
-			$is24HourChecked 		= ( $timeFormat == self::DATETIMEFORMAT24 ) ? 'checked' : '';
 			$isEventChecked			= ( $_isEvent == 'yes' ) ? 'checked' : '';
 			$isNotEventChecked		= ( $_isEvent == 'no' || $_isEvent == '' ) ? 'checked' : '';
 			$isEventAllDay			= ( $_EventAllDay == 'yes' ) ? 'checked' : '';
@@ -949,13 +937,19 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 		 * @return string a set of HTML options with all meridians 
 		 */
 		public function getMeridianOptions( $date = "" ) {
-			if ( empty( $date ) ) {
-				$meridian = date('A');
+			if( strstr( get_option( 'time_format', self::TIMEFORMAT ), 'A' ) ) {
+				$a = 'A';
+				$meridians = array( "AM", "PM" );
 			} else {
-				$meridian = date('A', strtotime( $date ) );
+				$a = 'a';
+				$meridians = array( "am", "pm" );
+			}
+			if ( empty( $date ) ) {
+				$meridian = date($a);
+			} else {
+				$meridian = date($a, strtotime( $date ) );
 			}
 			$return = '';
-			$meridians = array( "AM", "PM" );
 			foreach ( $meridians as $m ) {
 				$return .= "<option value='$m'";
 				if ( $m == $meridian ) {
@@ -1048,11 +1042,18 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 		 */
 		public function getHourOptions( $date = "" ) {
 			$hours = $this->hours();
+			if( count($hours) == 12 ) $h = 'h';
+			else $h = 'H';
 			$options = '';
 			if ( empty ( $date ) ) {
-				$hour = date( 'h' );
+				$hour = date( $h );
 			} else {
-				$hour = date( 'h', strtotime( $date ) );
+				$timestamp = strtotime( $date );
+				$hour = date( $h, $timestamp );
+				// fix hours if time_format has changed from what is saved
+				if( preg_match('(pm|PM)', $timestamp) && $h == 'H') $hour = $hour + 12;
+				if( $hour > 12 && $h == 'h' ) $hour = $hour - 12;
+				
 			}
 			foreach ( $hours as $hourText ) {
 				if ( $hour == $hourText ) {
@@ -1090,9 +1091,10 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 		/**
 	     * Helper method to return an array of 1-12 for hours
 	     */
-	    public function hours( ) {
+	    public function hours() {
 	      $hours = array();
-	      foreach(range(1,12) as $hour) {
+		  $rangeMax = ( strstr( get_option( 'time_format', self::TIMEFORMAT ), 'H' ) ) ? 23 : 12;
+	      foreach(range(1,$rangeMax) as $hour) {
 			if ( $hour < 10 ) {
 				$hour = "0".$hour;
 			}
@@ -1371,41 +1373,45 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'get_event_style'
 	 *
 	 * @param int post id
 	 * @param bool display time?
+	 * @param string date format
 	 * @return string date
 	 */
-	function the_event_start_date( $postId = null, $showtime = 'true' ) {
+	function the_event_start_date( $postId = null, $showtime = 'true', $dateFormat = '' ) {
 		global $spEvents, $post;
 		if ( $postId === null || !is_numeric( $postId ) ) {
 			global $post;
 			$postId = $post->ID;
 		}
+		if( $dateFormat ) $format = $dateFormat;
+		else $format = get_option( 'date_format', The_Events_Calendar::DATEONLYFORMAT );
 		if( the_event_all_day( $postId ) ) {
 		    $showtime = false;
 		}
 		if ( $showtime ) {
-			$format = $spEvents->getTimeFormat();
-		} else {
-			$format = The_Events_Calendar::DATEONLYFORMAT;
+			$format = $spEvents->getTimeFormat( $format );
 		}
 		return date ( $format, strtotime( get_post_meta( $postId, '_EventStartDate', true ) ) );
 	}
 	/**
 	 * Returns the event end date
 	 *
+	 * @param int post id
+	 * @param bool display time?
+	 * @param string date format
 	 * @return string date
 	 */
-	function the_event_end_date( $postId = null, $showtime = 'true' ) {
+	function the_event_end_date( $postId = null, $showtime = 'true', $dateFormat = '' ) {
 		global $spEvents, $post;
 		if ( $postId === null || !is_numeric( $postId ) ) {
 			$postId = $post->ID;
 		}
+		if( $dateFormat ) $format = $dateFormat;
+		else $format = get_option( 'date_format', The_Events_Calendar::DATEONLYFORMAT );
 		if( the_event_all_day( $postId ) ) {
 		    $showtime = false;
 		}
 		if ( $showtime ) {
-			$format = $spEvents->getTimeFormat();
-		} else {
-			$format = The_Events_Calendar::DATEONLYFORMAT;
+			$format = $spEvents->getTimeFormat( $format );
 		}
 		return date ( $format, strtotime( get_post_meta( $postId, '_EventEndDate', true ) ) );
 	}

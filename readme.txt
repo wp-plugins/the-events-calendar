@@ -213,6 +213,9 @@ Aaron Rhodes, who has begun doing qa for each release. He has been catching bugs
 * Standardized ids and classes in bundled templates
 ** Removed camelCase IDs and classes
 ** Add "tec-" to the beginning of all ids and classes with the templates
+* New system for date and time formatting
+** If a format string is given to event_start_date() or event_end_date(), that format takes precedence. Otherwise, the format set in WP options is used. The format set in the constant DATEONLYFORMAT is used as a last resort.
+** Time format is is determined by WP options, or the constant TIMEFORMAT as a last resort
 
 = 1.5.3 =
 

@@ -163,15 +163,6 @@
 			<td><?php _e('All day event?'); ?></td>
 			<td><input tabindex="2007" type='checkbox' id='allDayCheckbox' name='EventAllDay' value='yes' <?php echo $isEventAllDay; ?> /></td>
 		</tr>
-		<tr id='EventTimeFormatDiv'>
-			<td><?php _e('Time Format (site wide option):',$this->pluginDomain); ?></td>
-			<td>
-				<input tabindex="2008" type='radio' name='EventTimeFormat' value='<?php echo The_Events_Calendar::DATETIMEFORMAT12; ?>' <?php echo $is12HourChecked; ?> />&nbsp;
-				<?php _e('12 Hour'); ?>
-				<input tabindex="2009" type='radio' name='EventTimeFormat' value='<?php echo The_Events_Calendar::DATETIMEFORMAT24; ?>' <?php echo $is24HourChecked; ?> />&nbsp;
-				<?php _e('24 Hour'); ?>
-			</td>
-		</tr>
 		<tr>
 			<td style="width:125px;"><?php _e('Start Date / Time:',$this->pluginDomain); ?></td>
 			<td>
@@ -194,9 +185,11 @@
 					<select tabindex="2014" name='EventStartMinute'>
 						<?php echo $startMinuteOptions; ?>
 					</select>
-					<select tabindex="2015" name='EventStartMeridian'>
-						<?php echo $startMeridianOptions; ?>
-					</select>
+					<?php if ( !strstr( get_option( 'time_format', The_Events_Calendar::TIMEFORMAT ), 'H' ) ) : ?>
+						<select tabindex="2015" name='EventStartMeridian'>
+							<?php echo $startMeridianOptions; ?>
+						</select>
+					<?php endif; ?>
 				</span>
 			</td>
 		</tr>
@@ -222,9 +215,11 @@
 					<select tabindex="2020" name='EventEndMinute'>
 						<?php echo $endMinuteOptions; ?>
 					</select>
-					<select tabindex="2021" name='EventEndMeridian'>
-						<?php echo $endMeridianOptions; ?>
-					</select>
+					<?php if ( !strstr( get_option( 'time_format', The_Events_Calendar::TIMEFORMAT ), 'H' ) ) : ?>
+						<select tabindex="2021" name='EventEndMeridian'>
+							<?php echo $endMeridianOptions; ?>
+						</select>
+					<?php endif; ?>
 				</span>
 			</td>
 		</tr>
