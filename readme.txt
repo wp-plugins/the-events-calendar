@@ -1,6 +1,6 @@
 === The Events Calendar ===
 
-Contributors: Kelsey Damas, Matt Wiebe, Justin Endler, Reid Peifer, Dan Cameron produced by Shane & Peter, Inc.
+Contributors: Kelsey Damas, Matt Wiebe, Justin Endler, Reid Peifer, Dan Cameron, Aaron Rhodes produced by Shane & Peter, Inc.
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=10750983
 Tags: widget, events, simple, tooltips, grid, month, list, calendar, event, venue, eventbrite, registration, tickets, ticketing, eventbright, api, dates, date, plugin, posts, sidebar, template, theme, time, google maps, conference, workshop, concert, meeting, seminar, summit, forum, shortcode
 Requires at least: 2.8
@@ -191,6 +191,12 @@ Please visit the forum for questions or comments: http://wordpress.org/tags/the-
 = 1.5.4 =
 
 A huge thanks to our first round of translators who helped us figure it all out and become a multilingual application! If you have any interest in translating, grab the .pot file in the /lang/ folder and then send us a completed copy. I'd like to suggest you start a thread in the forum so people know you are working on it and can collaborate.
+
+Also, welcome some new contributors: 
+
+Dan Cameron, who has worked with us to help makes the default template more theme friendly.
+
+Aaron Rhodes, who has begun doing qa for each release. He has been catching bugs left and right and hopefully will make our releases smoother. You'll be seeing him on the forum.
 
 * Fixed localization functions so that translation files work
 * Translation files for:
