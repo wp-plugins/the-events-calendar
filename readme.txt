@@ -5,7 +5,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: widget, events, simple, tooltips, grid, month, list, calendar, event, venue, eventbrite, registration, tickets, ticketing, eventbright, api, dates, date, plugin, posts, sidebar, template, theme, time, google maps, conference, workshop, concert, meeting, seminar, summit, forum, shortcode
 Requires at least: 2.8
 Tested up to: 2.9.1
-Stable tag: 1.5.3
+Stable tag: 1.5.4
 
 == Description ==
 
@@ -24,27 +24,36 @@ Looking to track attendees, sell tickets and more? Go download the Eventbrite fo
 * Posts are automatically moved to the top of the loop on the day of the event
 * Calendar Month view with tooltips
 * Includes support for venue, cost, address, start and end time, google maps link
-* Support for international addresses and time
 * Optional Ticketing With Eventbrite Integration - http://www.eventbrite.com/ - though the Eventbrite for The Events Calendar plugin (http://wordpress.org/extend/plugins/eventbrite-for-the-events-calendar/).
+* Support for international addresses, time and languages:
+** Swedish
+** French
+** Italian
 
 = Upcoming Features =
 
-* Localization / Language files (almost there) - Post in the forum if you want to help.
-* Improved international features (24 hour + calendar start day)
-* More bug hunting and support (huff puff)
 * Option to disable re-posting of event
 * Ical Feed
+* Improved international features (calendar start day)
+* Option to exclude events from main loop
+* More bug hunting and support (huff puff)
 * Improved error checking and reporting
-* Repeated events
+* Calendar view widget
+* Reoccuring events
+* Sync with facebook events
+* Saved venues
+* Global event maps
 * Dynamic categories (rather than requiring the use of event)
 * Event subcategories
 
 Please visit the forum for feature suggestions: http://wordpress.org/tags/the-events-calendar/
 
-This plugin is actively supported and we will do our best to help you. In return we simply as 2 things:
+This plugin is actively supported and we will do our best to help you. In return we simply as 3 things:
 
+1. Help Out. If you see a question on the forum you can help with or have a great idea and want to code it up and submit a patch, that would be just plain awesome and we will shower your with praise. Might even be a good way to get to know us and lead to some paid work if you freelance.
 1. Donate - if this is generating enough revenue to support our time it makes all the difference in the world
 1. If you make a new account with Eventbrite, please use our referral code. It helps, believe me: http://www.eventbrite.com/r/simpleevents
+
 
 == Installation ==
 
@@ -66,6 +75,7 @@ There are a growing number of options you can set to make your calendar behave i
 * Default View for Events: Select Calendar or Event list as the default view for the events loop
 * Default Country: Select the default country for the admin
 * Embed Google Maps: Turn on Google Maps and define the height and width of the map.
+* Date / Time format is now managed via the default wordpress setting
 
 = Requirements =
 
@@ -106,8 +116,18 @@ Displays only events that start on Jan 2, 2010.
 
 = Template Tags =
 
-**the_event_start_date( $id )**
-**the_event_end_date( $id )**
+**the_event_start_date( $id, $showtime, $dateFormat)**
+**the_event_end_date( $id, $showtime, $dateFormat)**
+
+Date format in order of precedence:
+- An format string arg given to event_start_date() or event_end_date()
+- WP options
+- The constant set in the plugin class
+
+Time format comes from:
+- WP options
+- Constant in the plugin class
+
 **the_event_cost( $id )**
 **the_event_venue( $id )**
 **the_event_address( $id )**
@@ -190,7 +210,7 @@ Please visit the forum for questions or comments: http://wordpress.org/tags/the-
 
 = 1.5.4 =
 
-A huge thanks to our first round of translators who helped us figure it all out and become a multilingual application! If you have any interest in translating, grab the .pot file in the /lang/ folder and then send us a completed copy. I'd like to suggest you start a thread in the forum so people know you are working on it and can collaborate.
+A huge thanks to our first round of translators! They helped us figure it all out and become a multilingual application. If you have any interest in translating, grab the .pot file in the /lang/ folder and then send us a completed copy. I'd like to suggest you start a thread in the forum so people know you are working on it and can collaborate.
 
 Also, welcome some new contributors: 
 
@@ -204,6 +224,9 @@ Aaron Rhodes, who has begun doing qa for each release. He has been catching bugs
 ** French: provided by Benjamin Nizet (Enseignons)
 ** Italian: provided by Maurizio Lattanzio
 * Smarter date chooser provides only those dates which the month contains as choices, accounts for leap years - fixes multi-month event bug pointed out by coold78 on the forum
+* New system for date and time formatting
+** Optional format string argument for event_start_date() or event_end_date(). Otherwise, the format set in WP options is used.
+** Time format is is determined by WP options.
 * Removed donate button from User Profile view
 * Cost now defaults to NULL
 ** On front end, cost field disappears if its value is NULL
@@ -213,9 +236,6 @@ Aaron Rhodes, who has begun doing qa for each release. He has been catching bugs
 * Standardized ids and classes in bundled templates
 ** Removed camelCase IDs and classes
 ** Add "tec-" to the beginning of all ids and classes with the templates
-* New system for date and time formatting
-** If a format string is given to event_start_date() or event_end_date(), that format takes precedence. Otherwise, the format set in WP options is used. The format set in the constant DATEONLYFORMAT is used as a last resort.
-** Time format is is determined by WP options, or the constant TIMEFORMAT as a last resort
 
 = 1.5.3 =
 
