@@ -126,10 +126,12 @@
 		border-radius:3px;
 		margin: 0;
 		width:100%;
-		border-width:1px;
 		border-style:solid;
 		border-spacing:0;
 		padding: 10px;
+	}
+	#eventIntro {
+	  margin: 10px 0 25px 0;
 	}
 	
 	.form-table form input {border:none;}
