@@ -751,10 +751,10 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 		 * Converts a set of inputs to YYYY-MM-DD HH:MM:SS format for MySQL
 		 */
 		public function dateToTimeStamp( $year, $month, $day, $hour, $minute, $meridian ) {
-			if ( $meridian == 'PM' && $hour < 12 ) {
+			if ( preg_match( '/(PM|pm)/', $meridian ) && $hour < 12 ) {
 				$hour += "12";
 			}
-			if ( $meridian == 'AM' && $hour == 12 ) {
+			if ( preg_match( '/(AM|am)/', $meridian ) && $hour == 12 ) {
 				$hour = "00";
 			}
 			return "$year-$month-$day $hour:$minute:00";
