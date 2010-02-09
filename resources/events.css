@@ -140,11 +140,11 @@ table.tec-calendar {
 	bottom:-11px;
 	left:20px;
 }
-.tec-calendar .right .tec-tooltip {
+.tec-calendar .tec-right .tec-tooltip {
 	left:auto;
 	right:3px;
 }
-.right .tec-tooltip .tec-arrow {
+.tec-right .tec-tooltip .tec-arrow {
 	left:auto;
 	right:30px;
 }

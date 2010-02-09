@@ -2,7 +2,7 @@ jQuery(document).ready(function($) {
 	// prepare calendar for popups
 	$("table.tec-calendar tbody tr").each(function(index) {
 		// add a class of "right" to Friday & Saturday so tooltips stay onscreen
-		$(this).find("td:gt(3)").addClass("right");
+		$(this).find("td:gt(3)").addClass("tec-right");
 	});
 
 	
