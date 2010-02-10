@@ -212,6 +212,8 @@ Please visit the forum for questions or comments: http://wordpress.org/tags/the-
 
 * fixed translation bugs (thanks to Kaj for catching)
 ** new .pot file available with more entries, covering more of the plugin (months are in there now)
+* New Translation:
+** Polish: Maciej Swoboda
 
 = 1.5.4 =
 
