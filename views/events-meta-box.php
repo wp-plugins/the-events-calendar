@@ -162,7 +162,7 @@
 			<td colspan="2" class="snp_sectionheader"><h4 class="event-time"><?php _e('Event Time &amp; Date', $this->pluginDomain); ?></h4></td>
 		</tr>
 		<tr>
-			<td><?php _e('All day event?'); ?></td>
+			<td><?php _e('All day event?', $this->pluginDomain); ?></td>
 			<td><input tabindex="2007" type='checkbox' id='allDayCheckbox' name='EventAllDay' value='yes' <?php echo $isEventAllDay; ?> /></td>
 		</tr>
 		<tr>
@@ -369,12 +369,11 @@
 	<?php do_action( 'sp_events_above_donate', $postId ); ?>
 	
 	<div id="mainDonateRow" class="eventForm">
-			<?php _e('<h4>If You Like This Plugin - Help Support It</h4>
-				<p>We spend a lot of time and effort building robust plugins and we love to share them with the community. If you use this plugin consider making a donation to help support its\' continued development. You may remove this message on the <a href="/wp-admin/options-general.php?page=the-events-calendar.php">settings page</a>.</p>', $this->pluginDomain); ?>
+			<?php _e('<h4>If You Like This Plugin - Help Support It</h4><p>We spend a lot of time and effort building robust plugins and we love to share them with the community. If you use this plugin consider making a donation to help support its\' continued development. You may remove this message on the <a href="/wp-admin/options-general.php?page=the-events-calendar.php">settings page</a>.</p>', $this->pluginDomain); ?>
 				<div id="snp_thanks">
 					<?php _e('Thanks', $this->pluginDomain); ?><br/>
-					<h5 class="snp_brand"><?php _e('Shane &amp; Peter', $this->pluginDomain); ?></h5>
-					<a href="http://www.shaneandpeter.com?source=events-plugin" target="_blank"><?php _e('www.shaneandpeter.com', $this->pluginDomain); ?></a>		
+					<h5 class="snp_brand">Shane &amp; Peter</h5>
+					<a href="http://www.shaneandpeter.com?source=events-plugin" target="_blank">www.shaneandpeter.com</a>		
 				</div>
 				<div id="snp_donate">
 				 	<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
@@ -473,11 +472,6 @@
 	td.snp_message {
 		padding-bottom: 10px !important;
 	}
-
-	
-	
-
-	
 	</style>
 </div><!--//eventDetails-->
 <?php do_action( 'sp_events_details_bottom', $postId ); ?>

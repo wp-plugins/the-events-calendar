@@ -13,10 +13,10 @@
 	</select>
 </p>
 
-<p>Display:</p>
+<p><?php _e( 'Display:', $this->pluginDomain ); ?></p>
 
 <?php $displayoptions = array (
-	"start" => __("Start Date & Time", $this->pluginDomain),
+	"start" => __('Start Date & Time', $this->pluginDomain),
 	"end" => __("End Date & Time", $this->pluginDomain),
 	"venue" => __("Venue", $this->pluginDomain),
 	"address" => __("Address", $this->pluginDomain),

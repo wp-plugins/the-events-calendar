@@ -6,7 +6,7 @@
  Version: 1.5.4
  Author: Shane & Peter, Inc.
  Author URI: http://www.shaneandpeter.com/
- Text Domain: events
+ Text Domain: the-events-calendar
  */
 
 if ( !class_exists( 'The_Events_Calendar' ) ) {
@@ -16,7 +16,7 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 		const OPTIONNAME 			= 'sp_events_calendar_options';
 		// default formats, they are overridden by WP options or by arguments to date methods
 		const DATEONLYFORMAT 		= 'F j, Y';
-		const TIMEFORMAT		= 'g:i A';
+		const TIMEFORMAT			= 'g:i A';
 		
 		const DBDATEFORMAT	 		= 'Y-m-d';
 		const DBDATETIMEFORMAT 		= 'Y-m-d g:i A';
@@ -472,8 +472,8 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 			return $text;
 		}
 		
-		public function loadPluginTextDomain( ) {
-			load_plugin_textdomain( $this->pluginDomain, false, $this->pluginDir . '/lang/');
+		public function loadPluginTextDomain() {
+			load_plugin_textdomain( $this->pluginDomain, false, basename(dirname(__FILE__)) . '/lang/');
 		}
 	
 		/**
@@ -491,8 +491,19 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 		 * Helper method to return an array of month names
 		 */
 		public function monthNames( ) {
-			$months = array( 1 => 'January', 2 => 'February', 3 => 'March', 4 => 'April', 5 => 'May', 6 => 'June', 7 => 'July', 8 => 'August', 9 => 'September', 10 => 'October', 11 => 'November', 12 => 'December' );
-
+			$months = array( 1 => __('January', $this->pluginDomain), 
+							 2 => __('February', $this->pluginDomain), 
+							 3 => __('March', $this->pluginDomain), 
+							 4 => __('April', $this->pluginDomain), 
+							 5 => __('May', $this->pluginDomain), 
+							 6 => __('June', $this->pluginDomain), 
+							 7 => __('July', $this->pluginDomain), 
+							 8 => __('August', $this->pluginDomain), 
+							 9 => __('September', $this->pluginDomain), 
+							10 => __('October', $this->pluginDomain), 
+							11 => __('November', $this->pluginDomain), 
+							12 => __('December', $this->pluginDomain) 
+					  );
 			return $months;
 		}
 
@@ -1897,12 +1908,12 @@ if( !class_exists( 'Events_List_Widget' ) ) {
 	 */
 
 	class Events_List_Widget extends WP_Widget {
-
-		public $pluginDomain = 'sp-Events';
+		
+		public $pluginDomain = 'the-events-calendar';
 		
 		function Events_List_Widget() {
 				/* Widget settings. */
-				$widget_ops = array( 'classname' => 'eventsListWidget', 'description' => __( 'A widget that displays the next upcoming x events.') );
+				$widget_ops = array( 'classname' => 'eventsListWidget', 'description' => __( 'A widget that displays the next upcoming x events.', $this->pluginDomain) );
 
 				/* Widget control settings. */
 				$control_ops = array( 'id_base' => 'events-list-widget' );
@@ -1944,7 +1955,7 @@ if( !class_exists( 'Events_List_Widget' ) ) {
 					echo $before_title . $title . $after_title;
 				
 				/* Display link to all events */
-				echo '<div class="dig-in"><a href="' . $event_url . '">View All Events</a></div>';
+				echo '<div class="dig-in"><a href="' . $event_url . '">' . __('View All Events', $this->pluginDomain ) . '</a></div>';
 
 				/* Display list of events. */
 					if( function_exists( 'get_events' ) ) {
@@ -1994,11 +2005,10 @@ if( !class_exists( 'Events_List_Widget' ) ) {
 			}
 		
 			function form( $instance ) {
-
-					/* Set up default widget settings. */
-					$defaults = array( 'title' => 'Upcoming Event', 'limit' => '5', 'start' => true, 'end' => false, 'venue' => false, 'country' => true, 'address' => false, 'city' => true, 'state' => true, 'province' => true, 'zip' => false, 'phone' => false, 'cost' => false);
-					$instance = wp_parse_args( (array) $instance, $defaults );			
-					include( dirname( __FILE__ ) . '/views/events-list-load-widget-admin.php' );
+				/* Set up default widget settings. */
+				$defaults = array( 'title' => 'Upcoming Events', 'limit' => '5', 'start' => true, 'end' => false, 'venue' => false, 'country' => true, 'address' => false, 'city' => true, 'state' => true, 'province' => true, 'zip' => false, 'phone' => false, 'cost' => false);
+				$instance = wp_parse_args( (array) $instance, $defaults );			
+				include( dirname( __FILE__ ) . '/views/events-list-load-widget-admin.php' );
 			}
 	}
 
@@ -2007,7 +2017,10 @@ if( !class_exists( 'Events_List_Widget' ) ) {
 
 	/* Function that registers widget. */
 	function events_list_load_widgets() {
+		global $pluginDomain;
 		register_widget( 'Events_List_Widget' );
+		// load text domain after class registration
+		load_plugin_textdomain( $pluginDomain, false, basename(dirname(__FILE__)) . '/lang/');
 	}
 }
 
@@ -2019,6 +2032,8 @@ if( !class_exists( 'Events_Calendar_Widget') ) {
 	* 
 	*/
 	class Events_Calendar_Widget extends WP_Widget {
+		
+			public $pluginDomain = 'the-events-calendar';
 
 			function Events_Calendar_Widget() {
 				$widget_ops = array('classname' => 'events_calendar_widget', 'description' => __( 'A calendar of your events') );
@@ -2063,7 +2078,10 @@ if( !class_exists( 'Events_Calendar_Widget') ) {
 
 		/* Function that registers widget. */
 		function events_calendar_load_widgets() {
+			global $pluginDomain;
 			register_widget( 'Events_Calendar_Widget' );
+			// load text domain after class registration
+			load_plugin_textdomain( $pluginDomain, false, basename(dirname(__FILE__)) . '/lang/');
 		}
 }
 ?>

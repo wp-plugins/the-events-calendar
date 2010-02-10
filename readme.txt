@@ -208,6 +208,11 @@ Please visit the forum for questions or comments: http://wordpress.org/tags/the-
 
 == Changelog ==
 
+= 1.5.5 =
+
+* fixed translation bugs (thanks to Kaj for catching)
+** new .pot file available with more entries, covering more of the plugin (months are in there now)
+
 = 1.5.4 =
 
 A huge thanks to our first round of translators! They helped us tackle localization and become a multilingual application. If you have any interest in translating, grab the .pot file in the /lang/ folder and then send us a completed copy. I'd like to suggest you start a thread in the forum so people know you are working on it and can collaborate.

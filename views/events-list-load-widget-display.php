@@ -10,8 +10,6 @@ $EventCity		= get_post_meta( $post->ID, '_EventCity', true );
 $EventCountry	= get_post_meta( $post->ID, '_EventCountry', true );
 $EventState		= get_post_meta( $post->ID, '_EventState', true );
 $EventProvince	= get_post_meta( $post->ID, '_EventProvince', true );
-
-
 ?>
 
 <li class="<?php echo $alt_text ?>">

@@ -95,7 +95,7 @@ div.snp_settings{
 	                <input type="hidden" name="cmd" value="_s-xclick">
 	                <input type="hidden" name="hosted_button_id" value="10751527">
 	                <input type="hidden" name="item_name" value="Events Options Panel Secondary">
-	                <input id="secondSubmit" type="submit" value="Donate for this wonderful plugin" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+	                <input id="secondSubmit" type="submit" value="<?php _e('Donate for this wonderful plugin', $this->pluginDomain); ?>" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
 	                <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
 	            </form>
 	        </td>
@@ -226,7 +226,7 @@ div.snp_settings{
 	    <?php do_action( 'sp_events_options_bottom' ); ?>
 		<tr>
 	    	<td>
-	    		<input id="saveEventsCalendarOptions" class="button-primary" type="submit" name="saveEventsCalendarOptions" value="Save Changes" />
+	    		<input id="saveEventsCalendarOptions" class="button-primary" type="submit" name="saveEventsCalendarOptions" value="<?php _e('Save Changes', $this->pluginDomain); ?>" />
 	        </td>
 	    </tr>
 
