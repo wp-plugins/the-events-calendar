@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: The Events Calendar 1.5.4\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/the-events-calendar\n"
-"POT-Creation-Date: 2010-01-31 01:16+0000\n"
+"POT-Creation-Date: 2010-02-10 19:57+0000\n"
 "PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -340,7 +340,7 @@ msgstr ""
 msgid "Gambia"
 msgstr ""
 
-#: the-events-calendar.php:135 views/events-meta-box.php:273
+#: the-events-calendar.php:135 views/events-meta-box.php:282
 msgid "Georgia"
 msgstr ""
 
@@ -972,32 +972,86 @@ msgstr ""
 msgid "Zimbabwe"
 msgstr ""
 
-#: the-events-calendar.php:942
-msgid "Events"
+#: the-events-calendar.php:494
+msgid "January"
 msgstr ""
 
-#: the-events-calendar.php:1438
-msgid "Free"
+#: the-events-calendar.php:495
+msgid "February"
 msgstr ""
 
-#: the-events-calendar.php:1903
+#: the-events-calendar.php:496
+msgid "March"
+msgstr ""
+
+#: the-events-calendar.php:497
+msgid "April"
+msgstr ""
+
+#: the-events-calendar.php:498
+msgid "May"
+msgstr ""
+
+#: the-events-calendar.php:499
+msgid "June"
+msgstr ""
+
+#: the-events-calendar.php:500
+msgid "July"
+msgstr ""
+
+#: the-events-calendar.php:501
+msgid "August"
+msgstr ""
+
+#: the-events-calendar.php:502
+msgid "September"
+msgstr ""
+
+#: the-events-calendar.php:503
+msgid "October"
+msgstr ""
+
+#: the-events-calendar.php:504
+msgid "November"
+msgstr ""
+
+#: the-events-calendar.php:505
+msgid "December"
+msgstr ""
+
+#. #-#-#-#-#  plugin.pot (The Events Calendar 1.5.4)  #-#-#-#-#
+#. Plugin Name of an extension
+#: the-events-calendar.php:937
+msgid "The Events Calendar"
+msgstr ""
+
+#: the-events-calendar.php:1916
 msgid "A widget that displays the next upcoming x events."
 msgstr ""
 
-#: the-events-calendar.php:2022
+#: the-events-calendar.php:1958
+msgid "View All Events"
+msgstr ""
+
+#: the-events-calendar.php:2039
 msgid "A calendar of your events"
 msgstr ""
 
-#: the-events-calendar.php:2023
+#: the-events-calendar.php:2040
 msgid "Events Calendar"
 msgstr ""
 
-#: the-events-calendar.php:2049 views/events-list-load-widget-admin.php:2
+#: the-events-calendar.php:2066 views/events-list-load-widget-admin.php:2
 msgid "Title:"
 msgstr ""
 
 #: views/events-list-load-widget-admin.php:7
 msgid "Show:"
+msgstr ""
+
+#: views/events-list-load-widget-admin.php:16
+msgid "Display:"
 msgstr ""
 
 #: views/events-list-load-widget-admin.php:19
@@ -1044,315 +1098,299 @@ msgstr ""
 msgid "Price"
 msgstr ""
 
-#: views/events-list-load-widget-display.php:50
+#: views/events-list-load-widget-display.php:48
 msgid "More Info"
 msgstr ""
 
-#: views/events-meta-box.php:138
-msgid "Event Details:"
-msgstr ""
-
-#: views/events-meta-box.php:140
+#: views/events-meta-box.php:153
 msgid "Is this post an event?"
 msgstr ""
 
-#: views/events-meta-box.php:141 views/events-options.php:135
+#: views/events-meta-box.php:154 views/events-options.php:157
 msgid "Yes"
 msgstr ""
 
-#: views/events-meta-box.php:142 views/events-options.php:139
+#: views/events-meta-box.php:155 views/events-options.php:161
 msgid "No"
 msgstr ""
 
-#: views/events-meta-box.php:148
+#: views/events-meta-box.php:162
 msgid "Event Time &amp; Date"
 msgstr ""
 
-#: views/events-meta-box.php:151
+#: views/events-meta-box.php:165
 msgid "All day event?"
 msgstr ""
 
-#: views/events-meta-box.php:155
-msgid "Time Format (site wide option):"
-msgstr ""
-
-#: views/events-meta-box.php:158
-msgid "12 Hour"
-msgstr ""
-
-#: views/events-meta-box.php:160
-msgid "24 Hour"
-msgstr ""
-
-#: views/events-meta-box.php:164
+#: views/events-meta-box.php:169
 msgid "Start Date / Time:"
 msgstr ""
 
-#: views/events-meta-box.php:178 views/events-meta-box.php:206
+#: views/events-meta-box.php:183 views/events-meta-box.php:213
 msgid "@"
 msgstr ""
 
-#: views/events-meta-box.php:192
+#: views/events-meta-box.php:199
 msgid "End Date / Time:"
 msgstr ""
 
-#: views/events-meta-box.php:220
+#: views/events-meta-box.php:229
 msgid "Event Location Details"
 msgstr ""
 
-#: views/events-meta-box.php:223 views/list.php:43 views/single.php:24
+#: views/events-meta-box.php:232 views/list.php:45 views/single.php:26
 msgid "Venue:"
 msgstr ""
 
-#: views/events-meta-box.php:229
+#: views/events-meta-box.php:238
 msgid "Country:"
 msgstr ""
 
-#: views/events-meta-box.php:246 views/list.php:61 views/single.php:28
+#: views/events-meta-box.php:255 views/list.php:63 views/single.php:30
 msgid "Address:"
 msgstr ""
 
-#: views/events-meta-box.php:250
+#: views/events-meta-box.php:259
 msgid "City:"
 msgstr ""
 
-#: views/events-meta-box.php:254
+#: views/events-meta-box.php:263
 msgid "Province:"
 msgstr ""
 
-#: views/events-meta-box.php:258
+#: views/events-meta-box.php:267
 msgid "State:"
 msgstr ""
 
-#: views/events-meta-box.php:261
+#: views/events-meta-box.php:270
 msgid "Select a State:"
 msgstr ""
 
-#: views/events-meta-box.php:263
+#: views/events-meta-box.php:272
 msgid "Alabama"
 msgstr ""
 
-#: views/events-meta-box.php:264
+#: views/events-meta-box.php:273
 msgid "Alaska"
 msgstr ""
 
-#: views/events-meta-box.php:265
+#: views/events-meta-box.php:274
 msgid "Arizona"
 msgstr ""
 
-#: views/events-meta-box.php:266
+#: views/events-meta-box.php:275
 msgid "Arkansas"
 msgstr ""
 
-#: views/events-meta-box.php:267
+#: views/events-meta-box.php:276
 msgid "California"
 msgstr ""
 
-#: views/events-meta-box.php:268
+#: views/events-meta-box.php:277
 msgid "Colorado"
 msgstr ""
 
-#: views/events-meta-box.php:269
+#: views/events-meta-box.php:278
 msgid "Connecticut"
 msgstr ""
 
-#: views/events-meta-box.php:270
+#: views/events-meta-box.php:279
 msgid "Delaware"
 msgstr ""
 
-#: views/events-meta-box.php:271
+#: views/events-meta-box.php:280
 msgid "District of Columbia"
 msgstr ""
 
-#: views/events-meta-box.php:272
+#: views/events-meta-box.php:281
 msgid "Florida"
 msgstr ""
 
-#: views/events-meta-box.php:274
+#: views/events-meta-box.php:283
 msgid "Hawaii"
 msgstr ""
 
-#: views/events-meta-box.php:275
+#: views/events-meta-box.php:284
 msgid "Idaho"
 msgstr ""
 
-#: views/events-meta-box.php:276
+#: views/events-meta-box.php:285
 msgid "Illinois"
 msgstr ""
 
-#: views/events-meta-box.php:277
+#: views/events-meta-box.php:286
 msgid "Indiana"
 msgstr ""
 
-#: views/events-meta-box.php:278
+#: views/events-meta-box.php:287
 msgid "Iowa"
 msgstr ""
 
-#: views/events-meta-box.php:279
+#: views/events-meta-box.php:288
 msgid "Kansas"
 msgstr ""
 
-#: views/events-meta-box.php:280
+#: views/events-meta-box.php:289
 msgid "Kentucky"
 msgstr ""
 
-#: views/events-meta-box.php:281
+#: views/events-meta-box.php:290
 msgid "Louisiana"
 msgstr ""
 
-#: views/events-meta-box.php:282
+#: views/events-meta-box.php:291
 msgid "Maine"
 msgstr ""
 
-#: views/events-meta-box.php:283
+#: views/events-meta-box.php:292
 msgid "Maryland"
 msgstr ""
 
-#: views/events-meta-box.php:284
+#: views/events-meta-box.php:293
 msgid "Massachusetts"
 msgstr ""
 
-#: views/events-meta-box.php:285
+#: views/events-meta-box.php:294
 msgid "Michigan"
 msgstr ""
 
-#: views/events-meta-box.php:286
+#: views/events-meta-box.php:295
 msgid "Minnesota"
 msgstr ""
 
-#: views/events-meta-box.php:287
+#: views/events-meta-box.php:296
 msgid "Mississippi"
 msgstr ""
 
-#: views/events-meta-box.php:288
+#: views/events-meta-box.php:297
 msgid "Missouri"
 msgstr ""
 
-#: views/events-meta-box.php:289
+#: views/events-meta-box.php:298
 msgid "Montana"
 msgstr ""
 
-#: views/events-meta-box.php:290
+#: views/events-meta-box.php:299
 msgid "Nebraska"
 msgstr ""
 
-#: views/events-meta-box.php:291
+#: views/events-meta-box.php:300
 msgid "Nevada"
 msgstr ""
 
-#: views/events-meta-box.php:292
+#: views/events-meta-box.php:301
 msgid "New Hampshire"
 msgstr ""
 
-#: views/events-meta-box.php:293
+#: views/events-meta-box.php:302
 msgid "New Jersey"
 msgstr ""
 
-#: views/events-meta-box.php:294
+#: views/events-meta-box.php:303
 msgid "New Mexico"
 msgstr ""
 
-#: views/events-meta-box.php:295
+#: views/events-meta-box.php:304
 msgid "New York"
 msgstr ""
 
-#: views/events-meta-box.php:296
+#: views/events-meta-box.php:305
 msgid "North Carolina"
 msgstr ""
 
-#: views/events-meta-box.php:297
+#: views/events-meta-box.php:306
 msgid "North Dakota"
 msgstr ""
 
-#: views/events-meta-box.php:298
+#: views/events-meta-box.php:307
 msgid "Ohio"
 msgstr ""
 
-#: views/events-meta-box.php:299
+#: views/events-meta-box.php:308
 msgid "Oklahoma"
 msgstr ""
 
-#: views/events-meta-box.php:300
+#: views/events-meta-box.php:309
 msgid "Oregon"
 msgstr ""
 
-#: views/events-meta-box.php:301
+#: views/events-meta-box.php:310
 msgid "Pennsylvania"
 msgstr ""
 
-#: views/events-meta-box.php:302
+#: views/events-meta-box.php:311
 msgid "Rhode Island"
 msgstr ""
 
-#: views/events-meta-box.php:303
+#: views/events-meta-box.php:312
 msgid "South Carolina"
 msgstr ""
 
-#: views/events-meta-box.php:304
+#: views/events-meta-box.php:313
 msgid "South Dakota"
 msgstr ""
 
-#: views/events-meta-box.php:305
+#: views/events-meta-box.php:314
 msgid "Tennessee"
 msgstr ""
 
-#: views/events-meta-box.php:306
+#: views/events-meta-box.php:315
 msgid "Texas"
 msgstr ""
 
-#: views/events-meta-box.php:307
+#: views/events-meta-box.php:316
 msgid "Utah"
 msgstr ""
 
-#: views/events-meta-box.php:308
+#: views/events-meta-box.php:317
 msgid "Vermont"
 msgstr ""
 
-#: views/events-meta-box.php:309
+#: views/events-meta-box.php:318
 msgid "Virginia"
 msgstr ""
 
-#: views/events-meta-box.php:310
+#: views/events-meta-box.php:319
 msgid "Washington"
 msgstr ""
 
-#: views/events-meta-box.php:311
+#: views/events-meta-box.php:320
 msgid "West Virginia"
 msgstr ""
 
-#: views/events-meta-box.php:312
+#: views/events-meta-box.php:321
 msgid "Wisconsin"
 msgstr ""
 
-#: views/events-meta-box.php:313
+#: views/events-meta-box.php:322
 msgid "Wyoming"
 msgstr ""
 
-#: views/events-meta-box.php:327
+#: views/events-meta-box.php:336
 msgid "Postal Code:"
 msgstr ""
 
-#: views/events-meta-box.php:331 views/list.php:52
+#: views/events-meta-box.php:340 views/list.php:54
 msgid "Phone:"
 msgstr ""
 
-#: views/events-meta-box.php:335
+#: views/events-meta-box.php:344
 msgid "Event Cost"
 msgstr ""
 
-#: views/events-meta-box.php:338 views/list.php:70 views/single.php:18
+#: views/events-meta-box.php:347 views/list.php:72 views/single.php:20
 msgid "Cost:"
 msgstr ""
 
-#: views/events-meta-box.php:343
+#: views/events-meta-box.php:352
 msgid "Leave blank to hide the field. Enter a 0 for events that are free."
 msgstr ""
 
-#: views/events-meta-box.php:347
+#: views/events-meta-box.php:356
 msgid "Sell Tickets &amp; Track Registration"
 msgstr ""
 
-#: views/events-meta-box.php:352
+#: views/events-meta-box.php:361
 msgid ""
 "Interested in selling tickets and tracking registrations? Now you can do it "
 "for free using our <a href=\"http://wordpress.org/extend/plugins/eventbrite-"
@@ -1364,41 +1402,33 @@ msgid ""
 "building plugins for the open source community. "
 msgstr ""
 
-#: views/events-meta-box.php:352
+#: views/events-meta-box.php:361
 msgid "Check it out here."
 msgstr ""
 
-#: views/events-meta-box.php:363
+#: views/events-meta-box.php:372
 msgid ""
-"<h4>If You Like This Plugin - Help Support It</h4>\r\n"
-"\t\t\t\t<p>We spend a lot of time and effort building robust plugins and we "
-"love to share them with the community. If you use this plugin consider "
-"making a donation to help support its' continued development. You may remove "
-"this message on the <a href=\"/wp-admin/options-general.php?page=the-events-"
-"calendar.php\">settings page</a>.</p>"
+"<h4>If You Like This Plugin - Help Support It</h4><p>We spend a lot of time "
+"and effort building robust plugins and we love to share them with the "
+"community. If you use this plugin consider making a donation to help support "
+"its' continued development. You may remove this message on the <a href=\"/wp-"
+"admin/options-general.php?page=the-events-calendar.php\">settings page</a>.</"
+"p>"
 msgstr ""
 
-#: views/events-meta-box.php:366
+#: views/events-meta-box.php:374
 msgid "Thanks"
 msgstr ""
 
-#: views/events-meta-box.php:367
-msgid "Shane &amp; Peter"
-msgstr ""
-
-#: views/events-meta-box.php:368
-msgid "www.shaneandpeter.com"
-msgstr ""
-
-#: views/events-options.php:47
+#: views/events-options.php:69
 msgid "The Events Calendar Settings"
 msgstr ""
 
-#: views/events-options.php:49
+#: views/events-options.php:71
 msgid "Need a hand?"
 msgstr ""
 
-#: views/events-options.php:50
+#: views/events-options.php:72
 msgid ""
 "If you're stuck on these options, please <a href=\"http://wordpress.org/"
 "extend/plugins/the-events-calendar/\">check out the documentation</a>. If "
@@ -1408,94 +1438,110 @@ msgid ""
 "happy to help."
 msgstr ""
 
-#: views/events-options.php:53
+#: views/events-options.php:75
 msgid "Donate"
 msgstr ""
 
-#: views/events-options.php:62
+#: views/events-options.php:84
 msgid ""
 "If you find this plugin useful, please consider donating to the producer of "
 "it, Shane &#38; Peter, Inc. Thank you!"
 msgstr ""
 
-#: views/events-options.php:66
+#: views/events-options.php:88
 msgid "I have already donated, so please hide this button!"
 msgstr ""
 
-#: views/events-options.php:93 views/events-options.php:97
+#: views/events-options.php:98
+msgid "Donate for this wonderful plugin"
+msgstr ""
+
+#: views/events-options.php:112
+msgid "Settings"
+msgstr ""
+
+#: views/events-options.php:115 views/events-options.php:119
 msgid "Default View for the Events"
 msgstr ""
 
-#: views/events-options.php:109 views/gridview.php:13 views/list.php:10
+#: views/events-options.php:131 views/gridview.php:15 views/list.php:12
 msgid "Calendar"
 msgstr ""
 
-#: views/events-options.php:113 views/gridview.php:12 views/list.php:9
+#: views/events-options.php:135 views/gridview.php:14 views/list.php:11
 msgid "Event List"
 msgstr ""
 
-#: views/events-options.php:119 views/events-options.php:123
+#: views/events-options.php:141 views/events-options.php:145
 msgid "Show Comments"
 msgstr ""
 
-#: views/events-options.php:145
+#: views/events-options.php:167
 msgid "Default Country for Events"
 msgstr ""
 
-#: views/events-options.php:170 views/events-options.php:174
+#: views/events-options.php:192 views/events-options.php:196
 msgid "Embed Google Maps"
 msgstr ""
 
-#: views/events-options.php:188
+#: views/events-options.php:210
 msgid "Off"
 msgstr ""
 
-#: views/events-options.php:192
+#: views/events-options.php:214
 msgid "On"
 msgstr ""
 
-#: views/events-options.php:195
+#: views/events-options.php:217
 msgid "Height"
 msgstr ""
 
-#: views/events-options.php:196
+#: views/events-options.php:218
 msgid "Width"
 msgstr ""
 
-#: views/events-options.php:196
+#: views/events-options.php:218
 msgid "(number or %)"
 msgstr ""
 
-#: views/gridview.php:7 views/list.php:7
+#: views/events-options.php:229
+msgid "Save Changes"
+msgstr ""
+
+#: views/gridview.php:9 views/list.php:9
 msgid "Calendar of Events"
 msgstr ""
 
-#: views/list.php:31 views/single.php:11
+#: views/list.php:33 views/single.php:13
 msgid "Start:"
 msgstr ""
 
-#: views/list.php:35 views/single.php:14
+#: views/list.php:37 views/single.php:16
 msgid "End:"
 msgstr ""
 
-#: views/list.php:61 views/single.php:28
+#: views/list.php:63 views/single.php:30
 msgid "Google Map"
 msgstr ""
 
-#: views/list.php:92
+#: views/list.php:94
 msgid "&laquo; Previous Events"
 msgstr ""
 
-#: views/list.php:105
+#: views/list.php:107
 msgid "Next Events &raquo;"
 msgstr ""
 
-#: views/single.php:6
+#: views/single.php:8
 msgid "&laquo; Back to Events"
 msgstr ""
 
-#: views/single.php:8
+#: views/single.php:10
 msgid "This event has passed."
+msgstr ""
+
+#: views/single.php:30
+msgid "Click to view a Google Map"
 msgstr ""
 
 #: views/table.php:12
@@ -1552,10 +1598,6 @@ msgstr ""
 
 #: views/table.php:18
 msgid "Sat"
-msgstr ""
-
-#. Plugin Name of an extension
-msgid "The Events Calendar"
 msgstr ""
 
 #. Plugin URI of an extension
