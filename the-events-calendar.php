@@ -405,38 +405,40 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
         }
 
 		public function templateChooser() {
-			// list view
-			if ( $this->in_event_category() && ( events_displaying_upcoming() || events_displaying_past() ) ) {
-				if (file_exists(TEMPLATEPATH.'/events/list.php') ) {
-					include (TEMPLATEPATH.'/events/list.php');
+			if( !is_feed() ) {
+				// list view
+				if ( $this->in_event_category() && ( events_displaying_upcoming() || events_displaying_past() ) ) {
+					if (file_exists(TEMPLATEPATH.'/events/list.php') ) {
+						include (TEMPLATEPATH.'/events/list.php');
+					}
+					else {
+						include dirname( __FILE__ ) . '/views/list.php';
+					}
+					exit;
 				}
-				else {
-					include dirname( __FILE__ ) . '/views/list.php';
-				}
-				exit;
-			}
 			
-			// grid view
-			if ( $this->in_event_category() ) {
-				if (file_exists(TEMPLATEPATH.'/events/gridview.php') ) {
-					include (TEMPLATEPATH.'/events/gridview.php');
+				// grid view
+				if ( $this->in_event_category() ) {
+					if (file_exists(TEMPLATEPATH.'/events/gridview.php') ) {
+						include (TEMPLATEPATH.'/events/gridview.php');
+					}
+					else {
+						include dirname( __FILE__ ) . '/views/gridview.php';
+					}
+					exit;
 				}
-				else {
-					include dirname( __FILE__ ) . '/views/gridview.php';
-				}
-				exit;
-			}
 
-			// single event
-			if (is_single() && in_category( $this->eventCategory() ) ) {
-				if (file_exists(TEMPLATEPATH.'/events/single.php') ) {
-					include (TEMPLATEPATH.'/events/single.php');
+				// single event
+				if (is_single() && in_category( $this->eventCategory() ) ) {
+					if (file_exists(TEMPLATEPATH.'/events/single.php') ) {
+						include (TEMPLATEPATH.'/events/single.php');
+					}
+					else {
+						include trailingslashit( WP_PLUGIN_DIR ) . trailingslashit( plugin_basename( dirname( __FILE__ ) ) ) . 'views/single.php';
+					}
+					exit;
 				}
-				else {
-					include trailingslashit( WP_PLUGIN_DIR ) . trailingslashit( plugin_basename( dirname( __FILE__ ) ) ) . 'views/single.php';
-				}
-				exit;
-			}
+			} // if is_feed()
 		}
 		
 		public function loadStylesAndScripts( ) {
