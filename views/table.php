@@ -1,21 +1,12 @@
-<?php 
-list( $year, $month ) = split( '-', $spEvents->date );
-$date = mktime(12, 0, 0, $month, 1, $year);
-$daysInMonth = date("t", $date);
-$offset = date("w", $date);
-$rows = 1;
-?>
 <table class="tec-calendar" id="big">
-
 	<thead>
 			<tr>
-				<th id="tec-sunday"		abbr="<?php _e( 'Sunday' ); ?>"><?php _e( 'Sun' ); ?></th>
-				<th id="tec-monday"		abbr="<?php _e( 'Monday' ); ?>"><?php _e( 'Mon' ); ?></th>
-				<th id="tec-tuesday"	abbr="<?php _e( 'Tuesday' ); ?>"><?php _e( 'Tue' ); ?></th>
-				<th id="tec-wednesday"	abbr="<?php _e( 'Wednesday' ); ?>"><?php _e( 'Wed' ); ?></th>
-				<th id="tec-thursday"	abbr="<?php _e( 'Thursday' ); ?>"><?php _e( 'Thu' ); ?></th>
-				<th id="tec-friday"		abbr="<?php _e( 'Friday' ); ?>"><?php _e( 'Fri' ); ?></th>
-				<th id="tec-saturday"	abbr="<?php _e( 'Saturday' ); ?>"><?php _e( 'Sat' ); ?></th>
+				<?php
+				for( $n = $startOfWeek; $n < count($daysOfWeek) + $startOfWeek; $n++ ) {
+					$dayOfWeek = ( $n >= 7 ) ? $n - 7 : $n;
+					echo '<th id="tec-' . strtolower($daysOfWeek[$dayOfWeek]) . '" abbr="' . $daysOfWeek[$dayOfWeek] . '">' . $daysOfWeekShort[$dayOfWeek] . '</th>';
+				}
+				?>
 			</tr>
 	</thead>
 
@@ -66,5 +57,4 @@ function display_day( $day, $monthView ) {
 		}
 	}
 }
-
 ?>

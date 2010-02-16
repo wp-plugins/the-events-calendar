@@ -1203,8 +1203,16 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'get_event_style'
 		global $wp_query;
 		$wp_query->set( 'eventDisplay', 'bydate' );
 		$eventPosts = get_events( );
-		
 		$monthView = events_by_month( $eventPosts, $spEvents->date );
+		list( $year, $month ) = split( '-', $spEvents->date );
+		$date = mktime(12, 0, 0, $month, 1, $year); // 1st day of month as unix stamp
+		$daysInMonth = date("t", $date);
+		$startOfWeek = get_option( 'start_of_week', 0 );
+		$rawOffset = date("w", $date) - $startOfWeek;
+		$offset = ( $rawOffset < 0 ) ? $rawOffset + 7 : $rawOffset; // month begins on day x
+		$rows = 1;
+		$daysOfWeekShort = array( __( 'Sun' ), __( 'Mon' ), __( 'Tue' ), __( 'Wed' ), __( 'Thu' ), __( 'Fri' ), __( 'Sat' ) );
+		$daysOfWeek = array( __( 'Sunday' ), __( 'Monday' ), __( 'Tuesday' ), __( 'Wednesday' ), __( 'Thursday' ), __( 'Friday' ), __( 'Saturday' ) );
 		require( dirname( __FILE__ ) . '/views/table.php' );
 	}
 	/**
