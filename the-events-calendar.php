@@ -361,6 +361,7 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 				}
 				
 				$options['showComments'] = $_POST['showComments'];
+				$options['resetEventPostDate'] = $_POST['resetEventPostDate'];
 				
 				do_action( 'sp-events-save-more-options' );
 				
@@ -554,6 +555,10 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 		* @return void
 		*/	
 		public function reschedule( ) {
+			$resetEventPostDate = eventsGetOptionValue('resetEventPostDate', 'off');
+			if( $resetEventPostDate == 'off' ){
+				return;
+			}
 			global $wpdb;
 			$query = "
 				SELECT * FROM $wpdb->posts

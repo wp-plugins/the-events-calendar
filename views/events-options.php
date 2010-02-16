@@ -222,6 +222,33 @@ div.snp_settings{
 	        </td>
 		</tr>
 
+			<tr>
+				<th scope="row"><?php _e('Reset Post Date on Event Day',$this->pluginDomain); ?></th>
+		        <td>
+		            <fieldset>
+		                <legend class="screen-reader-text">
+		                    <span><?php _e('Embed Google Maps',$this->pluginDomain); ?></span>
+		                </legend>
+		                <label title='Yes'>
+		                    <?php 
+		                    $resetEventPostDate = eventsGetOptionValue('resetEventPostDate','off'); 
+							error_log( "reset: " . print_r( $resetEventPostDate, true ) );
+		                    ?>
+		                    <input type="radio" name="resetEventPostDate" value="off" <?php checked($resetEventPostDate, 'off'); ?>  /> 
+		                    <?php _e('Off',$this->pluginDomain); ?>
+		                </label> 
+		                <label title='List View'>
+	                    <input type="radio" name="resetEventPostDate" value="on" <?php checked($resetEventPostDate, 'on'); ?>  /> 
+		                    <?php _e('On',$this->pluginDomain); ?>
+		                </label>
+						<div>
+							<?php _e('This option will bump an event to the top of the homepage loop on the day of the event.',$this->pluginDomain); ?> 
+						</div>
+		<br />
+		            </fieldset>
+		        </td>
+			</tr>
+
 
 	    <?php do_action( 'sp_events_options_bottom' ); ?>
 		<tr>
