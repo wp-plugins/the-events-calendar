@@ -212,8 +212,9 @@ Please visit the forum for questions or comments: http://wordpress.org/tags/the-
 
 * fixed translation bugs (thanks to Kaj for catching)
 ** new .pot file available with more entries, covering more of the plugin (months are in there now)
-* New Translation:
+* New Translations:
 ** Polish: Maciej Swoboda
+** Czech: Tomas Vesely
 * The week's starting day in grid view now reflects the start_of_week Wordpress option
 
 = 1.5.4 =
