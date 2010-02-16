@@ -1978,7 +1978,11 @@ if( !class_exists( 'Events_List_Widget' ) ) {
 							echo "<ul class='upcoming'>";
 							foreach( $posts as $post ) : 
 								setup_postdata($post);
-								include( dirname( __FILE__ ) . '/views/events-list-load-widget-display.php' );						
+								if (file_exists(TEMPLATEPATH.'/events/events-list-load-widget-display.php') ) {
+									include (TEMPLATEPATH.'/events/events-list-load-widget-display.php');
+								} else {
+									include( dirname( __FILE__ ) . '/views/events-list-load-widget-display.php' );						
+								}
 							endforeach;
 						echo "</ul>";
 
