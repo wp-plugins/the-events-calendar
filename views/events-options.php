@@ -232,7 +232,6 @@ div.snp_settings{
 		                <label title='Yes'>
 		                    <?php 
 		                    $resetEventPostDate = eventsGetOptionValue('resetEventPostDate','off'); 
-							error_log( "reset: " . print_r( $resetEventPostDate, true ) );
 		                    ?>
 		                    <input type="radio" name="resetEventPostDate" value="off" <?php checked($resetEventPostDate, 'off'); ?>  /> 
 		                    <?php _e('Off',$this->pluginDomain); ?>
