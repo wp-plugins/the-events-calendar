@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the The Events Calendar package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
 #
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: The Events Calendar 1.5.4\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/the-events-calendar\n"
-"POT-Creation-Date: 2010-02-10 19:57+0000\n"
-"PO-Revision-Date: 2010-02-15 11:59-0500\n"
-"Last-Translator: Justin Endler <justin@justinendler.com>\n"
+"POT-Creation-Date: 2010-02-16 02:03+0000\n"
+"PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -339,8 +340,7 @@ msgstr ""
 msgid "Gambia"
 msgstr ""
 
-#: the-events-calendar.php:135
-#: views/events-meta-box.php:282
+#: the-events-calendar.php:135 views/events-meta-box.php:282
 msgid "Georgia"
 msgstr ""
 
@@ -972,78 +972,133 @@ msgstr ""
 msgid "Zimbabwe"
 msgstr ""
 
-#: the-events-calendar.php:494
-msgid "January"
-msgstr "Test January"
-
-#: the-events-calendar.php:495
-msgid "February"
-msgstr "Test February"
-
 #: the-events-calendar.php:496
-msgid "March"
-msgstr "Test March"
+msgid "January"
+msgstr ""
 
 #: the-events-calendar.php:497
-msgid "April"
-msgstr "Test April"
+msgid "February"
+msgstr ""
 
 #: the-events-calendar.php:498
-msgid "May"
-msgstr "test may"
+msgid "March"
+msgstr ""
 
 #: the-events-calendar.php:499
-msgid "June"
-msgstr "test june"
+msgid "April"
+msgstr ""
 
 #: the-events-calendar.php:500
-msgid "July"
-msgstr "test july"
+msgid "May"
+msgstr ""
 
 #: the-events-calendar.php:501
-msgid "August"
-msgstr "test august"
+msgid "June"
+msgstr ""
 
 #: the-events-calendar.php:502
-msgid "September"
-msgstr "test september"
+msgid "July"
+msgstr ""
 
 #: the-events-calendar.php:503
-msgid "October"
-msgstr "test october"
+msgid "August"
+msgstr ""
 
 #: the-events-calendar.php:504
-msgid "November"
-msgstr "test november"
+msgid "September"
+msgstr ""
 
 #: the-events-calendar.php:505
+msgid "October"
+msgstr ""
+
+#: the-events-calendar.php:506
+msgid "November"
+msgstr ""
+
+#: the-events-calendar.php:507
 msgid "December"
-msgstr "test december"
+msgstr ""
 
 #. #-#-#-#-#  plugin.pot (The Events Calendar 1.5.4)  #-#-#-#-#
 #. Plugin Name of an extension
-#: the-events-calendar.php:937
+#: the-events-calendar.php:939
 msgid "The Events Calendar"
 msgstr ""
 
-#: the-events-calendar.php:1916
+#: the-events-calendar.php:1214
+msgid "Sun"
+msgstr ""
+
+#: the-events-calendar.php:1214
+msgid "Mon"
+msgstr ""
+
+#: the-events-calendar.php:1214
+msgid "Tue"
+msgstr ""
+
+#: the-events-calendar.php:1214
+msgid "Wed"
+msgstr ""
+
+#: the-events-calendar.php:1214
+msgid "Thu"
+msgstr ""
+
+#: the-events-calendar.php:1214
+msgid "Fri"
+msgstr ""
+
+#: the-events-calendar.php:1214
+msgid "Sat"
+msgstr ""
+
+#: the-events-calendar.php:1215
+msgid "Sunday"
+msgstr ""
+
+#: the-events-calendar.php:1215
+msgid "Monday"
+msgstr ""
+
+#: the-events-calendar.php:1215
+msgid "Tuesday"
+msgstr ""
+
+#: the-events-calendar.php:1215
+msgid "Wednesday"
+msgstr ""
+
+#: the-events-calendar.php:1215
+msgid "Thursday"
+msgstr ""
+
+#: the-events-calendar.php:1215
+msgid "Friday"
+msgstr ""
+
+#: the-events-calendar.php:1215
+msgid "Saturday"
+msgstr ""
+
+#: the-events-calendar.php:1926
 msgid "A widget that displays the next upcoming x events."
 msgstr ""
 
-#: the-events-calendar.php:1958
+#: the-events-calendar.php:1968
 msgid "View All Events"
 msgstr ""
 
-#: the-events-calendar.php:2039
+#: the-events-calendar.php:2049
 msgid "A calendar of your events"
 msgstr ""
 
-#: the-events-calendar.php:2040
+#: the-events-calendar.php:2050
 msgid "Events Calendar"
 msgstr ""
 
-#: the-events-calendar.php:2066
-#: views/events-list-load-widget-admin.php:2
+#: the-events-calendar.php:2076 views/events-list-load-widget-admin.php:2
 msgid "Title:"
 msgstr ""
 
@@ -1053,7 +1108,7 @@ msgstr ""
 
 #: views/events-list-load-widget-admin.php:16
 msgid "Display:"
-msgstr "test display:"
+msgstr ""
 
 #: views/events-list-load-widget-admin.php:19
 msgid "Start Date & Time"
@@ -1107,13 +1162,11 @@ msgstr ""
 msgid "Is this post an event?"
 msgstr ""
 
-#: views/events-meta-box.php:154
-#: views/events-options.php:157
+#: views/events-meta-box.php:154 views/events-options.php:157
 msgid "Yes"
 msgstr ""
 
-#: views/events-meta-box.php:155
-#: views/events-options.php:161
+#: views/events-meta-box.php:155 views/events-options.php:161
 msgid "No"
 msgstr ""
 
@@ -1129,8 +1182,7 @@ msgstr ""
 msgid "Start Date / Time:"
 msgstr ""
 
-#: views/events-meta-box.php:183
-#: views/events-meta-box.php:213
+#: views/events-meta-box.php:183 views/events-meta-box.php:213
 msgid "@"
 msgstr ""
 
@@ -1142,9 +1194,7 @@ msgstr ""
 msgid "Event Location Details"
 msgstr ""
 
-#: views/events-meta-box.php:232
-#: views/list.php:45
-#: views/single.php:26
+#: views/events-meta-box.php:232 views/list.php:45 views/single.php:26
 msgid "Venue:"
 msgstr ""
 
@@ -1152,9 +1202,7 @@ msgstr ""
 msgid "Country:"
 msgstr ""
 
-#: views/events-meta-box.php:255
-#: views/list.php:63
-#: views/single.php:30
+#: views/events-meta-box.php:255 views/list.php:63 views/single.php:30
 msgid "Address:"
 msgstr ""
 
@@ -1378,8 +1426,7 @@ msgstr ""
 msgid "Postal Code:"
 msgstr ""
 
-#: views/events-meta-box.php:340
-#: views/list.php:54
+#: views/events-meta-box.php:340 views/list.php:54
 msgid "Phone:"
 msgstr ""
 
@@ -1387,9 +1434,7 @@ msgstr ""
 msgid "Event Cost"
 msgstr ""
 
-#: views/events-meta-box.php:347
-#: views/list.php:72
-#: views/single.php:20
+#: views/events-meta-box.php:347 views/list.php:72 views/single.php:20
 msgid "Cost:"
 msgstr ""
 
@@ -1402,7 +1447,15 @@ msgid "Sell Tickets &amp; Track Registration"
 msgstr ""
 
 #: views/events-meta-box.php:361
-msgid "Interested in selling tickets and tracking registrations? Now you can do it for free using our <a href=\"http://wordpress.org/extend/plugins/eventbrite-for-the-events-calendar/\">Eventbrite Integration Plugin</a>. Eventbrite is a feature rich easy-to-use event management tool. \"Wow, you're selling Eventbrite pretty hard. You must get a kickback.\"  Well, now that you mention it... we do. We get a little something for everyone that registers an event using our referral link. It's how we're able to keep supporting and building plugins for the open source community. "
+msgid ""
+"Interested in selling tickets and tracking registrations? Now you can do it "
+"for free using our <a href=\"http://wordpress.org/extend/plugins/eventbrite-"
+"for-the-events-calendar/\">Eventbrite Integration Plugin</a>. Eventbrite is "
+"a feature rich easy-to-use event management tool. \"Wow, you're selling "
+"Eventbrite pretty hard. You must get a kickback.\"  Well, now that you "
+"mention it... we do. We get a little something for everyone that registers "
+"an event using our referral link. It's how we're able to keep supporting and "
+"building plugins for the open source community. "
 msgstr ""
 
 #: views/events-meta-box.php:361
@@ -1410,7 +1463,13 @@ msgid "Check it out here."
 msgstr ""
 
 #: views/events-meta-box.php:372
-msgid "<h4>If You Like This Plugin - Help Support It</h4><p>We spend a lot of time and effort building robust plugins and we love to share them with the community. If you use this plugin consider making a donation to help support its' continued development. You may remove this message on the <a href=\"/wp-admin/options-general.php?page=the-events-calendar.php\">settings page</a>.</p>"
+msgid ""
+"<h4>If You Like This Plugin - Help Support It</h4><p>We spend a lot of time "
+"and effort building robust plugins and we love to share them with the "
+"community. If you use this plugin consider making a donation to help support "
+"its' continued development. You may remove this message on the <a href=\"/wp-"
+"admin/options-general.php?page=the-events-calendar.php\">settings page</a>.</"
+"p>"
 msgstr ""
 
 #: views/events-meta-box.php:374
@@ -1426,7 +1485,13 @@ msgid "Need a hand?"
 msgstr ""
 
 #: views/events-options.php:72
-msgid "If you're stuck on these options, please <a href=\"http://wordpress.org/extend/plugins/the-events-calendar/\">check out the documentation</a>. If you're still wondering what's going on, be sure to stop by the support <a href=\"http://wordpress.org/tags/the-events-calendar?forum_id=10\">forum</a> and ask for help. The open source community is full of kind folks who are happy to help."
+msgid ""
+"If you're stuck on these options, please <a href=\"http://wordpress.org/"
+"extend/plugins/the-events-calendar/\">check out the documentation</a>. If "
+"you're still wondering what's going on, be sure to stop by the support <a "
+"href=\"http://wordpress.org/tags/the-events-calendar?forum_id=10\">forum</a> "
+"and ask for help. The open source community is full of kind folks who are "
+"happy to help."
 msgstr ""
 
 #: views/events-options.php:75
@@ -1434,7 +1499,9 @@ msgid "Donate"
 msgstr ""
 
 #: views/events-options.php:84
-msgid "If you find this plugin useful, please consider donating to the producer of it, Shane &#38; Peter, Inc. Thank you!"
+msgid ""
+"If you find this plugin useful, please consider donating to the producer of "
+"it, Shane &#38; Peter, Inc. Thank you!"
 msgstr ""
 
 #: views/events-options.php:88
@@ -1449,25 +1516,19 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: views/events-options.php:115
-#: views/events-options.php:119
+#: views/events-options.php:115 views/events-options.php:119
 msgid "Default View for the Events"
 msgstr ""
 
-#: views/events-options.php:131
-#: views/gridview.php:15
-#: views/list.php:12
+#: views/events-options.php:131 views/gridview.php:15 views/list.php:12
 msgid "Calendar"
 msgstr ""
 
-#: views/events-options.php:135
-#: views/gridview.php:14
-#: views/list.php:11
+#: views/events-options.php:135 views/gridview.php:14 views/list.php:11
 msgid "Event List"
 msgstr ""
 
-#: views/events-options.php:141
-#: views/events-options.php:145
+#: views/events-options.php:141 views/events-options.php:145
 msgid "Show Comments"
 msgstr ""
 
@@ -1475,8 +1536,7 @@ msgstr ""
 msgid "Default Country for Events"
 msgstr ""
 
-#: views/events-options.php:192
-#: views/events-options.php:196
+#: views/events-options.php:192 views/events-options.php:196
 msgid "Embed Google Maps"
 msgstr ""
 
@@ -1504,23 +1564,19 @@ msgstr ""
 msgid "Save Changes"
 msgstr ""
 
-#: views/gridview.php:9
-#: views/list.php:9
+#: views/gridview.php:9 views/list.php:9
 msgid "Calendar of Events"
 msgstr ""
 
-#: views/list.php:33
-#: views/single.php:13
+#: views/list.php:33 views/single.php:13
 msgid "Start:"
 msgstr ""
 
-#: views/list.php:37
-#: views/single.php:16
+#: views/list.php:37 views/single.php:16
 msgid "End:"
 msgstr ""
 
-#: views/list.php:63
-#: views/single.php:30
+#: views/list.php:63 views/single.php:30
 msgid "Google Map"
 msgstr ""
 
@@ -1544,68 +1600,16 @@ msgstr ""
 msgid "Click to view a Google Map"
 msgstr ""
 
-#: views/table.php:12
-msgid "Sunday"
-msgstr ""
-
-#: views/table.php:12
-msgid "Sun"
-msgstr ""
-
-#: views/table.php:13
-msgid "Monday"
-msgstr ""
-
-#: views/table.php:13
-msgid "Mon"
-msgstr ""
-
-#: views/table.php:14
-msgid "Tuesday"
-msgstr ""
-
-#: views/table.php:14
-msgid "Tue"
-msgstr ""
-
-#: views/table.php:15
-msgid "Wednesday"
-msgstr ""
-
-#: views/table.php:15
-msgid "Wed"
-msgstr ""
-
-#: views/table.php:16
-msgid "Thursday"
-msgstr ""
-
-#: views/table.php:16
-msgid "Thu"
-msgstr ""
-
-#: views/table.php:17
-msgid "Friday"
-msgstr ""
-
-#: views/table.php:17
-msgid "Fri"
-msgstr ""
-
-#: views/table.php:18
-msgid "Saturday"
-msgstr ""
-
-#: views/table.php:18
-msgid "Sat"
-msgstr ""
-
 #. Plugin URI of an extension
 msgid "http://wordpress.org/extend/plugins/the-events-calendar/"
 msgstr ""
 
 #. Description of an extension
-msgid "The Events Calendar plugin enables you to rapidly create and manage events using the post editor.  Features include optional Eventbrite integration, Google Maps integration as well as default calendar grid and list templates for streamlined one click installation."
+msgid ""
+"The Events Calendar plugin enables you to rapidly create and manage events "
+"using the post editor.  Features include optional Eventbrite integration, "
+"Google Maps integration as well as default calendar grid and list templates "
+"for streamlined one click installation."
 msgstr ""
 
 #. Author of an extension
@@ -1615,4 +1619,3 @@ msgstr ""
 #. Author URI of an extension
 msgid "http://www.shaneandpeter.com/"
 msgstr ""
-

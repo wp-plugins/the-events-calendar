@@ -214,6 +214,7 @@ Please visit the forum for questions or comments: http://wordpress.org/tags/the-
 ** new .pot file available with more entries, covering more of the plugin (months are in there now)
 * New Translation:
 ** Polish: Maciej Swoboda
+* The week's starting day in grid view now reflects the start_of_week Wordpress option
 
 = 1.5.4 =
 
