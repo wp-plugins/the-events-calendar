@@ -210,12 +210,15 @@ Please visit the forum for questions or comments: http://wordpress.org/tags/the-
 
 = 1.5.5 =
 
-* fixed translation bugs (thanks to Kaj for catching)
+* Fixed translation bugs (thanks to Kaj for catching)
 ** new .pot file available with more entries, covering more of the plugin (months are in there now)
 * New Translations:
 ** Polish: Maciej Swoboda
 ** Czech: Tomas Vesely
-* The week's starting day in grid view now reflects the start_of_week Wordpress option
+* Starting day in calendar view now reflects the start_of_week Wordpress option
+* Widget view can now be overwritten in theme ([theme]/events/events-list-load-widget-display.php)
+* Setting that enables "Feature on Event Date" - This option will bump an event to the top of the homepage loop on the day of the event (and then return it when over).
+
 
 = 1.5.4 =
 

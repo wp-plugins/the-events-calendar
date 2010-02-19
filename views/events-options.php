@@ -223,11 +223,11 @@ div.snp_settings{
 		</tr>
 
 			<tr>
-				<th scope="row"><?php _e('Reset Post Date on Event Day',$this->pluginDomain); ?></th>
+				<th scope="row"><?php _e('Feature on Event Date',$this->pluginDomain); ?></th>
 		        <td>
 		            <fieldset>
 		                <legend class="screen-reader-text">
-		                    <span><?php _e('Embed Google Maps',$this->pluginDomain); ?></span>
+		                    <span><?php _e('Feature on Event Date',$this->pluginDomain); ?></span>
 		                </legend>
 		                <label title='Yes'>
 		                    <?php 
