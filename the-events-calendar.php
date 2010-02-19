@@ -525,7 +525,7 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 		 * Helper method to return an array of years, back 2 and forward 5
 		 */
 		public function years( ) {
-			$year = ( int )date( 'Y' );
+			$year = ( int )date_i18n( 'Y' );
 			// Back two years, forward 5
 			$year_list = array( $year - 5, $year - 4, $year - 3, $year - 2, $year - 1, $year, $year + 1, $year + 2, $year + 3, $year + 4, $year + 5 );
 			$years = array();
@@ -610,17 +610,15 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 		 * event posts for upcoming or past event loops
 		 *
 		 * @param string where clause
-		 * @return string modified where clase
+		 * @return string modified where clause
 		 */
 		public function events_search_where( $where ) {
 			if( !$this->in_event_category() ) { 
 				return $where;
 			}
 			$where .= ' AND ( eventStart.meta_key = "_EventStartDate" AND eventEnd.meta_key = "_EventEndDate" ) ';
-			if( events_displaying_month( ) ) {
-
-			}
-			if( events_displaying_upcoming( ) ) {
+			if( events_displaying_month( ) ) {}
+			if( events_displaying_upcoming( ) ) {	
 				// Is the start date in the future?
 				$where .= ' AND ( eventStart.meta_value > "'.$this->date.'" ';
 				// Or is the start date in the past but the end date in the future? (meaning the event is currently ongoing)
@@ -959,7 +957,7 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 				$meridians = array( "am", "pm" );
 			}
 			if ( empty( $date ) ) {
-				$meridian = date($a);
+				$meridian = date_i18n($a);
 			} else {
 				$meridian = date($a, strtotime( $date ) );
 			}
@@ -982,7 +980,7 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 			$months = $this->monthNames();
 			$options = '';
 			if ( empty( $date ) ) {
-				$month = date( 'm' );
+				$month = date_i18n( 'm' );
 			} else {
 				$month = date( 'm', strtotime( $date ) );
 			}
@@ -1009,7 +1007,7 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 			$days = $this->days( $totalDays );
 			$options = '';
 			if ( empty ( $date ) ) {
-				$day = date( 'd' );
+				$day = date_i18n( 'd' );
 			} else {
 				$day = date( 'd', strtotime( $date) );
 			}
@@ -1035,7 +1033,7 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 			$years = $this->years();
 			$options = '';
 			if ( empty ( $date ) ) {
-				$year = date( 'Y' );
+				$year = date_i18n( 'Y' );
 			} else {
 				$year = date( 'Y', strtotime( $date ) );
 			}
@@ -1060,7 +1058,7 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 			else $h = 'H';
 			$options = '';
 			if ( empty ( $date ) ) {
-				$hour = date( $h );
+				$hour = date_i18n( $h );
 			} else {
 				$timestamp = strtotime( $date );
 				$hour = date( $h, $timestamp );
@@ -1142,13 +1140,13 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 					$this->displaying		= "past";
 					$this->startOperator	= "<=";
 					$this->order			= "DESC";
-					$this->date				= date( The_Events_Calendar::DBDATETIMEFORMAT );
+					$this->date				= date_i18n( The_Events_Calendar::DBDATETIMEFORMAT );
 					break;
 				case "upcoming":
 					$this->displaying		= "upcoming";					
 					$this->startOperator	= ">=";
 					$this->order			= "ASC";
-					$this->date				= date( The_Events_Calendar::DBDATETIMEFORMAT );
+					$this->date				= date_i18n( The_Events_Calendar::DBDATETIMEFORMAT );
 					break;					
 				case "month":
 				case "default":
@@ -1160,19 +1158,17 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 					if ( isset ( $wp_query->query_vars['eventDate'] ) ) { 
 						$this->date = $wp_query->query_vars['eventDate'] . "-01";
 					} else {
-						$this->date = date( 'Y-m' );
+						$this->date = date_i18n( 'Y-m' );
 					}
 					break;
 
 			}
 		}
-		public function getDateString( $date )
-		{
+		public function getDateString( $date ) {
 			$dateParts = split( '-', $date );
 		    $timestamp = mktime( 0, 0, 0, $dateParts[1], 1, $dateParts[0] );
 		    return date( "F Y", $timestamp );
 		}
-		
 	} // end The_Events_Calendar class
 } // end if !class_exists The_Events_Calendar
 
@@ -1384,7 +1380,7 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'get_event_style'
 		if ( isset ( $wp_query->query_vars['eventDate'] ) ) { 
 			$date = $wp_query->query_vars['eventDate'] . "-01";
 		} else {
-			$date = date( The_Events_Calendar::DBDATEFORMAT );
+			$date = date_i18n( The_Events_Calendar::DBDATEFORMAT );
 		}
 		$monthOptions = $spEvents->getMonthOptions( $date );
 		$yearOptions = $spEvents->getYearOptions( $date );
