@@ -47,8 +47,14 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 				
 		public $currentPostTimestamp;
 		
-		private $countries;
+		public $daysOfWeekShort;
+		public $daysOfWeek;
+		private function constructDaysOfWeek() {
+			$this->daysOfWeekShort = array( __( 'Sun', $this->pluginDomain ), __( 'Mon', $this->pluginDomain ), __( 'Tue', $this->pluginDomain ), __( 'Wed', $this->pluginDomain ), __( 'Thu', $this->pluginDomain ), __( 'Fri', $this->pluginDomain ), __( 'Sat', $this->pluginDomain ) );
+			$this->daysOfWeek = array( __( 'Sunday', $this->pluginDomain ), __( 'Monday', $this->pluginDomain ), __( 'Tuesday', $this->pluginDomain ), __( 'Wednesday', $this->pluginDomain ), __( 'Thursday', $this->pluginDomain ), __( 'Friday', $this->pluginDomain ), __( 'Saturday', $this->pluginDomain ) );
+		}
 		
+		private $countries;
 		private function constructCountries( $useDefault = true ) {
 				$countries = array(
 					"US" => __("United States", $this->pluginDomain),
@@ -406,6 +412,7 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
         }
 
 		public function templateChooser() {
+			$this->constructDaysOfWeek();
 			if( !is_feed() ) {
 				// list view
 				if ( $this->in_event_category() && ( events_displaying_upcoming() || events_displaying_past() ) ) {
@@ -491,22 +498,39 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 		}
 
 		/**
-		 * Helper method to return an array of month names
+		 * Helper method to return an array of translated month names or short month names
+		 * @return Array translated month names
 		 */
-		public function monthNames( ) {
-			$months = array( 1 => __('January', $this->pluginDomain), 
-							 2 => __('February', $this->pluginDomain), 
-							 3 => __('March', $this->pluginDomain), 
-							 4 => __('April', $this->pluginDomain), 
-							 5 => __('May', $this->pluginDomain), 
-							 6 => __('June', $this->pluginDomain), 
-							 7 => __('July', $this->pluginDomain), 
-							 8 => __('August', $this->pluginDomain), 
-							 9 => __('September', $this->pluginDomain), 
-							10 => __('October', $this->pluginDomain), 
-							11 => __('November', $this->pluginDomain), 
-							12 => __('December', $this->pluginDomain) 
-					  );
+		public function monthNames( $short = false ) {
+			if($short) {
+				$months = array( 'Jan'	=> __('Jan', $this->pluginDomain), 
+							  	 'Feb' 	=> __('Feb', $this->pluginDomain), 
+							     'Mar' 	=> __('Mar', $this->pluginDomain), 
+							     'Apr' 	=> __('Apr', $this->pluginDomain), 
+							     'May'  => __('May', $this->pluginDomain), 
+							     'Jun' 	=> __('Jun', $this->pluginDomain), 
+							     'Jul'	=> __('Jul', $this->pluginDomain), 
+							     'Aug' 	=> __('Aug', $this->pluginDomain), 
+							     'Sep' 	=> __('Sep', $this->pluginDomain), 
+							     'Oct' 	=> __('Oct', $this->pluginDomain), 
+							     'Nov' 	=> __('Nov', $this->pluginDomain), 
+							     'Dec' 	=> __('Dec', $this->pluginDomain) 
+						     );
+			} else {
+				$months = array( 'January' 	    => __('January', $this->pluginDomain), 
+							  	 'February' 	=> __('February', $this->pluginDomain), 
+							     'March' 		=> __('March', $this->pluginDomain), 
+							     'April' 		=> __('April', $this->pluginDomain), 
+							     'May' 		    => __('May', $this->pluginDomain), 
+							     'June' 		=> __('June', $this->pluginDomain), 
+							     'July'	        => __('July', $this->pluginDomain), 
+							     'August' 		=> __('August', $this->pluginDomain), 
+							     'September' 	=> __('September', $this->pluginDomain), 
+							     'October' 	    => __('October', $this->pluginDomain), 
+							     'November' 	=> __('November', $this->pluginDomain), 
+							     'December' 	=> __('December', $this->pluginDomain) 
+						     );
+			}
 			return $months;
 		}
 
@@ -980,20 +1004,22 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 			$months = $this->monthNames();
 			$options = '';
 			if ( empty( $date ) ) {
-				$month = date_i18n( 'm' );
+				$month = date_i18n( 'F' );
 			} else {
-				$month = date( 'm', strtotime( $date ) );
+				$month = date( 'F', strtotime( $date ) );
 			}
-			foreach ( $months as $monthNum => $monthText ) {
-				if ( $monthNum < 10 ) { 
-					$monthNum = "0" . $monthNum;  // need a leading zero in the month
+			$monthIndex = 1;
+			foreach ( $months as $englishMonth => $monthText ) {
+				if ( $monthIndex < 10 ) { 
+					$monthIndex = "0" . $monthIndex;  // need a leading zero in the month
 				}
-				if ( $month == $monthNum ) {
+				if ( $month == $englishMonth ) {
 					$selected = 'selected="selected"';
 				} else {
 					$selected = '';
 				}
-				$options .= "<option value='$monthNum' $selected>$monthText</option>\n";
+				$options .= "<option value='$monthIndex' $selected>$monthText</option>\n";
+				$monthIndex++;
 			}
 			return $options;
 		}
@@ -1158,10 +1184,9 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 					if ( isset ( $wp_query->query_vars['eventDate'] ) ) { 
 						$this->date = $wp_query->query_vars['eventDate'] . "-01";
 					} else {
-						$this->date = date_i18n( 'Y-m' );
+						$this->date = date_i18n( The_Events_Calendar::DBDATETIMEFORMAT );
 					}
 					break;
-
 			}
 		}
 		public function getDateString( $date ) {
@@ -1212,8 +1237,6 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'get_event_style'
 		$rawOffset = date("w", $date) - $startOfWeek;
 		$offset = ( $rawOffset < 0 ) ? $rawOffset + 7 : $rawOffset; // month begins on day x
 		$rows = 1;
-		$daysOfWeekShort = array( __( 'Sun' ), __( 'Mon' ), __( 'Tue' ), __( 'Wed' ), __( 'Thu' ), __( 'Fri' ), __( 'Sat' ) );
-		$daysOfWeek = array( __( 'Sunday' ), __( 'Monday' ), __( 'Tuesday' ), __( 'Wednesday' ), __( 'Thursday' ), __( 'Friday' ), __( 'Saturday' ) );
 		require( dirname( __FILE__ ) . '/views/table.php' );
 	}
 	/**
@@ -1408,7 +1431,9 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'get_event_style'
 		if ( $showtime ) {
 			$format = $spEvents->getTimeFormat( $format );
 		}
-		return date ( $format, strtotime( get_post_meta( $postId, '_EventStartDate', true ) ) );
+		$shortMonthNames = ( strstr( $format, 'M' ) ) ? true : false;
+		$date = date ( $format, strtotime( get_post_meta( $postId, '_EventStartDate', true ) ) );
+		return str_replace( array_keys($spEvents->monthNames( $shortMonthNames )), $spEvents->monthNames( $shortMonthNames ), $date);
 	}
 	/**
 	 * Returns the event end date
@@ -1431,7 +1456,8 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'get_event_style'
 		if ( $showtime ) {
 			$format = $spEvents->getTimeFormat( $format );
 		}
-		return date ( $format, strtotime( get_post_meta( $postId, '_EventEndDate', true ) ) );
+		$date = date ( $format, strtotime( get_post_meta( $postId, '_EventEndDate', true ) ) );
+		return str_replace( array_keys($spEvents->monthNames()), $spEvents->monthNames(), $date);
 	}
 	/**
 	* If EventBrite plugin is active

@@ -2,9 +2,9 @@
 	<thead>
 			<tr>
 				<?php
-				for( $n = $startOfWeek; $n < count($daysOfWeek) + $startOfWeek; $n++ ) {
+				for( $n = $startOfWeek; $n < count($spEvents->daysOfWeek) + $startOfWeek; $n++ ) {
 					$dayOfWeek = ( $n >= 7 ) ? $n - 7 : $n;
-					echo '<th id="tec-' . strtolower($daysOfWeek[$dayOfWeek]) . '" abbr="' . $daysOfWeek[$dayOfWeek] . '">' . $daysOfWeekShort[$dayOfWeek] . '</th>';
+					echo '<th id="tec-' . strtolower($spEvents->daysOfWeek[$dayOfWeek]) . '" abbr="' . $spEvents->daysOfWeek[$dayOfWeek] . '">' . $spEvents->daysOfWeekShort[$dayOfWeek] . '</th>';
 				}
 				?>
 			</tr>
