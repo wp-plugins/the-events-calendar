@@ -1184,7 +1184,8 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 					if ( isset ( $wp_query->query_vars['eventDate'] ) ) { 
 						$this->date = $wp_query->query_vars['eventDate'] . "-01";
 					} else {
-						$this->date = date_i18n( The_Events_Calendar::DBDATETIMEFORMAT );
+						$date = date_i18n( The_Events_Calendar::DBDATEFORMAT );
+						$this->date = str_replace( substr( $date, 8 ), '01', $date );
 					}
 					break;
 			}
@@ -1228,7 +1229,7 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'get_event_style'
 		global $spEvents;
 		global $wp_query;
 		$wp_query->set( 'eventDisplay', 'bydate' );
-		$eventPosts = get_events( );
+		$eventPosts = get_events();
 		$monthView = events_by_month( $eventPosts, $spEvents->date );
 		list( $year, $month ) = split( '-', $spEvents->date );
 		$date = mktime(12, 0, 0, $month, 1, $year); // 1st day of month as unix stamp
