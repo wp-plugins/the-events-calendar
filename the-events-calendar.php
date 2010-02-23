@@ -1656,7 +1656,7 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'get_event_style'
 		return $retval;
 	}
 	/**
-	 * Call this function in a template to query the events and start the loop.   Do not
+	 * Call this function in a template to query the events and start the loop. Do not
 	 * subsequently call the_post() in your template, as this will start the loop twice and then
 	 * you're in trouble.
 	 * 

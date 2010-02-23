@@ -30,7 +30,7 @@
 		
 		//show state/province input based on first option in countries list, or based on user input of country
 		function spShowHideCorrectStateProvinceInput(country) {
-			if (country == 'United States') {
+			if (country == 'US') {
 				jQuery("#USA").removeClass("hide");
 				jQuery("#International").addClass("hide");
 			}
@@ -40,10 +40,13 @@
 			}
 		}
 		
-		spShowHideCorrectStateProvinceInput(jQuery("#EventCountry > option:first").val());
+		spShowHideCorrectStateProvinceInput(jQuery("#EventCountry > option:first").attr('label'));
 		
-		jQuery("#EventCountry").change(function(){
-			spShowHideCorrectStateProvinceInput(jQuery(this).attr("value"));
+		jQuery("#EventCountry").change(function() {
+			var t = jQuery(this);
+			var value = t.val();
+			if( t.find('option[label="US"]').val() == value ) spShowHideCorrectStateProvinceInput('US');
+			else spShowHideCorrectStateProvinceInput(null);
 		});
 		
 		var spDaysPerMonth = [29,31,28,31,30,31,30,31,31,30,31,30,31];
@@ -241,7 +244,7 @@
 					<?php 
 					$this->constructCountries();
 				     foreach ($this->countries as $abbr => $fullname) {
-				       print ("<option value=\"$fullname\" ");
+				       print ("<option label=". $abbr . " value=\"$fullname\" ");
 				       if ($_EventCountry == $fullname) { 
 				         print ('selected="selected" ');
 				       }
