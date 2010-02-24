@@ -87,6 +87,13 @@ table.tec-calendar {
 	font-size:10px;
 	padding:3px 9px;
 }
+.tec-calendar td.tec-present .daynum {
+	background-color: #2d81bb;
+	color: #fff;
+}
+.tec-calendar td.tec-past .daynum {
+	color: #aaa;
+}
 .tec-calendar th {
 	width: 250px;
 	height: 10px;
@@ -104,6 +111,7 @@ table.tec-calendar {
 	border:1px solid #aaa;
 	padding:0;
 }
+
 .tec-calendar td .tec-event {
 	padding:6px 9px;
 	line-height:1.2;

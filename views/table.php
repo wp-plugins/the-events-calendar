@@ -23,7 +23,19 @@
 			        echo "</tr>\n\t<tr>";
 			        $rows++;
 			    }
-			    echo "<td class='tec-thismonth'><div class='daynum'>" . $day . "</div>\n";
+
+				// Var'ng up the current day
+				$current_day = date_i18n( 'd' );
+				// Past, Present, Future class
+				if ($current_day == $day ) {
+					$ppf = ' tec-present';
+				} elseif ($current_day > $day) {
+					$ppf = ' tec-past';
+				} elseif ($current_day < $day) {
+					$ppf = ' tec-future';
+				} else { $ppf = false; }
+
+			    echo "<td class='tec-thismonth" . $ppf . "'><div class='daynum'>" . $day . "</div>\n";
 				echo display_day( $day, $monthView );
 				echo "</td>";
 			}
