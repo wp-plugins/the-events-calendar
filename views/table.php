@@ -23,18 +23,27 @@
 			        echo "</tr>\n\t<tr>";
 			        $rows++;
 			    }
-
-				// Var'ng up the current day
+			
+				// Var'ng up days, months and years
 				$current_day = date_i18n( 'd' );
-				// Past, Present, Future class
-				if ($current_day == $day ) {
-					$ppf = ' tec-present';
-				} elseif ($current_day > $day) {
+				$current_month = date_i18n( 'm' );
+				$current_year = date_i18n( 'Y' );
+				
+				if ( $current_month == $month && $current_year == $year) {
+					// Past, Present, Future class
+					if ($current_day == $day ) {
+						$ppf = ' tec-present';
+					} elseif ($current_day > $day) {
+						$ppf = ' tec-past';
+					} elseif ($current_day < $day) {
+						$ppf = ' tec-future';
+					}
+				} elseif ( $current_month > $month && $current_year == $year || $current_year > $year ) {
 					$ppf = ' tec-past';
-				} elseif ($current_day < $day) {
+				} elseif ( $current_month < $month && $current_year == $year || $current_year < $year ) {
 					$ppf = ' tec-future';
 				} else { $ppf = false; }
-
+				
 			    echo "<td class='tec-thismonth" . $ppf . "'><div class='daynum'>" . $day . "</div>\n";
 				echo display_day( $day, $monthView );
 				echo "</td>";
