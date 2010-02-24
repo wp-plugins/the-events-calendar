@@ -1,11 +1,11 @@
 <p>
 	<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title:',$this->pluginDomain);?></label>
-	<input id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" style="width:100%;" />
+	<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo $instance['title']; ?>" />
 </p>
 
 <p>
 	<label for="<?php echo $this->get_field_id( 'limit' ); ?>"><?php _e('Show:',$this->pluginDomain);?></label>
-	<select id="<?php echo $this->get_field_id( 'limit' ); ?>" name="<?php echo $this->get_field_name( 'limit' ); ?>" class="widefat" style="width:100%;">
+	<select id="<?php echo $this->get_field_id( 'limit' ); ?>" name="<?php echo $this->get_field_name( 'limit' ); ?>" class="widefat">
 	<?php for ($i=1; $i<=10; $i++)
 	{?>
 	<option <?php if ( $i == $instance['limit'] ) {echo 'selected="selected"';}?> > <?php echo $i;?> </option>
@@ -13,7 +13,7 @@
 	</select>
 </p>
 
-<p><?php _e( 'Display:', $this->pluginDomain ); ?></p>
+<p><?php _e( 'Display:', $this->pluginDomain ); ?><br/>
 
 <?php $displayoptions = array (
 	"start" => __('Start Date & Time', $this->pluginDomain),
@@ -28,10 +28,9 @@
 	"phone" => __("Phone", $this->pluginDomain),
 	"cost" => __("Price", $this->pluginDomain),
 );
-
-foreach ($displayoptions as $option => $label) {
-	?><p>
-		<input class="checkbox" type="checkbox" <?php checked( $instance[$option], 'on' ); ?> id="<?php echo $this->get_field_id( $option ); ?>" name="<?php echo $this->get_field_name( $option ); ?>" />
+	foreach ($displayoptions as $option => $label) { ?>
+		<input class="checkbox" type="checkbox" <?php checked( $instance[$option], 'on' ); ?> id="<?php echo $this->get_field_id( $option ); ?>" name="<?php echo $this->get_field_name( $option ); ?>" style="margin-left:5px"/>
 		<label for="<?php echo $this->get_field_id( $option ); ?>"><?php echo $label ?></label>
+		<br/>
+<?php } ?>
 	</p>
-<?php }
