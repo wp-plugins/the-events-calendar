@@ -92,6 +92,7 @@ The Events Calendar plugin now comes with default templates for the list view, g
 * gridview.php
 * list.php
 * single.php
+* events-list-load-widget-display.php
 
 Edit the new files to your hearts content. Please do not edit the one's in the plugin folder as that will cause conflicts when you update the plugin to the latest release.
 
