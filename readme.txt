@@ -4,8 +4,8 @@ Contributors: Kelsey Damas, Matt Wiebe, Justin Endler, Reid Peifer, Dan Cameron,
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=10750983
 Tags: widget, events, simple, tooltips, grid, month, list, calendar, event, venue, eventbrite, registration, tickets, ticketing, eventbright, api, dates, date, plugin, posts, sidebar, template, theme, time, google maps, conference, workshop, concert, meeting, seminar, summit, forum, shortcode
 Requires at least: 2.8
-Tested up to: 2.9.1
-Stable tag: 1.5.4
+Tested up to: 2.9.2
+Stable tag: 1.5.5
 
 == Description ==
 
@@ -210,15 +210,22 @@ Please visit the forum for questions or comments: http://wordpress.org/tags/the-
 
 = 1.5.5 =
 
+Features
+* Starting day in calendar view now reflects the start_of_week Wordpress option
+* Widget view can now be overwritten in theme ([theme]/events/events-list-load-widget-display.php)
+* Setting that enables "Feature on Event Date" - This option will bump an event to the top of the homepage loop on the day of the event (and then return it when over).
+* Timezone to be set by wordpress settings
+* Class in calendar for current Day, past events and future events.
 * Fixed translation bugs (thanks to Kaj for catching)
 ** new .pot file available with more entries, covering more of the plugin (months are in there now)
 * New Translations:
 ** Polish: Maciej Swoboda
 ** Czech: Tomas Vesely
-* Starting day in calendar view now reflects the start_of_week Wordpress option
-* Widget view can now be overwritten in theme ([theme]/events/events-list-load-widget-display.php)
-* Setting that enables "Feature on Event Date" - This option will bump an event to the top of the homepage loop on the day of the event (and then return it when over).
 
+Bugs:
+* RSS broken with alterate permalinks
+* AM/PM time display bug
+* Issue of right float on right three cols on cal view for some themes
 
 = 1.5.4 =
 
