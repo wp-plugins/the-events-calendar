@@ -370,7 +370,6 @@
 	</div>
 	
 	<?php do_action( 'sp_events_above_donate', $postId ); ?>
-	
 	<div id="mainDonateRow" class="eventForm">
 			<?php _e('<h4>If You Like This Plugin - Help Support It</h4><p>We spend a lot of time and effort building robust plugins and we love to share them with the community. If you use this plugin consider making a donation to help support its\' continued development. You may remove this message on the <a href="/wp-admin/options-general.php?page=the-events-calendar.php">settings page</a>.</p>', $this->pluginDomain); ?>
 				<div id="snp_thanks">
@@ -379,18 +378,12 @@
 					<a href="http://www.shaneandpeter.com?source=events-plugin" target="_blank">www.shaneandpeter.com</a>		
 				</div>
 				<div id="snp_donate">
-				 	<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-		            	<input type="hidden" name="cmd" value="_s-xclick">
-		                <input type="hidden" name="hosted_button_id" value="10750983">
-		                <input type="hidden" name="item_name" value="Events Post Editor">
-			            <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">	
-		    	        <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
-		        	    <label id="submitLabel" for="submit">
-		            </label>
-			       </form>
+					<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=10750983&item_name=Events%20Post%20Editor" target="_blank">
+						<image src="https://www.paypal.com/en_US/i/btn/btn_donate_LG.gif" alt="" />
+					</a>
 				</div>
-		<div style="clear:both;"></div>	
-	</div><!-- end maindonaterow -->
+		<div style="clear:both;"></div>
+	</div><!-- end mainDonateRow -->
 	
 	<style>
 	#eventDetails h4,
