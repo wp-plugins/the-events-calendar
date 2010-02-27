@@ -209,6 +209,12 @@ Please visit the forum for questions or comments: http://wordpress.org/tags/the-
 
 == Changelog ==
 
+= 1.6 =
+
+Translations
+* German [Felix Bartels]
+* Brazilian Portuguese [Thiago Abdalla]
+
 = 1.5.5 =
 
 Features
@@ -219,9 +225,10 @@ Features
 * Class in calendar for current Day, past events and future events.
 * Fixed translation bugs (thanks to Kaj for catching)
 ** new .pot file available with more entries, covering more of the plugin (months are in there now)
-* New Translations:
-** Polish: Maciej Swoboda
-** Czech: Tomas Vesely
+
+Translations
+* Polish [Maciej Swoboda]
+* Czech [Tomas Vesely]
 
 Bugs:
 * RSS broken with alterate permalinks
