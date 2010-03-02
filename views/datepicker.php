@@ -6,13 +6,9 @@ if( '' == get_option('permalink_structure') ) {
 }
 ?>
 <script type="text/javascript" charset="utf-8">
-	jQuery(document).ready(function(){
-		jQuery('.<?php echo $prefix; ?>events-dropdown').change(function( ){
-			monthSelect = jQuery('#<?php echo $prefix; ?>events-month');
-			yearSelect = jQuery('#<?php echo $prefix; ?>events-year');
-			jumpMonth = monthSelect.attr("options")[monthSelect.attr("selectedIndex")].value;
-			jumpYear = yearSelect.attr("options")[yearSelect.attr("selectedIndex")].value;
-			location.href = '<?php echo $link; ?>' + jumpYear + '-' + jumpMonth;	
+	jQuery(document).ready(function() {
+		jQuery('.<?php echo $prefix; ?>events-dropdown').change(function() {
+			location.href = '<?php echo $link; ?>' + jQuery('#<?php echo $prefix; ?>events-year').val() + '-' + jQuery('#<?php echo $prefix; ?>events-month').val();
 		});
 	});
 </script>

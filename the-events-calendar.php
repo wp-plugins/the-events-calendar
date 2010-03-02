@@ -446,7 +446,7 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 					}
 					exit;
 				}
-			} // if is_feed()
+			} // if !is_feed()
 		}
 		
 		public function loadStylesAndScripts( ) {
@@ -1225,7 +1225,7 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'get_event_style'
 	 *
 	 * @return void
 	 */
-	function event_grid_view( ) {
+	function event_grid_view() {
 		global $spEvents;
 		global $wp_query;
 		$wp_query->set( 'eventDisplay', 'bydate' );
@@ -1639,7 +1639,7 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'get_event_style'
 		
 	/**
 	 * Called inside of the loop, returns true if the current post's meta_value (EventStartDate)
-	 * is different than the previous post.   Will always return true for the first event in the loop.
+	 * is different than the previous post. Will always return true for the first event in the loop.
 	 *
 	 * @return bool
 	 */
