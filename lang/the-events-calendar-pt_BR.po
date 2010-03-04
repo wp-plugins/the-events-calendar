@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: The Events Calendar 1.5.4\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/the-events-calendar\n"
 "POT-Creation-Date: 2010-02-16 02:03+0000\n"
-"PO-Revision-Date: 2010-02-27 01:46-0300\n"
+"PO-Revision-Date: 2010-03-02 22:04-0300\n"
 "Last-Translator: Thiago <thiago_abdalla@hotmail.com>\n"
 "Language-Team: Thiago Abdalla <thiago_abdalla@hotmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -1496,7 +1496,7 @@ msgstr "Se já fez a doação, então esconda este campo!"
 
 #: views/events-options.php:98
 msgid "Donate for this wonderful plugin"
-msgstr "Doe para este plugin meravilhoso"
+msgstr "Doe para este plugin maravilhoso"
 
 #: views/events-options.php:112
 msgid "Settings"
