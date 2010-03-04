@@ -1181,11 +1181,11 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 					$this->order			= "ASC";
 					// TODO date set to YYYY-MM
 					// TODO store DD as an anchor to the URL
-					if ( isset ( $wp_query->query_vars['eventDate'] ) ) { 
+					if ( isset ( $wp_query->query_vars['eventDate'] ) ) {
 						$this->date = $wp_query->query_vars['eventDate'] . "-01";
 					} else {
 						$date = date_i18n( The_Events_Calendar::DBDATEFORMAT );
-						$this->date = str_replace( substr( $date, 8 ), '01', $date );
+						$this->date = substr_replace( $date, '01', -2 );
 					}
 					break;
 			}
