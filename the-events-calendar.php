@@ -340,6 +340,7 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 			add_filter( 'posts_fields',		array( $this, 'events_search_fields' ) );
 			add_filter( 'post_limits',		array( $this, 'events_search_limits' ) );
 			add_action( 'template_redirect',		array($this, 'templateChooser' ) );
+			add_action( 'pre_get_posts',		array( $this, 'events_home_cat_excluder' ) );
 		}
 		
 		public function addOptionsPage() {
@@ -367,6 +368,7 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 				}
 				
 				$options['showComments'] = $_POST['showComments'];
+				$options['displayEventsOnHomepage'] = $_POST['displayEventsOnHomepage'];
 				$options['resetEventPostDate'] = $_POST['resetEventPostDate'];
 				
 				do_action( 'sp-events-save-more-options' );
@@ -621,10 +623,10 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 		 * @return string modified join clause 
 		 */
 		public function events_search_join( $join ) {
+			global $wpdb;
 			if( !$this->in_event_category() ) { 
 				return $join;
 			}
-			global $wpdb;
 			$join .= "LEFT JOIN {$wpdb->postmeta} as eventStart ON( {$wpdb->posts}.ID = eventStart.post_id ) ";
 			$join .= "LEFT JOIN {$wpdb->postmeta} as eventEnd ON( {$wpdb->posts}.ID = eventEnd.post_id ) ";
 			return $join;
@@ -655,6 +657,18 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 			return $where;
 		}
 		/**
+		 * Removes event posts from the homepage loop.  This uses a standard wordpress pre_get_posts
+		 */
+		public function events_home_cat_excluder( $query ) {
+			if( is_home() && eventsGetOptionValue( 'displayEventsOnHomepage' ) == 'off' ) {		
+		        $excluded_home_cats = $this->event_category_ids();
+		        $cni = $query->get('category__not_in');
+		        $cni = array_merge( $cni, $excluded_home_cats );
+		        $query->set('category__not_in', $cni );
+			}
+			return $query;
+		}
+		/**
 		 * @return bool true if is_category() is on a child of the events category
 		 */
 		public function in_event_category( ) {
@@ -673,6 +687,18 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 				}
 			}
 			return $is_child;
+		}
+		/**
+		 * @return array of event category ids, including children
+		 */
+		public function event_category_ids( ) {
+			$cats = array();
+			$cats[] = $this->eventCategory();
+			$children = get_categories('hide_empty=0&child_of=' . $cats[0]);
+			foreach( $children as $cat ) {
+				$cats[] = $cat->cat_ID;
+			}
+			return $cats;
 		}
 		/**
 		 * orderby filter for standard wordpress templates.  Adds event ordering for queries that are
