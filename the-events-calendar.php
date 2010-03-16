@@ -370,6 +370,7 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 				$options['showComments'] = $_POST['showComments'];
 				$options['displayEventsOnHomepage'] = $_POST['displayEventsOnHomepage'];
 				$options['resetEventPostDate'] = $_POST['resetEventPostDate'];
+				$options['useRewriteRules'] = $_POST['useRewriteRules'];
 				
 				do_action( 'sp-events-save-more-options' );
 				
@@ -779,6 +780,9 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 		 * @return void
 		 */
 		public function filterRewriteRules( $wp_rewrite ) {
+			if( $useRewriteRules = eventsGetOptionValue('useRewriteRules','on') == 'off' ) {
+				return;
+			}
 			// TODO loop through all child categories of the events category
 			$categoryId = get_cat_id( The_Events_Calendar::CATEGORYNAME );
 			$category_base = $this->getCategoryBase();
@@ -1806,8 +1810,9 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'get_event_style'
 	 * @return string 
 	 */
 	function events_get_past_link() {
+		// TODO support child categories
 		global $spEvents;
-		if( '' == get_option('permalink_structure') ) {
+		if( '' == get_option('permalink_structure') || 'off' == eventsGetOptionValue('useRewriteRules','on') ) {
 			return trailingslashit( get_bloginfo('url') ) . '?cat=' . $spEvents->eventCategory() . '&eventDisplay=past';
 		} else {
 			return get_bloginfo( 'url' ) . '/'. $spEvents->getCategoryBase() . '/' . strtolower( The_Events_Calendar::CATEGORYNAME ) . '/past/';
@@ -1819,8 +1824,9 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'get_event_style'
 	 * @return string 
 	 */
 	function events_get_upcoming_link() {
+		// TODO support child categories
 		global $spEvents;
-		if( '' == get_option('permalink_structure') ) {
+		if( '' == get_option('permalink_structure') || 'off' == eventsGetOptionValue('useRewriteRules','on') ) {
 			return trailingslashit( get_bloginfo('url') ) . '?cat=' . $spEvents->eventCategory() . '&eventDisplay=upcoming';
 		} else {
 			return get_bloginfo( 'url' ) . '/'. $spEvents->getCategoryBase() . '/' . strtolower( The_Events_Calendar::CATEGORYNAME ) . '/upcoming/';
@@ -1832,8 +1838,9 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'get_event_style'
 	 * @return string 
 	 */
 	function events_get_next_month_link() {
+		// TODO support child categories
 		global $spEvents;
-		if( '' == get_option('permalink_structure') ) {
+		if( '' == get_option('permalink_structure') || 'off' == eventsGetOptionValue('useRewriteRules','on') ) {
 			return trailingslashit( get_bloginfo('url') ) . '?cat=' . $spEvents->eventCategory() . '&eventDate=' . $spEvents->nextMonth( $spEvents->date );
 		} else {
 			return get_bloginfo( 'url' ) . '/'. $spEvents->getCategoryBase() . '/' . strtolower( The_Events_Calendar::CATEGORYNAME ) . '/' . $spEvents->nextMonth( $spEvents->date );
@@ -1845,8 +1852,9 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'get_event_style'
 	 * @return string
 	 */
 	function events_get_previous_month_link() {
+		// TODO support child categories
 		global $spEvents;
-		if( '' == get_option('permalink_structure') ) {
+		if( '' == get_option('permalink_structure') || 'off' == eventsGetOptionValue('useRewriteRules','on') ) {
 			return trailingslashit( get_bloginfo('url') ) . '?cat=' . $spEvents->eventCategory() . '&eventDate=' . $spEvents->previousMonth( $spEvents->date );
 		} else {
 			return get_bloginfo( 'url' ) . '/' . $spEvents->getCategoryBase() . '/' . strtolower( The_Events_Calendar::CATEGORYNAME ) . '/' . $spEvents->previousMonth( $spEvents->date );
@@ -1858,8 +1866,9 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'get_event_style'
 	 * @return string
 	 */
 	function events_get_events_link() {
+		// TODO support child categories
 		global $spEvents;
-		if( '' == get_option('permalink_structure') ) {
+		if( '' == get_option('permalink_structure') || 'off' == eventsGetOptionValue('useRewriteRules','on') ) {
 			return trailingslashit( get_bloginfo('url') ) . '?cat=' . $spEvents->eventCategory(); 
 		} else {
 			return get_bloginfo( 'url' ) . '/' . $spEvents->getCategoryBase() . '/' . strtolower( The_Events_Calendar::CATEGORYNAME ) . '/'; 
@@ -1867,8 +1876,9 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'get_event_style'
 	}
 	
 	function events_get_gridview_link( ) {
+		// TODO support child categories
 		global $spEvents;
-		if( '' == get_option('permalink_structure') ) {
+		if( '' == get_option('permalink_structure') || 'off' == eventsGetOptionValue('useRewriteRules','on') ) {
 			return trailingslashit( get_bloginfo('url') ) . '?cat=' . $spEvents->eventCategory() . '&eventDisplay=month';
 		} else {
 			return trailingslashit( get_bloginfo('url') ) . $spEvents->getCategoryBase() . '/' . strtolower( The_Events_Calendar::CATEGORYNAME ) . '/month';
@@ -1876,16 +1886,18 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'get_event_style'
 	}
 		
 	function events_get_listview_link( ) {
+		// TODO support child categories
 		global $spEvents;
-		if( '' == get_option('permalink_structure') ) {
+		if( '' == get_option('permalink_structure') || 'off' == eventsGetOptionValue('useRewriteRules','on') ) {
 			return trailingslashit( get_bloginfo('url') ) . '?cat=' . $spEvents->eventCategory() . '&eventDisplay=upcoming';
 		} else {
 			return trailingslashit( get_bloginfo('url') ) . $spEvents->getCategoryBase() . '/' . strtolower( The_Events_Calendar::CATEGORYNAME ) . '/upcoming';
 		}
 	}
 	function events_get_listview_past_link( ) {
+		// TODO support child categories
 		global $spEvents;
-		if( '' == get_option('permalink_structure') ) {
+		if( '' == get_option('permalink_structure') || 'off' == eventsGetOptionValue('useRewriteRules','on') ) {
 			return trailingslashit( get_bloginfo('url') ) . '?cat=' . $spEvents->eventCategory() . '&eventDisplay=past';
 		} else {
 			return trailingslashit( get_bloginfo('url') ) . $spEvents->getCategoryBase() . '/' . strtolower( The_Events_Calendar::CATEGORYNAME ) . '/past';
@@ -1937,6 +1949,7 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'get_event_style'
 	 * @return string
 	 */
 	function events_get_this_month_link() {
+		// TODO support child categories
 		global $spEvents;
 		if ( $spEvents->displaying == "month" ) {
 			return get_bloginfo( 'url' )  . '/' . strtolower( The_Events_Calendar::CATEGORYNAME ) . '/' . $spEvents->date;

@@ -1,5 +1,5 @@
 <?php
-if( '' == get_option('permalink_structure') ) {
+if( '' == get_option('permalink_structure') || 'off' == eventsGetOptionValue('useRewriteRules','on') ) {
     $link =  trailingslashit( get_bloginfo('url') ) . '?cat=' . $spEvents->eventCategory() . '&eventDisplay=month&eventDate=';
 } else {
 	$link = get_bloginfo( 'url' ) . '/' . $spEvents->getCategoryBase() . '/' . strtolower( The_Events_Calendar::CATEGORYNAME ) . '/'; 

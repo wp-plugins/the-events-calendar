@@ -247,7 +247,31 @@ div.snp_settings{
 		            </fieldset>
 		        </td>
 			</tr>
-
+			<tr>
+				<th scope="row"><?php _e('Use Pretty URLs',$this->pluginDomain); ?></th>
+		        <td>
+		            <fieldset>
+		                <legend class="screen-reader-text">
+		                    <span><?php _e('Use Pretty URLs',$this->pluginDomain); ?></span>
+		                </legend>
+		                <label title='Yes'>
+		                    <?php 
+		                    $useRewriteRules = eventsGetOptionValue('useRewriteRules','on'); 
+		                    ?>
+		                    <input type="radio" name="useRewriteRules" value="off" <?php checked($useRewriteRules, 'off'); ?>  /> 
+		                    <?php _e('Off',$this->pluginDomain); ?>
+		                </label> 
+		                <label title='List View'>
+	                    <input type="radio" name="useRewriteRules" value="on" <?php checked($useRewriteRules, 'on'); ?>  /> 
+		                    <?php _e('On',$this->pluginDomain); ?>
+		                </label>
+						<div>
+							<?php _e('Pretty URLs (ie, http://site/category/events/upcoming) may interfere with custom themes or plugins.',$this->pluginDomain); ?> 
+						</div>
+		<br />
+		            </fieldset>
+		        </td>
+			</tr>
 
 	    <?php do_action( 'sp_events_options_bottom' ); ?>
 		<tr>
