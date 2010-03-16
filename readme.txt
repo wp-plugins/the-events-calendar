@@ -215,6 +215,10 @@ Translations
 * German [Felix Bartels]
 * Brazilian Portuguese [Thiago Abdalla]
 
+Bugs:
+* in single.php, the Back to Events link no longer strictly goes to the grid view, but adheres to the default few option
+** pointed out by azzatron on the forum
+
 = 1.5.6 =
 
 * Fixes date bug in the class method setOptions(), line 1188 in the-events-calendar.php
