@@ -324,7 +324,7 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 			register_deactivation_hook( __FILE__, 	array( &$this, 'on_deactivate' ) );
 			add_action( 'reschedule_event_post', array( $this, 'reschedule') );
 			add_action( 'init',				array( $this, 'loadPluginTextDomain' ) );
-			add_action( 'init', 			array( $this, 'flushRewriteRules' ) );
+			// add_action( 'init', 			array( $this, 'flushRewriteRules' ) );
 			add_action( 'pre_get_posts',	array( $this, 'setOptions' ) );
 			add_action( 'admin_menu', 		array( $this, 'addOptionsPage' ) );
 			add_action( 'admin_init', 		array( $this, 'checkForOptionsChanges' ) );
@@ -745,7 +745,9 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 			return get_cat_id( The_Events_Calendar::CATEGORYNAME );
 	    }
 		/**
-		 * undocumented
+		 * Flush rewrite rules to support custom links
+		 *
+		 * @link http://codex.wordpress.org/Custom_Queries#Permalinks_for_Custom_Archives
 		 */
 		public function flushRewriteRules() 
 		{
@@ -755,6 +757,7 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 		/**
 		 * Adds the event specific query vars to Wordpress
 		 *
+		 * @link http://codex.wordpress.org/Custom_Queries#Permalinks_for_Custom_Archives
 		 * @return mixed array of query variables that this plugin understands
 		 */
 		public function eventQueryVars( $qvars ) {
