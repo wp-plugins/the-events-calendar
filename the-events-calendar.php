@@ -866,7 +866,7 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 						update_post_meta( $postId, $tag, $_POST[$htmlElement] );
 					}
 				}
-				do_action( 'sp_events_update_meta', $postId );
+				do_action( 'sp_events_update_meta', array( $postId, $_POST ) );
 				// merge event category into this post
 				update_post_meta( $postId, '_EventCost', the_event_cost( $postId ) ); // XXX eventbrite cost field
 				$cats = wp_get_object_terms($postId, 'category', array('fields' => 'ids'));
@@ -1216,7 +1216,6 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 						$date = date_i18n( The_Events_Calendar::DBDATEFORMAT );
 						$this->date = substr_replace( $date, '01', -2 );
 					}
-					break;
 			}
 		}
 		public function getDateString( $date ) {
