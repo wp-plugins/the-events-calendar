@@ -324,7 +324,7 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 			register_deactivation_hook( __FILE__, 	array( &$this, 'on_deactivate' ) );
 			add_action( 'reschedule_event_post', array( $this, 'reschedule') );
 			add_action( 'init',				array( $this, 'loadPluginTextDomain' ) );
-			// add_action( 'init', 			array( $this, 'flushRewriteRules' ) );
+			add_action( 'sp-events-save-more-options', array( $this, 'flushRewriteRules' ) );
 			add_action( 'pre_get_posts',	array( $this, 'setOptions' ) );
 			add_action( 'admin_menu', 		array( $this, 'addOptionsPage' ) );
 			add_action( 'admin_init', 		array( $this, 'checkForOptionsChanges' ) );
@@ -572,6 +572,8 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 			$firstTime = $now - ($now % 66400);
 			wp_schedule_event( $firstTime, 'daily', 'reschedule_event_post'); // schedule this for midnight, daily
 			$this->create_category_if_not_exists( );	
+			$this->flushRewriteRules();
+			do_action('generate_rewrite_rules');
 		}
 		/**
 		* This function is scheduled to run at midnight.  If any posts are set with EventStartDate
@@ -777,6 +779,7 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 		 * @return void
 		 */
 		public function filterRewriteRules( $wp_rewrite ) {
+			// TODO loop through all child categories of the events category
 			$categoryId = get_cat_id( The_Events_Calendar::CATEGORYNAME );
 			$category_base = $this->getCategoryBase();
 			$newRules = array(
