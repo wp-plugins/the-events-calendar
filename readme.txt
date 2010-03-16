@@ -214,6 +214,8 @@ Please visit the forum for questions or comments: http://wordpress.org/tags/the-
 Translations
 * German [Felix Bartels]
 * Brazilian Portuguese [Thiago Abdalla]
+* Dutch [Sjoerd Boerrigter]
+* Updated to Swedish Translation [Kaj Johansson]
 
 Bugs:
 * in single.php, the Back to Events link no longer strictly goes to the grid view, but adheres to the default few option
