@@ -1,8 +1,11 @@
 <?php
+$cat_id = get_query_var( 'cat' );
+if( !$cat_id ) {
+	$cat_id = $spEvents->eventCategory();
+}
+$link = get_category_link( $cat_id );
 if( '' == get_option('permalink_structure') || 'off' == eventsGetOptionValue('useRewriteRules','on') ) {
-    $link =  trailingslashit( get_bloginfo('url') ) . '?cat=' . $spEvents->eventCategory() . '&eventDisplay=month&eventDate=';
-} else {
-	$link = get_bloginfo( 'url' ) . '/' . $spEvents->getCategoryBase() . '/' . strtolower( The_Events_Calendar::CATEGORYNAME ) . '/'; 
+	$link .= '&eventDisplay=month&eventDate=';
 }
 ?>
 <script type="text/javascript" charset="utf-8">

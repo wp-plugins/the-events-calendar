@@ -417,27 +417,26 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 		public function templateChooser() {
 			$this->constructDaysOfWeek();
 			if( !is_feed() ) {
-				// list view
-				if ( $this->in_event_category() && ( events_displaying_upcoming() || events_displaying_past() ) ) {
-					if (file_exists(TEMPLATEPATH.'/events/list.php') ) {
-						include (TEMPLATEPATH.'/events/list.php');
-					}
-					else {
-						include dirname( __FILE__ ) . '/views/list.php';
-					}
-					exit;
-				}
-			
-				// grid view
-				if ( $this->in_event_category() ) {
-					if (file_exists(TEMPLATEPATH.'/events/gridview.php') ) {
-						include (TEMPLATEPATH.'/events/gridview.php');
-					}
-					else {
-						include dirname( __FILE__ ) . '/views/gridview.php';
-					}
-					exit;
-				}
+		       // list view
+		        if ( $this->in_event_category() && ( events_displaying_upcoming() || events_displaying_past() ) ) {
+		          if (file_exists(TEMPLATEPATH.'/events/list.php') ) {
+		            include (TEMPLATEPATH.'/events/list.php');
+		          }    
+		          else {
+		            include dirname( __FILE__ ) . '/views/list.php';
+		          }    
+		          exit;
+		        }    
+
+		        // grid view
+		        if ( $this->in_event_category() ) {
+		          if (file_exists(TEMPLATEPATH.'/events/gridview.php') ) {
+		            include (TEMPLATEPATH.'/events/gridview.php');
+		          }    
+		          else {
+		            include dirname( __FILE__ ) . '/views/gridview.php';
+		          }              exit;
+		        }    
 
 				// single event
 				if (is_single() && in_category( $this->eventCategory() ) ) {
@@ -458,12 +457,6 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 			wp_enqueue_script('sp-events-calendar-script', $eventsURL.'events.js', array('jquery') );
 			wp_enqueue_style('sp-events-calendar-style', $eventsURL.'events.css');
 			
-		}
-		
-		// works around a bug where setting category base to null doesn't allow get_option to return a default value
-		public function getCategoryBase() {
-			$category_base = get_option('category_base', 'category');
-			return ( empty( $category_base ) ) ? 'category' : $category_base;
 		}
 		
 		public function truncate($text, $excerpt_length = 44) {
@@ -783,22 +776,23 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 			if( $useRewriteRules = eventsGetOptionValue('useRewriteRules','on') == 'off' ) {
 				return;
 			}
-			// TODO loop through all child categories of the events category
 			$categoryId = get_cat_id( The_Events_Calendar::CATEGORYNAME );
-			$category_base = $this->getCategoryBase();
-			$newRules = array(
-
-				$category_base . '/' . strtolower( The_Events_Calendar::CATEGORYNAME ) . '/month' 	=> 'index.php?cat=' . $categoryId . '&eventDisplay=month',
-				$category_base . '/' . strtolower( The_Events_Calendar::CATEGORYNAME ) . '/upcoming/page/(\d+)' => 'index.php?cat=' . $categoryId . '&eventDisplay=upcoming&paged=' . $wp_rewrite->preg_index(1),
-				$category_base . '/' . strtolower( The_Events_Calendar::CATEGORYNAME ) . '/upcoming' => 'index.php?cat=' . $categoryId . '&eventDisplay=upcoming',
-				$category_base . '/' . strtolower( The_Events_Calendar::CATEGORYNAME ) . '/past/page/(\d+)' => 'index.php?cat=' . $categoryId . '&eventDisplay=past&paged=' . $wp_rewrite->preg_index(1),
-				$category_base . '/' . strtolower( The_Events_Calendar::CATEGORYNAME ) . '/past' 	=> 'index.php?cat=' . $categoryId . '&eventDisplay=past',
-				$category_base . '/' . strtolower( The_Events_Calendar::CATEGORYNAME ) . '/(\d{4}-\d{2})$'
-				 										=> 'index.php?cat=' . $categoryId . '&eventDisplay=month' .
-														  	'&eventDate=' . $wp_rewrite->preg_index(1),
-				$category_base . '/' . strtolower( The_Events_Calendar::CATEGORYNAME ) . '/?$'=> 'index.php?cat=' . $categoryId . '&eventDisplay=' . eventsGetOptionValue('viewOption','month')
-													
-			);
+			$eventCategory = get_category( $categoryId );
+			$eventCats = array( $eventCategory );
+			$childCats = get_categories("hide_empty=0&child_of=$categoryId");
+			$eventCats = array_merge( $eventCats, $childCats );
+			$newRules = array();
+			foreach( $eventCats as $cat ) {
+				$url = get_category_link( $cat->cat_ID );
+				$base = str_replace( trailingslashit( get_option( 'siteurl' ) ), '', $url );
+				$newRules[$base . 'month'] 					= 'index.php?cat=' . $cat->cat_ID . '&eventDisplay=month';
+				$newRules[$base . 'upcoming/page/(\d+)']	= 'index.php?cat=' . $cat->cat_ID . '&eventDisplay=upcoming&paged=' . $wp_rewrite->preg_index(1);
+				$newRules[$base . 'upcoming']				= 'index.php?cat=' . $cat->cat_ID . '&eventDisplay=upcoming';
+				$newRules[$base . 'past/page/(\d+)']		= 'index.php?cat=' . $cat->cat_ID . '&eventDisplay=past&paged=' . $wp_rewrite->preg_index(1);
+				$newRules[$base . 'past']					= 'index.php?cat=' . $cat->cat_ID . '&eventDisplay=past';
+				$newRules[$base . '(\d{4}-\d{2})$']			= 'index.php?cat=' . $cat->cat_ID . '&eventDisplay=month' .'&eventDate=' . $wp_rewrite->preg_index(1);
+				$newRules[$base . '?$']						= 'index.php?cat=' . $cat->cat_ID . '&eventDisplay=' . eventsGetOptionValue('viewOption','month');
+			}
 		  $wp_rewrite->rules = $newRules + $wp_rewrite->rules;
 		}
 		/**
@@ -874,10 +868,11 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 					}
 				}
 				do_action( 'sp_events_update_meta', array( $postId, $_POST ) );
-				// merge event category into this post
 				update_post_meta( $postId, '_EventCost', the_event_cost( $postId ) ); // XXX eventbrite cost field
+				// merge event category into this post
 				$cats = wp_get_object_terms($postId, 'category', array('fields' => 'ids'));
-				wp_set_post_categories( $postId, array( get_category( $category_id )->cat_ID ) + $cats );
+				$new_cats = array_merge( array( get_category( $category_id )->cat_ID ), $cats );
+				wp_set_post_categories( $postId, $new_cats );
 			}
 			if ($_POST['isEvent'] == 'no' && is_event( $postId ) ) {
 				// remove event meta tags if they exist...this post is no longer an event
@@ -1706,7 +1701,7 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'get_event_style'
 		if( !$numResults ) $numResults = get_option( 'posts_per_page', 10 );
 		global $wpdb, $wp_query, $spEvents;
 		$spEvents->setOptions();
-		$categoryId = get_cat_id( The_Events_Calendar::CATEGORYNAME );
+		$categoryId = get_query_var( 'cat' );
 		
 		$extraSelectClause ='';
 		$extraJoinEndDate ='';
@@ -1810,12 +1805,16 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'get_event_style'
 	 * @return string 
 	 */
 	function events_get_past_link() {
-		// TODO support child categories
 		global $spEvents;
+		$cat_id = get_query_var( 'cat' );
+		if( !$cat_id ) {
+			$cat_id = $spEvents->eventCategory();
+		}
+		$link = get_category_link( $cat_id );
 		if( '' == get_option('permalink_structure') || 'off' == eventsGetOptionValue('useRewriteRules','on') ) {
-			return trailingslashit( get_bloginfo('url') ) . '?cat=' . $spEvents->eventCategory() . '&eventDisplay=past';
+			return add_query_arg( array('eventDisplay'=>'past'), $link );
 		} else {
-			return get_bloginfo( 'url' ) . '/'. $spEvents->getCategoryBase() . '/' . strtolower( The_Events_Calendar::CATEGORYNAME ) . '/past/';
+			return trailingslashit( $link ) . 'past';
 		}
 	}
 	/**
@@ -1824,12 +1823,16 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'get_event_style'
 	 * @return string 
 	 */
 	function events_get_upcoming_link() {
-		// TODO support child categories
 		global $spEvents;
+		$cat_id = get_query_var( 'cat' );
+		if( !$cat_id ) {
+			$cat_id = $spEvents->eventCategory();
+		}
+		$link = get_category_link( $cat_id );
 		if( '' == get_option('permalink_structure') || 'off' == eventsGetOptionValue('useRewriteRules','on') ) {
-			return trailingslashit( get_bloginfo('url') ) . '?cat=' . $spEvents->eventCategory() . '&eventDisplay=upcoming';
+			return add_query_arg( array('eventDisplay'=>'upcoming'), $link );
 		} else {
-			return get_bloginfo( 'url' ) . '/'. $spEvents->getCategoryBase() . '/' . strtolower( The_Events_Calendar::CATEGORYNAME ) . '/upcoming/';
+			return trailingslashit( $link ) . 'upcoming';
 		}
 	}
 	/**
@@ -1838,12 +1841,16 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'get_event_style'
 	 * @return string 
 	 */
 	function events_get_next_month_link() {
-		// TODO support child categories
 		global $spEvents;
+		$cat_id = get_query_var( 'cat' );
+		if( !$cat_id ) {
+			$cat_id = $spEvents->eventCategory();
+		}
+		$link = get_category_link( $cat_id );
 		if( '' == get_option('permalink_structure') || 'off' == eventsGetOptionValue('useRewriteRules','on') ) {
-			return trailingslashit( get_bloginfo('url') ) . '?cat=' . $spEvents->eventCategory() . '&eventDate=' . $spEvents->nextMonth( $spEvents->date );
+			return add_query_arg( array('eventDate'=>$spEvents->nextMonth( $spEvents->date )), $link );
 		} else {
-			return get_bloginfo( 'url' ) . '/'. $spEvents->getCategoryBase() . '/' . strtolower( The_Events_Calendar::CATEGORYNAME ) . '/' . $spEvents->nextMonth( $spEvents->date );
+			return trailingslashit( $link ) . $spEvents->nextMonth( $spEvents->date );
 		}
 	}
 	/**
@@ -1852,12 +1859,16 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'get_event_style'
 	 * @return string
 	 */
 	function events_get_previous_month_link() {
-		// TODO support child categories
 		global $spEvents;
+		$cat_id = get_query_var( 'cat' );
+		if( !$cat_id ) {
+			$cat_id = $spEvents->eventCategory();
+		}
+		$link = get_category_link( $cat_id );
 		if( '' == get_option('permalink_structure') || 'off' == eventsGetOptionValue('useRewriteRules','on') ) {
-			return trailingslashit( get_bloginfo('url') ) . '?cat=' . $spEvents->eventCategory() . '&eventDate=' . $spEvents->previousMonth( $spEvents->date );
+			return add_query_arg( array('eventDate'=>$spEvents->previousMonth( $spEvents->date )), $link );
 		} else {
-			return get_bloginfo( 'url' ) . '/' . $spEvents->getCategoryBase() . '/' . strtolower( The_Events_Calendar::CATEGORYNAME ) . '/' . $spEvents->previousMonth( $spEvents->date );
+			return trailingslashit( $link ) . $spEvents->previousMonth( $spEvents->date );
 		}
 	}
 	/**
@@ -1866,41 +1877,53 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'get_event_style'
 	 * @return string
 	 */
 	function events_get_events_link() {
-		// TODO support child categories
 		global $spEvents;
-		if( '' == get_option('permalink_structure') || 'off' == eventsGetOptionValue('useRewriteRules','on') ) {
-			return trailingslashit( get_bloginfo('url') ) . '?cat=' . $spEvents->eventCategory(); 
-		} else {
-			return get_bloginfo( 'url' ) . '/' . $spEvents->getCategoryBase() . '/' . strtolower( The_Events_Calendar::CATEGORYNAME ) . '/'; 
+		$cat_id = get_query_var( 'cat' );
+		if( !$cat_id ) {
+			$cat_id = $spEvents->eventCategory();
 		}
+		return get_category_link( $cat_id );
 	}
 	
 	function events_get_gridview_link( ) {
-		// TODO support child categories
 		global $spEvents;
+		$cat_id = get_query_var( 'cat' );
+		if( !$cat_id ) {
+			$cat_id = $spEvents->eventCategory();
+		}
+		$link = get_category_link( $cat_id );
 		if( '' == get_option('permalink_structure') || 'off' == eventsGetOptionValue('useRewriteRules','on') ) {
-			return trailingslashit( get_bloginfo('url') ) . '?cat=' . $spEvents->eventCategory() . '&eventDisplay=month';
+			return add_query_arg( array('eventDisplay'=>'month'), $link );
 		} else {
-			return trailingslashit( get_bloginfo('url') ) . $spEvents->getCategoryBase() . '/' . strtolower( The_Events_Calendar::CATEGORYNAME ) . '/month';
+			return trailingslashit( $link ) . 'month';
 		}
 	}
 		
 	function events_get_listview_link( ) {
-		// TODO support child categories
 		global $spEvents;
+		$cat_id = get_query_var( 'cat' );
+		if( !$cat_id ) {
+			$cat_id = $spEvents->eventCategory();
+		}
+		$link = get_category_link( $cat_id );
 		if( '' == get_option('permalink_structure') || 'off' == eventsGetOptionValue('useRewriteRules','on') ) {
-			return trailingslashit( get_bloginfo('url') ) . '?cat=' . $spEvents->eventCategory() . '&eventDisplay=upcoming';
+			return add_query_arg( array('eventDisplay'=>'upcoming'), $link );
 		} else {
-			return trailingslashit( get_bloginfo('url') ) . $spEvents->getCategoryBase() . '/' . strtolower( The_Events_Calendar::CATEGORYNAME ) . '/upcoming';
+			return trailingslashit( $link ) . 'upcoming';
 		}
 	}
+	
 	function events_get_listview_past_link( ) {
-		// TODO support child categories
 		global $spEvents;
+		$cat_id = get_query_var( 'cat' );
+		if( !$cat_id ) {
+			$cat_id = $spEvents->eventCategory();
+		}
+		$link = get_category_link( $cat_id );
 		if( '' == get_option('permalink_structure') || 'off' == eventsGetOptionValue('useRewriteRules','on') ) {
-			return trailingslashit( get_bloginfo('url') ) . '?cat=' . $spEvents->eventCategory() . '&eventDisplay=past';
+			return add_query_arg( array('eventDisplay'=>'past'), $link );
 		} else {
-			return trailingslashit( get_bloginfo('url') ) . $spEvents->getCategoryBase() . '/' . strtolower( The_Events_Calendar::CATEGORYNAME ) . '/past';
+			return trailingslashit( $link ) . 'past';
 		}
 	}
 
@@ -1949,10 +1972,14 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'get_event_style'
 	 * @return string
 	 */
 	function events_get_this_month_link() {
-		// TODO support child categories
 		global $spEvents;
+		$cat_id = get_query_var( 'cat' );
+		if( !$cat_id ) {
+			$cat_id = $spEvents->eventCategory();
+		}
+		$link = get_category_link( $cat_id );
 		if ( $spEvents->displaying == "month" ) {
-			return get_bloginfo( 'url' )  . '/' . strtolower( The_Events_Calendar::CATEGORYNAME ) . '/' . $spEvents->date;
+			return trailingslashit( $link ) . $spEvents->date;
 		}
 		return false;
 	}

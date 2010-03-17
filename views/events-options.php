@@ -186,7 +186,27 @@ div.snp_settings{
 			<?php 
 			$embedGoogleMapsValue = eventsGetOptionValue('embedGoogleMaps','off');                 
 	        ?>
-
+		<tr>
+			<th scope="row"><?php _e('Display Events on Homepage',$this->pluginDomain); ?></th>
+	        <td>
+	            <fieldset>
+	                <legend class="screen-reader-text">
+	                    <span><?php _e('Display Events on Homepage',$this->pluginDomain); ?></span>
+	                </legend>
+	                <label title='Yes'>
+	                    <?php 
+	                    $displayEventsOnHomepage = eventsGetOptionValue('displayEventsOnHomepage','on'); 
+	                    ?>
+	                    <input type="radio" name="displayEventsOnHomepage" value="off" <?php checked($displayEventsOnHomepage, 'off'); ?>  /> 
+	                    <?php _e('Off',$this->pluginDomain); ?>
+	                </label> 
+	                <label title='List View'>
+                    <input type="radio" name="displayEventsOnHomepage" value="on" <?php checked($displayEventsOnHomepage, 'on'); ?>  /> 
+	                    <?php _e('On',$this->pluginDomain); ?>
+	                </label>
+	            </fieldset>
+	        </td>
+		</tr>
 
 		<tr>
 			<th scope="row"><?php _e('Embed Google Maps',$this->pluginDomain); ?></th>
