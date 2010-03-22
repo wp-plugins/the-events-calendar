@@ -154,8 +154,8 @@
 <?php do_action('sp_events_errors', $postId ); ?>
 	<p>
 		<?php _e('Is this post an event?',$this->pluginDomain); ?>&nbsp;
-		<input tabindex="2001" type='radio' name='isEvent' value='yes' <?php echo $isEventChecked; ?> />&nbsp;<b><?php _e('Yes', $this->pluginDomain); ?></b>
-		<input tabindex="2002" type='radio' name='isEvent' value='no' <?php echo $isNotEventChecked; ?> />&nbsp;<b><?php _e('No', $this->pluginDomain); ?></b>
+		<input tabindex="<?php $this->tabIndex(); ?>" type='radio' name='isEvent' value='yes' <?php echo $isEventChecked; ?> />&nbsp;<b><?php _e('Yes', $this->pluginDomain); ?></b>
+		<input tabindex="<?php $this->tabIndex(); ?>" type='radio' name='isEvent' value='no' <?php echo $isNotEventChecked; ?> />&nbsp;<b><?php _e('No', $this->pluginDomain); ?></b>
 	</p>
 </div>
 <div id='eventDetails' class="inside eventForm">
@@ -166,32 +166,32 @@
 		</tr>
 		<tr>
 			<td><?php _e('All day event?', $this->pluginDomain); ?></td>
-			<td><input tabindex="2007" type='checkbox' id='allDayCheckbox' name='EventAllDay' value='yes' <?php echo $isEventAllDay; ?> /></td>
+			<td><input tabindex="<?php $this->tabIndex(); ?>" type='checkbox' id='allDayCheckbox' name='EventAllDay' value='yes' <?php echo $isEventAllDay; ?> /></td>
 		</tr>
 		<tr>
 			<td style="width:125px;"><?php _e('Start Date / Time:',$this->pluginDomain); ?></td>
 			<td>
-				<select tabindex="2010" name='EventStartMonth'>
+				<select tabindex="<?php $this->tabIndex(); ?>" name='EventStartMonth'>
 					<?php echo $startMonthOptions; ?>
 				</select>
 				<?php foreach( $startDayOptions as $key => $val ) : ?>
-					<select id="<?php echo $key; ?>StartDays" class="eventStartDateField" tabindex="2011" name='EventStartDay'>
+					<select id="<?php echo $key; ?>StartDays" class="eventStartDateField" tabindex="<?php $this->tabIndex(); ?>" name='EventStartDay'>
 						<?php echo $val; ?>
 					</select>
 				<?php endforeach; ?>
-				<select tabindex="2012" name='EventStartYear'>
+				<select tabindex="<?php $this->tabIndex(); ?>" name='EventStartYear'>
 					<?php echo $startYearOptions; ?>
 				</select>
 				<span class='timeofdayoptions'>
 					<?php _e('@',$this->pluginDomain); ?>
-					<select tabindex="2013" name='EventStartHour'>
+					<select tabindex="<?php $this->tabIndex(); ?>" name='EventStartHour'>
 						<?php echo $startHourOptions; ?>
 					</select>
-					<select tabindex="2014" name='EventStartMinute'>
+					<select tabindex="<?php $this->tabIndex(); ?>" name='EventStartMinute'>
 						<?php echo $startMinuteOptions; ?>
 					</select>
 					<?php if ( !strstr( get_option( 'time_format', The_Events_Calendar::TIMEFORMAT ), 'H' ) ) : ?>
-						<select tabindex="2015" name='EventStartMeridian'>
+						<select tabindex="<?php $this->tabIndex(); ?>" name='EventStartMeridian'>
 							<?php echo $startMeridianOptions; ?>
 						</select>
 					<?php endif; ?>
@@ -201,27 +201,27 @@
 		<tr>
 			<td><?php _e('End Date / Time:',$this->pluginDomain); ?></td>
 			<td>
-				<select tabindex="2016" name='EventEndMonth'>
+				<select tabindex="<?php $this->tabIndex(); ?>" name='EventEndMonth'>
 					<?php echo $endMonthOptions; ?>
 				</select>
 				<?php foreach( $endDayOptions as $key => $val ) : ?>
-					<select id="<?php echo $key; ?>EndDays" class="eventEndDateField" tabindex="2017" name='EventEndDay'>
+					<select id="<?php echo $key; ?>EndDays" class="eventEndDateField" tabindex="<?php $this->tabIndex(); ?>" name='EventEndDay'>
 						<?php echo $val; ?>
 					</select>
 				<?php endforeach; ?>
-				<select tabindex="2018" name='EventEndYear'>
+				<select tabindex="<?php $this->tabIndex(); ?>" name='EventEndYear'>
 					<?php echo $endYearOptions; ?>
 				</select>
 				<span class='timeofdayoptions'>
 					<?php _e('@',$this->pluginDomain); ?>
-					<select class="spEventsInput"tabindex="2019" name='EventEndHour'>
+					<select class="spEventsInput"tabindex="<?php $this->tabIndex(); ?>" name='EventEndHour'>
 						<?php echo $endHourOptions; ?>
 					</select>
-					<select tabindex="2020" name='EventEndMinute'>
+					<select tabindex="<?php $this->tabIndex(); ?>" name='EventEndMinute'>
 						<?php echo $endMinuteOptions; ?>
 					</select>
 					<?php if ( !strstr( get_option( 'time_format', The_Events_Calendar::TIMEFORMAT ), 'H' ) ) : ?>
-						<select tabindex="2021" name='EventEndMeridian'>
+						<select tabindex="<?php $this->tabIndex(); ?>" name='EventEndMeridian'>
 							<?php echo $endMeridianOptions; ?>
 						</select>
 					<?php endif; ?>
@@ -234,13 +234,13 @@
 		<tr>
 			<td><?php _e('Venue:',$this->pluginDomain); ?></td>
 			<td>
-				<input tabindex="2022" type='text' name='EventVenue' size='25'  value='<?php echo $_EventVenue; ?>' />
+				<input tabindex="<?php $this->tabIndex(); ?>" type='text' name='EventVenue' size='25'  value='<?php echo $_EventVenue; ?>' />
 			</td>
 		</tr>
 		<tr>
 			<td><?php _e('Country:',$this->pluginDomain); ?></td>
 			<td>
-				<select tabindex="2023" name="EventCountry" id="EventCountry">
+				<select tabindex="<?php $this->tabIndex(); ?>" name="EventCountry" id="EventCountry">
 					<?php 
 					$this->constructCountries();
 				     foreach ($this->countries as $abbr => $fullname) {
@@ -256,20 +256,20 @@
 		</tr>
 		<tr>
 			<td><?php _e('Address:',$this->pluginDomain); ?></td>
-			<td><input tabindex="2024" type='text' name='EventAddress' size='25' value='<?php echo $_EventAddress; ?>' /></td>
+			<td><input tabindex="<?php $this->tabIndex(); ?>" type='text' name='EventAddress' size='25' value='<?php echo $_EventAddress; ?>' /></td>
 		</tr>
 		<tr>
 			<td><?php _e('City:',$this->pluginDomain); ?></td>
-			<td><input tabindex="2025" type='text' name='EventCity' size='25' value='<?php echo $_EventCity; ?>' /></td>
+			<td><input tabindex="<?php $this->tabIndex(); ?>" type='text' name='EventCity' size='25' value='<?php echo $_EventCity; ?>' /></td>
 		</tr>
 		<tr id="International" <?php if($_EventCountry == 'United States' || $_EventCountry == '' ){echo('class="hide"'); } ?>>
 			<td><?php _e('Province:',$this->pluginDomain); ?></td>
-			<td><input tabindex="2026" type='text' name='EventProvince' size='10' value='<?php echo $_EventProvince; ?>' /></td>
+			<td><input tabindex="<?php $this->tabIndex(); ?>" type='text' name='EventProvince' size='10' value='<?php echo $_EventProvince; ?>' /></td>
 		</tr>
 		<tr id="USA" <?php if($_EventCountry !== 'United States'){echo('class="hide"');} ?>>
 			<td><?php _e('State:',$this->pluginDomain); ?></td>
 			<td>
-				<select tabindex="2027" name="EventState">
+				<select tabindex="<?php $this->tabIndex(); ?>" name="EventState">
 				    <option value=""><?php _e('Select a State:',$this->pluginDomain); ?></option> 
 					<?php $states = array (
 						"AL" => __("Alabama", $this->pluginDomain),
@@ -337,18 +337,18 @@
 		</tr>
 		<tr>
 			<td><?php _e('Postal Code:',$this->pluginDomain); ?></td>
-			<td><input tabindex="2028" type='text' name='EventZip' size='6' value='<?php echo $_EventZip; ?>' /></td>
+			<td><input tabindex="<?php $this->tabIndex(); ?>" type='text' name='EventZip' size='6' value='<?php echo $_EventZip; ?>' /></td>
 		</tr>
 		<tr>
 			<td><?php _e('Phone:',$this->pluginDomain); ?></td>
-			<td><input tabindex="2030" type='text' name='EventPhone' size='14' value='<?php echo $_EventPhone; ?>' /></td>
+			<td><input tabindex="<?php $this->tabIndex(); ?>" type='text' name='EventPhone' size='14' value='<?php echo $_EventPhone; ?>' /></td>
 		</tr>
         <tr>
 			<td colspan="2" class="snp_sectionheader"><h4><?php _e('Event Cost', $this->pluginDomain); ?></h4></td>
 		</tr>
 		<tr>
 			<td><?php _e('Cost:',$this->pluginDomain); ?></td>
-			<td><input tabindex="2029" type='text' name='EventCost' size='6' value='<?php echo $_EventCost; ?>' /></td>
+			<td><input tabindex="<?php $this->tabIndex(); ?>" type='text' name='EventCost' size='6' value='<?php echo $_EventCost; ?>' /></td>
 		</tr>
 		<tr>
 			<td></td>

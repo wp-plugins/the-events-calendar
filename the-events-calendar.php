@@ -28,6 +28,7 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 		public $pluginDir;
 		public $pluginUrl;
 		public $pluginDomain = 'the-events-calendar';
+		private $tabIndexStart = 2000;
 
 		public $metaTags = array(
 					'_isEvent',
@@ -867,7 +868,7 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 						update_post_meta( $postId, $tag, $_POST[$htmlElement] );
 					}
 				}
-				do_action( 'sp_events_update_meta', array( $postId, $_POST ) );
+				do_action( 'sp_events_update_meta', $postId );
 				update_post_meta( $postId, '_EventCost', the_event_cost( $postId ) ); // XXX eventbrite cost field
 				// merge event category into this post
 				$cats = wp_get_object_terms($postId, 'category', array('fields' => 'ids'));
@@ -1224,6 +1225,14 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 			$dateParts = split( '-', $date );
 		    $timestamp = mktime( 0, 0, 0, $dateParts[1], 1, $dateParts[0] );
 		    return date( "F Y", $timestamp );
+		}
+		/**
+	     * echo the next tab index
+		 * @return void
+		 */
+		public function tabIndex() {
+			echo $this->tabIndexStart;
+			$this->tabIndexStart++;
 		}
 	} // end The_Events_Calendar class
 } // end if !class_exists The_Events_Calendar
