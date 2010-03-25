@@ -1256,19 +1256,8 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'get_event_style'
 	 * @return void
 	 */
 	function event_grid_view() {
-		global $spEvents;
-		global $wp_query;
-		$wp_query->set( 'eventDisplay', 'bydate' );
-		$eventPosts = get_events();
-		$monthView = events_by_month( $eventPosts, $spEvents->date );
-		list( $year, $month ) = split( '-', $spEvents->date );
-		$date = mktime(12, 0, 0, $month, 1, $year); // 1st day of month as unix stamp
-		$daysInMonth = date("t", $date);
-		$startOfWeek = get_option( 'start_of_week', 0 );
-		$rawOffset = date("w", $date) - $startOfWeek;
-		$offset = ( $rawOffset < 0 ) ? $rawOffset + 7 : $rawOffset; // month begins on day x
-		$rows = 1;
-		require( dirname( __FILE__ ) . '/views/table.php' );
+		set_query_var( 'eventDisplay', 'bydate' );
+		load_template( dirname( __FILE__ ) . '/views/table.php' );
 	}
 	/**
 	 * Maps events to days
@@ -1699,7 +1688,7 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'get_event_style'
 	 */
 	function get_events( $numResults = null ) {
 		if( !$numResults ) $numResults = get_option( 'posts_per_page', 10 );
-		global $wpdb, $wp_query, $spEvents;
+		global $wpdb, $spEvents;
 		$spEvents->setOptions();
 		$categoryId = get_query_var( 'cat' );
 		
@@ -1741,10 +1730,6 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'get_event_style'
 			ORDER BY d1.meta_value ".$spEvents->order."
 			LIMIT $numResults";
 		$return = $wpdb->get_results($eventsQuery, OBJECT);
-		if ( $return ) {
-			$wp_query->in_the_loop = true;
-			do_action('loop_start');
-		}
 		return $return;
 	}
 	/**
