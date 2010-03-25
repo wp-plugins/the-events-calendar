@@ -416,40 +416,31 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
         }
 
 		public function templateChooser() {
+			if( is_feed() ) {
+				return;
+			}
 			$this->constructDaysOfWeek();
-			if( !is_feed() ) {
-		       // list view
-		        if ( $this->in_event_category() && ( events_displaying_upcoming() || events_displaying_past() ) ) {
-		          if (file_exists(TEMPLATEPATH.'/events/list.php') ) {
-		            include (TEMPLATEPATH.'/events/list.php');
-		          }    
-		          else {
-		            include dirname( __FILE__ ) . '/views/list.php';
-		          }    
-		          exit;
-		        }    
-
-		        // grid view
-		        if ( $this->in_event_category() ) {
-		          if (file_exists(TEMPLATEPATH.'/events/gridview.php') ) {
-		            include (TEMPLATEPATH.'/events/gridview.php');
-		          }    
-		          else {
-		            include dirname( __FILE__ ) . '/views/gridview.php';
-		          }              exit;
-		        }    
-
-				// single event
-				if (is_single() && in_category( $this->eventCategory() ) ) {
-					if (file_exists(TEMPLATEPATH.'/events/single.php') ) {
-						include (TEMPLATEPATH.'/events/single.php');
-					}
-					else {
-						include trailingslashit( WP_PLUGIN_DIR ) . trailingslashit( plugin_basename( dirname( __FILE__ ) ) ) . 'views/single.php';
-					}
-					exit;
+			// list view
+			if ( $this->in_event_category() && ( events_displaying_upcoming() || events_displaying_past() ) ) {
+				if( '' == locate_template( array( 'events/list.php' ), true ) ) {
+					load_template( dirname( __FILE__ ) . '/views/list.php' );
 				}
-			} // if !is_feed()
+				exit;
+	        }    
+	        // grid view
+			if ( $this->in_event_category() ) {
+				if( '' == locate_template( array( 'events/gridview.php' ), true ) ) {
+					load_template( dirname( __FILE__ ) . '/views/gridview.php' );
+				}
+				exit;
+	        }    
+			// single event
+			if (is_single() && in_category( $this->eventCategory() ) ) {
+				if( '' == locate_template( array( 'events/single.php' ), true ) ) {
+					load_template( dirname( __FILE__ ) . '/views/single.php' );
+				}
+				exit;
+			}
 		}
 		
 		public function loadStylesAndScripts( ) {
