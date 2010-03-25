@@ -559,7 +559,6 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 			wp_schedule_event( $firstTime, 'daily', 'reschedule_event_post'); // schedule this for midnight, daily
 			$this->create_category_if_not_exists( );	
 			$this->flushRewriteRules();
-			do_action('generate_rewrite_rules');
 		}
 		/**
 		* This function is scheduled to run at midnight.  If any posts are set with EventStartDate
@@ -1228,7 +1227,7 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 	} // end The_Events_Calendar class
 } // end if !class_exists The_Events_Calendar
 
-if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'get_event_style' ) ) {
+if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'eventsGetOptionValue' ) ) {
 	global $spEvents;
 	$spEvents = new The_Events_Calendar();
 	
