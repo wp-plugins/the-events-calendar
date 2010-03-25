@@ -3,7 +3,7 @@
 	$spEvents->loadStylesAndScripts();
 	
 	get_header();
-	
+?>
 	<div id="tec-content" class="upcoming">
 		<div id='tec-events-calendar-header' class="clearfix">
 			<h2 class="tec-cal-title"><?php _e('Calendar of Events', $spEvents->pluginDomain) ?></h2>

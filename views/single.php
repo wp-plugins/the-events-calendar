@@ -1,7 +1,7 @@
 <?php 
 	The_Events_Calendar::loadStylesAndScripts();
 	get_header();
-	
+?>	
 	<div id="tec-content" class="tec-event widecolumn">
 	<?php the_post(); global $post, $spEvents; ?>
 			<div id="post-<?php the_ID() ?>" <?php post_class() ?>>
