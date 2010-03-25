@@ -1,6 +1,6 @@
 <?php 
 	The_Events_Calendar::loadStylesAndScripts();
-	include (TEMPLATEPATH.'/header.php'); ?>
+	get_header();
 	
 	<div id="tec-content" class="tec-event widecolumn">
 	<?php the_post(); global $post, $spEvents; ?>
@@ -57,4 +57,4 @@
 	</div><!-- #tec-content -->
 	
 <?php
-	include (TEMPLATEPATH.'/footer.php');
+	get_footer();

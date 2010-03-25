@@ -2,8 +2,8 @@
 	global $spEvents;
 	$spEvents->loadStylesAndScripts();
 	
-	include (TEMPLATEPATH.'/header.php'); ?>
-	
+	get_header();
+?>	
 	<div id="tec-content" class="grid">
 		<div id='tec-events-calendar-header' class="clearfix">
 			<h2 class="tec-cal-title"><?php _e('Calendar of Events', $spEvents->pluginDomain) ?></h2>
@@ -21,4 +21,4 @@
 	</div>
 
 <?php
-	include (TEMPLATEPATH.'/footer.php');
+	get_footer();

@@ -2,7 +2,7 @@
 	global $spEvents;
 	$spEvents->loadStylesAndScripts();
 	
-	include (TEMPLATEPATH.'/header.php'); ?>
+	get_header();
 	
 	<div id="tec-content" class="upcoming">
 		<div id='tec-events-calendar-header' class="clearfix">
@@ -114,4 +114,4 @@
 
 
 <?php
-include (TEMPLATEPATH.'/footer.php');
+get_footer();
