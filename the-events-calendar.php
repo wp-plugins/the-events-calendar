@@ -1341,10 +1341,9 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'eventsGetOptionV
 		$zip = get_post_meta( $postId, '_EventZip', true );
 		$country = get_post_meta($postId, '_EventCountry', true );
 		$google_url = "http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=";
-		if ( $country == "United States" && !empty( $address ) && !empty( $city ) && !empty( $state) && !empty( $zip ) ) {
+		
+		if ( !empty( $zip ) ) {
 			return $google_url . urlencode( $address . " " . $city . " " . $state . " " . $zip . " " . $country);
-		} elseif ( !empty( $country ) && !empty( $address ) && !empty( $city ) && !empty( $province ) && !empty( $zip ) ) {
-			return $google_url . urlencode( $address . " " . $city . " " . $province . " " . $zip . " " . $country);
 		}
 		return "";
 	}
@@ -1356,6 +1355,45 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'eventsGetOptionV
 	 */
 	function event_google_map_link( $postId = null ) {
 		echo get_event_google_map_link( $postId );
+	}
+	/**
+	 * @return string formatted event address
+	 */
+	function tec_get_event_address( $postId = null ) {
+		// TODO TEST WITH AND WITHOUT FEEDING IT A POSTID
+		if ( $postId === null || !is_numeric( $postId ) ) {
+			global $post;
+			$postId = $post->ID;
+		}
+		$address = '';
+		if( the_event_address( $postId ) ) $address .= the_event_address( $postId );
+		if( the_event_city( $postId ) ) {
+			if( $address ) {$address .= ', ';}
+			$address .= the_event_city( $postId );
+		}
+		if( the_event_region( $postId ) ) {
+			if( $address ) $address .= ', ';
+			$address .= the_event_region( $postId );
+		}
+		if( the_event_country( $postId ) ) {
+			if( $address ) $address .= ', ';
+			$address .= the_event_country( $postId );
+		}
+		if( the_event_zip( $postId ) ) {
+			if( $address ) $address .= ', ';
+			$address .= the_event_zip( $postId );
+		}
+		$address = str_replace(' ,', ',', $address);
+		return $address;
+	}
+	/**
+	 * Displays a formatted event address
+	 *
+	 * @param string $postId 
+	 * @return void
+	 */
+	function tec_event_address( $postId = null ) {
+		echo tec_get_event_address( $postId );
 	}
 	/**
 	 * Returns an embeded google maps for the given event

@@ -220,6 +220,9 @@ Translations
 Bugs:
 * in single.php, the Back to Events link no longer strictly goes to the grid view, but adheres to the default few option
 ** pointed out by azzatron on the forum
+* google map link is now produced with minimal information, complete address is no longer needed
+** tec_event_address() added for easy echoing of the event address
+** thanks to AntonLargiader on forum
 
 = 1.5.6 =
 

@@ -454,12 +454,6 @@
 		margin-top: -20px;
 	}
 
-	.eventForm .description_input {
-		border: 1px solid #dfdfdf;
-		width: 95%;
-		height: 45px;
-	}
-
 	#EventInfo,
 		table.eventForm {
 		width: 100%;

@@ -56,12 +56,11 @@
 		                  </tr>
 		                  <?php endif; ?>
 		                  <?php
-		                    $address = the_event_address(); $city = the_event_city(); $state = the_event_state(); $zip = the_event_zip();
-		                    if (!empty( $address ) && !empty( $city ) && !empty( $state ) && !empty( $zip ) ) :
+		                    if ( the_event_zip() ) :
 		                  ?>
 		                  <tr>
-		                    <td class="tec-event-meta-desc"><?php _e('Address:', $spEvents->pluginDomain) ?><br /><a class="gmap" href="<?php event_google_map_link() ?>" title="Click to view a Google Map" target="_blank"f><?php _e('Google Map', $this->pluginDomain ); ?></a></td>
-		                    <td class="tec-event-meta-value"><?php echo the_event_address(); ?> <br /> <?php echo the_event_city(); ?>, <?php echo the_event_state(); ?> <?php echo the_event_zip(); ?></td>
+							<td class="tec-event-meta-desc"><?php _e('Address:', $spEvents->pluginDomain); ?><br /><a class="gmap" href="<?php event_google_map_link(); ?>" title="Click to view a Google Map" target="_blank"><?php _e('Google Map', $spEvents->pluginDomain ); ?></a></td>
+							<td class="tec-event-meta-value"><?php tec_event_address( $post->ID ); ?></td>
 		                  </tr>
 		                  <?php endif; ?>
 		                  <?php
