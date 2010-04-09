@@ -215,6 +215,7 @@ Translations
 * German [Felix Bartels]
 * Brazilian Portuguese [Thiago Abdalla]
 * Dutch [Sjoerd Boerrigter]
+* Spanish [Los Jethrov]
 * Updated to Swedish Translation [Kaj Johansson]
 
 Bugs:
