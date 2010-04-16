@@ -9,6 +9,12 @@ jQuery(document).ready(function() {
 		jQuery.post( '<?php bloginfo('url'); ?>/wp-admin/admin-ajax.php', { donateHidden: true, action: 'hideDonate' }, theEventsCalendarHideDonateButton, 'json' );
 	});
 
+	function displayOptionsError() {
+		$.post('<?php bloginfo('url'); ?>/wp-admin/admin-ajax.php', { action: 'getOptionsError' }, function(error) {
+		  $('#tec-options-error').append('<h3>Error</h3><p>' + error + '</p>')
+		});
+	}
+
 });
 </script>
 <style type="text/css">
@@ -67,6 +73,23 @@ div.snp_settings{
 </style>
 <div class="snp_settings wrap">
 <h2><?php _e('The Events Calendar Settings',$this->pluginDomain); ?></h2>
+<div id="tec-options-error" class="tec-events-error error"></div>
+<?php
+try {
+	do_action( 'sp_events_options_top' );
+	if ( !$this->optionsExceptionThrown ) {
+		$allOptions = $this->getOptions();
+		$allOptions['error'] = "";
+		$this->saveOptions( $allOptions );
+	}
+} catch( TEC_WP_Options_Exception $e ) {
+	$this->optionsExceptionThrown = true;
+	$allOptions = $this->getOptions();
+	$allOptions['error'] = $e->getMessage();
+	$this->saveOptions( $allOptions );
+	$e->displayMessage();
+}
+?>
 <div class="form">
 	<h3><?php _e('Need a hand?',$this->pluginDomain); ?></h3>
 	<p><?php _e('If you\'re stuck on these options, please <a href="http://wordpress.org/extend/plugins/the-events-calendar/">check out the documentation</a>. If you\'re still wondering what\'s going on, be sure to stop by the support <a href="http://wordpress.org/tags/the-events-calendar?forum_id=10">forum</a> and ask for help. The open source community is full of kind folks who are happy to help.',$this->pluginDomain); ?></p>
@@ -292,8 +315,22 @@ div.snp_settings{
 		            </fieldset>
 		        </td>
 			</tr>
-
-	    <?php do_action( 'sp_events_options_bottom' ); ?>
+	    <?php
+		try {
+			do_action( 'sp_events_options_bottom' );
+			if ( !$this->optionsExceptionThrown ) {
+				$allOptions = $this->getOptions();
+				$allOptions['error'] = "";
+				$this->saveOptions( $allOptions );
+			}
+		} catch( TEC_WP_Options_Exception $e ) {
+			$this->optionsExceptionThrown = true;
+			$allOptions = $this->getOptions();
+			$allOptions['error'] = $e->getMessage();
+			$this->saveOptions( $allOptions );
+			$e->displayMessage();
+		}
+		?>
 		<tr>
 	    	<td>
 	    		<input id="saveEventsCalendarOptions" class="button-primary" type="submit" name="saveEventsCalendarOptions" value="<?php _e('Save Changes', $this->pluginDomain); ?>" />

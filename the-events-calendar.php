@@ -2,7 +2,7 @@
 /*
  Plugin Name:  The Events Calendar
  Plugin URI: http://wordpress.org/extend/plugins/the-events-calendar/
- Description:  The Events Calendar plugin enables you to rapidly create and manage events using the post editor.  Features include optional Eventbrite integration, Google Maps integration as well as default calendar grid and list templates for streamlined one click installation.
+ Description:  The Events Calendar plugin enables you to rapidly create and manage events using the post editor. Features include optional Eventbrite integration, Google Maps integration as well as default calendar grid and list templates for streamlined one click installation.
  Version: 1.5.6
  Author: Shane & Peter, Inc.
  Author URI: http://www.shaneandpeter.com/
@@ -12,18 +12,19 @@
 if ( !class_exists( 'The_Events_Calendar' ) ) {
 
 	class The_Events_Calendar {
+		const EVENTSERROROPT		= '_tec_events_errors';
 		const CATEGORYNAME	 		= 'Events';
 		const OPTIONNAME 			= 'sp_events_calendar_options';
 		// default formats, they are overridden by WP options or by arguments to date methods
 		const DATEONLYFORMAT 		= 'F j, Y';
 		const TIMEFORMAT			= 'g:i A';
-		
 		const DBDATEFORMAT	 		= 'Y-m-d';
 		const DBDATETIMEFORMAT 		= 'Y-m-d g:i A';
 	
 		private $defaultOptions = '';
 		public $latestOptions;
-		        
+		private $postExceptionThrown = false;
+		private $optionsExceptionThrown = false;
 		public $displaying;
 		public $pluginDir;
 		public $pluginUrl;
@@ -44,10 +45,10 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 					'_EventZip',
 					'_EventCost',
 					'_EventPhone',
+					self::EVENTSERROROPT
 				);
 				
 		public $currentPostTimestamp;
-		
 		public $daysOfWeekShort;
 		public $daysOfWeek;
 		private function constructDaysOfWeek() {
@@ -310,7 +311,6 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 						$this->countries = $countries;
 					}
 		}
-
 		/**
 		 * Initializes plugin variables and sets up wordpress hooks/actions.
 		 *
@@ -324,7 +324,7 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 			register_activation_hook( __FILE__, 	array( &$this, 'on_activate' ) );
 			register_deactivation_hook( __FILE__, 	array( &$this, 'on_deactivate' ) );
 			add_action( 'reschedule_event_post', array( $this, 'reschedule') );
-			add_action( 'init',				array( $this, 'loadPluginTextDomain' ) );
+			add_action( 'init',				array( $this, 'loadDomainStylesScripts' ) );
 			add_action( 'sp-events-save-more-options', array( $this, 'flushRewriteRules' ) );
 			add_action( 'pre_get_posts',	array( $this, 'setOptions' ) );
 			add_action( 'admin_menu', 		array( $this, 'addOptionsPage' ) );
@@ -342,6 +342,8 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 			add_filter( 'post_limits',		array( $this, 'events_search_limits' ) );
 			add_action( 'template_redirect',		array($this, 'templateChooser' ) );
 			add_action( 'pre_get_posts',		array( $this, 'events_home_cat_excluder' ) );
+			add_action( 'sp_events_post_errors', array( 'TEC_Post_Exception', 'displayMessage' ) );
+			add_action( 'sp_events_options_top', array( 'TEC_WP_Options_Exception', 'displayMessage') );
 		}
 		
 		public function addOptionsPage() {
@@ -373,11 +375,15 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 				$options['resetEventPostDate'] = $_POST['resetEventPostDate'];
 				$options['useRewriteRules'] = $_POST['useRewriteRules'];
 				
-				do_action( 'sp-events-save-more-options' );
-				
+				try {
+					do_action( 'sp-events-save-more-options' );
+					if ( !$this->optionsExceptionThrown ) $options['error'] = "";
+				} catch( TEC_WP_Options_Exception $e ) {
+					$this->optionsExceptionThrown = true;
+					$options['error'] = $e->getMessage();
+				}
 				$this->saveOptions($options);
 				$this->latestOptions = $options;
-			
 			} // end if
 		}
 		
@@ -387,7 +393,6 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 				$options['donateHidden'] = true;
 				
 				$this->saveOptions($options);
-			
 			} // end if
 		}
 		
@@ -399,6 +404,11 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
             }
             return $this->defaultOptions;
         }
+
+		public function getSingleOption( $optionKey ) {
+			$options = $this->getOptions();
+			return $options[$optionKey];
+		}
 		        
         private function saveOptions($options) {
             if (!is_array($options)) {
@@ -443,14 +453,6 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 			}
 		}
 		
-		public function loadStylesAndScripts( ) {
-			$eventsURL = trailingslashit( WP_PLUGIN_URL ) . trailingslashit( plugin_basename( dirname( __FILE__ ) ) ) . 'resources/';
-			
-			wp_enqueue_script('sp-events-calendar-script', $eventsURL.'events.js', array('jquery') );
-			wp_enqueue_style('sp-events-calendar-style', $eventsURL.'events.css');
-			
-		}
-		
 		public function truncate($text, $excerpt_length = 44) {
 
 			$text = strip_shortcodes( $text );
@@ -470,8 +472,11 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 			return $text;
 		}
 		
-		public function loadPluginTextDomain() {
+		public function loadDomainStylesScripts() {
 			load_plugin_textdomain( $this->pluginDomain, false, basename(dirname(__FILE__)) . '/lang/');
+			$eventsURL = trailingslashit( WP_PLUGIN_URL ) . trailingslashit( plugin_basename( dirname( __FILE__ ) ) ) . 'resources/';
+			wp_enqueue_script('sp-events-calendar-script', $eventsURL.'events.js', array('jquery') );
+			wp_enqueue_style('sp-events-calendar-style', $eventsURL.'events.css');
 		}
 	
 		/**
@@ -619,7 +624,7 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 			return $join;
 		}
 		/**
-		 * where filter for standard wordpress templates.  Inspects the event options and filters
+		 * where filter for standard wordpress templates. Inspects the event options and filters
 		 * event posts for upcoming or past event loops
 		 *
 		 * @param string where clause
@@ -701,7 +706,6 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 			global $wpdb;
 			$orderby = ' eventStart.meta_value '.$this->order;
 			return $orderby;
-
 		}
 		/**
 		 * limit filter for standard wordpress templates.  Adds limit clauses for pagination 
@@ -846,19 +850,29 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 				// give add-on plugins a chance to cancel this meta update
 				try {
 					do_action( 'sp_events_event_save', $postId );
-				} catch ( Exception $e) {
-					// there was an error with a sub-plugin saving the post details
-					// make sure the error is saved somehow and displayed
-					update_post_meta( $postId, Eventbrite_for_The_Events_Calendar::EVENTBRITEERROPT, trim( $e->getMessage() ) );
-				}
+					if( !$this->postExceptionThrown ) delete_post_meta( $postId, self::EVENTSERROROPT );
+				} catch ( TEC_Post_Exception $e ) {
+					$this->postExceptionThrown = true;
+					update_post_meta( $postId, self::EVENTSERROROPT, trim( $e->getMessage() ) );
+				}	
+				
 				//update meta fields		
 				foreach ( $this->metaTags as $tag ) {
 					$htmlElement = ltrim( $tag, '_' );
-					if ( isset( $_POST[$htmlElement] ) ) {
-						update_post_meta( $postId, $tag, $_POST[$htmlElement] );
+					if ( $tag != self::EVENTSERROROPT ) {
+						if ( isset( $_POST[$htmlElement] ) ) {
+							update_post_meta( $postId, $tag, $_POST[$htmlElement] );
+						}
 					}
 				}
-				do_action( 'sp_events_update_meta', $postId );
+				try {
+					do_action( 'sp_events_update_meta', $postId );
+					if( !$this->postExceptionThrown ) delete_post_meta( $postId, self::EVENTSERROROPT );
+				} catch( TEC_Post_Exception $e ) {
+					$this->postExceptionThrown = true;
+					update_post_meta( $postId, self::EVENTSERROROPT, trim( $e->getMessage() ) );
+				}
+
 				update_post_meta( $postId, '_EventCost', the_event_cost( $postId ) ); // XXX eventbrite cost field
 				// merge event category into this post
 				$cats = wp_get_object_terms($postId, 'category', array('fields' => 'ids'));
@@ -884,7 +898,14 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 					}
 				}
 				wp_set_post_categories( $postId, $non_event_cats );
-				do_action( 'sp_events_event_clear', $postId );
+				
+				try {
+					do_action( 'sp_events_event_clear', $postId );
+					if( !$this->postExceptionThrown ) delete_post_meta( $postId, self::EVENTSERROROPT );
+				} catch( TEC_Post_Exception $e ) {
+					$this->postExceptionThrown = true;
+					update_post_meta( $postId, self::EVENTSERROROPT, trim( $e->getMessage() ) );
+				}
 			}
 		}
 		
@@ -1224,19 +1245,119 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 			echo $this->tabIndexStart;
 			$this->tabIndexStart++;
 		}
+		/**
+		 * get an array of all events, regardless of the current query terms
+		 *
+		 * @param string field to order by (default is start date);
+		 * @param string sort order (default is ASC)
+		 * @return array of events
+		 */
+		public function get_all_events( $orderby = 'd1.meta_value', $sort = 'DESC', $limit = 100 ) {
+			global $wpdb;
+			$categoryId = get_cat_id( The_Events_Calendar::CATEGORYNAME );
+			$eventsQuery = "
+				SELECT $wpdb->posts.*, d1.meta_value as EventStartDate
+			 	FROM $wpdb->posts 
+				LEFT JOIN $wpdb->postmeta as d1 ON($wpdb->posts.ID = d1.post_id)
+				LEFT JOIN $wpdb->term_relationships ON($wpdb->posts.ID = $wpdb->term_relationships.object_id)
+				LEFT JOIN $wpdb->term_taxonomy ON($wpdb->term_relationships.term_taxonomy_id = $wpdb->term_taxonomy.term_taxonomy_id)
+				WHERE $wpdb->term_taxonomy.term_id = $categoryId
+				AND $wpdb->term_taxonomy.taxonomy = 'category'
+				AND $wpdb->posts.post_status = 'publish'
+				AND d1.meta_key = '_EventStartDate'
+				ORDER BY $orderby $sort
+				LIMIT $limit
+				";
+			return $wpdb->get_results($eventsQuery, OBJECT);
+		}
+		/**
+		 * build a valid ical feed from events posts
+		 *
+		 * @param string option key
+		 * @param string default return value (optional)
+		 * @return string option value or default
+		 */
+		public function iCalFeed() {
+			//TODO, CALL FROM AN ACTION HOOK, MAYBE, ACTUALLY, DECIDE HOW THIS WILL BE CALLED, HOW USER WILL USE IT
+			
+			if ( isset($_GET["debug"]) ) define("DEBUG", true);
+			
+		    //$getstring = $_GET['ical'];
+		
+			$offset = get_option("gmt_offset"); // in other plugin, this is called from a url arg, but i think we want it automatic, correct?
+			
+			//$eventPosts = $this->get_all_events();
+			//TEST
+			$categoryId = get_cat_id( The_Events_Calendar::CATEGORYNAME );
+			$eventPosts = get_posts('category='.$categoryId);
+			
+			//$outputEvents = "";
+			$outputEvents = array();
+			
+			foreach( $eventPosts as $eventPost ) {
+				$endDate = get_post_meta( $eventPost->ID, "_EventEndDate", true);
+				// convert 2010-04-08 00:00:00 to 20100408T000000Z or YYYYMMDDTHHMMSSZ
+				$startDate = str_replace( array("-", " ", ":") , array("", "T", "") , get_post_meta( $eventPost->ID, "_EventStartDate", true) ) . "Z";
+				$endDate = str_replace( array("-", " ", ":") , array("", "T", "") , get_post_meta( $eventPost->ID, "_EventStartDate", true) ) . "Z";
+				//TEST
+				//array_push($outputEvents,$convertedStartDate);
+			}
+			
+			//get_post_meta($post_id, $key, $single);
+			return $outputEvents;
+		}
+		public function refreshOnce() {
+			
+		}
 	} // end The_Events_Calendar class
 } // end if !class_exists The_Events_Calendar
+
+/**
+ * Exception handling for third-party plugins dealing with the post edit view.
+ */
+if( !class_exists( 'TEC_Post_Exception' ) ) {
+	class TEC_Post_Exception extends Exception {
+		/**
+		* Display the exception message in the div #tec-post-error
+		* @param int $post->ID
+		*/
+		public function displayMessage( $postId ) {
+			if( $error = get_post_meta( $postId, The_Events_Calendar::EVENTSERROROPT, true ) ) : ?>
+				<script type="text/javascript">jQuery('#tec-post-error').append('<h3>Error</h3><p>' + '<?php echo $error; ?>' + '</p>').show();</script>
+			<?php endif;
+		}
+	} // end TEC_Post_Exception
+} // end if !class_exists TEC_Post_Exception
+
+/**
+ * Exception handling for third-party plugins dealing with the Wordpress options view.
+ */
+if( !class_exists( 'TEC_WP_Options_Exception' ) ) {
+	class TEC_WP_Options_Exception extends Exception {
+		/**
+		* Display the exception message in the div #tec-options-error
+		*/
+		public function displayMessage() {
+			$eventsOptions = get_option(The_Events_Calendar::OPTIONNAME, array() );
+			if( $eventsOptions['error'] ) : ?>
+				<script type="text/javascript">jQuery('#tec-options-error').append('<h3>Error</h3><p>' + '<?php echo $eventsOptions['error']; ?>' + '</p>').show();</script>
+			<?php endif;
+	    }
+	} // end TEC_WP_Options_Exception
+} // end if !class_exists TEC_WP_Options_Exception
 
 if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'eventsGetOptionValue' ) ) {
 	global $spEvents;
 	$spEvents = new The_Events_Calendar();
-	
+	//TEST, A TEMPLATE TAG FOR TESTING iCalFeed()
+	function tec_test_i_cal_feed() {
+		$spEvents = new The_Events_Calendar();
+		$wholeShebang = $spEvents->iCalFeed();
+		var_dump( $wholeShebang );
+	}
 	/**
 	 * retrieve specific key from options array, optionally provide a default return value
 	 *
-	 * @param string option key
-	 * @param string default return value (optional)
-	 * @return string option value or default
 	 */
 	function eventsGetOptionValue($optionName, $default = '') {
 		global $spEvents;
@@ -1248,7 +1369,6 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'eventsGetOptionV
 			return ( $options[$optionName] ) ? $options[$optionName] : $default;
 		}
 	}
-	
 	/**
 	 * Output function: Prints the events calendar 'grid view'
 	 *
@@ -1360,7 +1480,6 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'eventsGetOptionV
 	 * @return string formatted event address
 	 */
 	function tec_get_event_address( $postId = null ) {
-		// TODO TEST WITH AND WITHOUT FEEDING IT A POSTID
 		if ( $postId === null || !is_numeric( $postId ) ) {
 			global $post;
 			$postId = $post->ID;
@@ -1776,23 +1895,9 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'eventsGetOptionV
 	 * @param string sort order (default is ASC)
 	 * @return array of events
 	 */
-	function get_all_events( $orderby = 'd1.meta_value', $sort = 'DESC', $limit = 100 ) {
-		global $wpdb;
-		$categoryId = get_cat_id( The_Events_Calendar::CATEGORYNAME );
-		$eventsQuery = "
-			SELECT $wpdb->posts.*, d1.meta_value as EventStartDate
-		 	FROM $wpdb->posts 
-			LEFT JOIN $wpdb->postmeta as d1 ON($wpdb->posts.ID = d1.post_id)
-			LEFT JOIN $wpdb->term_relationships ON($wpdb->posts.ID = $wpdb->term_relationships.object_id)
-			LEFT JOIN $wpdb->term_taxonomy ON($wpdb->term_relationships.term_taxonomy_id = $wpdb->term_taxonomy.term_taxonomy_id)
-			WHERE $wpdb->term_taxonomy.term_id = $categoryId
-			AND $wpdb->term_taxonomy.taxonomy = 'category'
-			AND $wpdb->posts.post_status = 'publish'
-			AND d1.meta_key = '_EventStartDate'
-			ORDER BY $orderby $sort
-			LIMIT $limit
-			";
-		return $wpdb->get_results($eventsQuery, OBJECT);
+	function tec_get_all_events( $orderby = 'd1.meta_value', $sort = 'DESC', $limit = 100 ) {
+		//TODO, TEST THIS FUNCTION
+		return $spEvents->get_all_events( $orderby, $sort, $limit );
 	}
 	/**
 	 * Returns true if the query is set for past events, false otherwise

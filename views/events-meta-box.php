@@ -151,7 +151,17 @@
 	<?php endif; ?>
 </style>
 <div id="eventIntro">
-<?php do_action('sp_events_errors', $postId ); ?>
+<div id="tec-post-error" class="tec-events-error error"></div>
+<?php
+try {
+	do_action('sp_events_post_errors', $postId );
+	if( !$this->postExceptionThrown ) delete_post_meta( $postId, self::EVENTSERROROPT );
+} catch ( TEC_Post_Exception $e) {
+	$this->postExceptionThrown = true;
+	update_post_meta( $postId, self::EVENTSERROROPT, trim( $e->getMessage() ) );
+	$e->displayMessage();
+}
+?>
 	<p>
 		<?php _e('Is this post an event?',$this->pluginDomain); ?>&nbsp;
 		<input tabindex="<?php $this->tabIndex(); ?>" type='radio' name='isEvent' value='yes' <?php echo $isEventChecked; ?> />&nbsp;<b><?php _e('Yes', $this->pluginDomain); ?></b>
@@ -159,7 +169,17 @@
 	</p>
 </div>
 <div id='eventDetails' class="inside eventForm">
-	<?php do_action('sp_events_detail_top', $postId ); ?>
+	<?php
+	try {
+		do_action('sp_events_detail_top', $postId );
+		if( !$this->postExceptionThrown ) delete_post_meta( $postId, self::EVENTSERROROPT );
+	} catch ( TEC_Post_Exception $e) {
+		$this->postExceptionThrown = true;
+		update_post_meta( $postId, self::EVENTSERROROPT, trim( $e->getMessage() ) );
+		$e->displayMessage();
+	}
+	
+	?>
 	<table cellspacing="0" cellpadding="0" id="EventInfo">
 		<tr>
 			<td colspan="2" class="snp_sectionheader"><h4 class="event-time"><?php _e('Event Time &amp; Date', $this->pluginDomain); ?></h4></td>
@@ -368,8 +388,16 @@
 		
 	</table>
 	</div>
-	
-	<?php do_action( 'sp_events_above_donate', $postId ); ?>
+	<?php
+	try {
+		do_action( 'sp_events_above_donate', $postId );
+		if( !$this->postExceptionThrown ) delete_post_meta( $postId, self::EVENTSERROROPT );
+	} catch ( TEC_Post_Exception $e) {
+		$this->postExceptionThrown = true;
+		update_post_meta( $postId, self::EVENTSERROROPT, trim( $e->getMessage() ) );
+		$e->displayMessage();
+	}	
+	?>
 	<div id="mainDonateRow" class="eventForm">
 			<?php _e('<h4>If You Like This Plugin - Help Support It</h4><p>We spend a lot of time and effort building robust plugins and we love to share them with the community. If you use this plugin consider making a donation to help support its\' continued development. You may remove this message on the <a href="/wp-admin/options-general.php?page=the-events-calendar.php">settings page</a>.</p>', $this->pluginDomain); ?>
 				<div id="snp_thanks">
@@ -384,7 +412,6 @@
 				</div>
 		<div style="clear:both;"></div>
 	</div><!-- end mainDonateRow -->
-	
 	<style>
 	#eventDetails h4,
 		#EventBriteDetailDiv h4 {
@@ -392,39 +419,32 @@
 		border-bottom: 1px solid #e5e5e5;
 		padding-bottom: 6px;
 	}
-
 	.eventForm td {
 		padding-bottom: 10px !important;
 		padding-top: 0 !important;
 	}
-
 	.eventForm .snp_sectionheader {
 		padding-bottom: 5px !important;
 	}
-
 	#snp_thanks {
 		float: left;
 		width: 200px;
 		margin: 5px 0 0 0;
 	}
-
 	.snp_brand {
 		font-weight: normal;
 		margin: 8px 0;
 		font-family: Georgia !important;
 		font-size: 17px !important;
 	}
-
 	.eventForm p {
 		margin: 0 0 10px 0!important;
 	}
-
 	#eventDetails small,
 		#EventBriteDetailDiv small {
 		color: #a3a3a3;
 		font-size: 10px;
 	}
-
 	#eventBriteTicketing,
 		#mainDonateRow {
 		background: url(<?php echo WP_PLUGIN_URL . '/the-events-calendar/resources/images/bg_fade.png';
@@ -442,26 +462,31 @@
 		border-radius: 3px;
 		margin: -11px 6px 0;
 	}
-
 	#eventBriteTicketing h2 {
 		background: url(<?php echo WP_PLUGIN_URL . '/the-events-calendar/resources/images/logo_eventbrite.png';
 		?>) no-repeat top right;
 		height: 57px;
 		margin: 0;
 	}
-
 	.eventForm {
 		margin-top: -20px;
 	}
-
 	#EventInfo,
 		table.eventForm {
 		width: 100%;
 	}
-
 	td.snp_message {
 		padding-bottom: 10px !important;
 	}
 	</style>
 </div><!--//eventDetails-->
-<?php do_action( 'sp_events_details_bottom', $postId ); ?>
+<?php
+try {
+	do_action( 'sp_events_details_bottom', $postId );
+	if( !$this->postExceptionThrown ) delete_post_meta( $postId, self::EVENTSERROROPT );
+} catch ( TEC_Post_Exception $e) {
+	$this->postExceptionThrown = true;
+	update_post_meta( $postId, self::EVENTSERROROPT, trim( $e->getMessage() ) );
+	$e->displayMessage();
+}
+?>
