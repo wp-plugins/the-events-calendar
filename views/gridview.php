@@ -1,6 +1,6 @@
 <?php
 	global $spEvents;
-	$spEvents->loadStylesAndScripts();
+	$spEvents->loadDomainStylesScripts();
 	
 	get_header();
 ?>	

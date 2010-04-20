@@ -1246,31 +1246,6 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 			$this->tabIndexStart++;
 		}
 		/**
-		 * get an array of all events, regardless of the current query terms
-		 *
-		 * @param string field to order by (default is start date);
-		 * @param string sort order (default is ASC)
-		 * @return array of events
-		 */
-		public function get_all_events( $orderby = 'd1.meta_value', $sort = 'DESC', $limit = 100 ) {
-			global $wpdb;
-			$categoryId = get_cat_id( The_Events_Calendar::CATEGORYNAME );
-			$eventsQuery = "
-				SELECT $wpdb->posts.*, d1.meta_value as EventStartDate
-			 	FROM $wpdb->posts 
-				LEFT JOIN $wpdb->postmeta as d1 ON($wpdb->posts.ID = d1.post_id)
-				LEFT JOIN $wpdb->term_relationships ON($wpdb->posts.ID = $wpdb->term_relationships.object_id)
-				LEFT JOIN $wpdb->term_taxonomy ON($wpdb->term_relationships.term_taxonomy_id = $wpdb->term_taxonomy.term_taxonomy_id)
-				WHERE $wpdb->term_taxonomy.term_id = $categoryId
-				AND $wpdb->term_taxonomy.taxonomy = 'category'
-				AND $wpdb->posts.post_status = 'publish'
-				AND d1.meta_key = '_EventStartDate'
-				ORDER BY $orderby $sort
-				LIMIT $limit
-				";
-			return $wpdb->get_results($eventsQuery, OBJECT);
-		}
-		/**
 		 * build a valid ical feed from events posts
 		 *
 		 * @param string option key
@@ -1279,35 +1254,99 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 		 */
 		public function iCalFeed() {
 			//TODO, CALL FROM AN ACTION HOOK, MAYBE, ACTUALLY, DECIDE HOW THIS WILL BE CALLED, HOW USER WILL USE IT
-			
 			if ( isset($_GET["debug"]) ) define("DEBUG", true);
 			
 		    //$getstring = $_GET['ical'];
 		
 			$offset = get_option("gmt_offset"); // in other plugin, this is called from a url arg, but i think we want it automatic, correct?
 			
-			//$eventPosts = $this->get_all_events();
+			$timezone = ( isset( $_GET['timezone'] ) ) ? $_GET['timezone'] : "America/Chicago";
+			$timezoneOffsetStandard = ( isset( $_GET['timezone_offset_standard'] ) ) ? $_GET['timezone_offset_standard'] : "-0600";
+			$timezoneOffsetDaylight = ( isset( $_GET['timezone_offset_daylight'] ) ) ? $_GET['timezone_offset_daylight'] : "-0500";
+			$timezoneNameStandard = ( isset( $_GET['timezone_name_standard'] ) ) ? $_GET['timezone_name_standard'] : "CST";
+			$timezoneNameDaylight = ( isset( $_GET['timezone_name_daylight'] ) ) ? $_GET['timezone_name_daylight'] : "CDT";
+			
+		
 			//TEST
 			$categoryId = get_cat_id( The_Events_Calendar::CATEGORYNAME );
 			$eventPosts = get_posts('category='.$categoryId);
 			
-			//$outputEvents = "";
-			$outputEvents = array();
-			
+			$outputEvents = "";
+			$outputEventsTestArray = array(); //TEST, array output for testing
+			$blogHome = get_bloginfo('home');
+			$blogName = get_bloginfo('name');
 			foreach( $eventPosts as $eventPost ) {
-				$endDate = get_post_meta( $eventPost->ID, "_EventEndDate", true);
+				//TEST, $eventPost ref
+				error_log("eventPost Array: ".print_r($eventPost,true));
+				error_log("eventPost meta: ".print_r( get_post_custom( $eventPost->ID ),true ) );
+				// Gather all the info that the example plugin gathers
 				// convert 2010-04-08 00:00:00 to 20100408T000000Z or YYYYMMDDTHHMMSSZ
 				$startDate = str_replace( array("-", " ", ":") , array("", "T", "") , get_post_meta( $eventPost->ID, "_EventStartDate", true) ) . "Z";
-				$endDate = str_replace( array("-", " ", ":") , array("", "T", "") , get_post_meta( $eventPost->ID, "_EventStartDate", true) ) . "Z";
-				//TEST
-				//array_push($outputEvents,$convertedStartDate);
+				$endDate = str_replace( array("-", " ", ":") , array("", "T", "") , get_post_meta( $eventPost->ID, "_EventEndDate", true) ) . "Z";
+				$timestamp = date("Ymd\THis", time()) . "Z";
+				$uid = $eventPost->ID . "@" . $blogHome;
+				$summary = $eventPost->post_title;
+				$description = preg_replace("/[\n\t\r]/", "\n", strip_tags( $eventPost->post_content ) );
+				// add fields to iCal output
+				$outputEvents .= "BEGIN:VEVENT\n";
+				$outputEvents .= "DTSTART:" . $startDate . "\n";
+				$outputEvents .= "DTEND:" . $endDate . "\n";
+				$outputEvents .= "DTSTAMP:" . $timestamp . "\n";
+				$outputEvents .= "CREATED:" . $timestamp . "\n";
+				$outputEvents .= "LAST-MODIFIED:".$timestamp."\n";
+		        $outputEvents .= "UID:" . $uid . "\n"; //
+		        $outputEvents .= "SUMMARY:" . $summary . "\n";
+		        $outputEvents .= "DESCRIPTION:" .  $description . "\n"; // evaluate/test this description output. it differs from the example, but i think the example is bunk
+		        $outputEvents .= "END:VEVENT\n";
+		
+				//TEST, the array output is a test, this later goes into the iCal field format and output somehow
+				array_push($outputEventsTestArray,"**************************");
+				array_push($outputEventsTestArray,$startDate);
+				array_push($outputEventsTestArray,$endDate);
+				array_push($outputEventsTestArray,$timestamp);
+				array_push($outputEventsTestArray,$uid);
+				array_push($outputEventsTestArray,$summary);
+				array_push($outputEventsTestArray,$description);
 			}
+		
+		    if (!defined('DEBUG')) {
+		        header('Content-type: text/calendar');
+		        header('Content-Disposition: attachment; filename="iCal-The_Events_Calendar.ics"');
+		    }
+		
+			$content = "BEGIN:VCALENDAR\n";
+			$content .= "PRODID:-//" . $blogName . "//NONSGML v1.0//EN\n";
+			$content .= "VERSION:2.0\n";
+			$content .= "CALSCALE:GREGORIAN\n";
+			$content .= "METHOD:PUBLISH\n";
+			$content .= "X-WR-CALNAME:" . $blogName . "\n";
+			$content .= "X-ORIGINAL-URL:" . $blogHome . "\n";
+			$content .= "X-WR-CALDESC:Events for " . $blogName . "\n";
+			$content .= "X-WR-TIMEZONE:" . $timezone . "\n";
+			$content .= "BEGIN:VTIMEZONE\n";
+			$content .= "TZID:". $timezone . "\n";
+			$content .= "X-LIC-LOCATION:" . $timezone . "\n";
+			$content .= "BEGIN:STANDARD\n";
+			$content .= "DTSTART:19700308T020000\n";
+			$content .= "TZOFFSETFROM:". $timezoneOffsetStandard . "\n";
+			$content .= "TZOFFSETTO:" . $timezoneOffsetDaylight . "\n";
+			$content .= "RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU\n";
+			$content .= "TZNAME:" . $timezoneNameStandard . "\n";
+			$content .= "END:STANDARD\n";
+			$content .= "BEGIN:DAYLIGHT\n";
+			$content .= "TZOFFSETFROM:". $timezoneOffsetDaylight . "\n";
+			$content .= "TZOFFSETTO:" . $timezoneOffsetStandard . "\n";
+			$content .= "TZNAME:". $timezoneNameDaylight . "\n";
+			$content .="DTSTART:19701101T020000\n";
+			$content .="RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU\n";
+			$content .= "END:DAYLIGHT\n";
+			$content .= "END:VTIMEZONE\n";
+
+			$content .= $outputEvents;
+			$content .= "END:VCALENDAR";
 			
 			//get_post_meta($post_id, $key, $single);
-			return $outputEvents;
-		}
-		public function refreshOnce() {
-			
+			return $outputEventsTestArray;
 		}
 	} // end The_Events_Calendar class
 } // end if !class_exists The_Events_Calendar
@@ -1353,7 +1392,7 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'eventsGetOptionV
 	function tec_test_i_cal_feed() {
 		$spEvents = new The_Events_Calendar();
 		$wholeShebang = $spEvents->iCalFeed();
-		var_dump( $wholeShebang );
+		error_log( print_r($wholeShebang,true) );
 	}
 	/**
 	 * retrieve specific key from options array, optionally provide a default return value
@@ -1887,17 +1926,6 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'eventsGetOptionV
 			LIMIT $numResults";
 		$return = $wpdb->get_results($eventsQuery, OBJECT);
 		return $return;
-	}
-	/**
-	 * template tag to get an array of all events, regardless of the current query terms
-	 *
-	 * @param string field to order by (default is start date);
-	 * @param string sort order (default is ASC)
-	 * @return array of events
-	 */
-	function tec_get_all_events( $orderby = 'd1.meta_value', $sort = 'DESC', $limit = 100 ) {
-		//TODO, TEST THIS FUNCTION
-		return $spEvents->get_all_events( $orderby, $sort, $limit );
 	}
 	/**
 	 * Returns true if the query is set for past events, false otherwise
