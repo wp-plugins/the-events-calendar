@@ -479,7 +479,7 @@ try {
 		padding-bottom: 10px !important;
 	}
 	</style>
-</div><!--//eventDetails-->
+
 <?php
 try {
 	do_action( 'sp_events_details_bottom', $postId );
