@@ -1467,20 +1467,14 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'eventsGetOptionV
 			global $post;
 			$postId = $post->ID;
 		}
-		if ( !is_event( $postId ) ) {
-			return false;
+		if ( !is_event( $postId ) ) return false;
+		$locationMetaSuffixes = array( 'Address', 'City', 'State', 'Province', 'Zip', 'Country' );
+		$toUrlEncode = "";
+		foreach( $locationMetaSuffixes as $val ) {
+			$metaVal = get_post_meta( $postId, '_Event' . $val, true );
+			if( $metaVal ) $toUrlEncode .= $metaVal . " ";
 		}
-		$address = get_post_meta( $postId, '_EventAddress', true );
-		$city = get_post_meta( $postId, '_EventCity', true );
-		$state = get_post_meta( $postId, '_EventState', true );
-		$province = get_post_meta($postId, '_EventProvince', true );
-		$zip = get_post_meta( $postId, '_EventZip', true );
-		$country = get_post_meta($postId, '_EventCountry', true );
-		$google_url = "http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=";
-		
-		if ( !empty( $zip ) ) {
-			return $google_url . urlencode( $address . " " . $city . " " . $state . " " . $zip . " " . $country);
-		}
+		if( $toUrlEncode ) return "http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=" . urlencode( trim( $toUrlEncode ) );
 		return "";
 	}
 	/**
