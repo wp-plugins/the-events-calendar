@@ -57,7 +57,7 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 		}
 		
 		private $countries;
-		private function constructCountries( $useDefault = true ) {
+		private function constructCountries( $postId = "", $useDefault = true ) {
 				$countries = array(
 					"US" => __("United States", $this->pluginDomain),
 					"AF" => __("Afghanistan", $this->pluginDomain),
@@ -299,9 +299,13 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 					"ZM" => __("Zambia", $this->pluginDomain),
 					"ZW" => __("Zimbabwe", $this->pluginDomain)
 					);
-					if ($useDefault) {
-						$defaultCountry = eventsGetOptionValue('defaultCountry');
-						if($defaultCountry) {
+					if ( $postId || $useDefault ) {
+						if( $postId ) {
+							$countryValue = get_post_meta( $postId, '_EventCountry', true );
+							$defaultCountry = array( array_search( $countryValue, $countries ), $countryValue );
+						} else $defaultCountry = eventsGetOptionValue('defaultCountry');
+						
+						if( $defaultCountry ) {
 							asort($countries);
 							$countries = array($defaultCountry[0] => __($defaultCountry[1], $this->pluginDomain)) + $countries;
 							array_unique($countries);
@@ -374,16 +378,15 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 				$options['displayEventsOnHomepage'] = $_POST['displayEventsOnHomepage'];
 				$options['resetEventPostDate'] = $_POST['resetEventPostDate'];
 				$options['useRewriteRules'] = $_POST['useRewriteRules'];
-				
 				try {
 					do_action( 'sp-events-save-more-options' );
 					if ( !$this->optionsExceptionThrown ) $options['error'] = "";
 				} catch( TEC_WP_Options_Exception $e ) {
 					$this->optionsExceptionThrown = true;
-					$options['error'] = $e->getMessage();
+					$options['error'] .= $e->getMessage();
 				}
 				$this->saveOptions($options);
-				$this->latestOptions = $options;
+				$this->latestOptions = $options; //XXX ? duplicated in saveOptions() ?
 			} // end if
 		}
 		
@@ -397,7 +400,6 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 		}
 		
 		/// OPTIONS DATA
-        
         public function getOptions() {
             if ('' === $this->defaultOptions) {
                 $this->defaultOptions = get_option(The_Events_Calendar::OPTIONNAME, array());
@@ -1525,7 +1527,7 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'eventsGetOptionV
 		echo tec_get_event_address( $postId );
 	}
 	/**
-	 * Returns an embeded google maps for the given event
+	 * Returns an embedded google maps for the given event
 	 *
 	 * @param string $postId 
 	 * @param int $width 
@@ -1533,6 +1535,7 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'eventsGetOptionV
 	 * @return string - an iframe pulling http://maps.google.com/ for this event
 	 */
 	function get_event_google_map_embed( $postId = null, $width = '100%', $height = '350' ) {
+		//TODO update this to match the criteria set in get_event_google_map_link()
 		if ( $postId === null || !is_numeric( $postId ) ) {
 			global $post;
 			$postId = $post->ID;

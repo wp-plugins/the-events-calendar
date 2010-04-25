@@ -33,14 +33,13 @@
 			if (country == 'US') {
 				jQuery("#USA").removeClass("hide");
 				jQuery("#International").addClass("hide");
-			}
-			else {
+			} else {
 				jQuery("#International").removeClass("hide");
 				jQuery("#USA").addClass("hide");				
 			}
 		}
 		
-		spShowHideCorrectStateProvinceInput(jQuery("#EventCountry > option:first").attr('label'));
+		spShowHideCorrectStateProvinceInput( jQuery("#EventCountry > option:first").attr('label') );
 		
 		jQuery("#EventCountry").change(function() {
 			var t = jQuery(this);
@@ -262,7 +261,7 @@ try {
 			<td>
 				<select tabindex="<?php $this->tabIndex(); ?>" name="EventCountry" id="EventCountry">
 					<?php 
-					$this->constructCountries();
+					$this->constructCountries( $postId );
 				     foreach ($this->countries as $abbr => $fullname) {
 				       print ("<option label=". $abbr . " value=\"$fullname\" ");
 				       if ($_EventCountry == $fullname) { 

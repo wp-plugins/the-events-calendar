@@ -78,16 +78,16 @@ div.snp_settings{
 try {
 	do_action( 'sp_events_options_top' );
 	if ( !$this->optionsExceptionThrown ) {
-		$allOptions = $this->getOptions();
-		$allOptions['error'] = "";
-		$this->saveOptions( $allOptions );
+		//$allOptions = $this->getOptions();
+		//$allOptions['error'] = "";
+		//$this->saveOptions( $allOptions );
 	}
 } catch( TEC_WP_Options_Exception $e ) {
 	$this->optionsExceptionThrown = true;
-	$allOptions = $this->getOptions();
-	$allOptions['error'] = $e->getMessage();
-	$this->saveOptions( $allOptions );
-	$e->displayMessage();
+	//$allOptions = $this->getOptions();
+	//$allOptions['error'] = $e->getMessage();
+	//$this->saveOptions( $allOptions );
+	//$e->displayMessage();
 }
 ?>
 <div class="form">
@@ -319,16 +319,16 @@ try {
 		try {
 			do_action( 'sp_events_options_bottom' );
 			if ( !$this->optionsExceptionThrown ) {
-				$allOptions = $this->getOptions();
-				$allOptions['error'] = "";
-				$this->saveOptions( $allOptions );
+				//$allOptions = $this->getOptions();
+				//$allOptions['error'] = "";
+				//$this->saveOptions( $allOptions );
 			}
 		} catch( TEC_WP_Options_Exception $e ) {
 			$this->optionsExceptionThrown = true;
-			$allOptions = $this->getOptions();
-			$allOptions['error'] = $e->getMessage();
-			$this->saveOptions( $allOptions );
-			$e->displayMessage();
+			//$allOptions = $this->getOptions();
+			//$allOptions['error'] = $e->getMessage();
+			//$this->saveOptions( $allOptions );
+			//$e->displayMessage();
 		}
 		?>
 		<tr>
@@ -336,8 +336,6 @@ try {
 	    		<input id="saveEventsCalendarOptions" class="button-primary" type="submit" name="saveEventsCalendarOptions" value="<?php _e('Save Changes', $this->pluginDomain); ?>" />
 	        </td>
 	    </tr>
-
-
 </table>
 
 </form>
