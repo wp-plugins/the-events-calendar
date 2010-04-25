@@ -33,7 +33,6 @@ Looking to track attendees, sell tickets and more? Go download the Eventbrite fo
 = Upcoming Features =
 
 * Option to disable re-posting of event
-* Ical Feed
 * Improved international features (calendar start day)
 * Option to exclude events from main loop
 * More bug hunting and support (huff puff)
@@ -211,6 +210,9 @@ Please visit the forum for questions or comments: http://wordpress.org/tags/the-
 
 = 1.6 =
 
+Features
+* iCal Feed of all events now accessible using http://<yourUrlHere>.com/?ical
+
 Translations
 * German [Felix Bartels]
 * Brazilian Portuguese [Thiago Abdalla]
@@ -224,6 +226,7 @@ Bugs:
 * google map link is now produced with minimal information, complete address is no longer needed
 ** tec_event_address() added for easy echoing of the event address
 ** thanks to AntonLargiader on forum
+* improvement and debugging of entire error catching and displaying system
 
 = 1.5.6 =
 

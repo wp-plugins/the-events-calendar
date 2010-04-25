@@ -1247,69 +1247,49 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 		}
 		/**
 		 * build a valid ical feed from events posts
-		 *
-		 * @param string option key
-		 * @param string default return value (optional)
-		 * @return string option value or default
 		 */
 		public function iCalFeed() {
-			//TODO, CALL FROM AN ACTION HOOK, MAYBE, ACTUALLY, DECIDE HOW THIS WILL BE CALLED, HOW USER WILL USE IT
-			if ( isset($_GET["debug"]) ) define("DEBUG", true);
-			
-		    //$getstring = $_GET['ical'];
+		    $getstring = $_GET['ical'];
 		
-			$offset = get_option("gmt_offset"); // in other plugin, this is called from a url arg, but i think we want it automatic, correct?
-			
+			$offset = get_option("gmt_offset");
 			$timezone = ( isset( $_GET['timezone'] ) ) ? $_GET['timezone'] : "America/Chicago";
 			$timezoneOffsetStandard = ( isset( $_GET['timezone_offset_standard'] ) ) ? $_GET['timezone_offset_standard'] : "-0600";
 			$timezoneOffsetDaylight = ( isset( $_GET['timezone_offset_daylight'] ) ) ? $_GET['timezone_offset_daylight'] : "-0500";
 			$timezoneNameStandard = ( isset( $_GET['timezone_name_standard'] ) ) ? $_GET['timezone_name_standard'] : "CST";
 			$timezoneNameDaylight = ( isset( $_GET['timezone_name_daylight'] ) ) ? $_GET['timezone_name_daylight'] : "CDT";
 			
-		
-			//TEST
 			$categoryId = get_cat_id( The_Events_Calendar::CATEGORYNAME );
 			$eventPosts = get_posts('category='.$categoryId);
 			
-			$outputEvents = "";
-			$outputEventsTestArray = array(); //TEST, array output for testing
+			$events = "";
+			$lastBuildDate = "";
+			$eventsTestArray = array();
 			$blogHome = get_bloginfo('home');
 			$blogName = get_bloginfo('name');
 			foreach( $eventPosts as $eventPost ) {
-				//TEST, $eventPost ref
-				error_log("eventPost Array: ".print_r($eventPost,true));
-				error_log("eventPost meta: ".print_r( get_post_custom( $eventPost->ID ),true ) );
-				// Gather all the info that the example plugin gathers
 				// convert 2010-04-08 00:00:00 to 20100408T000000Z or YYYYMMDDTHHMMSSZ
 				$startDate = str_replace( array("-", " ", ":") , array("", "T", "") , get_post_meta( $eventPost->ID, "_EventStartDate", true) ) . "Z";
 				$endDate = str_replace( array("-", " ", ":") , array("", "T", "") , get_post_meta( $eventPost->ID, "_EventEndDate", true) ) . "Z";
+				$createdDate = str_replace( array("-", " ", ":") , array("", "T", "") , $eventPost->post_date ) . "Z";
+				$modifiedDate = str_replace( array("-", " ", ":") , array("", "T", "") , $eventPost->post_modified ) . "Z";
 				$timestamp = date("Ymd\THis", time()) . "Z";
 				$uid = $eventPost->ID . "@" . $blogHome;
 				$summary = $eventPost->post_title;
-				$description = preg_replace("/[\n\t\r]/", "\n", strip_tags( $eventPost->post_content ) );
+				$description = preg_replace("/[\n\t\r]/", " ", strip_tags( $eventPost->post_content ) );
 				// add fields to iCal output
-				$outputEvents .= "BEGIN:VEVENT\n";
-				$outputEvents .= "DTSTART:" . $startDate . "\n";
-				$outputEvents .= "DTEND:" . $endDate . "\n";
-				$outputEvents .= "DTSTAMP:" . $timestamp . "\n";
-				$outputEvents .= "CREATED:" . $timestamp . "\n";
-				$outputEvents .= "LAST-MODIFIED:".$timestamp."\n";
-		        $outputEvents .= "UID:" . $uid . "\n"; //
-		        $outputEvents .= "SUMMARY:" . $summary . "\n";
-		        $outputEvents .= "DESCRIPTION:" .  $description . "\n"; // evaluate/test this description output. it differs from the example, but i think the example is bunk
-		        $outputEvents .= "END:VEVENT\n";
-		
-				//TEST, the array output is a test, this later goes into the iCal field format and output somehow
-				array_push($outputEventsTestArray,"**************************");
-				array_push($outputEventsTestArray,$startDate);
-				array_push($outputEventsTestArray,$endDate);
-				array_push($outputEventsTestArray,$timestamp);
-				array_push($outputEventsTestArray,$uid);
-				array_push($outputEventsTestArray,$summary);
-				array_push($outputEventsTestArray,$description);
+				$events .= "BEGIN:VEVENT\n";
+				$events .= "DTSTART:" . $startDate . "\n";
+				$events .= "DTEND:" . $endDate . "\n";
+				$events .= "DTSTAMP:" . $timestamp . "\n";
+				$events .= "CREATED:" . $createdDate . "\n";
+				$events .= "LAST-MODIFIED:". $modifiedDate . "\n";
+		        $events .= "UID:" . $uid . "\n"; //
+		        $events .= "SUMMARY:" . $summary . "\n";
+		        $events .= "DESCRIPTION:" .  $description . "\n";
+		        $events .= "END:VEVENT\n";
 			}
-		
-		    if (!defined('DEBUG')) {
+			
+		    if( !defined('DEBUG') ) {
 		        header('Content-type: text/calendar');
 		        header('Content-Disposition: attachment; filename="iCal-The_Events_Calendar.ics"');
 		    }
@@ -1341,14 +1321,14 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 			$content .="RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU\n";
 			$content .= "END:DAYLIGHT\n";
 			$content .= "END:VTIMEZONE\n";
-
-			$content .= $outputEvents;
+			$content .= $events;
 			$content .= "END:VCALENDAR";
 			
-			//get_post_meta($post_id, $key, $single);
-			return $outputEventsTestArray;
+			echo $content;
+			exit;
 		}
 	} // end The_Events_Calendar class
+	
 } // end if !class_exists The_Events_Calendar
 
 /**
@@ -1388,12 +1368,9 @@ if( !class_exists( 'TEC_WP_Options_Exception' ) ) {
 if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'eventsGetOptionValue' ) ) {
 	global $spEvents;
 	$spEvents = new The_Events_Calendar();
-	//TEST, A TEMPLATE TAG FOR TESTING iCalFeed()
-	function tec_test_i_cal_feed() {
-		$spEvents = new The_Events_Calendar();
-		$wholeShebang = $spEvents->iCalFeed();
-		error_log( print_r($wholeShebang,true) );
-	}
+	
+	// fetch the iCal file
+	if ( isset($_GET['ical']) ) add_action('init', array( $spEvents, 'iCalFeed') );
 	/**
 	 * retrieve specific key from options array, optionally provide a default return value
 	 *
@@ -2296,8 +2273,6 @@ if( !class_exists( 'Events_Calendar_Widget') ) {
 	
 	/**
 	* Calendar widget class
-	*
-	* 
 	*/
 	class Events_Calendar_Widget extends WP_Widget {
 		
