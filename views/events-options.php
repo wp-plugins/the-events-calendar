@@ -6,11 +6,11 @@ jQuery(document).ready(function() {
 		jQuery('#secondDonateRow').show();
 	} 
 	jQuery('#hideDonateButton').click(function() {
-		jQuery.post( '<?php bloginfo('url'); ?>/wp-admin/admin-ajax.php', { donateHidden: true, action: 'hideDonate' }, theEventsCalendarHideDonateButton, 'json' );
+		jQuery.post( '<?php bloginfo('wpurl'); ?>/wp-admin/admin-ajax.php', { donateHidden: true, action: 'hideDonate' }, theEventsCalendarHideDonateButton, 'json' );
 	});
 
 	function displayOptionsError() {
-		$.post('<?php bloginfo('url'); ?>/wp-admin/admin-ajax.php', { action: 'getOptionsError' }, function(error) {
+		$.post('<?php bloginfo('wpurl'); ?>/wp-admin/admin-ajax.php', { action: 'getOptionsError' }, function(error) {
 		  $('#tec-options-error').append('<h3>Error</h3><p>' + error + '</p>')
 		});
 	}
@@ -34,7 +34,7 @@ jQuery(document).ready(function() {
 #hideDonateButton {}
 #checkBoxLabel {}
 .form-table form #secondSubmit {
-	background:#f2f2f2 url(<?php bloginfo('url'); ?>/images/white-grad-active.png) repeat-x scroll left top;
+	background:#f2f2f2 url(<?php bloginfo('wpurl'); ?>/images/white-grad-active.png) repeat-x scroll left top;
 	text-decoration: none;
 	font-size: 11px;
 	line-height: 16px;
@@ -56,11 +56,11 @@ jQuery(document).ready(function() {
 	text-transform: uppercase;
 }
 .form-table form #secondSubmit {
-	background: #f2f2f2 url(<?php bloginfo('url'); ?>/wp-admin/images/white-grad.png) repeat-x scroll left top;
+	background: #f2f2f2 url(<?php bloginfo('wpurl'); ?>/wp-admin/images/white-grad.png) repeat-x scroll left top;
 }
 
 .form-table form #secondSubmit:active {
-	background: #eee url(<?php bloginfo('url'); ?>/wp-admin/images/white-grad-active.png) repeat-x scroll left top;
+	background: #eee url(<?php bloginfo('wpurl'); ?>/wp-admin/images/white-grad-active.png) repeat-x scroll left top;
 }
 
 .form-table form #secondSubmit:hover {

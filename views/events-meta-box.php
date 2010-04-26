@@ -163,8 +163,8 @@ try {
 ?>
 	<p>
 		<?php _e('Is this post an event?',$this->pluginDomain); ?>&nbsp;
-		<input tabindex="<?php $this->tabIndex(); ?>" type='radio' name='isEvent' value='yes' <?php echo $isEventChecked; ?> />&nbsp;<b><?php _e('Yes', $this->pluginDomain); ?></b>
-		<input tabindex="<?php $this->tabIndex(); ?>" type='radio' name='isEvent' value='no' <?php echo $isNotEventChecked; ?> />&nbsp;<b><?php _e('No', $this->pluginDomain); ?></b>
+		<label><input tabindex="<?php $this->tabIndex(); ?>" type='radio' name='isEvent' value='yes' <?php echo $isEventChecked; ?> />&nbsp;<b><?php _e('Yes', $this->pluginDomain); ?></b></label>
+		<label><input tabindex="<?php $this->tabIndex(); ?>" type='radio' name='isEvent' value='no' <?php echo $isNotEventChecked; ?> />&nbsp;<b><?php _e('No', $this->pluginDomain); ?></b></label>
 	</p>
 </div>
 <div id='eventDetails' class="inside eventForm">
