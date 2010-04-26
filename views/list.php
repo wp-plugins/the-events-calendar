@@ -55,9 +55,7 @@
 		                    <td class="tec-event-meta-value"><?php echo $phone; ?></td>
 		                  </tr>
 		                  <?php endif; ?>
-		                  <?php
-		                    if ( the_event_zip() ) :
-		                  ?>
+		                  <?php if (tec_address_exists( $post->ID ) ) : ?>
 		                  <tr>
 							<td class="tec-event-meta-desc"><?php _e('Address:', $spEvents->pluginDomain); ?><br /><a class="gmap" href="<?php event_google_map_link(); ?>" title="Click to view a Google Map" target="_blank"><?php _e('Google Map', $spEvents->pluginDomain ); ?></a></td>
 							<td class="tec-event-meta-value"><?php tec_event_address( $post->ID ); ?></td>

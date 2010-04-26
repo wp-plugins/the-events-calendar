@@ -78,6 +78,7 @@ div.snp_settings{
 try {
 	do_action( 'sp_events_options_top' );
 	if ( !$this->optionsExceptionThrown ) {
+		//TODO error saving is breaking options saving, to be fixed and uncommented later
 		//$allOptions = $this->getOptions();
 		//$allOptions['error'] = "";
 		//$this->saveOptions( $allOptions );
@@ -319,6 +320,7 @@ try {
 		try {
 			do_action( 'sp_events_options_bottom' );
 			if ( !$this->optionsExceptionThrown ) {
+				//TODO error saving is breaking options saving, to be fixed and uncommented later
 				//$allOptions = $this->getOptions();
 				//$allOptions['error'] = "";
 				//$this->saveOptions( $allOptions );

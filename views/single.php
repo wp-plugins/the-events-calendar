@@ -27,7 +27,7 @@
 						<dt><?php _e('Venue:', $spEvents->pluginDomain) ?></dt> 
 							<dd><?php echo the_event_venue(); ?></dd>
 						<?php endif; ?>
-						<?php if(the_event_zip()) : ?>
+						<?php if( tec_address_exists( $post->ID ) ) : ?>
 						<dt><?php _e('Address:', $spEvents->pluginDomain) ?><br /><a class="gmap" href="<?php event_google_map_link() ?>" title="<?php _e('Click to view a Google Map', $spEvents->pluginDomain); ?>" target="_blank"><?php _e('Google Map', $spEvents->pluginDomain ); ?></a></dt>
 							<dd>
 							<?php tec_event_address( $post->ID ); ?>
@@ -35,7 +35,7 @@
 						<?php endif; ?>
 					</dl>
 				</div>
-				<?php if(the_event_zip()) { event_google_map_embed(); } ?>
+				<?php if( tec_address_exists( $post->ID ) ) event_google_map_embed(); ?>
 				<div class="entry">
 					<?php the_content() ?>	
 					<?php if (function_exists('the_event_ticket_form')) { the_event_ticket_form(); } ?>		
