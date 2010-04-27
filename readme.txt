@@ -227,6 +227,7 @@ Bugs:
 ** tec_event_address() added for easy echoing of the event address
 ** thanks to AntonLargiader and azizur on forum
 * improvement and debugging of entire error catching and displaying system
+* PHP versions older than 5.1 will fail gracefully	
 
 = 1.5.6 =
 
