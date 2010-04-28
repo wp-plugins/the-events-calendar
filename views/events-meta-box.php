@@ -90,6 +90,23 @@
 		jQuery("select[name='EventEndYear']").change(function() {
 			jQuery("select[name='EventEndMonth']").change();
 		});
+			
+		// Form validation
+		jQuery("form[name='post']").submit(function() {
+			if( jQuery("#isEventNo").attr('checked') == true ) {
+				// do not validate since this is not an event
+				return true;
+			}
+			var event_phone = jQuery('#EventPhone');
+			
+			if( event_phone.length > 0 && event_phone.val().length && !event_phone.val().match(/^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$/) ) {
+				event_phone.focus();
+				alert('<?php _e('Phone',$this->pluginDomain); ?> <?php _e('is not valid.', $this->pluginDomain); ?>  <?php _e('Valid values are local format (eg. 02 1234 5678 or 123 123 4567) or international format (eg. +61 (0) 2 1234 5678 or +1 123 123 4567).  You may also use an optional extension of up to five digits prefixed by x or ext (eg. 123 123 4567 x89)'); ?> ');
+				return false;
+			}
+			
+			return true;
+		});
 				
 	});
 </script>
@@ -356,18 +373,18 @@ try {
 		</tr>
 		<tr>
 			<td><?php _e('Postal Code:',$this->pluginDomain); ?></td>
-			<td><input tabindex="<?php $this->tabIndex(); ?>" type='text' name='EventZip' size='6' value='<?php echo $_EventZip; ?>' /></td>
+			<td><input tabindex="<?php $this->tabIndex(); ?>" type='text' id='EventZip' name='EventZip' size='6' value='<?php echo $_EventZip; ?>' /></td>
 		</tr>
 		<tr>
 			<td><?php _e('Phone:',$this->pluginDomain); ?></td>
-			<td><input tabindex="<?php $this->tabIndex(); ?>" type='text' name='EventPhone' size='14' value='<?php echo $_EventPhone; ?>' /></td>
+			<td><input tabindex="<?php $this->tabIndex(); ?>" type='text' id='EventPhone' name='EventPhone' size='14' value='<?php echo $_EventPhone; ?>' /></td>
 		</tr>
         <tr>
 			<td colspan="2" class="snp_sectionheader"><h4><?php _e('Event Cost', $this->pluginDomain); ?></h4></td>
 		</tr>
 		<tr>
 			<td><?php _e('Cost:',$this->pluginDomain); ?></td>
-			<td><input tabindex="<?php $this->tabIndex(); ?>" type='text' name='EventCost' size='6' value='<?php echo $_EventCost; ?>' /></td>
+			<td><input tabindex="<?php $this->tabIndex(); ?>" type='text' id='EventCost' name='EventCost' size='6' value='<?php echo $_EventCost; ?>' /></td>
 		</tr>
 		<tr>
 			<td></td>
