@@ -228,6 +228,8 @@ Bugs:
 ** thanks to AntonLargiader and azizur on forum
 * improvement and debugging of entire error catching and displaying system
 * PHP versions older than 5.1 will fail gracefully	
+* Fixes upcoming/past sorting issue
+** thanks to Elliot Silver for the support!
 
 = 1.5.6 =
 
