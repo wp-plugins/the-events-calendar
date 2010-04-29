@@ -211,34 +211,42 @@ Please visit the forum for questions or comments: http://wordpress.org/tags/the-
 = 1.6 =
 
 Features
+
+* Child Theme support 
 * iCal Feed of all events now accessible using http://<yourUrlHere>.com/?ical
+* Setting to include / exclude events form general loop
+* Subcategories in events now behave properly! (and include some css for your creative endeavors)
+* Get Events function no longer starts its own loop (significantly reduce conflicts with other plugins)
+* Added class to current day
+* PHP versions older than 5.1 will fail gracefully
+* Uninstall file
 
 Translations
+
 * German [Felix Bartels]
 * Brazilian Portuguese [Thiago Abdalla]
 * Dutch [Sjoerd Boerrigter]
 * Spanish [Los Jethrov]
 * Updated to Swedish Translation [Kaj Johansson]
 
-Bugs:
-* in single.php, the Back to Events link no longer strictly goes to the grid view, but adheres to the default few option
-** pointed out by azzatron on the forum
+Bugs
+
+* in single.php, the Back to Events link no longer strictly goes to the grid view, but adheres to the default few option -pointed out by azzatron on the forum
 * google map link is now produced with minimal information, complete address is no longer needed, W3C-compatible output
 ** tec_event_address() added for easy echoing of the event address
 ** thanks to AntonLargiader and azizur on forum
 * improvement and debugging of entire error catching and displaying system
-* PHP versions older than 5.1 will fail gracefully	
 * Fixes upcoming/past sorting issue
-** thanks to Elliot Silver for the support!
+** thanks to Elliot Silver for the financial support to get this ironed out!
 
 = 1.5.6 =
 
-* Fixes date bug in the class method setOptions(), line 1188 in the-events-calendar.php
-** thanks to hmarcbower for some ground work on this
+* Fixes date bug in the class method setOptions(), line 1188 in the-events-calendar.php. Thanks to hmarcbower for some ground work on this
 
 = 1.5.5 =
 
 Features
+
 * Starting day in calendar view now reflects the start_of_week Wordpress option
 * Widget view can now be overwritten in theme ([theme]/events/events-list-load-widget-display.php)
 * Setting that enables "Feature on Event Date" - This option will bump an event to the top of the homepage loop on the day of the event (and then return it when over).
@@ -248,10 +256,12 @@ Features
 ** new .pot file available with more entries, covering more of the plugin (months are in there now)
 
 Translations
+
 * Polish [Maciej Swoboda]
 * Czech [Tomas Vesely]
 
-Bugs:
+Bugs
+
 * RSS broken with alterate permalinks
 * AM/PM time display bug
 * Issue of right float on right three cols on cal view for some themes
@@ -288,15 +298,18 @@ Aaron Rhodes, who has begun doing qa for each release. He has been catching bugs
 = 1.5.3 =
 
 Settings
+
 * updated minimum php requirement to 5.1
 
 Bug Fixes
+
 * Fixed permalink issue on calendar
 * Removed limit of events shown on calendar view
 * Fixed conflicting namespace error with xml2array function
 * Curl support for (soon to be deprecated) safe_mod
 
 Features
+
 * Update minuted to increment by 5 rather than 1 and default to 00
 * Added a class per category to each event in the grid view: "cat_classname" to allow users more styling controls in the grid.
 * Added embedded google maps integration & admin panel controls
