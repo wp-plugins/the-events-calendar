@@ -111,10 +111,9 @@ function display_day( $day, $monthView ) {
 				<span class="tec-arrow"></span>
 			</div>
 		</div>
-		<?
+		<?php
 		if( $i < count( $monthView[$day] ) - 1 ) { 
 			echo "<hr />";
 		}
 	}
 }
-?>
