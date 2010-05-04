@@ -228,6 +228,7 @@ Translations
 * Dutch [Sjoerd Boerrigter]
 * Spanish [Los Jethrov]
 * Updated to Swedish Translation [Kaj Johansson]
+* Danish [Carsten Matzon]
 
 Bugs
 
