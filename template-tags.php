@@ -478,16 +478,20 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'eventsGetOptionV
 	 * http://codex.wordpress.org/Displaying_Posts_Using_a_Custom_Select_Query#Query_based_on_Custom_Field_and_Category
 	 *
 	 * @param int number of results to display for upcoming or past modes (default 10)
+	 * @param string category name to pull events from, defaults to the currently displayed category
 	 * @uses $wpdb
 	 * @uses $wp_query
 	 * @return array results
 	 */
-	function get_events( $numResults = null ) {
+	function get_events( $numResults = null, $catName = null ) {
 		if( !$numResults ) $numResults = get_option( 'posts_per_page', 10 );
 		global $wpdb, $spEvents;
 		$spEvents->setOptions();
-		$categoryId = get_query_var( 'cat' );
-		
+		if( $catName ) {
+			$categoryId = get_cat_id( $catName );		
+		} else {
+			$categoryId = get_query_var( 'cat' );
+		}		
 		$extraSelectClause ='';
 		$extraJoinEndDate ='';
 		if ( events_displaying_month() ) {
