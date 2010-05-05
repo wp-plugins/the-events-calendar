@@ -33,9 +33,11 @@
 			if (country == 'US') {
 				jQuery("#USA").removeClass("hide");
 				jQuery("#International").addClass("hide");
+				jQuery('input[name="EventStateExists"]').val(1);
 			} else {
 				jQuery("#International").removeClass("hide");
-				jQuery("#USA").addClass("hide");				
+				jQuery("#USA").addClass("hide");
+				jQuery('input[name="EventStateExists"]').val(0);			
 			}
 		}
 		
@@ -298,11 +300,12 @@ try {
 			<td><?php _e('City:',$this->pluginDomain); ?></td>
 			<td><input tabindex="<?php $this->tabIndex(); ?>" type='text' name='EventCity' size='25' value='<?php echo $_EventCity; ?>' /></td>
 		</tr>
-		<tr id="International" <?php if($_EventCountry == 'United States' || $_EventCountry == '' ){echo('class="hide"'); } ?>>
+		<input name="EventStateExists" type="hidden" value="<?php echo ($_EventCountry !== 'United States') ? 0 : 1; ?>">
+		<tr id="International" <?php if($_EventCountry == 'United States' || $_EventCountry == '' ) echo('class="hide"'); ?>>
 			<td><?php _e('Province:',$this->pluginDomain); ?></td>
 			<td><input tabindex="<?php $this->tabIndex(); ?>" type='text' name='EventProvince' size='10' value='<?php echo $_EventProvince; ?>' /></td>
 		</tr>
-		<tr id="USA" <?php if($_EventCountry !== 'United States'){echo('class="hide"');} ?>>
+		<tr id="USA" <?php if($_EventCountry !== 'United States') echo('class="hide"'); ?>>
 			<td><?php _e('State:',$this->pluginDomain); ?></td>
 			<td>
 				<select tabindex="<?php $this->tabIndex(); ?>" name="EventState">

@@ -840,6 +840,9 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 				if ( $startTimestamp > $endTimestamp ) {
 					$_POST['EventEndDate'] = $_POST['EventStartDate'];
 				}
+				// make state and province mutually exclusive
+				if( $_POST['EventStateExists'] ) $_POST['EventProvince'] = '';
+				else $_POST['EventState'] = '';
 				// give add-on plugins a chance to cancel this meta update
 				try {
 					do_action( 'sp_events_event_save', $postId );
@@ -848,7 +851,6 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 					$this->postExceptionThrown = true;
 					update_post_meta( $postId, self::EVENTSERROROPT, trim( $e->getMessage() ) );
 				}	
-				
 				//update meta fields		
 				foreach ( $this->metaTags as $tag ) {
 					$htmlElement = ltrim( $tag, '_' );
