@@ -14,7 +14,6 @@ jQuery(document).ready(function() {
 		  $('#tec-options-error').append('<h3>Error</h3><p>' + error + '</p>')
 		});
 	}
-
 });
 </script>
 <style type="text/css">
@@ -94,6 +93,7 @@ try {
 <div class="form">
 	<h3><?php _e('Need a hand?',$this->pluginDomain); ?></h3>
 	<p><?php _e('If you\'re stuck on these options, please <a href="http://wordpress.org/extend/plugins/the-events-calendar/">check out the documentation</a>. If you\'re still wondering what\'s going on, be sure to stop by the support <a href="http://wordpress.org/tags/the-events-calendar?forum_id=10">forum</a> and ask for help. The open source community is full of kind folks who are happy to help.',$this->pluginDomain); ?></p>
+	<p><?php _e('Here is the iCal feed URL for your events: ' ,$this->pluginDomain); ?><code><?php bloginfo('home'); ?>/?ical</code></p>
 	<table class="form-table">
 	    <tr id="mainDonateRow">
 	    	<th scope="row"><?php _e('Donate',$this->pluginDomain); ?></th>
@@ -350,12 +350,9 @@ function showstuff(boxid){
 function hidestuff(boxid){
    document.getElementById(boxid).style.visibility="hidden";
 }
-
 <?php if( $embedGoogleMapsValue == 'off' ) { ?>
 hidestuff('googleEmbedSize');
 <?php }; ?>
-
 </script>
 </div>
-
 </div>

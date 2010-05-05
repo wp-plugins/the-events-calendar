@@ -121,13 +121,17 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'eventsGetOptionV
 	/**
 	 * @return string formatted event address
 	 */
-	function tec_get_event_address( $postId = null ) {
+	function tec_get_event_address( $postId = null, $includeVenue = false ) {
 		if ( $postId === null || !is_numeric( $postId ) ) {
 			global $post;
 			$postId = $post->ID;
 		}
 		$address = '';
-		if( the_event_address( $postId ) ) $address .= the_event_address( $postId );
+		if( $includeVenue ) $address .= the_event_venue( $postId );
+		if( the_event_address( $postId ) ) {
+			if( $address ) $address .= ', ';
+			$address .= the_event_address( $postId );
+		}
 		if( the_event_city( $postId ) ) {
 			if( $address ) $address .= ', ';
 			$address .= the_event_city( $postId );

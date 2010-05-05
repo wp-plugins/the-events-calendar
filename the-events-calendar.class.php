@@ -1239,52 +1239,46 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 			$this->tabIndexStart++;
 		}
 		/**
-		 * build a valid ical feed from events posts
+		 * build an ical feed from events posts
 		 */
-		public function iCalFeed() {
+		public function iCalFeed( $postId = null ) {
 		    $getstring = $_GET['ical'];
-		
-			$offset = get_option("gmt_offset");
-			$timezone = ( isset( $_GET['timezone'] ) ) ? $_GET['timezone'] : "America/Chicago";
-			$timezoneOffsetStandard = ( isset( $_GET['timezone_offset_standard'] ) ) ? $_GET['timezone_offset_standard'] : "-0600";
-			$timezoneOffsetDaylight = ( isset( $_GET['timezone_offset_daylight'] ) ) ? $_GET['timezone_offset_daylight'] : "-0500";
-			$timezoneNameStandard = ( isset( $_GET['timezone_name_standard'] ) ) ? $_GET['timezone_name_standard'] : "CST";
-			$timezoneNameDaylight = ( isset( $_GET['timezone_name_daylight'] ) ) ? $_GET['timezone_name_daylight'] : "CDT";
-			
+			$wpTimezoneString = get_option("timezone_string");
 			$categoryId = get_cat_id( The_Events_Calendar::CATEGORYNAME );
-			$eventPosts = get_posts('category='.$categoryId);
-			
 			$events = "";
 			$lastBuildDate = "";
 			$eventsTestArray = array();
 			$blogHome = get_bloginfo('home');
 			$blogName = get_bloginfo('name');
+			$includePosts = ( $postId ) ? '&include=' . $postId : '';
+			$eventPosts = get_posts( 'numberposts=-1&category=' . $categoryId . $includePosts );
 			foreach( $eventPosts as $eventPost ) {
-				// convert 2010-04-08 00:00:00 to 20100408T000000Z or YYYYMMDDTHHMMSSZ
-				$startDate = str_replace( array("-", " ", ":") , array("", "T", "") , get_post_meta( $eventPost->ID, "_EventStartDate", true) ) . "Z";
-				$endDate = str_replace( array("-", " ", ":") , array("", "T", "") , get_post_meta( $eventPost->ID, "_EventEndDate", true) ) . "Z";
-				$createdDate = str_replace( array("-", " ", ":") , array("", "T", "") , $eventPost->post_date ) . "Z";
-				$modifiedDate = str_replace( array("-", " ", ":") , array("", "T", "") , $eventPost->post_modified ) . "Z";
-				$timestamp = date("Ymd\THis", time()) . "Z";
-				$uid = $eventPost->ID . "@" . $blogHome;
-				$summary = $eventPost->post_title;
+				// convert 2010-04-08 00:00:00 to 20100408T000000 or YYYYMMDDTHHMMSS
+				$startDate = str_replace( array("-", " ", ":") , array("", "T", "") , get_post_meta( $eventPost->ID, "_EventStartDate", true) );
+				$endDate = str_replace( array("-", " ", ":") , array("", "T", "") , get_post_meta( $eventPost->ID, "_EventEndDate", true) );
+				if( get_post_meta( $eventPost->ID, "_EventAllDay", true ) == "yes" ) {
+					$startDate = substr( $startDate, 0, 8 );
+					$endDate = substr( $endDate, 0, 8 );
+				}
 				$description = preg_replace("/[\n\t\r]/", " ", strip_tags( $eventPost->post_content ) );
+				//$cost = get_post_meta( $eventPost->ID, "_EventCost", true);
+				//if( $cost ) $description .= " Cost: " . $cost;
 				// add fields to iCal output
 				$events .= "BEGIN:VEVENT\n";
 				$events .= "DTSTART:" . $startDate . "\n";
 				$events .= "DTEND:" . $endDate . "\n";
-				$events .= "DTSTAMP:" . $timestamp . "\n";
-				$events .= "CREATED:" . $createdDate . "\n";
-				$events .= "LAST-MODIFIED:". $modifiedDate . "\n";
-		        $events .= "UID:" . $uid . "\n"; //
-		        $events .= "SUMMARY:" . $summary . "\n";
-		        $events .= "DESCRIPTION:" .  $description . "\n";
+				$events .= "DTSTAMP:" . date("Ymd\THis", time()) . "\n";
+				$events .= "CREATED:" . str_replace( array("-", " ", ":") , array("", "T", "") , $eventPost->post_date ) . "\n";
+				$events .= "LAST-MODIFIED:". str_replace( array("-", " ", ":") , array("", "T", "") , $eventPost->post_modified ) . "\n";
+		        $events .= "UID:" . $eventPost->ID . "@" . $blogHome . "\n";
+		        $events .= "SUMMARY:" . $eventPost->post_title . "\n";				
+		        $events .= "DESCRIPTION:" . $description . "\n";
+				$events .= "LOCATION:" . tec_get_event_address( $eventPost->ID ) . "\n";
+				$events .= "URL:" . get_permalink( $eventPost->ID ) . "\n";
 		        $events .= "END:VEVENT\n";
 			}
-		    if( !defined('DEBUG') ) {
-		        header('Content-type: text/calendar');
-		        header('Content-Disposition: attachment; filename="iCal-The_Events_Calendar.ics"');
-		    }
+	        header('Content-type: text/calendar');
+	        header('Content-Disposition: attachment; filename="iCal-The_Events_Calendar.ics"');
 			$content = "BEGIN:VCALENDAR\n";
 			$content .= "PRODID:-//" . $blogName . "//NONSGML v1.0//EN\n";
 			$content .= "VERSION:2.0\n";
@@ -1293,28 +1287,9 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 			$content .= "X-WR-CALNAME:" . $blogName . "\n";
 			$content .= "X-ORIGINAL-URL:" . $blogHome . "\n";
 			$content .= "X-WR-CALDESC:Events for " . $blogName . "\n";
-			$content .= "X-WR-TIMEZONE:" . $timezone . "\n";
-			$content .= "BEGIN:VTIMEZONE\n";
-			$content .= "TZID:". $timezone . "\n";
-			$content .= "X-LIC-LOCATION:" . $timezone . "\n";
-			$content .= "BEGIN:STANDARD\n";
-			$content .= "DTSTART:19700308T020000\n";
-			$content .= "TZOFFSETFROM:". $timezoneOffsetStandard . "\n";
-			$content .= "TZOFFSETTO:" . $timezoneOffsetDaylight . "\n";
-			$content .= "RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU\n";
-			$content .= "TZNAME:" . $timezoneNameStandard . "\n";
-			$content .= "END:STANDARD\n";
-			$content .= "BEGIN:DAYLIGHT\n";
-			$content .= "TZOFFSETFROM:". $timezoneOffsetDaylight . "\n";
-			$content .= "TZOFFSETTO:" . $timezoneOffsetStandard . "\n";
-			$content .= "TZNAME:". $timezoneNameDaylight . "\n";
-			$content .="DTSTART:19701101T020000\n";
-			$content .="RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU\n";
-			$content .= "END:DAYLIGHT\n";
-			$content .= "END:VTIMEZONE\n";
+			if( $wpTimezoneString ) $content .= "X-WR-TIMEZONE:" . $wpTimezoneString . "\n";
 			$content .= $events;
 			$content .= "END:VCALENDAR";
-			
 			echo $content;
 			exit;
 		}
@@ -1322,4 +1297,3 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 	global $spEvents;
 	$spEvents = new The_Events_Calendar();
 } // end if !class_exists The_Events_Calendar
-
