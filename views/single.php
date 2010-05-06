@@ -27,6 +27,10 @@
 						<dt><?php _e('Venue:', $spEvents->pluginDomain) ?></dt> 
 							<dd><?php echo the_event_venue(); ?></dd>
 						<?php endif; ?>
+						<?php if(the_event_phone()) : ?>
+						<dt><?php _e('Phone:', $spEvents->pluginDomain) ?></dt> 
+							<dd><?php echo the_event_phone(); ?></dd>
+						<?php endif; ?>
 						<?php if( tec_address_exists( $post->ID ) ) : ?>
 						<dt><?php _e('Address:', $spEvents->pluginDomain) ?><br /><a class="gmap" href="<?php event_google_map_link() ?>" title="<?php _e('Click to view a Google Map', $spEvents->pluginDomain); ?>" target="_blank"><?php _e('Google Map', $spEvents->pluginDomain ); ?></a></dt>
 							<dd>
