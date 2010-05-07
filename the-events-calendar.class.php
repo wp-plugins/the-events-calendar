@@ -909,7 +909,7 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 		 *
 		 * @return void
 		 */
-		public function EventsChooserBox( ) {
+		public function EventsChooserBox() {
 			global $post;
 			$options = '';
 			$style = '';
@@ -924,7 +924,8 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 			}
 			$isEventChecked			= ( $_isEvent == 'yes' ) ? 'checked' : '';
 			$isNotEventChecked		= ( $_isEvent == 'no' || $_isEvent == '' ) ? 'checked' : '';
-			$isEventAllDay			= ( $_EventAllDay == 'yes' ) ? 'checked' : '';
+			$isEventAllDay = ( $_EventAllDay == 'yes' || $postId < 1 ) ? 'checked' : ''; // default is all day for new posts
+			
 			$startDayOptions       	= array(
 										31 => $this->getDayOptions( $_EventStartDate, 31 ),
 										30 => $this->getDayOptions( $_EventStartDate, 30 ),
@@ -943,9 +944,9 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 			$endYearOptions		 	= $this->getYearOptions( $_EventEndDate );
 			$startMinuteOptions 	= $this->getMinuteOptions( $_EventStartDate );
 			$endMinuteOptions 		= $this->getMinuteOptions( $_EventEndDate );
-			$startHourOptions	 	= $this->getHourOptions( $_EventStartDate );
+			$startHourOptions	 	= $this->getHourOptions( $_EventStartDate, true );
 			$endHourOptions		 	= $this->getHourOptions( $_EventEndDate );
-			$startMeridianOptions	= $this->getMeridianOptions( $_EventStartDate );
+			$startMeridianOptions	= $this->getMeridianOptions( $_EventStartDate, true );
 			$endMeridianOptions		= $this->getMeridianOptions( $_EventEndDate );		
 			include( dirname( __FILE__ ) . '/views/events-meta-box.php' );
 		}
@@ -1010,7 +1011,7 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 		 * @param string YYYY-MM-DD HH:MM:SS to select (optional)
 		 * @return string a set of HTML options with all meridians 
 		 */
-		public function getMeridianOptions( $date = "" ) {
+		public function getMeridianOptions( $date = "", $isStart = false ) {
 			if( strstr( get_option( 'time_format', self::TIMEFORMAT ), 'A' ) ) {
 				$a = 'A';
 				$meridians = array( "AM", "PM" );
@@ -1019,7 +1020,7 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 				$meridians = array( "am", "pm" );
 			}
 			if ( empty( $date ) ) {
-				$meridian = date_i18n($a);
+				$meridian = ( $isStart ) ? $meridians[0] : $meridians[1];
 			} else {
 				$meridian = date($a, strtotime( $date ) );
 			}
@@ -1042,7 +1043,7 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 			$months = $this->monthNames();
 			$options = '';
 			if ( empty( $date ) ) {
-				$month = date_i18n( 'F' );
+				$month = ( date_i18n( 'j' ) == date_i18n( 't' ) ) ? date( 'F', time() + 86400 ) : date_i18n( 'F' );
 			} else {
 				$month = date( 'F', strtotime( $date ) );
 			}
@@ -1071,7 +1072,10 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 			$days = $this->days( $totalDays );
 			$options = '';
 			if ( empty ( $date ) ) {
-				$day = date_i18n( 'd' );
+				$day = date_i18n( 'j' );
+				if( $day == $days[count($days)] ) $day = '01';
+				elseif ( $day < 9 ) $day = '0' . ( $day + 1 );
+				else $day++;
 			} else {
 				$day = date( 'd', strtotime( $date) );
 			}
@@ -1098,6 +1102,7 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 			$options = '';
 			if ( empty ( $date ) ) {
 				$year = date_i18n( 'Y' );
+				if( date_i18n( 'n' ) == 12 && date_i18n( 'j' ) == 31 ) $year++;
 			} else {
 				$year = date( 'Y', strtotime( $date ) );
 			}
@@ -1116,13 +1121,13 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 		 * @param string the current date (optional)
 		 * @return string a set of HTML options with hours (current hour selected)
 		 */
-		public function getHourOptions( $date = "" ) {
+		public function getHourOptions( $date = "", $isStart = false ) {
 			$hours = $this->hours();
 			if( count($hours) == 12 ) $h = 'h';
 			else $h = 'H';
 			$options = '';
 			if ( empty ( $date ) ) {
-				$hour = date_i18n( $h );
+				$hour = ( $isStart ) ? '08' : '05';
 			} else {
 				$timestamp = strtotime( $date );
 				$hour = date( $h, $timestamp );
