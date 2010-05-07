@@ -292,10 +292,9 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 					"ZW" => __("Zimbabwe", $this->pluginDomain)
 					);
 					if ( $postId || $useDefault ) {
-						if( $postId ) {
-							$countryValue = get_post_meta( $postId, '_EventCountry', true );
-							$defaultCountry = array( array_search( $countryValue, $countries ), $countryValue );
-						} else $defaultCountry = eventsGetOptionValue('defaultCountry');
+						$countryValue = get_post_meta( $postId, '_EventCountry', true );
+						if( $countryValue ) $defaultCountry = array( array_search( $countryValue, $countries ), $countryValue );
+						else $defaultCountry = eventsGetOptionValue('defaultCountry');
 						
 						if( $defaultCountry ) {
 							asort($countries);
