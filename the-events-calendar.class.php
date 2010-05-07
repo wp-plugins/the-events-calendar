@@ -924,7 +924,7 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 			}
 			$isEventChecked			= ( $_isEvent == 'yes' ) ? 'checked' : '';
 			$isNotEventChecked		= ( $_isEvent == 'no' || $_isEvent == '' ) ? 'checked' : '';
-			$isEventAllDay = ( $_EventAllDay == 'yes' || $postId < 1 ) ? 'checked' : ''; // default is all day for new posts
+			$isEventAllDay = ( $_EventAllDay == 'yes' || $_isEvent == '' || $_isEvent == 'no' ) ? 'checked' : ''; // default is all day for new posts
 			
 			$startDayOptions       	= array(
 										31 => $this->getDayOptions( $_EventStartDate, 31 ),
