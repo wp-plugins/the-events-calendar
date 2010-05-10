@@ -973,6 +973,98 @@ msgstr ""
 msgid "Zimbabwe"
 msgstr ""
 
+#: the-events-calendar.class.php:491
+msgid "Jan"
+msgstr ""
+
+#: the-events-calendar.class.php:492
+msgid "Feb"
+msgstr ""
+
+#: the-events-calendar.class.php:493
+msgid "Mar"
+msgstr ""
+
+#: the-events-calendar.class.php:494
+msgid "Apr"
+msgstr ""
+
+#: the-events-calendar.class.php:495 the-events-calendar.class.php:509
+msgid "May"
+msgstr ""
+
+#: the-events-calendar.class.php:496
+msgid "Jun"
+msgstr ""
+
+#: the-events-calendar.class.php:497
+msgid "Jul"
+msgstr ""
+
+#: the-events-calendar.class.php:498
+msgid "Aug"
+msgstr ""
+
+#: the-events-calendar.class.php:499
+msgid "Sep"
+msgstr ""
+
+#: the-events-calendar.class.php:500
+msgid "Oct"
+msgstr ""
+
+#: the-events-calendar.class.php:501
+msgid "Nov"
+msgstr ""
+
+#: the-events-calendar.class.php:502
+msgid "Dec"
+msgstr ""
+
+#: the-events-calendar.class.php:505
+msgid "January"
+msgstr ""
+
+#: the-events-calendar.class.php:506
+msgid "February"
+msgstr ""
+
+#: the-events-calendar.class.php:507
+msgid "March"
+msgstr ""
+
+#: the-events-calendar.class.php:508
+msgid "April"
+msgstr ""
+
+#: the-events-calendar.class.php:510
+msgid "June"
+msgstr ""
+
+#: the-events-calendar.class.php:511
+msgid "July"
+msgstr ""
+
+#: the-events-calendar.class.php:512
+msgid "August"
+msgstr ""
+
+#: the-events-calendar.class.php:513
+msgid "September"
+msgstr ""
+
+#: the-events-calendar.class.php:514
+msgid "October"
+msgstr ""
+
+#: the-events-calendar.class.php:515
+msgid "November"
+msgstr ""
+
+#: the-events-calendar.class.php:516
+msgid "December"
+msgstr ""
+
 #: the-events-calendar.php:937
 msgid "Events"
 msgstr "Evénements"
@@ -1001,6 +1093,10 @@ msgstr "Titre"
 #: views/events-list-load-widget-admin.php:7
 msgid "Show:"
 msgstr "Afficher"
+
+#: views/events-list-load-widget-admin.php:16
+msgid "Display:"
+msgstr ""
 
 #: views/events-list-load-widget-admin.php:19
 msgid "Start Date & Time"
@@ -1046,6 +1142,10 @@ msgstr "Téléphone"
 msgid "Price"
 msgstr "Prix"
 
+#: views/events-list-load-widget-display.php:48
+msgid "More Info"
+msgstr ""
+
 #: views/events-meta-box.php:84
 msgid "Event Details:"
 msgstr "Détails de l'évènement"
@@ -1065,6 +1165,18 @@ msgstr "Format de l'heure (option générale)"
 #: views/events-meta-box.php:104
 msgid "12 Hour"
 msgstr "12 heures"
+
+#: views/events-meta-box.php:105
+msgid "is not valid."
+msgstr ""
+
+#: views/events-meta-box.php:105
+msgid ""
+"Valid values are local format (eg. 02 1234 5678 or 123 123 4567) or "
+"international format (eg. +61 (0) 2 1234 5678 or +1 123 123 4567).  You may "
+"also use an optional extension of up to five digits prefixed by x or ext "
+"(eg. 123 123 4567 x89)"
+msgstr ""
 
 #: views/events-meta-box.php:106
 msgid "24 Hour"
@@ -1110,6 +1222,10 @@ msgstr "Province :"
 #: views/events-meta-box.php:200
 msgid "State:"
 msgstr "Etat :"
+
+#: views/events-meta-box.php:202
+msgid "Event Time &amp; Date"
+msgstr ""
 
 #: views/events-meta-box.php:203
 msgid "Select a State:"
@@ -1513,4 +1629,3 @@ msgstr "Sam"
 #: views/user-profile.php:15
 msgid "The Events Calendar"
 msgstr "Le Calendrier des Evènements"
-
