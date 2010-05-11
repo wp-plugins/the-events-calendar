@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: The Events Calendar 1.6\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/the-events-calendar\n"
-"POT-Creation-Date: 2010-05-10 11:28+0000\n"
+"POT-Creation-Date: 2010-05-11 18:45+0000\n"
 "PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1602,12 +1602,12 @@ msgid "Display Events on Homepage"
 msgstr ""
 
 #: views/events-options.php:225 views/events-options.php:254
-#: views/events-options.php:281 views/events-options.php:306
+#: views/events-options.php:281 views/events-options.php:307
 msgid "Off"
 msgstr ""
 
 #: views/events-options.php:229 views/events-options.php:258
-#: views/events-options.php:285 views/events-options.php:310
+#: views/events-options.php:285 views/events-options.php:311
 msgid "On"
 msgstr ""
 
@@ -1637,17 +1637,17 @@ msgid ""
 "the event."
 msgstr ""
 
-#: views/events-options.php:295 views/events-options.php:299
+#: views/events-options.php:296 views/events-options.php:300
 msgid "Use Pretty URLs"
 msgstr ""
 
-#: views/events-options.php:313
+#: views/events-options.php:314
 msgid ""
 "Pretty URLs (ie, http://site/category/events/upcoming) may interfere with "
 "custom themes or plugins."
 msgstr ""
 
-#: views/events-options.php:338
+#: views/events-options.php:340
 msgid "Save Changes"
 msgstr ""
 
