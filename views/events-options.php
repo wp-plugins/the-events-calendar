@@ -291,6 +291,7 @@ try {
 		            </fieldset>
 		        </td>
 			</tr>
+			<?php if( '' != get_option('permalink_structure') ) : ?>
 			<tr>
 				<th scope="row"><?php _e('Use Pretty URLs',$this->pluginDomain); ?></th>
 		        <td>
@@ -316,6 +317,7 @@ try {
 		            </fieldset>
 		        </td>
 			</tr>
+			<?php endif; // permalink structure ?>
 	    <?php
 		try {
 			do_action( 'sp_events_options_bottom' );
