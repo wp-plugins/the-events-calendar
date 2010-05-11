@@ -299,11 +299,11 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'eventsGetOptionV
 			global $spEventBrite;
 			$returned = $spEventBrite->the_event_cost($postId);
 			if($returned) {
-				return $returned;
+				return esc_html($returned);
 			}
 		}
 		if ( $cost = get_post_meta( $postId, '_EventCost', true ) ) {
-			return $cost;
+			return esc_html($cost);
 		} else {
 			return "";
 		}
@@ -318,7 +318,7 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'eventsGetOptionV
 			global $post;
 			$postId = $post->ID;
 		}
-		return get_post_meta( $postId, '_EventVenue', true );
+		return esc_html(get_post_meta( $postId, '_EventVenue', true ));
 	}
 	/**
 	 * Returns the event country
@@ -330,7 +330,7 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'eventsGetOptionV
 			global $post;
 			$postId = $post->ID;
 		}
-		return get_post_meta( $postId, '_EventCountry', true );
+		return esc_html(get_post_meta( $postId, '_EventCountry', true ));
 	}
 	/**
 	 * Returns the event address
@@ -342,7 +342,7 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'eventsGetOptionV
 			global $post;
 			$postId = $post->ID;
 		}
-		return get_post_meta( $postId, '_EventAddress', true );
+		return esc_html(get_post_meta( $postId, '_EventAddress', true ));
 	}
 	/**
 	 * Returns the event city
@@ -354,7 +354,7 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'eventsGetOptionV
 			global $post;
 			$postId = $post->ID;
 		}
-		return get_post_meta( $postId, '_EventCity', true );
+		return esc_html(get_post_meta( $postId, '_EventCity', true ));
 	}
 	/**
 	 * Returns the event state
@@ -366,7 +366,7 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'eventsGetOptionV
 			global $post;
 			$postId = $post->ID;
 		}
-		return get_post_meta( $postId, '_EventState', true );
+		return esc_html(get_post_meta( $postId, '_EventState', true ));
 	}
 	/**
 	 * Returns the event province
@@ -378,7 +378,7 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'eventsGetOptionV
 			global $post;
 			$postId = $post->ID;
 		}
-		return get_post_meta( $postId, '_EventProvince', true );
+		return esc_html(get_post_meta( $postId, '_EventProvince', true ));
 	}
 	/**
 	 * Returns the event zip code
@@ -390,7 +390,7 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'eventsGetOptionV
 			global $post;
 			$postId = $post->ID;
 		}
-		return get_post_meta( $postId, '_EventZip', true );
+		return esc_html(get_post_meta( $postId, '_EventZip', true ));
 	}
 	/**
 	 * Returns the event phone number
@@ -402,7 +402,7 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'eventsGetOptionV
 			global $post;
 			$postId = $post->ID;
 		}
-		return get_post_meta( $postId, '_EventPhone', true );
+		return esc_html(get_post_meta( $postId, '_EventPhone', true ));
 	}
 	/**
 	 * Returns a list of lectures that are associated with this event
