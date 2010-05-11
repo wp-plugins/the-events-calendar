@@ -314,7 +314,7 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 		function __construct( ) {
 			$this->currentDay		= '';
 			$this->pluginDir		= basename(dirname(__FILE__));
-			$this->pluginUrl = WP_CONTENT_URL.'/plugins/'.plugin_basename(dirname(__FILE__));
+			$this->pluginUrl 		= WP_CONTENT_URL.'/plugins/'.plugin_basename(dirname(__FILE__));
 			$this->errors			= '';
 			register_deactivation_hook( __FILE__, 	array( &$this, 'on_deactivate' ) );
 			add_action( 'reschedule_event_post', array( $this, 'reschedule') );
@@ -334,7 +334,7 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 			add_filter( 'posts_orderby',	array( $this, 'events_search_orderby' ) );
 			add_filter( 'posts_fields',		array( $this, 'events_search_fields' ) );
 			add_filter( 'post_limits',		array( $this, 'events_search_limits' ) );
-			add_action( 'template_redirect',		array($this, 'templateChooser' ) );
+			add_action( 'template_redirect',array($this, 'templateChooser' ), 1 );
 			add_action( 'pre_get_posts',		array( $this, 'events_home_cat_excluder' ) );
 			add_action( 'sp_events_post_errors', array( 'TEC_Post_Exception', 'displayMessage' ) );
 			add_action( 'sp_events_options_top', array( 'TEC_WP_Options_Exception', 'displayMessage') );
