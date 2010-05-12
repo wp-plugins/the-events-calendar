@@ -20,6 +20,7 @@
 h2.tec-cal-title {
 	float:left;
 	padding-right:15px;
+	margin-bottom: 33px;
 }
 .tec-calendar-buttons a {
 	background:#999;
@@ -39,6 +40,16 @@ h2.tec-cal-title {
 	width:auto;
 	-moz-border-radius:3px;
 	-webkit-border-radius:3px;
+}
+.tec-month-nav {
+	position: absolute;
+	left: 20px;
+}
+.tec-prev-month {
+	margin-right: 5px;
+}
+.tec-next-month {
+	margin-left: 5px;
 }
 .upcoming a.tec-button-on, .grid a.tec-button-on {background:#0F81BB;}
 .upcoming a.tec-button-off, .grid a.tec-button-off {background:#999999;}
