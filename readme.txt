@@ -220,6 +220,7 @@ Features
 * Added class to current day
 * PHP versions older than 5.1 will fail gracefully
 * Uninstall file
+* Calendar grid view now honors 'posts_per_page' wordpress setting.
 
 Translations
 

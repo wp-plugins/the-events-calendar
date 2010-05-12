@@ -57,7 +57,7 @@ $monthView = events_by_month( $eventPosts, $spEvents->date );
 					$ppf = ' tec-future';
 				} else { $ppf = false; }
 				
-			    echo "<td class='tec-thismonth" . $ppf . "'><div class='daynum'>" . $day . "</div>\n";
+			    echo "<td class='tec-thismonth" . $ppf . "'>" . display_day_title( $day, $monthView ) . "\n";
 				echo display_day( $day, $monthView );
 				echo "</td>";
 			}
@@ -72,10 +72,38 @@ $monthView = events_by_month( $eventPosts, $spEvents->date );
 	</tbody>
 </table>
 <?php
+/**
+ * Each day in the calendar grid view will only display posts_per_page events.
+ * If the day has more events than will be displayed, we show all of the events 
+ * as a tooltip in the day header
+ */
+function display_day_title( $day, $monthView ) {
+	$return = "<div class='daynum tec-event' id='daynum_$day'>";
+	if( !count( $monthView[$day] ) || count( $monthView[$day] ) < get_option( 'posts_per_page' ) ) {
+		$return .= $day;
+	} else {
+		$return .= "<a class='tec-multi-event-day'>$day</a>";
+		$return .= "<div id='tooltip_day_$day' class='tec-tooltip' style='display:none;'>";
+		for( $i = 0; $i < count( $monthView[$day] ); $i++ ) {
+			$post = $monthView[$day][$i];
+			setup_postdata( $post );
+			$return .= '<h5 class="tec-event-title">' . get_the_title() . '</h5>';
+		}
+		$return .= '<span class="tec-arrow"></span>';
+		$return .= '</div>';
+	}
+	$return .= "</div>";
+	return $return;
+}
+/**
+ * Each day in the calendar grid view will only display posts_per_page events.
+ * Each event will have a tooltip for more information on that event.
+ */
 function display_day( $day, $monthView ) {
 	global $post;
 	$output = '';
-	for( $i = 0; $i < count( $monthView[$day] ); $i++ ) {
+	$posts_per_page = get_option( 'posts_per_page' );
+	for( $i = 0; $i < count( $monthView[$day] ) && $i < $posts_per_page; $i++ ) {
 		$post = $monthView[$day][$i];
 		setup_postdata( $post );
 		$eventId	= $post->ID.'-'.$day;
@@ -112,7 +140,7 @@ function display_day( $day, $monthView ) {
 			</div>
 		</div>
 		<?php
-		if( $i < count( $monthView[$day] ) - 1 ) { 
+		if( $i < $posts_per_page - 1 && $i < count( $monthView[$day] ) - 1 ) { 
 			echo "<hr />";
 		}
 	}

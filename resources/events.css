@@ -247,3 +247,4 @@ h4.tec-event-day + .post .entry-title {margin-top:6px;}
 .clearfix {zoom:1; /* For IE */}
 .tec-events-error {display:none;}
 .tec_hide {display:none;}
+.tec-multi-event-day {color: #0F81BB;}
