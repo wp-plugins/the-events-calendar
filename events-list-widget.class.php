@@ -53,15 +53,11 @@ if( !class_exists( 'Events_List_Widget' ) ) {
 				if ( $title )
 					echo $before_title . $title . $after_title;
 				
-				/* Display link to all events */
-				echo '<div class="dig-in"><a href="' . $event_url . '">' . __('View All Events', $this->pluginDomain ) . '</a></div>';
-
 				/* Display list of events. */
 					if( function_exists( 'get_events' ) ) {
 						$old_display = $wp_query->get('eventDisplay');
 						$wp_query->set('eventDisplay', 'upcoming');
 						$posts = get_events($limit, The_Events_Calendar::CATEGORYNAME);
-						//print_r($posts);
 						
 						if ($posts) : 
 						
@@ -81,7 +77,9 @@ if( !class_exists( 'Events_List_Widget' ) ) {
 						endif;
 						$wp_query->set('eventDisplay', $old_display);
 					}
-				
+					
+					/* Display link to all events */
+					echo '<div class="dig-in"><a href="' . $event_url . '">' . __('View All Events', $this->pluginDomain ) . '</a></div>';
 
 				/* After widget (defined by themes). */
 				echo $after_widget;
