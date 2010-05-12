@@ -98,7 +98,7 @@
 		// hide / show google map toggles
 		var tecAddressExists = false;
 		var tecAddressInputs = ["EventAddress","EventCity","EventZip"];
-		function tecShowHideGoogleMapToggles( event, textLength ) {
+		function tecShowHideGoogleMapToggles() {
 			var selectValExists = false;
 			var inputValExists = false;
 				if(jQuery('input[name="EventCountryLabel"]').val()) selectValExists = true;
@@ -114,14 +114,15 @@
 		jQuery.each( tecAddressInputs, function(key, val) {
 			jQuery('input[name="' + val + '"]').bind('keyup', function(event) {
 				var textLength = event.currentTarget.textLength;
-				if(textLength == 0) tecShowHideGoogleMapToggles( event, textLength );
-				else if(textLength == 1) tecShowHideGoogleMapToggles( event, textLength );
+				if(textLength == 0) tecShowHideGoogleMapToggles();
+				else if(textLength == 1) tecShowHideGoogleMapToggles();
 			});
 		});
 		jQuery('select[name="EventCountry"]').bind('change', function(event) {
-			if(event.currentTarget.selectedIndex) tecShowHideGoogleMapToggles( event, null );
-			else tecShowHideGoogleMapToggles( event, null );
+			if(event.currentTarget.selectedIndex) tecShowHideGoogleMapToggles();
+			else tecShowHideGoogleMapToggles();
 		});
+		tecShowHideGoogleMapToggles();
 		// Form validation
 		jQuery("form[name='post']").submit(function() {
 			if( jQuery("#isEventNo").attr('checked') == true ) {
