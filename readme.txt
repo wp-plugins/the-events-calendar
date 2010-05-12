@@ -222,6 +222,11 @@ Features
 * Uninstall file
 * Calendar grid view now honors 'posts_per_page' wordpress setting.
 * Calendar grid view now has "previous" and "next" month links
+* Widget now has options to control behavior when there are no events to display
+* Updates to widget layout (links to events and "read more")
+* It is now possible to select no default country for events
+* Added a setting to control "pretty urls" to the events vs using query args (reduce conflicts with other rewrite rules)
+* Default times for new event updated (all day, starting tomorrow)
 
 Translations
 
@@ -229,18 +234,26 @@ Translations
 * Brazilian Portuguese [Thiago Abdalla]
 * Dutch [Sjoerd Boerrigter]
 * Spanish [Los Jethrov]
-* Updated to Swedish Translation [Kaj Johansson]
+* Updates to Swedish Translation [Kaj Johansson]
+* Updates to German Translation [Andre Schuhmann]
 * Danish [Carsten Matzon]
 
 Bugs
 
+* Improvements to field validation
+* Fixes Embedded Map HTML URL Encoding so its w3c compatible (Thanks azizur!)
+* Usability issue: Is this post an event? Yes/No -- now you can click the text and it will select your choice. (Thanks azizur!)
+* Fixes drag/drop issue (Thanks azizur!)
+* State vs Province meta values were not mutually exclusive
+* HTML was not properly escaped in the template
+* Fixes PHP short tag issue in one of the templates
 * in single.php, the Back to Events link no longer strictly goes to the grid view, but adheres to the default few option -pointed out by azzatron on the forum
 * google map link is now produced with minimal information, complete address is no longer needed, W3C-compatible output
 ** tec_event_address() added for easy echoing of the event address
 ** thanks to AntonLargiader and azizur on forum
 * improvement and debugging of entire error catching and displaying system
-* Fixes upcoming/past sorting issue
-** thanks to Elliot Silver for the financial support to get this ironed out!
+* Fixes upcoming/past sorting issue (Thanks Elliot Silver for the support!)
+
 
 = 1.5.6 =
 
