@@ -28,6 +28,7 @@ if( !class_exists( 'Events_List_Widget' ) ) {
 				/* User-selected settings. */
 				$title = apply_filters('widget_title', $instance['title'] );
 				$limit = $instance['limit'];
+				$noUpcomingEvents = $instance['no_upcoming_events'];
 				$start = $instance['start'];
 				$end = $instance['end'];
 				$venue = $instance['venue'];
@@ -48,18 +49,19 @@ if( !class_exists( 'Events_List_Widget' ) ) {
 
 				/* Before widget (defined by themes). */
 				echo $before_widget;
-
-				/* Title of widget (before and after defined by themes). */
-				if ( $title )
-					echo $before_title . $title . $after_title;
 				
-				/* Display list of events. */
-					if( function_exists( 'get_events' ) ) {
-						$old_display = $wp_query->get('eventDisplay');
-						$wp_query->set('eventDisplay', 'upcoming');
-						$posts = get_events($limit, The_Events_Calendar::CATEGORYNAME);
-						
-						if ($posts) : 
+				if( function_exists( 'get_events' ) ) {
+					$old_display = $wp_query->get('eventDisplay');
+					$wp_query->set('eventDisplay', 'upcoming');
+					$posts = get_events($limit, The_Events_Calendar::CATEGORYNAME);
+				}
+				
+				/* Title of widget (before and after defined by themes). */
+				if ( $title && !$noUpcomingEvents ) echo $before_title . $title . $after_title;
+					
+				if( $posts ) {
+					/* Display list of events. */
+						if( function_exists( 'get_events' ) ) {
 						
 							echo "<ul class='upcoming'>";
 							foreach( $posts as $post ) : 
@@ -70,16 +72,14 @@ if( !class_exists( 'Events_List_Widget' ) ) {
 									include( dirname( __FILE__ ) . '/views/events-list-load-widget-display.php' );						
 								}
 							endforeach;
-						echo "</ul>";
+							echo "</ul>";
 
-						else:
-							echo "no events";
-						endif;
-						$wp_query->set('eventDisplay', $old_display);
-					}
+							$wp_query->set('eventDisplay', $old_display);
+						}
 					
-					/* Display link to all events */
-					echo '<div class="dig-in"><a href="' . $event_url . '">' . __('View All Events', $this->pluginDomain ) . '</a></div>';
+						/* Display link to all events */
+						echo '<div class="dig-in"><a href="' . $event_url . '">' . __('View All Events', $this->pluginDomain ) . '</a></div>';
+				} else if( !$noUpcomingEvents ) _e('There are no upcoming events at this time.', $this->pluginDomain);
 
 				/* After widget (defined by themes). */
 				echo $after_widget;
@@ -91,6 +91,7 @@ if( !class_exists( 'Events_List_Widget' ) ) {
 					/* Strip tags (if needed) and update the widget settings. */
 					$instance['title'] = strip_tags( $new_instance['title'] );
 					$instance['limit'] = strip_tags( $new_instance['limit'] );
+					$instance['no_upcoming_events'] = strip_tags( $new_instance['no_upcoming_events'] );
 					$instance['start'] = strip_tags( $new_instance['start'] );
 					$instance['end'] = strip_tags( $new_instance['end'] );
 					$instance['venue'] = strip_tags( $new_instance['venue'] );
