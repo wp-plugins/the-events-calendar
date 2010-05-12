@@ -221,6 +221,7 @@ Features
 * PHP versions older than 5.1 will fail gracefully
 * Uninstall file
 * Calendar grid view now honors 'posts_per_page' wordpress setting.
+* Calendar grid view now has "previous" and "next" month links
 
 Translations
 
