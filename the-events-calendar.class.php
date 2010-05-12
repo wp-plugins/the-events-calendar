@@ -35,6 +35,8 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 					'_EventState',
 					'_EventProvince',
 					'_EventZip',
+					'_EventShowMapLink',
+					'_EventShowMap',
 					'_EventCost',
 					'_EventPhone',
 					self::EVENTSERROROPT
@@ -51,6 +53,7 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 		private $countries;
 		private function constructCountries( $postId = "", $useDefault = true ) {
 				$countries = array(
+					"" => __("Select a Country:", $this->pluginDomain),
 					"US" => __("United States", $this->pluginDomain),
 					"AF" => __("Afghanistan", $this->pluginDomain),
 					"AL" => __("Albania", $this->pluginDomain),
@@ -295,10 +298,11 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 						$countryValue = get_post_meta( $postId, '_EventCountry', true );
 						if( $countryValue ) $defaultCountry = array( array_search( $countryValue, $countries ), $countryValue );
 						else $defaultCountry = eventsGetOptionValue('defaultCountry');
-						
-						if( $defaultCountry ) {
+						if( $defaultCountry && $defaultCountry[0] != "" ) {
+							$selectCountry = array_shift( $countries );
 							asort($countries);
 							$countries = array($defaultCountry[0] => __($defaultCountry[1], $this->pluginDomain)) + $countries;
+							$countries = array("" => __($selectCountry, $this->pluginDomain)) + $countries;
 							array_unique($countries);
 						}
 						$this->countries = $countries;
@@ -396,11 +400,6 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
             }
             return $this->defaultOptions;
         }
-
-		public function getSingleOption( $optionKey ) {
-			$options = $this->getOptions();
-			return $options[$optionKey];
-		}
 		        
         private function saveOptions($options) {
             if (!is_array($options)) {
@@ -842,6 +841,13 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 				// make state and province mutually exclusive
 				if( $_POST['EventStateExists'] ) $_POST['EventProvince'] = '';
 				else $_POST['EventState'] = '';
+				//ignore Select a Country: as a country
+				if( $_POST['EventCountryLabel'] == "" ) $_POST['EventCountry'] = "";
+				//google map checkboxes
+				if( !isset( $_POST['EventShowMapLink'] ) ) update_post_meta( $postId, '_EventShowMapLink', 'false' );
+				if( !isset( $_POST['EventShowMap'] ) ) update_post_meta( $postId, '_EventShowMap', 'false' );
+				//TEST
+				error_log("showMapMetaValue: ".get_post_meta( $postId, '_EventShowMapLink', true));
 				// give add-on plugins a chance to cancel this meta update
 				try {
 					do_action( 'sp_events_event_save', $postId );

@@ -5,14 +5,11 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'eventsGetOptionV
 	if ( isset($_GET['ical']) ) add_action('init', array( $spEvents, 'iCalFeed') );
 	/**
 	 * retrieve specific key from options array, optionally provide a default return value
-	 *
 	 */
 	function eventsGetOptionValue($optionName, $default = '') {
 		global $spEvents;
 		if($optionName) {
-			if( $spEvents->latestOptions ) {
-				return $spEvents->latestOptions[$optionName];
-			}
+			if( $spEvents->latestOptions ) return $spEvents->latestOptions[$optionName];
 			$options = $spEvents->getOptions();
 			return ( $options[$optionName] ) ? $options[$optionName] : $default;
 		}
@@ -202,7 +199,7 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'eventsGetOptionV
 		else return '';
 	}
 	/**
-	 * Displays an embeded google map for the given event
+	 * Displays an embedded google map for the given event
 	 *
 	 * @param string $postId 
 	 * @param int $width 

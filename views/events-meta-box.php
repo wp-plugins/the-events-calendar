@@ -16,8 +16,8 @@
 			jQuery("#EventTimeFormatDiv").toggle();
 		});
 		if( jQuery('#allDayCheckbox').attr('checked') == true ) {
-			jQuery(".timeofdayoptions").addClass("hide")
-			jQuery("#EventTimeFormatDiv").addClass("hide");
+			jQuery(".timeofdayoptions").addClass("tec_hide")
+			jQuery("#EventTimeFormatDiv").addClass("tec_hide");
 		}
 		// Set the initial state of the event detail and EB ticketing div
 		jQuery("input[name='isEvent']").each(function(){
@@ -31,23 +31,26 @@
 		//show state/province input based on first option in countries list, or based on user input of country
 		function spShowHideCorrectStateProvinceInput(country) {
 			if (country == 'US') {
-				jQuery("#USA").removeClass("hide");
-				jQuery("#International").addClass("hide");
+				jQuery("#USA").removeClass("tec_hide");
+				jQuery("#International").addClass("tec_hide");
 				jQuery('input[name="EventStateExists"]').val(1);
-			} else {
-				jQuery("#International").removeClass("hide");
-				jQuery("#USA").addClass("hide");
+			} else if ( country != '' ) {
+				jQuery("#International").removeClass("tec_hide");
+				jQuery("#USA").addClass("tec_hide");
 				jQuery('input[name="EventStateExists"]').val(0);			
+			} else {
+				jQuery("#International").addClass("tec_hide");
+				jQuery("#USA").addClass("tec_hide");
+				jQuery('input[name="EventStateExists"]').val(0);
 			}
 		}
 		
 		spShowHideCorrectStateProvinceInput( jQuery("#EventCountry > option:first").attr('label') );
 		
 		jQuery("#EventCountry").change(function() {
-			var t = jQuery(this);
-			var value = t.val();
-			if( t.find('option[label="US"]').val() == value ) spShowHideCorrectStateProvinceInput('US');
-			else spShowHideCorrectStateProvinceInput(null);
+			var countryLabel = jQuery(this).find('option:selected').attr('label');
+			jQuery('input[name="EventCountryLabel"]').val(countryLabel);
+			spShowHideCorrectStateProvinceInput( countryLabel );
 		});
 		
 		var spDaysPerMonth = [29,31,28,31,30,31,30,31,31,30,31,30,31];
@@ -92,7 +95,33 @@
 		jQuery("select[name='EventEndYear']").change(function() {
 			jQuery("select[name='EventEndMonth']").change();
 		});
-			
+		// hide / show google map toggles
+		var tecAddressExists = false;
+		var tecAddressInputs = ["EventAddress","EventCity","EventZip"];
+		function tecShowHideGoogleMapToggles( event, textLength ) {
+			var selectValExists = false;
+			var inputValExists = false;
+				if(jQuery('input[name="EventCountryLabel"]').val()) selectValExists = true;
+				jQuery.each( tecAddressInputs, function(key, val) {
+					if( jQuery('input[name="' + val + '"]').val() ) {
+						inputValExists = true;
+						return false;
+					}
+				});
+			if( selectValExists || inputValExists ) jQuery('tr#google_map_link_toggle,tr#google_map_toggle').removeClass('tec_hide');
+			else jQuery('tr#google_map_link_toggle,tr#google_map_toggle').addClass('tec_hide');
+		}
+		jQuery.each( tecAddressInputs, function(key, val) {
+			jQuery('input[name="' + val + '"]').bind('keyup', function(event) {
+				var textLength = event.currentTarget.textLength;
+				if(textLength == 0) tecShowHideGoogleMapToggles( event, textLength );
+				else if(textLength == 1) tecShowHideGoogleMapToggles( event, textLength );
+			});
+		});
+		jQuery('select[name="EventCountry"]').bind('change', function(event) {
+			if(event.currentTarget.selectedIndex) tecShowHideGoogleMapToggles( event, null );
+			else tecShowHideGoogleMapToggles( event, null );
+		});
 		// Form validation
 		jQuery("form[name='post']").submit(function() {
 			if( jQuery("#isEventNo").attr('checked') == true ) {
@@ -106,7 +135,6 @@
 				alert('<?php _e('Phone',$this->pluginDomain); ?> <?php _e('is not valid.', $this->pluginDomain); ?>  <?php _e('Valid values are local format (eg. 02 1234 5678 or 123 123 4567) or international format (eg. +61 (0) 2 1234 5678 or +1 123 123 4567).  You may also use an optional extension of up to five digits prefixed by x or ext (eg. 123 123 4567 x89)'); ?> ');
 				return false;
 			}
-			
 			return true;
 		});
 				
@@ -120,9 +148,6 @@
 	}
 	.eventForm select, .eventForm input {
 		font-size:11px;
-	}
-	.eventForm .hide {
-		display:none;
 	}
 	.eventForm h4 {
 		font-size:1.2em;
@@ -281,15 +306,34 @@ try {
 				<select tabindex="<?php $this->tabIndex(); ?>" name="EventCountry" id="EventCountry">
 					<?php 
 					$this->constructCountries( $postId );
-				     foreach ($this->countries as $abbr => $fullname) {
-				       print ("<option label=". $abbr . " value=\"$fullname\" ");
-				       if ($_EventCountry == $fullname) { 
-				         print ('selected="selected" ');
-				       }
-				       print (">$fullname</option>\n");
-				     }
+					$defaultCountry = eventsGetOptionValue('defaultCountry');
+					if( $_EventCountry ) {
+						foreach ($this->countries as $abbr => $fullname) {
+							echo '<option label="' . $abbr . '" value="' . $fullname . '" ';
+				       		if ($_EventCountry == $fullname) {
+								echo 'selected="selected" ';
+								$eventCountryLabel = $abbr;
+							}
+							echo '>' . $fullname . '</option>';
+				     	}
+					} elseif( $defaultCountry ) {
+						foreach ($this->countries as $abbr => $fullname) {
+							echo '<option label="' . $abbr . '" value="' . $fullname . '" ';
+				       		if ($defaultCountry[1] == $fullname) {
+								echo 'selected="selected" ';
+								$eventCountryLabel = $abbr;
+							}
+							echo '>' . $fullname . '</option>';
+				     	}
+					} else {
+						$eventCountryLabel = "";
+						foreach ($this->countries as $abbr => $fullname) {
+							echo '<option label="' . $abbr . '" value="' . $fullname . '" >' . $fullname . '</option>';
+				     	}
+					}
 				     ?>
 			     </select>
+				 <input name="EventCountryLabel" type="hidden" value="<?php echo $eventCountryLabel; ?>" />
 			</td>
 		</tr>
 		<tr>
@@ -301,11 +345,11 @@ try {
 			<td><input tabindex="<?php $this->tabIndex(); ?>" type='text' name='EventCity' size='25' value='<?php echo $_EventCity; ?>' /></td>
 		</tr>
 		<input name="EventStateExists" type="hidden" value="<?php echo ($_EventCountry !== 'United States') ? 0 : 1; ?>">
-		<tr id="International" <?php if($_EventCountry == 'United States' || $_EventCountry == '' ) echo('class="hide"'); ?>>
+		<tr id="International" <?php if($_EventCountry == 'United States' || $_EventCountry == '' ) echo('class="tec_hide"'); ?>>
 			<td><?php _e('Province:',$this->pluginDomain); ?></td>
 			<td><input tabindex="<?php $this->tabIndex(); ?>" type='text' name='EventProvince' size='10' value='<?php echo $_EventProvince; ?>' /></td>
 		</tr>
-		<tr id="USA" <?php if($_EventCountry !== 'United States') echo('class="hide"'); ?>>
+		<tr id="USA" <?php if($_EventCountry !== 'United States') echo('class="tec_hide"'); ?>>
 			<td><?php _e('State:',$this->pluginDomain); ?></td>
 			<td>
 				<select tabindex="<?php $this->tabIndex(); ?>" name="EventState">
@@ -378,6 +422,18 @@ try {
 			<td><?php _e('Postal Code:',$this->pluginDomain); ?></td>
 			<td><input tabindex="<?php $this->tabIndex(); ?>" type='text' id='EventZip' name='EventZip' size='6' value='<?php echo $_EventZip; ?>' /></td>
 		</tr>
+		<tr id="google_map_link_toggle"<?php if( !tec_address_exists( $postId ) ) echo ' class="tec_hide"'; ?>>
+			<td><?php _e('Show Google Map Link:',$this->pluginDomain); ?></td>
+			<td>
+				<input tabindex="<?php $this->tabIndex(); ?>" type="checkbox" id="EventShowMapLink" name="EventShowMapLink" size="6" value="true" <?php if( !in_array( '_EventShowMapLink', get_post_custom_keys($postId) ) || get_post_meta( $postId, '_EventShowMapLink', true ) == 'true' ) echo 'checked="checked"'?> />
+			</td>
+		</tr>
+		<?php if( eventsGetOptionValue('embedGoogleMaps') == 'on' ) : ?>
+			<tr id="google_map_toggle"<?php if( !tec_address_exists( $postId ) ) echo ' class="tec_hide"'; ?>>
+				<td><?php _e('Show Google Map:',$this->pluginDomain); ?></td>
+				<td><input tabindex="<?php $this->tabIndex(); ?>" type="checkbox" id="EventShowMap" name="EventShowMap" size="6" value="true" <?php if( !in_array( '_EventShowMap', get_post_custom_keys($postId) ) || get_post_meta( $postId, '_EventShowMap', true ) == 'true' ) echo 'checked="checked"'; ?> /></td>
+			</tr>
+		<?php endif; ?>
 		<tr>
 			<td><?php _e('Phone:',$this->pluginDomain); ?></td>
 			<td><input tabindex="<?php $this->tabIndex(); ?>" type='text' id='EventPhone' name='EventPhone' size='14' value='<?php echo $_EventPhone; ?>' /></td>

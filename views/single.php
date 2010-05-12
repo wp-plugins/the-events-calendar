@@ -32,14 +32,21 @@
 							<dd><?php echo the_event_phone(); ?></dd>
 						<?php endif; ?>
 						<?php if( tec_address_exists( $post->ID ) ) : ?>
-						<dt><?php _e('Address:', $spEvents->pluginDomain) ?><br /><a class="gmap" href="<?php event_google_map_link() ?>" title="<?php _e('Click to view a Google Map', $spEvents->pluginDomain); ?>" target="_blank"><?php _e('Google Map', $spEvents->pluginDomain ); ?></a></dt>
+						<dt>
+							<?php _e('Address:', $spEvents->pluginDomain) ?><br />
+							<?php if( get_post_meta( $post->ID, '_EventShowMapLink', true ) == 'true' ) : ?>
+								<a class="gmap" href="<?php event_google_map_link() ?>" title="<?php _e('Click to view a Google Map', $spEvents->pluginDomain); ?>" target="_blank"><?php _e('Google Map', $spEvents->pluginDomain ); ?></a>
+							<?php endif; ?>
+						</dt>
 							<dd>
 							<?php tec_event_address( $post->ID ); ?>
 							</dd>
 						<?php endif; ?>
 					</dl>
 				</div>
-				<?php if( tec_address_exists( $post->ID ) ) event_google_map_embed(); ?>
+				<?php if( get_post_meta( $post->ID, '_EventShowMap', true ) == 'true' ) : ?>
+					<?php if( tec_address_exists( $post->ID ) ) event_google_map_embed(); ?>
+				<?php endif; ?>
 				<div class="entry">
 					<?php the_content() ?>	
 					<?php if (function_exists('the_event_ticket_form')) { the_event_ticket_form(); } ?>		
