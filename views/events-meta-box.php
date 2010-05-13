@@ -426,13 +426,18 @@ try {
 		<tr id="google_map_link_toggle"<?php if( !tec_address_exists( $postId ) ) echo ' class="tec_hide"'; ?>>
 			<td><?php _e('Show Google Map Link:',$this->pluginDomain); ?></td>
 			<td>
-				<input tabindex="<?php $this->tabIndex(); ?>" type="checkbox" id="EventShowMapLink" name="EventShowMapLink" size="6" value="true" <?php if( !in_array( '_EventShowMapLink', get_post_custom_keys($postId) ) || get_post_meta( $postId, '_EventShowMapLink', true ) == 'true' ) echo 'checked="checked"'?> />
+				<?php // is the post new?
+					$tecPostCustomKeys = get_post_custom_keys($postId);
+					$tecHasCustomKeys = count( $tecPostCustomKeys );
+					$tecNewPost = ( $tecHasCustomKeys ) ? !in_array( "_EventShowMapLink", $tecPostCustomKeys ) : true;
+				?>
+				<input tabindex="<?php $this->tabIndex(); ?>" type="checkbox" id="EventShowMapLink" name="EventShowMapLink" size="6" value="true" <?php if( $tecNewPost || get_post_meta( $postId, '_EventShowMapLink', true ) == 'true' ) echo 'checked="checked"'?> />
 			</td>
 		</tr>
 		<?php if( eventsGetOptionValue('embedGoogleMaps') == 'on' ) : ?>
 			<tr id="google_map_toggle"<?php if( !tec_address_exists( $postId ) ) echo ' class="tec_hide"'; ?>>
 				<td><?php _e('Show Google Map:',$this->pluginDomain); ?></td>
-				<td><input tabindex="<?php $this->tabIndex(); ?>" type="checkbox" id="EventShowMap" name="EventShowMap" size="6" value="true" <?php if( !in_array( '_EventShowMap', get_post_custom_keys($postId) ) || get_post_meta( $postId, '_EventShowMap', true ) == 'true' ) echo 'checked="checked"'; ?> /></td>
+				<td><input tabindex="<?php $this->tabIndex(); ?>" type="checkbox" id="EventShowMap" name="EventShowMap" size="6" value="true" <?php if( $tecNewPost || get_post_meta( $postId, '_EventShowMap', true ) == 'true' ) echo 'checked="checked"'; ?> /></td>
 			</tr>
 		<?php endif; ?>
 		<tr>
