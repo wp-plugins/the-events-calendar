@@ -793,7 +793,6 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 				return $this->eventCategory();
 			}
 		}
-
 		/**
 		 * This plugin does not have any deactivation functionality. Any events, categories, options and metadata are
 		 * left behind.
@@ -846,8 +845,6 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 				//google map checkboxes
 				if( !isset( $_POST['EventShowMapLink'] ) ) update_post_meta( $postId, '_EventShowMapLink', 'false' );
 				if( !isset( $_POST['EventShowMap'] ) ) update_post_meta( $postId, '_EventShowMap', 'false' );
-				//TEST
-				error_log("showMapMetaValue: ".get_post_meta( $postId, '_EventShowMapLink', true));
 				// give add-on plugins a chance to cancel this meta update
 				try {
 					do_action( 'sp_events_event_save', $postId );
@@ -1304,6 +1301,12 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 			$content .= "END:VCALENDAR";
 			echo $content;
 			exit;
+		}
+		public function setPostExceptionThrown( $thrown ) {
+			$this->postExceptionThrown = $thrown;
+		}
+		public function getPostExceptionThrown() {
+			return $this->postExceptionThrown;
 		}
 	} // end The_Events_Calendar class
 	global $spEvents;

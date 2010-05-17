@@ -87,7 +87,7 @@ try {
 	//$allOptions = $this->getOptions();
 	//$allOptions['error'] = $e->getMessage();
 	//$this->saveOptions( $allOptions );
-	//$e->displayMessage();
+	//$e->displayMessage(); //
 }
 ?>
 <div class="form">

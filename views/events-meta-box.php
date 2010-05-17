@@ -203,7 +203,7 @@ try {
 } catch ( TEC_Post_Exception $e) {
 	$this->postExceptionThrown = true;
 	update_post_meta( $postId, self::EVENTSERROROPT, trim( $e->getMessage() ) );
-	$e->displayMessage();
+	$e->displayMessage( $postId );
 }
 ?>
 	<p>
@@ -220,7 +220,7 @@ try {
 	} catch ( TEC_Post_Exception $e) {
 		$this->postExceptionThrown = true;
 		update_post_meta( $postId, self::EVENTSERROROPT, trim( $e->getMessage() ) );
-		$e->displayMessage();
+		$e->displayMessage( $postId );
 	}
 	
 	?>
@@ -476,7 +476,7 @@ try {
 	} catch ( TEC_Post_Exception $e) {
 		$this->postExceptionThrown = true;
 		update_post_meta( $postId, self::EVENTSERROROPT, trim( $e->getMessage() ) );
-		$e->displayMessage();
+		$e->displayMessage( $postId );
 	}	
 	?>
 	<div id="mainDonateRow" class="eventForm">
@@ -568,6 +568,6 @@ try {
 } catch ( TEC_Post_Exception $e) {
 	$this->postExceptionThrown = true;
 	update_post_meta( $postId, self::EVENTSERROROPT, trim( $e->getMessage() ) );
-	$e->displayMessage();
+	$e->displayMessage( $postId );
 }
 ?>
