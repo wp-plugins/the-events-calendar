@@ -28,7 +28,7 @@
 				<a class='tec-button-on' href='<?php echo events_get_gridview_link(); ?>'><?php _e('Calendar', $spEvents->pluginDomain)?></a>
 			</span>
 
-		</div><!--#tec-events-calendar-header-->
+		</div><!-- tec-events-calendar-header -->
 
 		<?php event_grid_view( ); // See the plugins/the-events-calendar/views/table.php template for customization ?>	
 	</div>
