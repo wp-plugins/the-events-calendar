@@ -2,7 +2,7 @@
 /*
  Plugin Name:  The Events Calendar
  Plugin URI: http://wordpress.org/extend/plugins/the-events-calendar/
- Description:  The Events Calendar plugin enables you to rapidly create and manage events using the post editor. Features include optional Eventbrite integration, Google Maps integration as well as default calendar grid and list templates for streamlined one click installation.
+ Description:  The Events Calendar plugin enables you to rapidly create and manage events using the post editor. Features include optional Eventbrite integration, Google Maps integration as well as default calendar grid and list templates for streamlined one click installation. When updating The Events Calendar, if EventBrite for The Events Calendar is being used, the two plugins must be updated together. 
  Version: 1.6
  Author: Shane & Peter, Inc.
  Author URI: http://www.shaneandpeter.com/

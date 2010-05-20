@@ -384,5 +384,4 @@ Features
 
 * Started internationalization (translation) support
 * Added international addresses
-* Extracted from S&P core plugin to stand alone. 
-
+* Extracted from S&P core plugin to stand alone.
