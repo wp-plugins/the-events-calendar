@@ -1271,6 +1271,9 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 				if( get_post_meta( $eventPost->ID, "_EventAllDay", true ) == "yes" ) {
 					$startDate = substr( $startDate, 0, 8 );
 					$endDate = substr( $endDate, 0, 8 );
+					// endDate bumped ahead one day to counter iCal's off-by-one error
+					$endDateStamp = strtotime($endDate);
+					$endDate = date( 'Ymd', $endDateStamp + 86400 );
 				}
 				$description = preg_replace("/[\n\t\r]/", " ", strip_tags( $eventPost->post_content ) );
 				//$cost = get_post_meta( $eventPost->ID, "_EventCost", true);
