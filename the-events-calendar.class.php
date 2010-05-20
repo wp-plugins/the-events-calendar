@@ -1078,7 +1078,7 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 			$options = '';
 			if ( empty ( $date ) ) {
 				$day = date_i18n( 'j' );
-				if( $day == $days[count($days)] ) $day = '01';
+				if( $day == date_i18n( 't' ) ) $day = '01';
 				elseif ( $day < 9 ) $day = '0' . ( $day + 1 );
 				else $day++;
 			} else {

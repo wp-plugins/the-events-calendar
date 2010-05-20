@@ -60,14 +60,14 @@
 		var spEndDays = [ jQuery('#28EndDays'), jQuery('#29EndDays'), jQuery('#30EndDays'), jQuery('#31EndDays') ];
 				
 		jQuery("select[name='EventStartMonth'], select[name='EventEndMonth']").change(function() {
-			var startEnd = jQuery(this).attr("name");
+			var t = jQuery(this);
+			var startEnd = t.attr("name");
 			// get changed select field
 			if( startEnd == 'EventStartMonth' ) startEnd = 'Start';
 			else startEnd = 'End';
 			// show/hide date lists according to month
-			var chosenMonth = jQuery(this).attr("value");
+			var chosenMonth = t.attr("value");
 			if( chosenMonth.charAt(0) == '0' ) chosenMonth = chosenMonth.replace('0', '');
-			else chosenMonth = chosenMonth;
 			// leap year
 			var remainder = jQuery("select[name='Event" + startEnd + "Year']").attr("value") % 4;
 			if( chosenMonth == 2 && remainder == 0 ) chosenMonth = 0;
