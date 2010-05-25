@@ -82,6 +82,7 @@ function display_day_title( $day, $monthView ) {
 	if( !count( $monthView[$day] ) || count( $monthView[$day] ) < get_option( 'posts_per_page' ) ) {
 		$return .= $day;
 	} else {
+		global $post;
 		$return .= "<a class='tec-multi-event-day'>$day</a>";
 		$return .= "<div id='tooltip_day_$day' class='tec-tooltip' style='display:none;'>";
 		for( $i = 0; $i < count( $monthView[$day] ); $i++ ) {
