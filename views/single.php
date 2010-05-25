@@ -52,11 +52,11 @@
 					<?php if (function_exists('the_event_ticket_form')) { the_event_ticket_form(); } ?>		
 				</div>
 				<?php edit_post_link('Edit', '<span class="edit-link">', '</span>'); ?>
-			</div><!-- .post -->
+			</div><!-- post -->
 
 		<?php if(eventsGetOptionValue('showComments','no') == 'yes'){ comments_template();} ?>
 
-	</div><!-- #tec-content -->
+	</div><!-- tec-content -->
 	
 <?php
 	get_footer();

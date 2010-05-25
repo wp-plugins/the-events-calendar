@@ -425,7 +425,6 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 			if ( $this->in_event_category() && ( events_displaying_upcoming() || events_displaying_past() ) ) {
 				if( '' == locate_template( array( 'events/list.php' ), true ) ) {
 					load_template( dirname( __FILE__ ) . '/views/list.php' );
-					//include( dirname( __FILE__ ) . '/views/list.php' );
 				}
 				exit;
 	        }    
@@ -433,15 +432,13 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 			if ( $this->in_event_category() ) {
 				if( '' == locate_template( array( 'events/gridview.php' ), true ) ) {
 					load_template( dirname( __FILE__ ) . '/views/gridview.php' );
-					//include( dirname( __FILE__ ) . '/views/gridview.php' );
 				}
 				exit;
 	        }    
 			// single event
 			if (is_single() && in_category( $this->eventCategory() ) ) {
 				if( '' == locate_template( array( 'events/single.php' ), true ) ) {
-					//load_template( dirname( __FILE__ ) . '/views/single.php' );
-					include( dirname( __FILE__ ) . '/views/single.php' );
+					load_template( dirname( __FILE__ ) . '/views/single.php' );
 				}
 				exit;
 			}

@@ -305,7 +305,7 @@ try {
 			<td><?php _e('Country:',$this->pluginDomain); ?></td>
 			<td>
 				<select tabindex="<?php $this->tabIndex(); ?>" name="EventCountry" id="EventCountry">
-					<?php 
+					<?php
 					$this->constructCountries( $postId );
 					$defaultCountry = eventsGetOptionValue('defaultCountry');
 					if( $_EventCountry ) {
@@ -317,7 +317,7 @@ try {
 							}
 							echo '>' . $fullname . '</option>';
 				     	}
-					} elseif( $defaultCountry ) {
+					} elseif( $defaultCountry && !get_post_custom_keys( $postId ) ) {
 						foreach ($this->countries as $abbr => $fullname) {
 							echo '<option label="' . $abbr . '" value="' . $fullname . '" ';
 				       		if ($defaultCountry[1] == $fullname) {
