@@ -544,9 +544,9 @@ try {
 		margin: -11px 6px 0;
 	}
 	#eventBriteTicketing h2 {
-		background: url(<?php echo WP_PLUGIN_URL . '/the-events-calendar/resources/images/logo_eventbrite.png';
+		background: url(<?php echo WP_PLUGIN_URL . '/the-events-calendar/resources/images/eb_press_little.gif';
 		?>) no-repeat top right;
-		height: 57px;
+		height: 80px;
 		margin: 0;
 	}
 	.eventForm {
