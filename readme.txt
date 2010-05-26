@@ -68,7 +68,7 @@ No setup required. Just plug and play!
 
 = Settings = 
 
-There are a growing number of options you can set to make your calendar behave in a specific manner. Simple click The Event Calendar in the settings panel:
+There are a growing number of options you can set to make your calendar behave in a specific manner. Simply click The Event Calendar in the settings panel:
 
 * Donation: Remove our plea for your support
 * Default View for Events: Select Calendar or Event list as the default view for the events loop
@@ -86,7 +86,10 @@ The built in template can be overridden by files within your template.
 
 = Default vs. Custom Templates =
 
-The Events Calendar plugin now comes with default templates for the list view, grid view and single post view. If you would like to alter them, create a new folder called "events" in your template directory and copy over the following files from within the plugin folder (simple-events/views/):
+The Events Calendar plugin now comes with default templates for the list view,
+    grid view and single post view. If you would like to alter them, create a
+    new folder called "events" in your template directory and copy over the
+    following files from within the plugin folder (the-events-calendar/views/):
 
 * gridview.php
 * list.php
