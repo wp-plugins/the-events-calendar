@@ -134,7 +134,7 @@ function display_day( $day, $monthView ) {
 						<?php if ( !empty( $end )  && $start !== $end )		echo " – " . $end . '<br />'; ?>
 					</div>
 					<?php endif; ?>
-					<?php echo The_Events_Calendar::truncate(the_content(), 30); ?>
+					<?php echo The_Events_Calendar::truncate(get_the_content(), 30); ?>
 
 				</div>
 				<span class="tec-arrow"></span>

@@ -445,7 +445,6 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 		}
 		
 		public function truncate($text, $excerpt_length = 44) {
-
 			$text = strip_shortcodes( $text );
 
 			$text = apply_filters('the_content', $text);
@@ -458,8 +457,7 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 				$text = implode(' ', $words);
 				$text = rtrim($text);
 				$text .= '&hellip;';
-				}
-
+			}
 			return $text;
 		}
 		
