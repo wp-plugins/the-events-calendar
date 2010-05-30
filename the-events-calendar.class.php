@@ -1233,9 +1233,10 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 			}
 		}
 		public function getDateString( $date ) {
+			$monthNames = $this->monthNames();
 			$dateParts = split( '-', $date );
 		    $timestamp = mktime( 0, 0, 0, $dateParts[1], 1, $dateParts[0] );
-		    return date( "F Y", $timestamp );
+		    return $monthNames[date( "F", $timestamp )] . " " . $dateParts[0];
 		}
 		/**
 	     * echo the next tab index
