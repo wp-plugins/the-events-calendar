@@ -434,7 +434,7 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 					load_template( dirname( __FILE__ ) . '/views/gridview.php' );
 				}
 				exit;
-	        }    
+	        }
 			// single event
 			if (is_single() && in_category( $this->eventCategory() ) ) {
 				if( '' == locate_template( array( 'events/single.php' ), true ) ) {

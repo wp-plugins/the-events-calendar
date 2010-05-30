@@ -20,8 +20,14 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'eventsGetOptionV
 	 * @return void
 	 */
 	function event_grid_view() {
+		global $spEvents;
 		set_query_var( 'eventDisplay', 'bydate' );
-		load_template( dirname( __FILE__ ) . '/views/table.php' );
+		if ( $spEvents->in_event_category() ) {
+			if( '' == locate_template( array( 'events/table.php' ), true ) ) {
+				load_template( dirname( __FILE__ ) . '/views/table.php' );
+			}
+			return;
+        }
 	}
 	/**
 	 * Maps events to days
