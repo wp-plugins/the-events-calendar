@@ -215,8 +215,8 @@ Please visit the forum for questions or comments: http://wordpress.org/tags/the-
 
 Features
 
-* override plugin css by putting a custom events.css in /wp-content/<your-theme>/events/
-* override calendar view by putting a custom table.php in /<your-theme>/events/
+* override plugin css by putting a custom events.css in /wp-content/[your-theme]/events/
+* override calendar view by putting a custom table.php in /[your-theme]/events/
 * iCal import buttons added to calendar and list views
 
 Translations
@@ -235,7 +235,7 @@ Bugs
 Features
 
 * Child Theme support 
-* iCal Feed of all events now accessible using http://<yourUrlHere>.com/?ical
+* iCal Feed of all events now accessible using http://[yourUrlHere].com/?ical
 * Setting to include / exclude events form general loop
 * Subcategories in events now behave properly! (and include some css for your creative endeavors)
 * Get Events function no longer starts its own loop (significantly reduce conflicts with other plugins)
