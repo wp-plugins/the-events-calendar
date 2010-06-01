@@ -228,6 +228,7 @@ Bugs
 
 * new month previous and next links now translate
 * the calendar view tooltip on mouse hover now truncates the post content
+* state/province now shows properly on post edit page load
 
 = 1.6 =
 

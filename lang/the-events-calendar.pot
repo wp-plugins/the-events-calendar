@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: The Events Calendar 1.6\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/the-events-calendar\n"
-"POT-Creation-Date: 2010-05-26 14:02+0000\n"
+"POT-Creation-Date: 2010-06-01 16:40+0000\n"
 "PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1057,101 +1057,101 @@ msgstr ""
 msgid "Zimbabwe"
 msgstr ""
 
-#: the-events-calendar.class.php:490
+#: the-events-calendar.class.php:492
 msgid "Jan"
 msgstr ""
 
-#: the-events-calendar.class.php:491
+#: the-events-calendar.class.php:493
 msgid "Feb"
 msgstr ""
 
-#: the-events-calendar.class.php:492
+#: the-events-calendar.class.php:494
 msgid "Mar"
 msgstr ""
 
-#: the-events-calendar.class.php:493
+#: the-events-calendar.class.php:495
 msgid "Apr"
 msgstr ""
 
-#: the-events-calendar.class.php:494 the-events-calendar.class.php:508
+#: the-events-calendar.class.php:496 the-events-calendar.class.php:510
 msgid "May"
 msgstr ""
 
-#: the-events-calendar.class.php:495
+#: the-events-calendar.class.php:497
 msgid "Jun"
 msgstr ""
 
-#: the-events-calendar.class.php:496
+#: the-events-calendar.class.php:498
 msgid "Jul"
 msgstr ""
 
-#: the-events-calendar.class.php:497
+#: the-events-calendar.class.php:499
 msgid "Aug"
 msgstr ""
 
-#: the-events-calendar.class.php:498
+#: the-events-calendar.class.php:500
 msgid "Sep"
 msgstr ""
 
-#: the-events-calendar.class.php:499
+#: the-events-calendar.class.php:501
 msgid "Oct"
 msgstr ""
 
-#: the-events-calendar.class.php:500
+#: the-events-calendar.class.php:502
 msgid "Nov"
 msgstr ""
 
-#: the-events-calendar.class.php:501
+#: the-events-calendar.class.php:503
 msgid "Dec"
 msgstr ""
 
-#: the-events-calendar.class.php:504
+#: the-events-calendar.class.php:506
 msgid "January"
 msgstr ""
 
-#: the-events-calendar.class.php:505
+#: the-events-calendar.class.php:507
 msgid "February"
 msgstr ""
 
-#: the-events-calendar.class.php:506
+#: the-events-calendar.class.php:508
 msgid "March"
 msgstr ""
 
-#: the-events-calendar.class.php:507
+#: the-events-calendar.class.php:509
 msgid "April"
 msgstr ""
 
-#: the-events-calendar.class.php:509
+#: the-events-calendar.class.php:511
 msgid "June"
 msgstr ""
 
-#: the-events-calendar.class.php:510
+#: the-events-calendar.class.php:512
 msgid "July"
 msgstr ""
 
-#: the-events-calendar.class.php:511
+#: the-events-calendar.class.php:513
 msgid "August"
 msgstr ""
 
-#: the-events-calendar.class.php:512
+#: the-events-calendar.class.php:514
 msgid "September"
 msgstr ""
 
-#: the-events-calendar.class.php:513
+#: the-events-calendar.class.php:515
 msgid "October"
 msgstr ""
 
-#: the-events-calendar.class.php:514
+#: the-events-calendar.class.php:516
 msgid "November"
 msgstr ""
 
-#: the-events-calendar.class.php:515
+#: the-events-calendar.class.php:517
 msgid "December"
 msgstr ""
 
 #. #-#-#-#-#  plugin.pot (The Events Calendar 1.6)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#: the-events-calendar.class.php:1007
+#: the-events-calendar.class.php:1009
 msgid "The Events Calendar"
 msgstr ""
 
@@ -1673,6 +1673,10 @@ msgstr ""
 
 #: views/gridview.php:9 views/list.php:9
 msgid "Calendar of Events"
+msgstr ""
+
+#: views/gridview.php:31 views/list.php:16
+msgid "iCal Import"
 msgstr ""
 
 #: views/list.php:33 views/single.php:14
