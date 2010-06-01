@@ -211,6 +211,24 @@ Please visit the forum for questions or comments: http://wordpress.org/tags/the-
 
 == Changelog ==
 
+= 1.6.1 =
+
+Features
+
+* override plugin css by putting a custom events.css in /wp-content/<your-theme>/events/
+* override calendar view by putting a custom table.php in /<your-theme>/events/
+* iCal import buttons added to calendar and list views
+
+Translations
+
+* Russian added [Vsevolod Gavrilenko]
+* French updated [Boddhi]
+
+Bugs
+
+* new month previous and next links now translate
+* the calendar view tooltip on mouse hover now truncates the post content
+
 = 1.6 =
 
 Features

@@ -45,7 +45,7 @@
 			}
 		}
 		
-		spShowHideCorrectStateProvinceInput( jQuery("#EventCountry > option:first").attr('label') );
+		spShowHideCorrectStateProvinceInput( jQuery("#EventCountry > option:selected").attr('label') );
 		
 		jQuery("#EventCountry").change(function() {
 			var countryLabel = jQuery(this).find('option:selected').attr('label');
