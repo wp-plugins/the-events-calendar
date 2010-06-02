@@ -471,6 +471,24 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 				wp_enqueue_style('sp-events-calendar-style', WP_CONTENT_URL.'/themes/'.$themeName.'/events/events.css' );
 			} else wp_enqueue_style('sp-events-calendar-style', $eventsURL.'events.css' );
 		}
+		
+		/* possible new check for events.css in child themes */
+		/*
+		public function loadDomainStylesScripts() {
+			load_plugin_textdomain( $this->pluginDomain, false, basename(dirname(__FILE__)) . '/lang/');
+			$eventsURL = trailingslashit( WP_PLUGIN_URL ) . trailingslashit( plugin_basename( dirname( __FILE__ ) ) ) . 'resources/';
+			wp_enqueue_script('sp-events-calendar-script', $eventsURL.'events.js', array('jquery') );
+			if( file_exists( TEMPLATEPATH.'/events/events.css' ) ) {
+				$templateArray = explode( '/', TEMPLATEPATH );
+				$themeName = $templateArray[count($templateArray)-1];
+				wp_enqueue_style('sp-events-calendar-style', WP_CONTENT_URL.'/themes/'.$themeName.'/events/events.css' );
+			} else if( file_exists( STYLESHEETPATH.'/events/events.css' ) ) {
+				$templateArray = explode( '/', STYLESHEETPATH );
+				$themeName = $templateArray[count($templateArray)-1];
+				wp_enqueue_style('sp-events-calendar-style', WP_CONTENT_URL.'/themes/'.$themeName.'/events/events.css' );
+			} else wp_enqueue_style('sp-events-calendar-style', $eventsURL.'events.css' );
+		}
+		*/
 	
 		/**
 		 * Helper method to return an array of 1-12 for months
