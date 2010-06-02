@@ -109,7 +109,8 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'eventsGetOptionV
 			$metaVal = get_post_meta( $postId, '_Event' . $val, true );
 			if( $metaVal ) $toUrlEncode .= $metaVal . " ";
 		}
-		if( $toUrlEncode ) return "http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=" . urlencode( trim( $toUrlEncode ) );
+		// &amp;hl=en (the host language) removed from map parameters, English cannot be hard-coded in and getting the value from WP_LANG is a bust because google only supports a few host languages at this point
+		if( $toUrlEncode ) return "http://maps.google.com/maps?f=q&amp;source=s_q&amp;geocode=&amp;q=" . urlencode( trim( $toUrlEncode ) );
 		return "";
 	}
 	/**
