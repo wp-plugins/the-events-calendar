@@ -30,7 +30,9 @@ if( !class_exists( 'Events_List_Widget' ) ) {
 				$limit = $instance['limit'];
 				$noUpcomingEvents = $instance['no_upcoming_events'];
 				$start = $instance['start'];
+				$startTime = $instance['start-time'];
 				$end = $instance['end'];
+				$endTime = $instance['end-time'];
 				$venue = $instance['venue'];
 				$address = $instance['address'];
 				$city = $instance['city'];
@@ -93,7 +95,11 @@ if( !class_exists( 'Events_List_Widget' ) ) {
 					$instance['limit'] = strip_tags( $new_instance['limit'] );
 					$instance['no_upcoming_events'] = strip_tags( $new_instance['no_upcoming_events'] );
 					$instance['start'] = strip_tags( $new_instance['start'] );
+					if( $instance['start'] == 'on' ) $instance['start-time'] = strip_tags( $new_instance['start-time'] );
+					else $instance['start-time'] = '';
 					$instance['end'] = strip_tags( $new_instance['end'] );
+					if( $instance['end'] == 'on' ) $instance['end-time'] = strip_tags( $new_instance['end-time'] );
+					else $instance['end-time'] = '';
 					$instance['venue'] = strip_tags( $new_instance['venue'] );
 					$instance['country'] = strip_tags( $new_instance['country'] );
 					$instance['address'] = strip_tags( $new_instance['address'] );
@@ -109,7 +115,7 @@ if( !class_exists( 'Events_List_Widget' ) ) {
 		
 			function form( $instance ) {
 				/* Set up default widget settings. */
-				$defaults = array( 'title' => 'Upcoming Events', 'limit' => '5', 'start' => true, 'end' => false, 'venue' => false, 'country' => true, 'address' => false, 'city' => true, 'state' => true, 'province' => true, 'zip' => false, 'phone' => false, 'cost' => false);
+				$defaults = array( 'title' => 'Upcoming Events', 'limit' => '5', 'start' => 'on', 'start-time' => '','end' => '', 'end-time' => '', 'venue' => '', 'country' => 'on', 'address' => '', 'city' => 'on', 'state' => 'on', 'province' => 'on', 'zip' => '', 'phone' => '', 'cost' => '');
 				$instance = wp_parse_args( (array) $instance, $defaults );			
 				include( dirname( __FILE__ ) . '/views/events-list-load-widget-admin.php' );
 			}
