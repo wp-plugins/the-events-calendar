@@ -8,6 +8,7 @@
 			<div id="post-<?php the_ID() ?>" <?php post_class() ?>>
 				<span class="back"><a href="<?php echo events_get_events_link(); ?>"><?php _e('&laquo; Back to Events', $spEvents->pluginDomain); ?></a></span>
 				<h2 class="entry-title"><?php the_title() ?></h2>
+				<a class="ical" href="<?php bloginfo('home'); ?>/?ical=<?php echo $post->ID; ?>"><?php _e('iCal Import', $spEvents->pluginDomain) ?></a>
 				<?php if (the_event_end_date() > time()  ) { ?><small><?php  _e('This event has passed.', $spEvents->pluginDomain) ?></small> <?php } ?>
 				<div id="tec-event-meta">
 					<dl class="column">

@@ -1271,8 +1271,8 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 		/**
 		 * build an ical feed from events posts
 		 */
-		public function iCalFeed( $postId = null ) {
-		    $getstring = $_GET['ical'];
+		public function iCalFeed() {
+		    $postId = $_GET['ical'];
 			$wpTimezoneString = get_option("timezone_string");
 			$categoryId = get_cat_id( The_Events_Calendar::CATEGORYNAME );
 			$events = "";
