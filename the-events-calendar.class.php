@@ -1272,15 +1272,25 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 		 * build an ical feed from events posts
 		 */
 		public function iCalFeed() {
-		    $postId = $_GET['ical'];
+			$getVal = $_GET['ical'];
+			$catObj = get_category_by_slug( $getVal );
+			$eventsCatId = get_cat_id( The_Events_Calendar::CATEGORYNAME );
+			if( $catObj && cat_is_ancestor_of( $eventsCatId, $catObj ) ) {
+				$categoryId = $catObj->term_id;
+				$includePosts = '';
+			} elseif( is_numeric($getVal) ) {
+				$categoryId = $eventsCatId;
+				$includePosts = '&include=' . $getVal;
+			} else {
+				$categoryId = $eventsCatId;
+				$includePosts = '';
+			}
 			$wpTimezoneString = get_option("timezone_string");
-			$categoryId = get_cat_id( The_Events_Calendar::CATEGORYNAME );
 			$events = "";
 			$lastBuildDate = "";
 			$eventsTestArray = array();
 			$blogHome = get_bloginfo('home');
 			$blogName = get_bloginfo('name');
-			$includePosts = ( $postId ) ? '&include=' . $postId : '';
 			$eventPosts = get_posts( 'numberposts=-1&category=' . $categoryId . $includePosts );
 			foreach( $eventPosts as $eventPost ) {
 				// convert 2010-04-08 00:00:00 to 20100408T000000 or YYYYMMDDTHHMMSS

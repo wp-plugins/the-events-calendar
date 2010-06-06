@@ -211,6 +211,12 @@ Please visit the forum for questions or comments: http://wordpress.org/tags/the-
 
 == Changelog ==
 
+= 1.6.3 =
+
+Features
+
+* iCal import sorted options: post, category, all
+
 = 1.6.1 =
 
 Features

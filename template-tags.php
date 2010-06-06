@@ -1,5 +1,4 @@
 <?php
-
 if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'eventsGetOptionValue' ) ) {
 	// fetch the iCal file
 	if ( isset($_GET['ical']) ) add_action('init', array( $spEvents, 'iCalFeed') );
