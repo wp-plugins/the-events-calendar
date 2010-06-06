@@ -161,6 +161,7 @@ table.tec-calendar {
 	right:30px;
 }
 .tec-tooltip .tec-event-title {
+	background-color: #3F7DBD;
 	margin:0;
 	color:#fff;
 	font-size:12px;
