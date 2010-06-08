@@ -400,6 +400,12 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
             }
             return $this->defaultOptions;
         }
+
+		public function getSingleOption( $key ) {
+			if( $this->latestOptions ) return $this->latestOptions[$key];
+			$options = $this->getOptions();
+			return $options[$key];
+		}
 		        
         private function saveOptions($options) {
             if (!is_array($options)) {
@@ -564,8 +570,20 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 			return $years;
 		}
 		
+		private function updateMapPostMeta() {
+			$eventsCatId = get_cat_ID( The_Events_Calendar::CATEGORYNAME );
+			$eventPosts = get_posts('numberposts=-1&category='.$eventsCatId);
+			foreach( $eventPosts as $place => $object ) {
+				$keys = get_post_custom_keys($object->ID);
+				if( !in_array( '_EventShowMap', $keys ) ) {
+					add_post_meta( $object->ID, '_EventShowMapLink', 'true', true);
+					if( $this->getSingleOption( 'embedGoogleMaps' ) == 'on' ) add_post_meta( $object->ID, '_EventShowMap', 'true', true);
+				}
+			}
+		}
+		
 		/**
-		 * Creates the category and sets up the theme resource folder with sample config files.
+		 * Creates the category and sets up the theme resource folder with sample config files. Calls updateMapPostMeta().
 		 * 
 		 * @return void
 		 */
@@ -575,6 +593,7 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 			wp_schedule_event( $firstTime, 'daily', 'reschedule_event_post'); // schedule this for midnight, daily
 			$this->create_category_if_not_exists( );	
 			$this->flushRewriteRules();
+			$this->updateMapPostMeta();
 		}
 		/**
 		* This function is scheduled to run at midnight.  If any posts are set with EventStartDate
