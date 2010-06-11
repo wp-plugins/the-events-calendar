@@ -892,11 +892,12 @@ if ( !class_exists( 'The_Events_Calendar' ) ) {
 					$this->postExceptionThrown = true;
 					update_post_meta( $postId, self::EVENTSERROROPT, trim( $e->getMessage() ) );
 				}	
-				//update meta fields		
+				//update meta fields
 				foreach ( $this->metaTags as $tag ) {
 					$htmlElement = ltrim( $tag, '_' );
 					if ( $tag != self::EVENTSERROROPT ) {
 						if ( isset( $_POST[$htmlElement] ) ) {
+							if( is_string($_POST[$htmlElement]) ) $_POST[$htmlElement] = filter_var($_POST[$htmlElement], FILTER_SANITIZE_STRING);
 							update_post_meta( $postId, $tag, $_POST[$htmlElement] );
 						}
 					}
