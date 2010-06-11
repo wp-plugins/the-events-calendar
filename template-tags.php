@@ -612,7 +612,9 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'eventsGetOptionV
 		$cat_id = cat_is_ancestor_of( $mainEventsCat, $currentCat ) ? $currentCat : $mainEventsCat;
 		$link = get_category_link( $cat_id );
 		if( '' == get_option('permalink_structure') || 'off' == eventsGetOptionValue('useRewriteRules','on') ) {
-			return add_query_arg( array('eventDate'=>$spEvents->nextMonth( $spEvents->date )), $link );
+			return add_query_arg( array('eventDate'=>$spEvents->nextMonth( $spEvents->date ),
+										'eventDisplay'=>'month'
+									   ), $link );
 		} else {
 			return trailingslashit( $link ) . $spEvents->nextMonth( $spEvents->date );
 		}
@@ -629,7 +631,10 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'eventsGetOptionV
 		$cat_id = cat_is_ancestor_of( $mainEventsCat, $currentCat ) ? $currentCat : $mainEventsCat;
 		$link = get_category_link( $cat_id );
 		if( '' == get_option('permalink_structure') || 'off' == eventsGetOptionValue('useRewriteRules','on') ) {
-			return add_query_arg( array('eventDate'=>$spEvents->previousMonth( $spEvents->date )), $link );
+			return add_query_arg( array(
+					'eventDate'=>$spEvents->previousMonth( $spEvents->date ),
+					'eventDisplay'=>'month'
+				   ), $link );
 		} else {
 			return trailingslashit( $link ) . $spEvents->previousMonth( $spEvents->date );
 		}
