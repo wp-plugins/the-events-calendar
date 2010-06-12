@@ -129,7 +129,7 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'eventsGetOptionV
 	 * @param string $postId 
 	 * @return void
 	 */
-	function event_google_map_link( $postId = null, $extraArgs, $location ) {
+	function event_google_map_link( $postId = null, $extraArgs, $location = "" ) {
 		echo get_event_google_map_link( $postId, $extraArgs, $location );
 	}
 	/**
