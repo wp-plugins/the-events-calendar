@@ -98,7 +98,7 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'eventsGetOptionV
 	 * @param string location of the event
 	 * @return string a fully qualified link to http://maps.google.com/ for this event
 	 */
-	function get_event_google_map_link( $postId = null, $extraArgs, $location = "" ) {
+	function get_event_google_map_link( $postId = null, $extraArgs = "", $location = "" ) {
 		if ( $postId === null || !is_numeric( $postId ) ) {
 			global $post;
 			$postId = $post->ID;
@@ -129,7 +129,7 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'eventsGetOptionV
 	 * @param string $postId 
 	 * @return void
 	 */
-	function event_google_map_link( $postId = null, $extraArgs, $location = "" ) {
+	function event_google_map_link( $postId = null, $extraArgs = "", $location = "" ) {
 		echo get_event_google_map_link( $postId, $extraArgs, $location );
 	}
 	/**
