@@ -36,7 +36,8 @@
 						<dt>
 							<?php _e('Address:', $spEvents->pluginDomain) ?><br />
 							<?php if( get_post_meta( $post->ID, '_EventShowMapLink', true ) == 'true' ) : ?>
-								<a class="gmap" href="<?php event_google_map_link() ?>" title="<?php _e('Click to view a Google Map', $spEvents->pluginDomain); ?>" target="_blank"><?php _e('Google Map', $spEvents->pluginDomain ); ?></a>
+								<?php $mapArgs = array("f"=>"q","source"=>"s_q","geocode"=>""); ?>
+								<a class="gmap" href="<?php event_google_map_link( null, $mapArgs ) ?>" title="<?php _e('Click to view a Google Map', $spEvents->pluginDomain); ?>" target="_blank"><?php _e('Google Map', $spEvents->pluginDomain ); ?></a>
 							<?php endif; ?>
 						</dt>
 							<dd>

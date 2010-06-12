@@ -63,7 +63,8 @@
 		                  <tr>
 							<td class="tec-event-meta-desc"><?php _e('Address:', $spEvents->pluginDomain); ?><br />
 							<?php if( get_post_meta( $post->ID, '_EventShowMapLink', true ) == 'true' ) : ?>
-								<a class="gmap" href="<?php event_google_map_link(); ?>" title="Click to view a Google Map" target="_blank"><?php _e('Google Map', $spEvents->pluginDomain ); ?></a>
+								<?php $mapArgs = array("f"=>"q","source"=>"s_q","geocode"=>""); ?>
+								<a class="gmap" href="<?php event_google_map_link( null, $mapArgs ); ?>" title="Click to view a Google Map" target="_blank"><?php _e('Google Map', $spEvents->pluginDomain ); ?></a>
 							<?php endif; ?></td>
 							<td class="tec-event-meta-value"><?php tec_event_address( $post->ID ); ?></td>
 		                  </tr>

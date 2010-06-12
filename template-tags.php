@@ -96,11 +96,12 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'eventsGetOptionV
 	 * @param string $postId 
 	 * @return string a fully qualified link to http://maps.google.com/ for this event
 	 */
-	function get_event_google_map_link( $postId = null ) {
+	function get_event_google_map_link( $postId = null, $extraArgs ) {
 		if ( $postId === null || !is_numeric( $postId ) ) {
 			global $post;
 			$postId = $post->ID;
 		}
+		$output = "http://maps.google.com/maps?";
 		if ( !is_event( $postId ) ) return false;
 		$locationMetaSuffixes = array( 'Address', 'City', 'State', 'Province', 'Zip', 'Country' );
 		$toUrlEncode = "";
@@ -108,8 +109,15 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'eventsGetOptionV
 			$metaVal = get_post_meta( $postId, '_Event' . $val, true );
 			if( $metaVal ) $toUrlEncode .= $metaVal . " ";
 		}
-		// &amp;hl=en (the host language) removed from map parameters, English cannot be hard-coded in and getting the value from WP_LANG is a bust because google only supports a few host languages at this point
-		if( $toUrlEncode ) return "http://maps.google.com/maps?f=q&amp;source=s_q&amp;geocode=&amp;q=" . urlencode( trim( $toUrlEncode ) );
+		if( is_array( $extraArgs ) ) {
+			foreach( $extraArgs as $key => $val ) {
+				$output .= "&amp;" . $key . "=" . $val;
+			}
+		}
+		if( $toUrlEncode ) {
+			$output .= "&amp;q=" . urlencode( trim( $toUrlEncode ) );
+			return $output;
+		}
 		return "";
 	}
 	/**
@@ -118,8 +126,8 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'eventsGetOptionV
 	 * @param string $postId 
 	 * @return void
 	 */
-	function event_google_map_link( $postId = null ) {
-		echo get_event_google_map_link( $postId );
+	function event_google_map_link( $postId = null, $extraArgs ) {
+		echo get_event_google_map_link( $postId, $extraArgs );
 	}
 	/**
 	 * @return string formatted event address

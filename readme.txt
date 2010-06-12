@@ -143,8 +143,8 @@ Time format comes from:
 
 These functions will return the metadata associated with the event. The ID is optional.
 
-**event_google_map_link( $id )**
-**get_event_google_map_link( $id )**
+**event_google_map_link( $id, $extraArgs )**
+**get_event_google_map_link( $id, $extraArgs )**
 
 Echos or returns, respectively, an http:// link to google maps for the event's address.  The ID is optional.
 
