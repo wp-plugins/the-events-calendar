@@ -94,9 +94,11 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'eventsGetOptionV
 	 * Returns a link to google maps for the given event
 	 *
 	 * @param string $postId 
+	 * @param array multidimensional array of query string keys and values
+	 * @param string location of the event
 	 * @return string a fully qualified link to http://maps.google.com/ for this event
 	 */
-	function get_event_google_map_link( $postId = null, $extraArgs ) {
+	function get_event_google_map_link( $postId = null, $extraArgs, $location = "" ) {
 		if ( $postId === null || !is_numeric( $postId ) ) {
 			global $post;
 			$postId = $post->ID;
@@ -104,18 +106,19 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'eventsGetOptionV
 		$output = "http://maps.google.com/maps?";
 		if ( !is_event( $postId ) ) return false;
 		$locationMetaSuffixes = array( 'Address', 'City', 'State', 'Province', 'Zip', 'Country' );
-		$toUrlEncode = "";
-		foreach( $locationMetaSuffixes as $val ) {
-			$metaVal = get_post_meta( $postId, '_Event' . $val, true );
-			if( $metaVal ) $toUrlEncode .= $metaVal . " ";
+		if( !$location ) {
+			foreach( $locationMetaSuffixes as $val ) {
+				$metaVal = get_post_meta( $postId, '_Event' . $val, true );
+				if( $metaVal ) $location .= $metaVal . " ";
+			}
 		}
 		if( is_array( $extraArgs ) ) {
 			foreach( $extraArgs as $key => $val ) {
 				$output .= "&amp;" . $key . "=" . $val;
 			}
 		}
-		if( $toUrlEncode ) {
-			$output .= "&amp;q=" . urlencode( trim( $toUrlEncode ) );
+		if( $location ) {
+			$output .= "&amp;q=" . urlencode( trim( $location ) );
 			return $output;
 		}
 		return "";
@@ -126,8 +129,8 @@ if( class_exists( 'The_Events_Calendar' ) && !function_exists( 'eventsGetOptionV
 	 * @param string $postId 
 	 * @return void
 	 */
-	function event_google_map_link( $postId = null, $extraArgs ) {
-		echo get_event_google_map_link( $postId, $extraArgs );
+	function event_google_map_link( $postId = null, $extraArgs, $location ) {
+		echo get_event_google_map_link( $postId, $extraArgs, $location );
 	}
 	/**
 	 * @return string formatted event address
