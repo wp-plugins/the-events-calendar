@@ -48,9 +48,6 @@ if( !class_exists( 'Events_List_Widget' ) ) {
 				} else {
 					$event_url = events_get_gridview_link();
 				}
-
-				/* Before widget (defined by themes). */
-				echo $before_widget;
 				
 				if( function_exists( 'get_events' ) ) {
 					$old_display = $wp_query->get('eventDisplay');
@@ -58,14 +55,14 @@ if( !class_exists( 'Events_List_Widget' ) ) {
 					$posts = get_events($limit, The_Events_Calendar::CATEGORYNAME);
 				}
 				
+				/* Before widget (defined by themes). */
 				/* Title of widget (before and after defined by themes). */
-				if ( $title && !$noUpcomingEvents ) echo $before_title . $title . $after_title;
+				if ( $title && !$noUpcomingEvents ) echo $before_widget . $before_title . $title . $after_title;
 					
 				if( $posts ) {
 					/* Display list of events. */
 						if( function_exists( 'get_events' ) ) {
-						
-							echo "<ul class='upcoming'>";
+							echo '<ul class="upcoming">';
 							foreach( $posts as $post ) : 
 								setup_postdata($post);
 								if (file_exists(TEMPLATEPATH.'/events/events-list-load-widget-display.php') ) {
@@ -84,7 +81,7 @@ if( !class_exists( 'Events_List_Widget' ) ) {
 				} else if( !$noUpcomingEvents ) _e('There are no upcoming events at this time.', $this->pluginDomain);
 
 				/* After widget (defined by themes). */
-				echo $after_widget;
+				if ( !$noUpcomingEvents ) echo $after_widget;
 			}	
 		
 			function update( $new_instance, $old_instance ) {
