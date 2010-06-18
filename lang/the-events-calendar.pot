@@ -1,4 +1,4 @@
-# Translation of the WordPress plugin The Events Calendar 1.6 by Shane & Peter, Inc..
+# Translation of the WordPress plugin The Events Calendar 1.6.3 by Shane & Peter, Inc..
 # Copyright (C) 2010 Shane & Peter, Inc.
 # This file is distributed under the same license as the The Events Calendar package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: The Events Calendar 1.6\n"
+"Project-Id-Version: The Events Calendar 1.6.3\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/the-events-calendar\n"
-"POT-Creation-Date: 2010-06-01 16:40+0000\n"
+"POT-Creation-Date: 2010-06-18 15:34+0000\n"
 "PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,7 @@ msgid "Events Calendar"
 msgstr ""
 
 #: events-calendar-widget.class.php:39
-#: views/events-list-load-widget-admin.php:2
+#: views/events-list-load-widget-admin.php:27
 msgid "Title:"
 msgstr ""
 
@@ -33,11 +33,11 @@ msgstr ""
 msgid "A widget that displays the next upcoming x events."
 msgstr ""
 
-#: events-list-widget.class.php:81
+#: events-list-widget.class.php:80
 msgid "View All Events"
 msgstr ""
 
-#: events-list-widget.class.php:82
+#: events-list-widget.class.php:81
 msgid "There are no upcoming events at this time."
 msgstr ""
 
@@ -1057,161 +1057,169 @@ msgstr ""
 msgid "Zimbabwe"
 msgstr ""
 
-#: the-events-calendar.class.php:492
+#: the-events-calendar.class.php:516
 msgid "Jan"
 msgstr ""
 
-#: the-events-calendar.class.php:493
+#: the-events-calendar.class.php:517
 msgid "Feb"
 msgstr ""
 
-#: the-events-calendar.class.php:494
+#: the-events-calendar.class.php:518
 msgid "Mar"
 msgstr ""
 
-#: the-events-calendar.class.php:495
+#: the-events-calendar.class.php:519
 msgid "Apr"
 msgstr ""
 
-#: the-events-calendar.class.php:496 the-events-calendar.class.php:510
+#: the-events-calendar.class.php:520 the-events-calendar.class.php:534
 msgid "May"
 msgstr ""
 
-#: the-events-calendar.class.php:497
+#: the-events-calendar.class.php:521
 msgid "Jun"
 msgstr ""
 
-#: the-events-calendar.class.php:498
+#: the-events-calendar.class.php:522
 msgid "Jul"
 msgstr ""
 
-#: the-events-calendar.class.php:499
+#: the-events-calendar.class.php:523
 msgid "Aug"
 msgstr ""
 
-#: the-events-calendar.class.php:500
+#: the-events-calendar.class.php:524
 msgid "Sep"
 msgstr ""
 
-#: the-events-calendar.class.php:501
+#: the-events-calendar.class.php:525
 msgid "Oct"
 msgstr ""
 
-#: the-events-calendar.class.php:502
+#: the-events-calendar.class.php:526
 msgid "Nov"
 msgstr ""
 
-#: the-events-calendar.class.php:503
+#: the-events-calendar.class.php:527
 msgid "Dec"
 msgstr ""
 
-#: the-events-calendar.class.php:506
+#: the-events-calendar.class.php:530
 msgid "January"
 msgstr ""
 
-#: the-events-calendar.class.php:507
+#: the-events-calendar.class.php:531
 msgid "February"
 msgstr ""
 
-#: the-events-calendar.class.php:508
+#: the-events-calendar.class.php:532
 msgid "March"
 msgstr ""
 
-#: the-events-calendar.class.php:509
+#: the-events-calendar.class.php:533
 msgid "April"
 msgstr ""
 
-#: the-events-calendar.class.php:511
+#: the-events-calendar.class.php:535
 msgid "June"
 msgstr ""
 
-#: the-events-calendar.class.php:512
+#: the-events-calendar.class.php:536
 msgid "July"
 msgstr ""
 
-#: the-events-calendar.class.php:513
+#: the-events-calendar.class.php:537
 msgid "August"
 msgstr ""
 
-#: the-events-calendar.class.php:514
+#: the-events-calendar.class.php:538
 msgid "September"
 msgstr ""
 
-#: the-events-calendar.class.php:515
+#: the-events-calendar.class.php:539
 msgid "October"
 msgstr ""
 
-#: the-events-calendar.class.php:516
+#: the-events-calendar.class.php:540
 msgid "November"
 msgstr ""
 
-#: the-events-calendar.class.php:517
+#: the-events-calendar.class.php:541
 msgid "December"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (The Events Calendar 1.6)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (The Events Calendar 1.6.3)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#: the-events-calendar.class.php:1009
+#: the-events-calendar.class.php:1047
 msgid "The Events Calendar"
 msgstr ""
 
-#: views/events-list-load-widget-admin.php:7
+#: views/events-list-load-widget-admin.php:32
 msgid "Show:"
 msgstr ""
 
-#: views/events-list-load-widget-admin.php:15
+#: views/events-list-load-widget-admin.php:40
 msgid "Don't show the widget if there are no upcoming events:"
 msgstr ""
 
-#: views/events-list-load-widget-admin.php:21
+#: views/events-list-load-widget-admin.php:46
 msgid "Display:"
 msgstr ""
 
-#: views/events-list-load-widget-admin.php:24
-msgid "Start Date & Time"
+#: views/events-list-load-widget-admin.php:49
+msgid "Start Date"
 msgstr ""
 
-#: views/events-list-load-widget-admin.php:25
-msgid "End Date & Time"
+#: views/events-list-load-widget-admin.php:50
+msgid "Start Time"
 msgstr ""
 
-#: views/events-list-load-widget-admin.php:26
+#: views/events-list-load-widget-admin.php:51
+msgid "End Date"
+msgstr ""
+
+#: views/events-list-load-widget-admin.php:52
+msgid "End Time"
+msgstr ""
+
+#: views/events-list-load-widget-admin.php:53
 msgid "Venue"
 msgstr ""
 
-#: views/events-list-load-widget-admin.php:27
+#: views/events-list-load-widget-admin.php:54
 msgid "Address"
 msgstr ""
 
-#: views/events-list-load-widget-admin.php:28
+#: views/events-list-load-widget-admin.php:55
 msgid "City"
 msgstr ""
 
-#: views/events-list-load-widget-admin.php:29
+#: views/events-list-load-widget-admin.php:56
 msgid "State (US)"
 msgstr ""
 
-#: views/events-list-load-widget-admin.php:30
+#: views/events-list-load-widget-admin.php:57
 msgid "Province (Int)"
 msgstr ""
 
-#: views/events-list-load-widget-admin.php:31
+#: views/events-list-load-widget-admin.php:58
 msgid "Postal Code"
 msgstr ""
 
-#: views/events-list-load-widget-admin.php:32
+#: views/events-list-load-widget-admin.php:59
 msgid "Country"
 msgstr ""
 
-#: views/events-list-load-widget-admin.php:33 views/events-meta-box.php:136
+#: views/events-list-load-widget-admin.php:60 views/events-meta-box.php:136
 msgid "Phone"
 msgstr ""
 
-#: views/events-list-load-widget-admin.php:34
+#: views/events-list-load-widget-admin.php:61
 msgid "Price"
 msgstr ""
 
-#: views/events-list-load-widget-display.php:47
+#: views/events-list-load-widget-display.php:72
 msgid "More Info"
 msgstr ""
 
@@ -1231,11 +1239,11 @@ msgstr ""
 msgid "Is this post an event?"
 msgstr ""
 
-#: views/events-meta-box.php:211 views/events-options.php:181
+#: views/events-meta-box.php:211 views/events-options.php:182
 msgid "Yes"
 msgstr ""
 
-#: views/events-meta-box.php:212 views/events-options.php:185
+#: views/events-meta-box.php:212 views/events-options.php:186
 msgid "No"
 msgstr ""
 
@@ -1263,7 +1271,7 @@ msgstr ""
 msgid "Event Location Details"
 msgstr ""
 
-#: views/events-meta-box.php:299 views/list.php:45 views/single.php:27
+#: views/events-meta-box.php:299 views/list.php:49 views/single.php:28
 msgid "Venue:"
 msgstr ""
 
@@ -1271,7 +1279,7 @@ msgstr ""
 msgid "Country:"
 msgstr ""
 
-#: views/events-meta-box.php:341 views/list.php:60 views/single.php:36
+#: views/events-meta-box.php:341 views/list.php:64 views/single.php:37
 msgid "Address:"
 msgstr ""
 
@@ -1499,31 +1507,31 @@ msgstr ""
 msgid "Show Google Map Link:"
 msgstr ""
 
-#: views/events-meta-box.php:439
+#: views/events-meta-box.php:434
 msgid "Show Google Map:"
 msgstr ""
 
-#: views/events-meta-box.php:444 views/list.php:54 views/single.php:31
+#: views/events-meta-box.php:439 views/list.php:58 views/single.php:32
 msgid "Phone:"
 msgstr ""
 
-#: views/events-meta-box.php:448
+#: views/events-meta-box.php:443
 msgid "Event Cost"
 msgstr ""
 
-#: views/events-meta-box.php:451 views/list.php:72 views/single.php:21
+#: views/events-meta-box.php:446 views/list.php:77 views/single.php:22
 msgid "Cost:"
 msgstr ""
 
-#: views/events-meta-box.php:456
+#: views/events-meta-box.php:451
 msgid "Leave blank to hide the field. Enter a 0 for events that are free."
 msgstr ""
 
-#: views/events-meta-box.php:460
+#: views/events-meta-box.php:455
 msgid "Sell Tickets &amp; Track Registration"
 msgstr ""
 
-#: views/events-meta-box.php:465
+#: views/events-meta-box.php:460
 msgid ""
 "Interested in selling tickets and tracking registrations? Now you can do it "
 "for free using our <a href=\"http://wordpress.org/extend/plugins/eventbrite-"
@@ -1535,11 +1543,11 @@ msgid ""
 "building plugins for the open source community. "
 msgstr ""
 
-#: views/events-meta-box.php:465
+#: views/events-meta-box.php:460
 msgid "Check it out here."
 msgstr ""
 
-#: views/events-meta-box.php:483
+#: views/events-meta-box.php:476
 msgid ""
 "<h4>If You Like This Plugin - Help Support It</h4><p>We spend a lot of time "
 "and effort building robust plugins and we love to share them with the "
@@ -1549,7 +1557,7 @@ msgid ""
 "p>"
 msgstr ""
 
-#: views/events-meta-box.php:485
+#: views/events-meta-box.php:478
 msgid "Thanks"
 msgstr ""
 
@@ -1575,99 +1583,105 @@ msgstr ""
 msgid "Here is the iCal feed URL for your events: "
 msgstr ""
 
-#: views/events-options.php:99
+#: views/events-options.php:97
+msgid ""
+"The iCal feed can be sorted by sub-category. Add the category slug to the "
+"above URL: "
+msgstr ""
+
+#: views/events-options.php:100
 msgid "Donate"
 msgstr ""
 
-#: views/events-options.php:108
+#: views/events-options.php:109
 msgid ""
 "If you find this plugin useful, please consider donating to the producer of "
 "it, Shane &#38; Peter, Inc. Thank you!"
 msgstr ""
 
-#: views/events-options.php:112
+#: views/events-options.php:113
 msgid "I have already donated, so please hide this button!"
 msgstr ""
 
-#: views/events-options.php:122
+#: views/events-options.php:123
 msgid "Donate for this wonderful plugin"
 msgstr ""
 
-#: views/events-options.php:136
+#: views/events-options.php:137
 msgid "Settings"
 msgstr ""
 
-#: views/events-options.php:139 views/events-options.php:143
+#: views/events-options.php:140 views/events-options.php:144
 msgid "Default View for the Events"
 msgstr ""
 
-#: views/events-options.php:155 views/gridview.php:28 views/list.php:12
+#: views/events-options.php:156 views/gridview.php:28 views/list.php:12
 msgid "Calendar"
 msgstr ""
 
-#: views/events-options.php:159 views/gridview.php:27 views/list.php:11
+#: views/events-options.php:160 views/gridview.php:27 views/list.php:11
 msgid "Event List"
 msgstr ""
 
-#: views/events-options.php:165 views/events-options.php:169
+#: views/events-options.php:166 views/events-options.php:170
 msgid "Show Comments"
 msgstr ""
 
-#: views/events-options.php:191
+#: views/events-options.php:192
 msgid "Default Country for Events"
 msgstr ""
 
-#: views/events-options.php:214 views/events-options.php:218
+#: views/events-options.php:215 views/events-options.php:219
 msgid "Display Events on Homepage"
 msgstr ""
 
-#: views/events-options.php:225 views/events-options.php:254
-#: views/events-options.php:281 views/events-options.php:307
+#: views/events-options.php:226 views/events-options.php:255
+#: views/events-options.php:282 views/events-options.php:308
 msgid "Off"
 msgstr ""
 
-#: views/events-options.php:229 views/events-options.php:258
-#: views/events-options.php:285 views/events-options.php:311
+#: views/events-options.php:230 views/events-options.php:259
+#: views/events-options.php:286 views/events-options.php:312
 msgid "On"
 msgstr ""
 
-#: views/events-options.php:236 views/events-options.php:240
+#: views/events-options.php:237 views/events-options.php:241
 msgid "Embed Google Maps"
 msgstr ""
 
-#: views/events-options.php:261
+#: views/events-options.php:262
 msgid "Height"
 msgstr ""
 
-#: views/events-options.php:262
+#: views/events-options.php:263
 msgid "Width"
 msgstr ""
 
-#: views/events-options.php:262
+#: views/events-options.php:263
 msgid "(number or %)"
 msgstr ""
 
-#: views/events-options.php:270 views/events-options.php:274
+#: views/events-options.php:271 views/events-options.php:275
 msgid "Feature on Event Date"
 msgstr ""
 
-#: views/events-options.php:288
+#: views/events-options.php:289
 msgid ""
 "This option will bump an event to the top of the homepage loop on the day of "
 "the event."
 msgstr ""
 
-#: views/events-options.php:296 views/events-options.php:300
+#: views/events-options.php:297 views/events-options.php:301
 msgid "Use Pretty URLs"
 msgstr ""
 
-#: views/events-options.php:314
+#: views/events-options.php:315
 msgid ""
 "Pretty URLs (ie, http://site/category/events/upcoming) may interfere with "
 "custom themes or plugins."
 msgstr ""
 
-#: views/events-options.php:340
+#: views/events-options.php:341
 msgid "Save Changes"
 msgstr ""
 
@@ -1675,27 +1689,27 @@ msgstr ""
 msgid "Calendar of Events"
 msgstr ""
 
-#: views/gridview.php:31 views/list.php:16
+#: views/gridview.php:35 views/list.php:20 views/single.php:11
 msgid "iCal Import"
 msgstr ""
 
-#: views/list.php:33 views/single.php:14
+#: views/list.php:37 views/single.php:15
 msgid "Start:"
 msgstr ""
 
-#: views/list.php:37 views/single.php:17
+#: views/list.php:41 views/single.php:18
 msgid "End:"
 msgstr ""
 
-#: views/list.php:62 views/single.php:38
+#: views/list.php:67 views/single.php:40
 msgid "Google Map"
 msgstr ""
 
-#: views/list.php:94
+#: views/list.php:99
 msgid "&laquo; Previous Events"
 msgstr ""
 
-#: views/list.php:107
+#: views/list.php:112
 msgid "Next Events &raquo;"
 msgstr ""
 
@@ -1703,11 +1717,11 @@ msgstr ""
 msgid "&laquo; Back to Events"
 msgstr ""
 
-#: views/single.php:11
+#: views/single.php:12
 msgid "This event has passed."
 msgstr ""
 
-#: views/single.php:38
+#: views/single.php:40
 msgid "Click to view a Google Map"
 msgstr ""
 
