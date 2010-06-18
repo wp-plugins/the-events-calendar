@@ -50,7 +50,7 @@
 					<?php if( tec_address_exists( $post->ID ) ) event_google_map_embed(); ?>
 				<?php endif; ?>
 				<div class="entry">
-					<?php the_content() ?>	
+					<?php the_content(); ?>	
 					<?php if (function_exists('the_event_ticket_form')) { the_event_ticket_form(); } ?>		
 				</div>
 				<?php edit_post_link('Edit', '<span class="edit-link">', '</span>'); ?>

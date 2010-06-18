@@ -4,8 +4,8 @@ Contributors: Kelsey Damas, Matt Wiebe, Justin Endler, Reid Peifer, Dan Cameron,
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=10750983
 Tags: widget, events, simple, tooltips, grid, month, list, calendar, event, venue, eventbrite, registration, tickets, ticketing, eventbright, api, dates, date, plugin, posts, sidebar, template, theme, time, google maps, conference, workshop, concert, meeting, seminar, summit, forum, shortcode
 Requires at least: 2.8
-Tested up to: 3.0
-Stable tag: 1.6.2
+Tested up to: 3.1 alpha
+Stable tag: 1.6.3
 
 == Description ==
 
@@ -216,6 +216,15 @@ Please visit the forum for questions or comments: http://wordpress.org/tags/the-
 Features
 
 * iCal import sorted options: post, category, all
+
+Bugs
+
+* List Widget: eliminate empty li tags when there are no upcoming events (thanks to tokidoki2005)
+* prev / next month links in grid view remain in subcategory of Events
+* remove calls to non-existent images
+* List Widget now follows display choices made in admin
+* gmap display choices persistent across plugin updates
+* better field validation when collecting post meta about events
 
 = 1.6.1 =
 
