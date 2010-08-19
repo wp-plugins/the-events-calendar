@@ -3,7 +3,7 @@
 Contributors: Kelsey Damas, Matt Wiebe, Justin Endler, Reid Peifer, Dan Cameron, Aaron Rhodes produced by Shane & Peter, Inc.
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=10750983
 Tags: widget, events, simple, tooltips, grid, month, list, calendar, event, venue, eventbrite, registration, tickets, ticketing, eventbright, api, dates, date, plugin, posts, sidebar, template, theme, time, google maps, conference, workshop, concert, meeting, seminar, summit, forum, shortcode
-Requires at least: 2.8
+Requires at least: 3.0
 Tested up to: 3.1 alpha
 Stable tag: 1.6.3
 
@@ -210,6 +210,13 @@ On the day of the event (at midnight) the plugin runs a cron which updates the p
 Please visit the forum for questions or comments: http://wordpress.org/tags/the-events-calendar/
 
 == Changelog ==
+
+= 1.6.4 =
+
+Bugs
+
+* list view now outputs user-created links properly
+* Recent Posts widget now shows all cats but Events
 
 = 1.6.3 =
 

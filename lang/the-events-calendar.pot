@@ -1,4 +1,4 @@
-# Translation of the WordPress plugin The Events Calendar 1.6.3 by Shane & Peter, Inc..
+# Translation of the WordPress plugin The Events Calendar 1.6.4 by Shane & Peter, Inc..
 # Copyright (C) 2010 Shane & Peter, Inc.
 # This file is distributed under the same license as the The Events Calendar package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
@@ -6,7 +6,7 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: The Events Calendar 1.6.3\n"
+"Project-Id-Version: The Events Calendar 1.6.4\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/the-events-calendar\n"
 "POT-Creation-Date: 2010-06-18 15:34+0000\n"
 "PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
