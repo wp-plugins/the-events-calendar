@@ -5,7 +5,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: widget, events, simple, tooltips, grid, month, list, calendar, event, venue, eventbrite, registration, tickets, ticketing, eventbright, api, dates, date, plugin, posts, sidebar, template, theme, time, google maps, conference, workshop, concert, meeting, seminar, summit, forum, shortcode
 Requires at least: 3.0
 Tested up to: 3.1 alpha
-Stable tag: 1.6.3
+Stable tag: 1.6.4
 
 == Description ==
 
@@ -216,7 +216,9 @@ Please visit the forum for questions or comments: http://wordpress.org/tags/the-
 Bugs
 
 * list view now outputs user-created links properly
-* Recent Posts widget now shows all cats but Events
+* Recent Posts widget now shows all cats
+* W3C-invalid markup code removed
+* function names in the-events-calendar.php made more specific to avoid conflict with other plugins
 
 = 1.6.3 =
 
