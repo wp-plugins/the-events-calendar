@@ -5,15 +5,21 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: widget, events, simple, tooltips, grid, month, list, calendar, event, venue, eventbrite, registration, tickets, ticketing, eventbright, api, dates, date, plugin, posts, sidebar, template, theme, time, google maps, conference, workshop, concert, meeting, seminar, summit, forum, shortcode
 Requires at least: 3.0
 Tested up to: 3.1 alpha
-Stable tag: 1.6.4
+Stable tag: 1.6.5
 
 == Description ==
+
+= Announcement =
+
+In September, The Events Calendar 1.6.5 will receive a long overdue upgrade! We are excited to announce The Events Calendar 2.0. The update will fix a number of bugs that currently impact the unsupported 1.6.5 build, and bring a whole range of new features. For more information please visit our blog post (http://bit.ly/nPlvz4) regarding the update or follow us on Facebook at https://www.facebook.com/tribeproapps.
+
+Looking for more advanced features including reoccurring events, custom post meta, related events & new addons like Event Tickets Pro & community events? Then consider upgrading to <a href="http://tribe.pro">Events Calendar Pro 2.0</a> (coming in September). Users who sign up for our newsletter (http://shaneandpeter.com/newsletter) will receive a discount for the Pro plugin as we launch. 
+
+= The Events Calendar =
 
 The Events Calendar plugin enables you to rapidly create and manage events using the post editor.  Features include Google Maps integration as well as default templates such as a calendar grid and event list for streamlined one click installation.
 
 Looking to track attendees, sell tickets and more? Go download the Eventbrite for The Events Calendar plugin (http://wordpress.org/extend/plugins/eventbrite-for-the-events-calendar/). Eventbrite is a free service that provides the full power of a conference ticketing system. This plugin upgrades The Events Calendar with all the basic Eventbrite controls without ever leaving the wordpress post editor. Don't have an Eventbrite account? No problem, use the following link to set one up: http://www.eventbrite.com/r/simpleevents.
-
-= The Events Calendar =
 
 * Manage event details right from your post editor
 * Upcoming Events Widget
@@ -29,28 +35,13 @@ Looking to track attendees, sell tickets and more? Go download the Eventbrite fo
 ** Swedish
 ** French
 ** Italian
-
-= Upcoming Features =
-
-* Option to disable re-posting of event
-* Improved international features (calendar start day)
-* Option to exclude events from main loop
-* More bug hunting and support (huff puff)
-* Improved error checking and reporting
-* Calendar view widget
-* Reoccuring events
-* Sync with facebook events
-* Saved venues
-* Global event maps
-* Dynamic categories (rather than requiring the use of event)
-* Event subcategories
+** 22 others
 
 Please visit the forum for feature suggestions: http://wordpress.org/tags/the-events-calendar/
 
-This plugin is actively supported and we will do our best to help you. In return we simply as 3 things:
+This plugin is mildly supported by the community. Looking for more features or support, check out Events Calendar Pro.
 
 1. Help Out. If you see a question on the forum you can help with or have a great idea and want to code it up and submit a patch, that would be just plain awesome and we will shower your with praise. Might even be a good way to get to know us and lead to some paid work if you freelance.
-1. Donate - if this is generating enough revenue to support our time it makes all the difference in the world
 1. If you make a new account with Eventbrite, please use our referral code. It helps, believe me: http://www.eventbrite.com/r/simpleevents
 
 
