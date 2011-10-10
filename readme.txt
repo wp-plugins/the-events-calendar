@@ -11,7 +11,7 @@ Stable tag: 1.6.5
 
 = Announcement =
 
-In September, The Events Calendar 1.6.5 will receive a long overdue upgrade! We are excited to announce The Events Calendar 2.0. The update will fix a number of bugs that currently impact the unsupported 1.6.5 build, and bring a whole range of new features. For more information please visit our blog post (http://bit.ly/nPlvz4) regarding the update or follow us on Facebook at https://www.facebook.com/tribeproapps.
+Soon, (as soon as our little fingers can squash the remaining bugs) The Events Calendar 1.6.5 will receive a long overdue upgrade! We are excited to announce The Events Calendar 2.0. The update will fix a number of bugs that currently impact the unsupported 1.6.5 build, and bring a whole range of new features. For more information please visit our blog post (http://bit.ly/nPlvz4) regarding the update or follow us on Facebook at https://www.facebook.com/tribeproapps.
 
 Looking for more advanced features including reoccurring events, custom post meta, related events & new addons like Event Tickets Pro & community events? Then consider upgrading to <a href="http://tribe.pro">Events Calendar Pro 2.0</a> (coming in September). Users who sign up for our newsletter (http://shaneandpeter.com/newsletter) will receive a discount for the Pro plugin as we launch. 
 
