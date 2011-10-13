@@ -1,41 +1,45 @@
 <?php
-global $spEvents;
-$spEvents->loadDomainStylesScripts();
-get_header();
-?>
-	<div id="tec-content" class="grid">
-		<div id='tec-events-calendar-header' class="clearfix">
-			<h2 class="tec-cal-title"><?php _e('Calendar of Events', $spEvents->pluginDomain) ?></h2>
-			<span class='tec-month-nav'>
-				<span class='tec-prev-month'>
-					<a href='<?php echo events_get_previous_month_link(); ?>'>
-					&#x2190; <?php echo events_get_previous_month_text(); ?>
+/**
+ * Grid view template.  This file loads the TEC month view, specifically the 
+ * month view navigation.  The actual rendering if the calendar happens in the 
+ * table.php template.
+ *
+ * You can customize this view by putting a replacement file of the same name (gridview.php) in the events/ directory of your theme.
+ */
+
+// Don't load directly
+if ( !defined('ABSPATH') ) { die('-1'); }
+
+$tribe_ecp = TribeEvents::instance();
+?>	
+	<div id="tribe-events-content" class="grid">
+      <!-- This title is here for pjax loading - do not remove if you wish to use ajax switching between month views -->
+      <title><?php wp_title() ?></title>
+		<div id='tribe-events-calendar-header' class="clearfix">
+			<span class='tribe-events-month-nav'>
+				<span class='tribe-events-prev-month'>
+					<a href='<?php echo tribe_get_previous_month_link(); ?>'>
+					&#x2190; <?php echo tribe_get_previous_month_text(); ?>
 					</a>
 				</span>
 
-				<?php get_jump_to_date_calendar( "tec-" ); ?>
+				<?php tribe_month_year_dropdowns( "tribe-events-" ); ?>
 	
-				<span class='tec-next-month'>
-					<a href='<?php echo events_get_next_month_link(); ?>'>				
-					<?php echo events_get_next_month_text(); ?> &#x2192; 
+				<span class='tribe-events-next-month'>
+					<a href='<?php echo tribe_get_next_month_link(); ?>'>				
+					<?php echo tribe_get_next_month_text(); ?> &#x2192; 
 					</a>
+               <img src="<?php echo esc_url( admin_url( 'images/wpspin_light.gif' ) ); ?>" class="ajax-loading" id="ajax-loading" alt="" style='display: none'/>
 				</span>
 			</span>
 
-			<span class='tec-calendar-buttons'> 
-				<a class='tec-button-off' href='<?php echo events_get_listview_link(); ?>'><?php _e('Event List', $spEvents->pluginDomain)?></a>
-				<a class='tec-button-on' href='<?php echo events_get_gridview_link(); ?>'><?php _e('Calendar', $spEvents->pluginDomain)?></a>
+			<span class='tribe-events-calendar-buttons'> 
+				<a class='tribe-events-button-off' href='<?php echo tribe_get_listview_link(); ?>'><?php _e('Event List', 'tribe-events-calendar')?></a>
+				<a class='tribe-events-button-on' href='<?php echo tribe_get_gridview_link(); ?>'><?php _e('Calendar', 'tribe-events-calendar')?></a>
 			</span>
-		</div><!-- tec-events-calendar-header -->
-		<?php
-		global $wp_query;
-		$tecCatObject = get_category( $wp_query->query_vars['cat'])
-		?>
-		<a class="ical" href="<?php bloginfo('home'); ?>/?ical=<?php echo $tecCatObject->slug; ?>"><?php _e('iCal Import', $spEvents->pluginDomain) ?></a>
-		<?php event_grid_view(); // See the plugins/the-events-calendar/views/table.php template for customization ?>	
+		</div><!-- tribe-events-calendar-header -->
+		<?php tribe_calendar_grid(); // See the views/table.php template for customization ?>
+      <?php if( function_exists( 'tribe_get_ical_link' ) ): ?>
+         <a title="<?php esc_attr_e('iCal Import', 'tribe-events-calendar') ?>" class="ical" href="<?php echo tribe_get_ical_link(); ?>"><?php _e('iCal Import', 'tribe-events-calendar') ?></a>
+      <?php endif; ?>
 	</div>
-<?php /* For custom template builders...
-	   * The following init method should be called before any other loop happens.
-	   */
-$wp_query->init(); ?>
-<?php get_footer(); ?>
