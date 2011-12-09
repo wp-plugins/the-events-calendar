@@ -78,7 +78,6 @@ For template tags, you can view our template tag includes in the "public" folder
 == Changelog ==
 
 = 2.0.2 =
-
 Small features, UX and Content Tweaks:
 
 * Added link to new user primer (http://tri.be/support/documentation/events-calendar-pro-new-user-primer?ref=tec-readme) to the activation message.
@@ -117,8 +116,8 @@ Bugs:
 * Fixed general PHP notices that appeared with debug turned on in your wp-config file.
 
 = 2.0.1 =
-
 Small features, UX and Content Tweeks:
+
 * Enabled method to turn off event upsell messages on your site in wp-config.php - define( 'TRIBE_HIDE_UPSELL', true );
 * Updated migration message to help 1.6.5 users have an easier time when they upgrade to 2.0
 * Added a "View my events" link in the settings panel to help users find where the calendar lives
@@ -128,6 +127,7 @@ Small features, UX and Content Tweeks:
 * Added and updated documentation on http://tri.be/support/documentation/
 
 Bugs:
+
 * Added "00" in the time drop down when in 24 hour mode
 * Updated default end time to "17" for 24 hour mode
 * Fixed broken link in the "you need events 2.0 open source" on activation for PRO users.
@@ -143,11 +143,9 @@ Bugs:
 * Venue / Organizer data not saving for certain cases of recurrence fixed.
 
 = 2.0 =
-
 This is such a major re-write that we are starting the change log over.
 
 == Upgrade Notice ==
 
 = 2.0.2 =
-
 2.0.2 is a minor bug patch for 2.0. Are you upgrading from 1.6.5? Events 2.0 is a MAJOR upgrade, please backup your data and plan a little time in case you have to make any theme edits. Check out the upgrade tutorials in support on the tri.be website.
