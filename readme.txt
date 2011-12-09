@@ -4,14 +4,16 @@ Contributors: Shane Pearlman (shane.pearlman), Peter Chester (peterchester), Joh
 Tags: modern tribe, tribe, widget, events, tooltips, grid, month, list, calendar, recurring, event, venue, eventbrite, registration, tickets, ticketing, eventbright, api, dates, date, plugin, posts, sidebar, template, theme, time, google maps, conference, workshop, concert, meeting, seminar, summit, forum, shortcode
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QA7QZM4CNQ342
 Requires at least: 3.1
-Tested up to: 3.2.1
-Stable tag: 2.0.1
+Tested up to: 3.3
+Stable tag: 2.0.2
 
 == Description ==
 
 IMPORTANT NOTICE: If you are upgrading from a previous version of The Events Calendar, please BACK UP your data before upgrading! This is a significant update.
 
 The Events Calendar plugin enables you to rapidly create and manage events. Features include Google Maps integration as well as default templates such as a calendar grid and event list, widget and so much more. Looking for recurring events, the ability to sell tickets, manage conference schedules, accept user submitted events automatically and more? Check out the <a href="http://tri.be/products/?ref=tec-readme">available premium and community add-ons</a>. Have questions or looking to get help from our active user community, <a href="https://www.facebook.com/ModernTribeInc">join us on Facebook</a>, sign up for our newsletter (bottom of the home page) or check out <a href="http://tri.be/support/?ref=tec-readme">our support page</a>. Please note that while we are actively supporting this plugin, we don't provide support for non-paying users.
+
+Just getting started? Check out our <a href="http://tri.be/support/documentation/events-calendar-pro-new-user-primer/?ref=tec-readme">new user primer!</a>
 
 = The Events Calendar 2.0 =
 
@@ -57,6 +59,9 @@ The Events Calendar plugin enables you to rapidly create and manage events. Feat
 1. Update your permalinks to ensure that the event specific rewrite rules take effect.
 1. If you have trouble installing, see the [Codex](http://codex.wordpress.org/Managing_Plugins#Manual_Plugin_Installation) for more helpful info.
 
+For more information, check out our <a href="http://tri.be/support/documentation/events-calendar-pro-new-user-primer/?ref=tec-readme">new user primer!</a>
+
+
 = Activate =
 
 No setup required. Just plug and play!
@@ -71,6 +76,45 @@ No setup required. Just plug and play!
 For template tags, you can view our template tag includes in the "public" folder to read through the functions directly or visit our online documentation at <a href="http://tri.be/support/documentation?ref=tec-readme">http://tri.be/support/documentation</a>
 
 == Changelog ==
+
+= 2.0.2 =
+
+Small features, UX and Content Tweaks:
+
+* Added link to new user primer (http://tri.be/support/documentation/events-calendar-pro-new-user-primer?ref=tec-readme) to the activation message.
+* Added tribe_is_event_in_category conditional to plugin code base.
+* Plugin now adds a default role when registering custom post types.
+* Russian language files incorporated (free & PRO) from Mikhail Michouris
+* Dutch translation files incorporated (free only) from Rick van Dalen
+* Danish translation files incorporated (PRO only) from Christian Andersen
+* Italian translation files incorporated (free & PRO) from Stefano Castelli
+
+Bugs:
+
+* Months will now show appropriate day count, instead of 31 days as they were previously.
+* Custom recurring events previously not showing start AND end time (just start time); now are showing both.
+* Hack to include events in your main loop no longer causes event link to vanish.
+* Fixed issue of recurrence settings changing upon publication.
+* Fixed other bug related to recurrence details showing incorrect date/time.
+* General bugs with weekly recurrence have been squashed.
+* Admin page should no longer hang when updating a recurring event.
+* Breadcrumbs will now show the correct slug info on Thesis.
+* Not entering a name for an organizer or venue doesn’t stop it from publishing, as it did previously.
+* Admin events list now appears with soonest event at the top, not the bottom.
+* Deleting instances of recurrence now works within individual entries.
+* Unnamed venue/organizer now created when no venue or organizer name added.
+* Featured image no longer overlaps the map on individual entries in the default 2011 theme.
+* Custom recurrence events weren't previously showing end time on the frontend; they will now.
+* Comments box now appears on the default page template (was previously only on default events template).
+* Minor change to line 1835 of the-events-calendar.class.php.
+* Incorporated patch to include file name in permalink for users running the plugin on shared IIS servers.
+* Changes to incorrect tag on lines 58, 60 & 62 in views/single.php.
+* Next/Previous link in recurring & standalone events both work fine.
+* General display tweaks to Calendar widget (wasn't showing future events previously, and CSS was screwy)
+* Renamed the dashboard Tribe newsfeed widget to conform with rebranding efforts.
+* Worked to better display comments in Thesis & Genesis themes.
+* General display bugs related to the WP 3.3 beta.
+* Fixed general PHP notices that appeared with debug turned on in your wp-config file.
 
 = 2.0.1 =
 
@@ -101,3 +145,9 @@ Bugs:
 = 2.0 =
 
 This is such a major re-write that we are starting the change log over.
+
+== Upgrade Notice ==
+
+= 2.0.2 =
+
+2.0.2 is a minor bug patch for 2.0. Are you upgrading from 1.6.5? Events 2.0 is a MAJOR upgrade, please backup your data and plan a little time in case you have to make any theme edits. Check out the upgrade tutorials in support on the tri.be website.
