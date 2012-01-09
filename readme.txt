@@ -1,11 +1,11 @@
 === The Events Calendar ===
 
-Contributors: Shane Pearlman (shane.pearlman), Peter Chester (peterchester), John Gadbois (jgadbois), Kelsey Damas (kelseydamas), Matt Wiebe (mattwiebe), Rob La Gatta (roblagatta),  Justin Endler, Reid Peifer (reid.peifer), Dan Cameron (dancameron) produced by Modern Tribe, Inc. (moderntribe)
+Contributors: Current: shane.pearlman, peterchester, reid.peifer, roblagatta, jkudish, Nick Ciske, Paul Hughes, Past: kelseydamas, mattwiebe, Justin Endler, dancameron, jgadbois, Produced By Modern Tribe, Inc: moderntribe
 Tags: modern tribe, tribe, widget, events, tooltips, grid, month, list, calendar, recurring, event, venue, eventbrite, registration, tickets, ticketing, eventbright, api, dates, date, plugin, posts, sidebar, template, theme, time, google maps, conference, workshop, concert, meeting, seminar, summit, forum, shortcode
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QA7QZM4CNQ342
 Requires at least: 3.1
 Tested up to: 3.3
-Stable tag: 2.0.2
+Stable tag: 2.0.3
 
 == Description ==
 
@@ -77,8 +77,36 @@ For template tags, you can view our template tag includes in the "public" folder
 
 == Changelog ==
 
+= 2.0.3 =
+
+**Small features, UX and Content Tweaks:**
+
+* Incorporated get_tribe_custom(ÔField labelÕ) to code base
+* Code updated to account for additional translation strings
+* Made the $sep param of TribeEvents::maybeAddEventTitle() optional
+
+**Bug Fixes:**
+
+* Organizer data can now be changed on an already-published entry in core
+* tribe_get_start_date() fixed
+* Future instances of custom recurrence no longer display inaccurate start/end times
+* In views/single.php on lines 58, 60 & 62, changed tag to <? instead of <?php
+* Required changes to WP_PLUGIN_URL (line 126) & WP_CONTENT_URL (line 930) in the.events.calendar.class.php
+* Deleting a single instance of recurrence in PRO (whether from the list or from within an entry) now works correctly with appropriate prompts/dialogue boxes
+* Attempting to change from a saved organizer/venue to no organizer/venue now works
+* Venue no longer behaves bizarrely when no address data added
+* Fixed issue where event links broke for recurring events whenever a site had permalinks set to default; also fixed general conflicts that occurred when URL rewriting was off
+* Customized defaults can now be turned off after being enabled under Settings -> The Events Calendar
+* Removed instances where organizer data displayed as event title for some users
+* Changes made to custom fields under Settings -> The Events Calendar now take effect upon save
+* Non-U.S. states and provinces now save correctly
+* General fixes to improve how default venues/organizers function and are modified
+* Addressed various PHP notices
+
+
 = 2.0.2 =
-Small features, UX and Content Tweaks:
+
+**Small features, UX and Content Tweaks:**
 
 * Added link to new user primer (http://tri.be/support/documentation/events-calendar-pro-new-user-primer?ref=tec-readme) to the activation message.
 * Added tribe_is_event_in_category conditional to plugin code base.
@@ -88,7 +116,7 @@ Small features, UX and Content Tweaks:
 * Danish translation files incorporated (PRO only) from Christian Andersen
 * Italian translation files incorporated (free & PRO) from Stefano Castelli
 
-Bugs:
+**Bugs:**
 
 * Months will now show appropriate day count, instead of 31 days as they were previously.
 * Custom recurring events previously not showing start AND end time (just start time); now are showing both.
@@ -98,7 +126,7 @@ Bugs:
 * General bugs with weekly recurrence have been squashed.
 * Admin page should no longer hang when updating a recurring event.
 * Breadcrumbs will now show the correct slug info on Thesis.
-* Not entering a name for an organizer or venue doesn’t stop it from publishing, as it did previously.
+* Not entering a name for an organizer or venue doesn't stop it from publishing, as it did previously.
 * Admin events list now appears with soonest event at the top, not the bottom.
 * Deleting instances of recurrence now works within individual entries.
 * Unnamed venue/organizer now created when no venue or organizer name added.
@@ -116,7 +144,8 @@ Bugs:
 * Fixed general PHP notices that appeared with debug turned on in your wp-config file.
 
 = 2.0.1 =
-Small features, UX and Content Tweeks:
+
+**Small features, UX and Content Tweeks:**
 
 * Enabled method to turn off event upsell messages on your site in wp-config.php - define( 'TRIBE_HIDE_UPSELL', true );
 * Updated migration message to help 1.6.5 users have an easier time when they upgrade to 2.0
@@ -126,7 +155,7 @@ Small features, UX and Content Tweeks:
 * Added in line documentation to all template tags and moved them to separate files in the /public folder
 * Added and updated documentation on http://tri.be/support/documentation/
 
-Bugs:
+**Bugs:**
 
 * Added "00" in the time drop down when in 24 hour mode
 * Updated default end time to "17" for 24 hour mode
@@ -143,9 +172,11 @@ Bugs:
 * Venue / Organizer data not saving for certain cases of recurrence fixed.
 
 = 2.0 =
+
 This is such a major re-write that we are starting the change log over.
 
 == Upgrade Notice ==
 
-= 2.0.2 =
-2.0.2 is a minor bug patch for 2.0. Are you upgrading from 1.6.5? Events 2.0 is a MAJOR upgrade, please backup your data and plan a little time in case you have to make any theme edits. Check out the upgrade tutorials in support on the tri.be website.
+= 2.0.3 =
+
+2.0.3 is a minor bug patch for 2.0. Are you upgrading from 1.6.5? Events 2.0 is a MAJOR upgrade, please backup your data and plan a little time in case you have to make any theme edits. Check out the upgrade tutorials in support on the tri.be website.
