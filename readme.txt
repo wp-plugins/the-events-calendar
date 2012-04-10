@@ -78,7 +78,7 @@ For template tags, you can view our template tag includes in the "public" folder
 
 If you have any questions about this plugin, please take look at the dedicated forum here on WordPress.org at <a href="http://wordpress.org/tags/the-events-calendar">http://wordpress.org/tags/the-events-calendar</a>. Please search before opening a new thread.
 
-If you want, you can read the <a href="http://tri.be/support/forums/?ref=tec-readme">Modern Tribe PRO support forums</a> in case that helps, although you won‚Äôt be able to post a message, unless you have purchase a PRO license.
+If you want, you can read the <a href="http://tri.be/support/forums/?ref=tec-readme">Modern Tribe PRO support forums</a> in case that helps, although you won't be able to post a message, unless you have purchased a PRO license.
 
 == Contributors ==
 
