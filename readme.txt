@@ -205,7 +205,7 @@ Our Premium Plugins:
 
 == Changelog ==
 
-=2.0.9 = 
+= 2.0.9 = 
 
 **Small features, UX and Content Tweaks:**
 
