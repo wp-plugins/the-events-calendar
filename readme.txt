@@ -82,7 +82,7 @@ Events Calendar PRO can be purchased directly at the <a href="tri.be/support/for
 
 = I'm interested in updating to PRO, but have a question that's not answered on the product page. Where can I get that answered? =
 
-Our <a href="http://tri.be/support/forums/forum/_welcome/pre-sales-questions/?ref=tec-readme">pre-sale forum</a> at the tri.be website is open and available to everyone; we encourage potential customers to review threads on that forum + post a new discussion if your question isn't already answered. You may also email <a href="mailto:pro@tri.be">pro@tri.be</a> with pre-sale questions if you prefer. 
+Our <a href="http://tri.be/support/forums/forum/_welcome/pre-sales-questions/?ref=tec-readme">pre-sale forum</a> at the tri.be website is open and available to everyone; we encourage potential customers to review threads on that forum + post a new discussion if your question isn't already answered.
 
 = What add-ons are available for The Events Calendar, and where can I read more about them? =
 
@@ -91,12 +91,11 @@ Currently, the following add-ons are available for The Events Calendar/Events Ca
 * <a href="http://tri.be/wordpress-eventbrite-tickets/?ref=tec-readme">Eventbrite Tickets</a>, for selling tickets to your event directly through Eventbrite.
 * <a href="http://tri.be/wordpress-community-events/?ref=tec-readme">Community Events</a>, for allowing frontend event submission from your readers.
 * <a href="http://tri.be/facebook-events/?ref=tec-readme">Facebook Events</a>, for importing events directly from an organization or page on Facebook. 
-* <a href="http://tri.be/shop/conference-manager/?ref=tec-readme">Conference Manager (COMING SOON)</a>, for managing multiple rooms/sessions/speakers at an event or conference. 
-* <a href="http://tri.be/shop/wootickets/?ref=tec-readme">WooTickets (COMING SOON)</a>, for selling tickets to your event using WooCommerce.
+* <a href="http://tri.be/wordpress-wootickets/?ref=tec-readme">WooTickets</a>, for selling tickets to your event using WooCommerce.
 
 = Is there a more substantive FAQ for The Events Calendar available elsewhere online? =
 
-There sure is. If you check out our a href="http://tri.be/support/faqs/?ref=tec-readme">Frequently Asked Questions page</a> on the tri.be website, you'll find answers to more specific questions related to The Events Calendar/Events Calendar PRO. Please make sure to review that FAQ before posting a support thread…as there's a very good chance your question has already been answered. 
+There sure is. If you check out our <a href="http://tri.be/support/faqs/?ref=tec-readme">Frequently Asked Questions page</a> on the tri.be website, you'll find answers to more specific questions related to The Events Calendar/Events Calendar PRO. Please make sure to review that FAQ before posting a support thread, as there's a very good chance your question has already been answered. 
 
 == Installation ==
 
