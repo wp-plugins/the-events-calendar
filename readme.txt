@@ -70,7 +70,7 @@ Note: If you are upgrading from a pre-2.0 version of The Events Calendar, please
 5. Event List Admin
 6. Settings Panel
 
-== FAQ ==
+== Frequently Asked Questions ==
 
 = Where do I go to file a bug or ask a question? =
 
