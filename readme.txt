@@ -163,31 +163,32 @@ The plugin is produced by <a href="http://tri.be/?ref=tec-readme">Modern Tribe I
 * <a href="http://profiles.wordpress.org/users/jgadbois">John Gadbois</a>
 * Justin Endler
 
-= Translators =
+= Translations =
 
-* Swedish (free & PRO) from Ben Andersen
-* Russian (free & PRO) from Mikhail Michouris
-* Dutch (free & PRO) from Ed Boon, RIck van Dalen & Jacob Roel Meijering
-* Danish (PRO only) from Christian Andersen
-* Italian (free & PRO) from Filippo Montanari
-* Spanish (free & PRO) from Hector at Signo Creativo
-* German (free only) from David Decker
-* Polish (free & PRO) from Kamil Szymanski
-* Norwegian (free & PRO) from "Terje With Lunndal"
-* Hebrew (free & PRO) from Sagi Shrieber
-* Japanese (free only) from Matthew Meyer
-* French (PRO) from Arno Faure
-* French (free) from Fanny HŽraud
-* Lithuanian (free only) from Vincent G from Host1Free
-* Czech (free & PRO) from Petr Bastan
-* Serbian (free & PRO) from Marko Manojlovic
-* Bosnian (free & PRO) from Marko Manojlovic
-* Croatian (free & PRO) from Marko Manojlovic
-* Finnish (free & PRO) from Petri Kajander
-* Catalan (free & PRO) from Fran Rosa
-* Ukrainian (free only) from Alexey Fedorov
+The Events Calendar/Events Calendar PRO includes translations to the following languages:
 
-
+* Bosnian (bs_BA)
+* Brazilian Portuguese (pt_BR)
+* Bulgarian (bg_BG)
+* Catalan (ca)
+* Croatian (hr_HR)
+* Czech (cs_CZ)
+* Dutch (nl_NL)
+* German (de_DE)
+* Finnish (fi)
+* French (fr_FR)
+* Greek (gr_GR)
+* Hebrew (he_IL)
+* Italian (it_IL)
+* Japanese (ja_JP) - The Events Calendar only (no PRO)
+* Lithuanian (lt_LT) - The Events Calendar only (no PRO)
+* Norwegian (nb_NO)
+* Polish (pl_PL)
+* Russian (ru_RU)
+* Serbian (sr_RS)
+* Spanish (es_ES)
+* Swedish (sv_SE)
+* Ukranian (uk) - The Events Calendar only (no PRO)
 
 == Add-Ons ==
 
