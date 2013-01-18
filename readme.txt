@@ -1,11 +1,11 @@
 === The Events Calendar ===
 
-Contributors:  ModernTribe, PaulHughes01, roblagatta, jonahcoyote, MZAWeb, codearachnid, ryancurban, leahkoerper, barryhughes, peterchester, reid.peifer, shane.pearlman
+Contributors:  ModernTribe, PaulHughes01, roblagatta, jonahcoyote, mzaweb, codearachnid, ryancurban, leahkoerper, barryhughes, peterchester, reid.peifer, shane.pearlman
 Tags: modern tribe, tribe, widget, events, tooltips, grid, month, list, calendar, recurring, event, venue, eventbrite, registration, tickets, ticketing, eventbright, api, dates, date, plugin, posts, sidebar, template, theme, time, google maps, conference, workshop, concert, meeting, seminar, summit, forum, shortcode
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QA7QZM4CNQ342
 Requires at least: 3.3
-Tested up to: 3.4.2
-Stable tag: 2.0.10
+Tested up to: 3.5
+Stable tag: 2.0.11
 
 == Description ==
 
@@ -70,7 +70,7 @@ Note: If you are upgrading from a pre-2.0 version of The Events Calendar, please
 5. Event List Admin
 6. Settings Panel
 
-== Frequently Asked Questions ==
+== FAQ ==
 
 = Where do I go to file a bug or ask a question? =
 
@@ -82,7 +82,7 @@ Events Calendar PRO can be purchased directly at the <a href="tri.be/support/for
 
 = I'm interested in updating to PRO, but have a question that's not answered on the product page. Where can I get that answered? =
 
-Our <a href="http://tri.be/support/forums/forum/_welcome/pre-sales-questions/?ref=tec-readme">pre-sale forum</a> at the tri.be website is open and available to everyone; we encourage potential customers to review threads on that forum + post a new discussion if your question isn't already answered.
+Our <a href="http://tri.be/support/forums/forum/_welcome/pre-sales-questions/?ref=tec-readme">pre-sale forum</a> at the tri.be website is open and available to everyone; we encourage potential customers to review threads on that forum + post a new discussion if your question isn't already answered. You may also email <a href="mailto:pro@tri.be">pro@tri.be</a> with pre-sale questions if you prefer. 
 
 = What add-ons are available for The Events Calendar, and where can I read more about them? =
 
@@ -91,11 +91,12 @@ Currently, the following add-ons are available for The Events Calendar/Events Ca
 * <a href="http://tri.be/wordpress-eventbrite-tickets/?ref=tec-readme">Eventbrite Tickets</a>, for selling tickets to your event directly through Eventbrite.
 * <a href="http://tri.be/wordpress-community-events/?ref=tec-readme">Community Events</a>, for allowing frontend event submission from your readers.
 * <a href="http://tri.be/facebook-events/?ref=tec-readme">Facebook Events</a>, for importing events directly from an organization or page on Facebook. 
-* <a href="http://tri.be/wordpress-wootickets/?ref=tec-readme">WooTickets</a>, for selling tickets to your event using WooCommerce.
+* <a href="http://tri.be/shop/conference-manager/?ref=tec-readme">Conference Manager (COMING SOON)</a>, for managing multiple rooms/sessions/speakers at an event or conference. 
+* <a href="http://tri.be/shop/wootickets/?ref=tec-readme">WooTickets (COMING SOON)</a>, for selling tickets to your event using WooCommerce.
 
 = Is there a more substantive FAQ for The Events Calendar available elsewhere online? =
 
-There sure is. If you check out our <a href="http://tri.be/support/faqs/?ref=tec-readme">Frequently Asked Questions page</a> on the tri.be website, you'll find answers to more specific questions related to The Events Calendar/Events Calendar PRO. Please make sure to review that FAQ before posting a support thread, as there's a very good chance your question has already been answered. 
+There sure is. If you check out our a href="http://tri.be/support/faqs/?ref=tec-readme">Frequently Asked Questions page</a> on the tri.be website, you'll find answers to more specific questions related to The Events Calendar/Events Calendar PRO. Please make sure to review that FAQ before posting a support thread…as there's a very good chance your question has already been answered. 
 
 == Installation ==
 
@@ -163,32 +164,31 @@ The plugin is produced by <a href="http://tri.be/?ref=tec-readme">Modern Tribe I
 * <a href="http://profiles.wordpress.org/users/jgadbois">John Gadbois</a>
 * Justin Endler
 
-= Translations =
+= Translators =
 
-The Events Calendar/Events Calendar PRO includes translations to the following languages:
+* Swedish (free & PRO) from Ben Andersen
+* Russian (free & PRO) from Mikhail Michouris
+* Dutch (free & PRO) from Ed Boon, RIck van Dalen & Jacob Roel Meijering
+* Danish (PRO only) from Christian Andersen
+* Italian (free & PRO) from Filippo Montanari
+* Spanish (free & PRO) from Hector at Signo Creativo
+* German (free only) from David Decker
+* Polish (free & PRO) from Kamil Szymanski
+* Norwegian (free & PRO) from "Terje With Lunndal"
+* Hebrew (free & PRO) from Sagi Shrieber
+* Japanese (free only) from Matthew Meyer
+* French (PRO) from Arno Faure
+* French (free) from Fanny Héraud
+* Lithuanian (free only) from Vincent G from Host1Free
+* Czech (free & PRO) from Petr Bastan
+* Serbian (free & PRO) from Marko Manojlovic
+* Bosnian (free & PRO) from Marko Manojlovic
+* Croatian (free & PRO) from Marko Manojlovic
+* Finnish (free & PRO) from Petri Kajander
+* Catalan (free & PRO) from Fran Rosa
+* Ukrainian (free only) from Alexey Fedorov
 
-* Bosnian (bs_BA)
-* Brazilian Portuguese (pt_BR)
-* Bulgarian (bg_BG)
-* Catalan (ca)
-* Croatian (hr_HR)
-* Czech (cs_CZ)
-* Dutch (nl_NL)
-* German (de_DE)
-* Finnish (fi)
-* French (fr_FR)
-* Greek (gr_GR)
-* Hebrew (he_IL)
-* Italian (it_IL)
-* Japanese (ja_JP) - The Events Calendar only (no PRO)
-* Lithuanian (lt_LT) - The Events Calendar only (no PRO)
-* Norwegian (nb_NO)
-* Polish (pl_PL)
-* Russian (ru_RU)
-* Serbian (sr_RS)
-* Spanish (es_ES)
-* Swedish (sv_SE)
-* Ukranian (uk) - The Events Calendar only (no PRO)
+
 
 == Add-Ons ==
 
@@ -209,6 +209,18 @@ Our Premium Plugins:
 * <a href="http://tri.be/shop/conference-manager/?ref=tec-readme" target="_blank">The Events Calendar: Conference Manager (coming later in 2012)</a>
 
 == Changelog ==
+
+= 2.0.11 =
+
+**Small features, UX and Content Tweaks:**
+
+(none)
+
+**Bug Fixes:**
+
+* Fixed a bug where the calendar (and in some cases the entire site) broke with the release of jQuery 1.9
+* Fixed an issue in the Default Twenty Eleven theme where embedded maps looked broken on the Default Page Template
+
 
 = 2.0.10 =
 
